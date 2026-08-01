@@ -1,0 +1,93 @@
+audience: 'Broad professionals: beginners, practitioners, managers, and executives'
+editorial_topics:
+- AI releases
+- AI research
+- data engineering
+- analytics
+- practical tools
+- business implications
+- careers
+- explainers
+- responsible AI
+excluded_subjects:
+- weakly sourced rumors
+- defamatory claims
+- political persuasion
+- medical advice
+- financial advice
+- adult or hateful content
+voice: insightful, human, practical, clear, and free of generic AI phrasing
+post_length:
+  min_chars: 700
+  max_chars: 1300
+brand:
+  name: Data & AI Brief
+  colors:
+  - '#111827'
+  - '#2563EB'
+  - '#F8FAFC'
+  typography: Inter
+timezone: Africa/Lagos
+schedule_cron_utc: 0 8 * * 1-5
+source_allowlist: []
+preferred_source_domains:
+- ai.google.dev
+- cloud.google.com
+- deepmind.google
+- microsoft.com
+- anthropic.com
+- openai.com
+- nvidia.com
+- ibm.com
+- arxiv.org
+- nature.com
+- science.org
+- stanford.edu
+- mit.edu
+- weforum.org
+- worldbank.org
+- reuters.com
+- apnews.com
+- theverge.com
+- semafor.com
+blocked_domains:
+- linkedin.com
+- x.com
+- twitter.com
+- facebook.com
+- medium.com
+- wikipedia.org
+- brollyacademy.com
+- explodingtopics.com
+- gsdcouncil.org
+- silverspaceinc.com
+- bestarion.com
+- aigl.blog
+- aidataanalytics.network
+- 365datascience.com
+- agile-insights.com.au
+thresholds:
+  min_total_score: 0.72
+  min_sources: 2
+  min_primary_sources: 1
+  min_independent_sources: 1
+  duplicate_lookback_days: 45
+models:
+  text: gemini-2.5-flash
+  image: gemini-3.1-flash-image
+visuals:
+  allow_ai_illustrations: false
+  direction: topic-specific editorial art with tactile depth and varied palettes
+  avoid:
+  - neon-by-default
+  - glowing brains and circuit-board cliches
+  - robot faces and generic AI imagery
+  - text-heavy quote cards
+  - synthetic photorealism
+linkedin:
+  owner_urn: urn:li:person:0GDezBSPGQ
+  version: '202605'
+directories:
+  reports: reports
+  assets: assets
+  state: .state

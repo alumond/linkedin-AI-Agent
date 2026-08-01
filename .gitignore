@@ -1,0 +1,14 @@
+.env
+.venv/
+.vendor/
+.tools/
+__pycache__/
+.pycache/
+*.pyc
+.pytest_cache/
+reports/*.json
+assets/*.png
+assets/*.jpg
+assets/*.jpeg
+.state/*.json
+!.state/.gitkeep
