@@ -1,0 +1,18 @@
+{
+  "draft": null,
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-02T00:15:39Z",
+    "dry_run": true,
+    "image_urn": null,
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": "Gemini API returned 429 Too Many Requests. This usually means rate limit or quota exhaustion. Details: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 28.921813184s.",
+    "status": "skipped",
+    "topic": null
+  },
+  "reason": "Gemini API returned 429 Too Many Requests. This usually means rate limit or quota exhaustion. Details: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 28.921813184s.",
+  "status": "skipped",
+  "topic": null,
+  "trend": null
+}
