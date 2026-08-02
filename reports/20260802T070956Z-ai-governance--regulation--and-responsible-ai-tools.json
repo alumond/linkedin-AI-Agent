@@ -1,0 +1,302 @@
+{
+  "draft": {
+    "alt_text": "Illustration showing a blend of regulatory documents and digital risk management tools, symbolizing AI governance and compliance in a complex but manageable environment.",
+    "body": "The EU AI Act\u2019s implementation is a critical development for businesses across sectors, with key stages rolling out through 2026 and beyond. This legislative progress is not isolated. Globally, national frameworks are also strengthening. Singapore, for instance, has updated its Model AI Governance Framework to address Agentic AI. NIST continues to provide essential guidance through its AI Risk Management Framework and Critical Infrastructure Profile.\n\nThis collective push towards clearer AI governance highlights a growing imperative for both compliance and ethical deployment. Organizations face increasing pressure to demonstrate that their AI systems are not only effective but also fair, transparent, and accountable. This environment directly drives demand for specialized responsible AI tools and platforms. These solutions are becoming indispensable for managing AI risks, ensuring adherence to emerging regulations, and building inherently trustworthy AI systems. Proactive adoption of these tools is essential for navigating the complex regulatory terrain and maintaining public trust.\n\nAre you assessing how these new governance requirements will shape your AI development and deployment strategies?",
+    "category": "responsible AI",
+    "claims": [
+      "The EU AI Act\u2019s implementation has key stages rolling out through 2026 and beyond.",
+      "Singapore has updated its Model AI Governance Framework to address Agentic AI.",
+      "NIST provides guidance through its AI Risk Management Framework and Critical Infrastructure Profile.",
+      "The demand for specialized responsible AI tools and platforms is increasing to manage AI risks, ensure compliance, and build trustworthy AI systems."
+    ],
+    "hashtags": [
+      "#AIGovernance",
+      "#ResponsibleAI",
+      "#AIRegulation"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbbf6u8fhxa91coQYpkzLBZQHVk9t224lg35l7Hg2Ox2wae2ziriyEiIg7p6UoVvqniWVO3u0u2b5J5fxurUh9Hy6yUnqIbSSV66XLXXTCZZPReQUd55qD3gi-mTdNzBkag_wsGw7FVaZ7Gebpkp22wf0GTeZE9nWFbmGuXOR3FdH-1cRZ_iWXt5035eF441JUD92T1T5",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAlQg7-nT1MjtxA5XDATTp4y0gJc-IpdqBjz2aPE_9rJpN5S31yp9I5VTL_TIAR-TOWprxwJRFx3IGTep9OEAY6Qe8R_L4e-Rv9qBciThu54yJDStM2RFKQALu36iFiaD7gaejURxjltWBxO248aHxVbym5qgr5Af43VP1OO0BE81ZgmlzKx-DWjKyzFEMI-4ql8WAiQBTETHbiBxxEQ==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2TuyQL2FjJWUpgl50ObjR8xZpmLaj1d5gBNWKeXZ3SVnnTPJ6o6i78f_B9loRdZM1Dxa60GCmw4IVjY291EBDiChjVMgeoBbhb7g0VX4mdT5R8MLi7YkKR5IoTz4KLI_WgmtYXlH6iqwAJ7VG_HQ==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFYd30yPeugFjsxk2rtdRfFqHap4ZVvXjdyKpYukPpXqF9o6UxRZm-iow8nc-_U3g008FtZ61sy1WUumMlJVtj4MalXJJpGEl8HVGh5M_RhxfI7As4vP0HAKShQOaUvWqJk_Vc3U90CE6GGIu6HmOByY="
+    ],
+    "topic": "AI Governance, Regulation, and Responsible AI Tools",
+    "visual_prompt": "An abstract depiction of interlocking gears representing governance frameworks and digital tools, with a subtle overlay of compliance documents and a shield icon, all against a clean, modern background.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": true,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 1661,
+      "start_index": 674,
+      "title": "aizolo.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCETU6heGR251FhHvskMTt51Vnl3yPwETwp43sv2diK4u0cMU4Vj3i8PdFn1FNz8SI0Nk3O84r7zBke5RM8G5MDNje9VbhsqeSj9m99jvqbA90jykic3HxeE64nIpN-g5LQFi0fGG4mNXZ4hcpMR__Ww_TlgZ74iDNF2AXb4d-N4k="
+    },
+    {
+      "end_index": 2466,
+      "start_index": 1661,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELp5zqrovVpGgxOc66ao9JTw33iXdxQGflc4LS_jnJVLVTHw_T2zdgg98Op55Jzgm0Ouh99us_gppeI3oOLWuXd5EiQTlwW8cmaEXhW9E8ZqNoMYiQikb_gRZJdNyDILXZH-WbG3SE1EszouyIQICH9Ub5-dWrjfwMC7hmBmfGH_9XQTa9t4z5BD1x0H30zwV7Ri0ycSLw8g=="
+    },
+    {
+      "end_index": 3156,
+      "start_index": 2466,
+      "title": "ruh.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtbLRdO_MErAn287gHa3JfZ7kaRLynOvPhJ18iw6buounc4o6baVCVHJLxXovRfOTK2GuZ0tp3cBKzNfmoxmB6TTMVg2RacYQsF4BHnEMIDfG5ng4vA9Wo9IrOAfM7zGn5K6rVyoCSIuActUkMoaoJLeaAjg=="
+    },
+    {
+      "end_index": 3945,
+      "start_index": 3156,
+      "title": "investing.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2GnowGJ0zVYcC4urRhXDzo5Esobt8x6fTzWkEDOUblFV_9T7L5Q47Gj-TcghAU88ZA5mk2JIlP3TLjKUgzd1meyUrWl9vFW6MwnzfQ0smmogvtWO_rQm3ZtCAvlMjh4m6y7rfLinSURsQjeMIFi4ziZ7zWAOotUuQl2fItnalrV72inRrpLAe0-K07uCFgkJxMpghApGLhWff-kO-4VFK_z3gOBJaYk3_WEjVJr4BX4iAkMm6"
+    },
+    {
+      "end_index": 5640,
+      "start_index": 4544,
+      "title": "europa.eu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbbf6u8fhxa91coQYpkzLBZQHVk9t224lg35l7Hg2Ox2wae2ziriyEiIg7p6UoVvqniWVO3u0u2b5J5fxurUh9Hy6yUnqIbSSV66XLXXTCZZPReQUd55qD3gi-mTdNzBkag_wsGw7FVaZ7Gebpkp22wf0GTeZE9nWFbmGuuXOR3FdH-1cRZ_iWXt5035eF441JUD92T1T5"
+    },
+    {
+      "end_index": 6542,
+      "start_index": 6448,
+      "title": "eversheds-sutherland.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAlQg7-nT1MjtxA5XDATTp4y0gJc-IpdqBjz2aPE_9rJpN5S31yp9I5VTL_TIAR-TOWprxwJRFx3IGTep9OEAY6Qe8R_L4e-Rv9qBciThu54yJDStM2RFKQALu36iFiaD7gaejURxjltWBxO248aHxVbym5qgr5Af43VP1OO0BE81ZgmlzKx-DWjKyzFEMI-4ql8WAiQBTETHbiBxxEQ=="
+    },
+    {
+      "end_index": 7298,
+      "start_index": 6542,
+      "title": "superblocks.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2TuyQL2FjJWUpgl50ObjR8xZpmLaj1d5gBNWKeXZ3SVnnTPJ6o6i78f_B9loRdZM1Dxa60GCmw4IVjY291EBDiChjVMgeoBbhb7g0VX4mdT5R8MLi7YkKR5IoTz4KLI_WgmtYXlH6iqwAJ7VG_HQ="
+    },
+    {
+      "end_index": 8072,
+      "start_index": 7988,
+      "title": "neuraltrust.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFYd30yPeugFjsxk2rtdRfFqHap4ZVvXjdyKpYukPpXqF9o6UxRZm-iow8nc-_U3g008FtZ61syu1WUumMlJVtj4MalXJJpGEl8HVGh5M_RhxfI7As4vP0HAKShQOaUvWqJk_Vc3U90CE6GGIu6HmOByY="
+    },
+    {
+      "end_index": 9730,
+      "start_index": 9614,
+      "title": "latentview.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEaETnvG-UzMuvR24PUs9kIM40-N-gqF8Drvi2it5MniQZIA_4Xbf8Q87JIlaC9W77kKDwxxeKo6rYEDy-dILMMx-2_kbPttusehwQkky0fJodqOmf0yW9vcKcFIvmlB0MDNGp_fz3uhqahASTdZPJDZhI="
+    },
+    {
+      "end_index": 10540,
+      "start_index": 10454,
+      "title": "weebly.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHf1GT83RlcqXI3UcYBvr9s86s5Xh2Qj_2laR0ZpDj77ujE1EF6tF-qaNzk23yfXKgCZvJbEyFeI1F52Kp2XJVA_Ouoc5dtMyA_N1oHiAa-SBZXnNYGao_H0FbQW9YuofArI7yZkczjhcXW1aErBLGr-BExHSf_DOrPMWe4lL0qDcck480_Da6402MiAapqilr3UfK2UBWCi0MiJbHY-UpCciVB-xmahEODrvRJ306UVG6NRA=="
+    },
+    {
+      "end_index": 11342,
+      "start_index": 10540,
+      "title": "ibu.ca",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4_dB83cTYkT1hGwW6c9Fb5KrsyO5jN0vVaNeTKOl8T1VP1qQSI298sM-b4XJCgDQ_phrMo-v_IAiGII9FbcFY0JyoDMaOUKsDOEnMMv4K5J4h6CDy-mrlC5w_4J6XmqLVmnDeE9o62rXNnZwxu49KZOzfBRGU4lEvCD8="
+    },
+    {
+      "end_index": 12059,
+      "start_index": 11342,
+      "title": "panthsoftech.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGkftmZCXh6PJai338Jz_77NZZPEFKeqy0Vo1Bdd-wEzbI9-KOKVnGX546L0vJqVKA0xkHzfyAMkYUMW3gK9rnaNoA42sFmCcDgX_08np2mVY7auc4EVV8T8_jV8rcje9IfoWFpFB9x71YBtpxs_LIuxQM="
+    },
+    {
+      "end_index": 13809,
+      "start_index": 12717,
+      "title": "chemdiv.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9Ji2pMzmz5h-eMT2FDxEIsnsr3CgA3mOEwQvRdklFsUVqvC1HVkablwrTav_1fn-EjHLDI69uKf1qD1i-aKrTGC0qvnHP_Y-FsBzSkI1zWgY-fKzSwUWTnSbrmhz-L3d0EF9VsJz_5wBxIJjqFGK3IN83ncis7zxXF0CYnb_LWNuW5G5nXn5FxjZGdaN4RKgu9-JM7cEeairak5Fd_PMbmPj6DEfEXlRwhtr0cE_L6Jm-TrA="
+    },
+    {
+      "end_index": 14577,
+      "start_index": 13809,
+      "title": "intuitionlabs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEtC2CdSYb11ecNoKA1jK5OackQ2rgg2hKtT4msBH9XM5E-ONl7cTn7RS31wdL6b4g6c57voBhouFBWpY_AaOULlctQz1I4Oaec-0O9VoTvkeDpmiAT-0uLiF2PVRWZfQoyXHckmkYTDcl27tbjjXYmUAeL7INx8CVKq8junM-pVrgU3xajJYpvL20c"
+    },
+    {
+      "end_index": 15401,
+      "start_index": 14577,
+      "title": "devopsschool.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxQfwcNfZiBNpDjCDyYmjntl821GcyPiz5xgzaoEtQ0lv6k6SrK6JIZ4t10lmIzFZ_9F18CcJMthfa9LXihoUTZ0dYVkNaMUPE5LrXISZTnE41LJX0UaUdhpofg7cjde1g-5T-K_WpI58MHsEoEzYZbzHIG3ykNLtNCVYtIrSZnD7gSGI0O6JtyxU5D_v3eklJYf73sMQiGjAkpcdDl7b7pbG5lZs="
+    },
+    {
+      "end_index": 16245,
+      "start_index": 15401,
+      "title": "gulfsqas.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzfy9awOF2JmNYEgFjjer9nVd7BvgwzQBwlAfi2e5B22mCTbxojjbpRjH41D7Usk3jd5A4TWhUaCSLwRAcu1Dl2jeIoz0tbjVkq82X8E9dt4ScCXZq_DjU499aKF82yX5ITPy0BQh11jEGIS00gt0TzsMCLucTgJbqbMlzV1YUMe0DOcAvIVHAlrrY3EG0V5GULOFjTn24kMppJhoNEXEic6-XW8lqZkQZ6tAJ3PXa"
+    },
+    {
+      "end_index": 18019,
+      "start_index": 17936,
+      "title": "lumenova.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjcvCSJBLP0ZzXv929Ac3q2xYfSrdoxvAzmHNvXOnw3gLYmDyVPDQMyEkxGdMCXd35Yq0XvuuUNw63iMHFvyHshE4NcPhLz0NpQQgCXsF8hZb4ZLfpzKzsV7RQHiM2kb8lMC8jl_9pCC6SS3y3tskFiMza"
+    },
+    {
+      "end_index": 18737,
+      "start_index": 18019,
+      "title": "adaptivesecurity.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHw_cx8XgzFH0PZ1Q8Z3FNx2KPrJjQ27fN89XCfuqAGZq-vodH9sh7On4ZU9p_ZenX3D8jr-yzAfMTJ9171TwcAF9717TOF2l_UfY6dTGZeqCmSot31lrzOhSO3oXVX6zITFnZ8LAGiSBwn86xokqV0R-YFib7TIvBhSeTk28ofiYR_8oAB5io-"
+    },
+    {
+      "end_index": 19483,
+      "start_index": 18737,
+      "title": "dataiku.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHIxL7QpyyIsOA3jR-K1ZCb694F1JAZKzhcZjCtMrZvKPo-Tw1PdtZ9oV7REVoSR_5noHmGI0h8gmed45ViZaDUijOnGDR2DnELKg02UTLv_xc2I-L4m6lKmd-4DIpzNHtjgvq3QyZsbS9YbBtIo-IId70oFvVpzQ=="
+    },
+    {
+      "end_index": 20281,
+      "start_index": 19578,
+      "title": "turbotic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEulL92AM2KXfN0crfVX1dg55Qozu0JqIjrR8lbHtr91ubuQhhzOSvfdxif99CwrzY51Y8pZr4QrJxtvXHXISMC76jA7miujUDGb3pPB-88ivQjOLS_9cJ9MwA9GUvORKbFVUcRSSGFDEml8iZ-DCCgPZDuJNLiLsM_v62rpQPNgDKzUH4="
+    },
+    {
+      "end_index": 22046,
+      "start_index": 20838,
+      "title": "fpf.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGx_2Cbr-gEKUGLxNOZS3D9Ob9qjvMGXsbuRRet2hTW4SQEw-OMIQ5nyihocxp3naLWQXuu8oW51pFnPjYiQ2_BreutW0hG0VFh63UXvK6dyItQK7rHSOMIW6q14sbai-9r2d4KKypl8kldJF_2Vx8r57U7274acC8V5A8t96aj2HBjPf61SryVMQ6rk5SoVVbkrWXO"
+    },
+    {
+      "end_index": 22781,
+      "start_index": 22046,
+      "title": "superblocks.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2TuyQL2FjJWUpgl50ObjR8xZpmLaj1d5gBNWKeXZ3SVnnTPJ6o6i78f_B9loRdZM1Dxa60GCmw4IVjY291EBDiChjVMgeoBbhb7g0VX4mdT5R8MLi7YkKR5IoTz4KLI_WgmtYXlH6iqwAJ7VG_HQ="
+    },
+    {
+      "end_index": 23530,
+      "start_index": 22781,
+      "title": "technologymagazine.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4gG5woUBcPGAC6sCcTckyta6Ox_psKMnGdvVLuqDwaSQR-71-VyO8f-9ulyaYF6OTpfC29WMbWS70wvJzEW3KMeZNsgvYGEPxCmyqFm80DKIjG076RfDPWJ34udf8uF92hQcm8Fq__UIf0kvby7d71BXDupxFXJDb8A=="
+    },
+    {
+      "end_index": 24319,
+      "start_index": 23530,
+      "title": "partnershiponai.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIru0DboUG2n28ExZXa5EhcEr8ny-5sJRTujt_GUKV6iF8SRLObIx7yv4VDDuv-u8tVZy8EA3YEwoSKWLhxScTD1rYsvbX6BKDsxgWlhYz2EcoVtKcouHlGYn5vqcq4yglERNlWMv2PGr6Ox2xVZJ4PoOM7NJZagGdNMAZKMkYgHaSh3ZEkrNhROk="
+    },
+    {
+      "end_index": 25986,
+      "start_index": 25895,
+      "title": "researchandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHYG_wU3wXN6WNF2s2MKUEpgZBtQUcxsXWuIELK2hAHHGOIzOEMxLb-qmygqNT1NhoazeRKHbrn1a6kLuEPp__jvo7nLlXyoyocSfr61tsNmr7JTyJaPuXpAgr8-Ix3kkTx4a3PNFQtH1DQj107blJY1hE9xXZoxYwYh9Sxv4twTEGgpKuQA=="
+    },
+    {
+      "end_index": 26865,
+      "start_index": 25986,
+      "title": "chatbench.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEqsaF4L0A-Pd1Tw1Xy35k49GnG8YUN2SBZRnBWvIMR6LfBDw_z5JtQMylciR6TfFmvMgGeyKjnEIA8RUX5ey-NFxzFFbEqU4OgprvzTOdEsXmjqaaZodlHxsro2x7F7vGz3cEikA0ktAqU3ux9-kMnoNikf3c-B75MPlxOBG1HjdPFIpf9LhpuBjKLYVk1Cf584gyQmosnT8-3wJczbcbzvgKhrVcmlTYu9YJP8wAK6RV_yEy-nXle25BCYoWr-PT9hcUauyODHR239Yd_4YJzHeqNjiEkkkwqebOKZPol3A=="
+    },
+    {
+      "end_index": 27665,
+      "start_index": 26865,
+      "title": "marketresearchfuture.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEx1cavnpQLEEfFrSaXYx0imBw8vdcfzBnm2p7tfmANWHweK2boXTLq9COUqRIPKhw_nYDIcCWC1gM9St-SGF4i0wPKq60GxcsPFO3eXVNLDeeFIn51xtwmd6DMeDY-pMtlfdBjb9PlFCWHrFUgw1xDHT4z_UMH7WwvgbXRbNTS"
+    },
+    {
+      "end_index": 28371,
+      "start_index": 27665,
+      "title": "computer.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGDLKwmNQ4lsfbiNOlDSgSNS4PsMn_kA0Zq0hpp-uqhNQi8qZPgTJ9wDVixs33Ce8gnCagN4mPnE05nZooR4Xt1v2cE6pbAzeCEezx-KxFpe0L77kFlPymaBufmnH9nF40Aq74gOsE="
+    },
+    {
+      "end_index": 30013,
+      "start_index": 29941,
+      "title": "ibu.ca",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4_dB83cTYkT1hGwW6c9Fb5KrsyO5jN0vVaNeTKOl8T1VP1qQSI298sM-b4XJCgDQ_phrMo-v_IAiGII9FbcFY0JyoDMaOUKsDOEnMMv4K5J4h6CDy-mrlC5w_4J6XmqLVmnDeE9o62rXNnZwxu49KZOzfBRGU4lEvCD8="
+    },
+    {
+      "end_index": 30850,
+      "start_index": 30013,
+      "title": "eclerx.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTuHhBNoIsEGIKAS8LUozBdVau94696i33Xm3ZNbxlfVBcKHRjnm0OG2sufJH2GEWG7U5ZfATK-VpLt1yZIM8rBLD0b4Yu58VJELsKGBmZ9MGVEWNWCfTm_2yfTglGOpGniOH5gCimOve-hgs9fSk55E2uAF-fEdtXU_fu4lmXPQ6hEYPYDAdQlsGAto695NrAbL7WfFPIM5qveA=="
+    },
+    {
+      "end_index": 31698,
+      "start_index": 31370,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGn35t2dl868Ptcc6Czo05gk2T2nhIvKMBdyh76X0nl-jvkSbni1apBtuNYXJXfr8l8TrzQfqlq80u1uNJVhySNM98lKoPltij72D8bq_ur-p9lzA5tQtsIoPtIoiJ6bvbEjIMaLzEhkXMfY4-Bs3O2tuPU-a9t4Dslf7fcaGfQrTuSURhMI0bjLKyD58QdChWbC1a-OdIQg0a76_Splsug5tE2uPQOVwHziYLXQkA2"
+    },
+    {
+      "end_index": 32428,
+      "start_index": 31698,
+      "title": "ruh.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtbLRdO_MErAn287gHa3JfZ7kaRLynOvPhJ18iw6buounc4o6baVCVHJLxXovRfOTK2GuZ0tp3cBKzNfmoxmB6TTMVg2RacYQsF4BHnEMIDfG5ng4vA9Wo9IrOAfM7zGn5K6rVyoCSIuActUkMoaoJLeaAjg=="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-02T07:09:56Z",
+    "dry_run": true,
+    "image_urn": null,
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "dry_run_ok",
+    "topic": "AI Governance, Regulation, and Responsible AI Tools"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "AI Governance, Regulation, and Responsible AI Tools",
+  "status": "dry_run_ok",
+  "trend": {
+    "category": "responsible AI",
+    "evidence_score": 0.98,
+    "novelty_score": 0.8,
+    "practical_value_score": 0.9,
+    "recency_score": 0.95,
+    "relevance_score": 0.95,
+    "sources": [
+      {
+        "claim_supported": "Details the progressive implementation timeline of the EU AI Act, with major provisions applying in August 2026, December 2026, and December 2027.",
+        "published_at": "2024-08-01",
+        "publisher": "AI Act Service Desk",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "Timeline for the Implementation of the EU AI Act | AI Act Service Desk",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbbf6u8fhxa91coQYpkzLBZQHVk9t224lg35l7Hg2Ox2wae2ziriyEiIg7p6UoVvqniWVO3u0u2b5J5fxurUh9Hy6yUnqIbSSV66XLXXTCZZPReQUd55qD3gi-mTdNzBkag_wsGw7FVaZ7Gebpkp22wf0GTeZE9nWFbmGuXOR3FdH-1cRZ_iWXt5035eF441JUD92T1T5"
+      },
+      {
+        "claim_supported": "Reports on the EU AI Act Omnibus agreement (June 2026), including postponed high-risk deadlines, a new ban on AI-generated intimate content, and a reduced grace period for watermarking by December 2, 2026. It also mentions Singapore's updated Model AI Governance Framework for Agentic AI in May 2026.",
+        "published_at": "2026-07-23",
+        "publisher": "Eversheds Sutherland",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "Global AI Regulatory Update - July 2026 - Eversheds Sutherland",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAlQg7-nT1MjtxA5XDATTp4y0gJc-IpdqBjz2aPE_9rJpN5S31yp9I5VTL_TIAR-TOWprxwJRFx3IGTep9OEAY6Qe8R_L4e-Rv9qBciThu54yJDStM2RFKQALu36iFiaD7gaejURxjltWBxO248aHxVbym5qgr5Af43VP1OO0BE81ZgmlzKx-DWjKyzFEMI-4ql8WAiQBTETHbiBxxEQ=="
+      },
+      {
+        "claim_supported": "Lists and describes leading responsible AI tools for developers in 2026, including Google Responsible Generative AI Toolkit, Fiddler AI, and IBM Watson OpenScale, indicating a growing market for practical governance solutions.",
+        "published_at": "2025-10-21",
+        "publisher": "Superblocks",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "7 Best Responsible AI Tools for Developers in 2026 - Superblocks",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2TuyQL2FjJWUpgl50ObjR8xZpmLaj1d5gBNWKeXZ3SVnnTPJ6o6i78f_B9loRdZM1Dxa60GCmw4IVjY291EBDiChjVMgeoBbhb7g0VX4mdT5R8MLi7YkKR5IoTz4KLI_WgmtYXlH6iqwAJ7VG_HQ="
+      },
+      {
+        "claim_supported": "States that by 2026, AI governance is no longer optional, with the EU AI Act in full enforcement and NIST AI RMF as an enterprise standard. Predicts 3x higher AI-related incidents for organizations without formal governance.",
+        "published_at": "2026-06-23",
+        "publisher": "Trustible",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "The Complete Guide to AI Governance: Frameworks, Policies & Best Practices (2026)",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFYd30yPeugFjsxk2rtdRfFqHap4ZVvXjdyKpYukPpXqF9o6UxRZm-iow8nc-_U3g008FtZ61syu1WUumMlJVtj4MalXJJpGEl8HVGh5M_RhxfI7As4vP0HAKShQOaUvWqJk_Vc3U90CE6GGIu6HmOByY="
+      }
+    ],
+    "summary": "The landscape of AI governance and regulation is rapidly maturing, with significant milestones in the implementation of the EU AI Act throughout 2026 and beyond. Alongside legislative developments, national bodies like Singapore (with its updated Model AI Governance Framework for Agentic AI) and NIST (with its AI Risk Management Framework and Critical Infrastructure Profile) are providing crucial guidance. This increasing regulatory pressure and ethical imperative are driving the demand for specialized responsible AI tools and platforms that enable organizations to manage risks, ensure compliance, and build trustworthy AI systems.",
+    "topic": "AI Governance, Regulation, and Responsible AI Tools"
+  },
+  "visual": {
+    "alt_text": "Illustration showing a blend of regulatory documents and digital risk management tools, symbolizing AI governance and compliance in a complex but manageable environment.",
+    "height": 1200,
+    "linkedin_image_urn": null,
+    "mime_type": "image/png",
+    "path": "assets/20260802T070942Z-ai-governance--regulation--and-responsible-ai-tool.png",
+    "width": 1200
+  }
+}
