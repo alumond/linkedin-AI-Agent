@@ -1,4 +1,4 @@
-# Gemini-Powered Data & AI LinkedIn Agent
+LinkedIn Agent
 
 This project researches current Data and AI trends with Gemini Google Search grounding, writes a sourced LinkedIn post, creates one square visual, and can publish to a personal LinkedIn profile.
 
