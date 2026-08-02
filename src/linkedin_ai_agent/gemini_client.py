@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import os
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -15,6 +17,7 @@ from .models import DraftPost, TrendCandidate, draft_from_dict, to_dict, trend_f
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+MAX_RETRY_DELAY_SECONDS = 60
 
 
 class GeminiClient:
@@ -224,11 +227,9 @@ Requirements:
             last_response = response
             if response.status_code not in retryable:
                 break
-            retry_after = response.headers.get("Retry-After")
-            if retry_after and retry_after.isdigit():
-                wait_seconds = min(int(retry_after), 30)
-            else:
-                wait_seconds = min(2**attempt, 30)
+            if attempt == 3:
+                break
+            wait_seconds = gemini_retry_delay(response, fallback_seconds=min(2**attempt, 30))
             time.sleep(wait_seconds)
         assert last_response is not None
         raise RuntimeError(gemini_error_message(last_response))
@@ -239,6 +240,49 @@ def post_length_target(config: AgentConfig) -> tuple[int, int]:
     target_min = min(config.max_post_chars, config.min_post_chars + 200)
     target_max = max(target_min, config.max_post_chars - 150)
     return target_min, target_max
+
+
+def gemini_retry_delay(response: requests.Response, fallback_seconds: int) -> int:
+    """Read Gemini's requested cooldown, with a bounded exponential fallback."""
+    retry_after = response.headers.get("Retry-After", "").strip()
+    parsed = float(retry_after) if re.fullmatch(r"\d+(?:\.\d+)?", retry_after) else parse_delay_seconds(retry_after)
+    if parsed is None:
+        try:
+            payload = response.json()
+        except (ValueError, TypeError):
+            payload = None
+        parsed = find_retry_delay(payload)
+    if parsed is None:
+        parsed = parse_delay_seconds(getattr(response, "text", ""))
+    delay = fallback_seconds if parsed is None else max(parsed, 0.0)
+    return max(1, min(math.ceil(delay), MAX_RETRY_DELAY_SECONDS))
+
+
+def find_retry_delay(value: Any) -> float | None:
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in {"retryDelay", "retry_delay"}:
+                parsed = parse_delay_seconds(str(item))
+                if parsed is not None:
+                    return parsed
+            found = find_retry_delay(item)
+            if found is not None:
+                return found
+    elif isinstance(value, list):
+        for item in value:
+            found = find_retry_delay(item)
+            if found is not None:
+                return found
+    elif isinstance(value, str):
+        return parse_delay_seconds(value)
+    return None
+
+
+def parse_delay_seconds(value: str) -> float | None:
+    match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*s(?:ec(?:ond)?s?)?\s*", value, re.IGNORECASE)
+    if not match:
+        match = re.search(r"retry(?:ing)?\s+in\s+(\d+(?:\.\d+)?)\s*s(?:ec(?:ond)?s?)?\b", value, re.IGNORECASE)
+    return float(match.group(1)) if match else None
 
 
 def output_text_from_interaction(interaction: Any) -> str:
