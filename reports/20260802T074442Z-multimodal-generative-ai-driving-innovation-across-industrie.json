@@ -1,0 +1,482 @@
+{
+  "draft": {
+    "alt_text": "An insight card illustrating multimodal AI, with icons representing text, images, video, and audio converging into a central processing unit, signifying the integration and generation of diverse content.",
+    "body": "Multimodal generative AI, capable of processing and generating content across text, images, video, and audio, is rapidly advancing and reshaping enterprise operations. Models such as Anthropic's Claude 3 family now integrate sophisticated vision capabilities, allowing for the analysis of diverse visual formats alongside text. This brings a deeper contextual understanding to various business functions.\n\nGoogle Cloud predicts multimodal AI will be a pivotal force in 2025, enhancing enterprise search and improving predictive maintenance in manufacturing, among other areas. Moreover, platforms like Azure OpenAI Service are incorporating multimodal models, including DALL-E and Sora. These integrations enable creative teams to bring ideas to life through seamless API access and scalable deployments, offering new avenues for innovation.\n\nThe practical implications for understanding and generating information across different mediums are significant for efficiency and creativity. How do you see multimodal AI impacting your industry or role?",
+    "category": "AI releases|business",
+    "claims": [
+      "Multimodal generative AI, capable of processing and generating content across text, images, video, and audio, is rapidly advancing and transforming enterprise operations.",
+      "New models like Anthropic's Claude 3 family integrate sophisticated vision capabilities, allowing for the analysis of diverse visual formats alongside text.",
+      "Google Cloud predicts that multimodal AI will be a pivotal force in 2025, enhancing enterprise search, predictive maintenance in manufacturing, and overall contextual understanding.",
+      "Offerings like Azure OpenAI Service are incorporating multimodal models such as DALL-E and Sora, enabling creative teams to bring ideas to life through seamless API integration and scalable deployments."
+    ],
+    "hashtags": [
+      "#AI",
+      "#GenerativeAI",
+      "#MultimodalAI"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH83br8ct99Ly5kST4MMFnHjUVlc1rSZ2iLi11moyJ4ZDgDtvNnA7_9_Lk0bmBT7eiybnFCKKmqBNFCukJsEBcAMAlhGehq-FIJM3ZtmYl7s0WpULOZ5l4Ba2sxxUZHJCNAm20mgmKZwMs6160fX9dir6souC-SSIINzlcxNVOJa5gIWW3PGpJlQvLu",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBejbvi4bW9j_vP1jaaMHH9T0gQduMMayz3NkL95HAgN3IlT_tBk71F1Dql8OsQ_QkWmCgj_XuU243kYsMLIxPMucxrzxlCmxnHkrSo5FyCr_XHB0xZvt4ETcF_trHh-TwdNJfxT_Aq4=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsa942paucuLe3yrGbhEE3TPPEO1JNs_xdxZhIYu7BxKY4FVvYzu3eorVPWwTZ6158vo0K7r_FlXkiTjpiwbM9KHGGAuLuhavLdEMJnIT3Ys53XfIuxzrg5416z_T3IZDESBCU-aHRSFknKPy9s-5yJcEJZqtXu3HYtuKK6nUr7uh5TlgFpjetl3S8rQWaq_L211wewYK6ZU5wAg==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECz1IzmLhbARftYI7EPTHTtPlAoJ2T8_MamzJAHQmlSRbTM7iXzMWbAgboubC4guEyYEW0gYVPlEY5DjDFLdYb98BXMSPjg0DwStgSBovIGCob9lmOtoGbLSVk5lxwWIkkXVsByZwVvsdFWlw81wTEu2moO1dDwICvVg=="
+    ],
+    "topic": "Multimodal Generative AI Driving Innovation Across Industries",
+    "visual_prompt": "An abstract depiction of multimodal AI, showing a central brain-like node connecting diverse data types: text, images, video, and audio. Geometric shapes representing data streams flow into and out of the node, with subtle glowing lines indicating processing and generation. The overall aesthetic is clean, modern, and high-tech, with a focus on connection and synthesis.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 1794,
+      "start_index": 778,
+      "title": "siliconflow.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwZo5DIQxvskrQlC804vGvilL52oeCgwh8TXBVvlEMnVzEehpYrtLEyzZTmrTcmvUfDXIJ6cZdOA4vHkDZXiGoyK_Xw-pe2hr7Pjmw6K_Ad3gpngaroiPvBNRI2fiOvrCl7JMdC3Rttz3Z7cpdwLek9lJubWW1mQ8hLZKXwScucZ7m_w=="
+    },
+    {
+      "end_index": 2473,
+      "start_index": 1794,
+      "title": "skadden.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHlxA_YAPztvZ4ISKmheYcBPGR2TKBkgTon04cAWNu_dBjHL_WF0sNq9Yli3bW8TwjtBc8nHpGOONin0jbyjDlj6KmFtARyMTVIAH73YnTyQ_7hX79UnL6uu3N01J7V2pn_YJ_AmScrgxEP6Ftn1T2DHsSDMF5mqKXMC1nAzzFA3bo-SAi01MxaZtjYsXmTCXMUURyaLgNO4QftlkS1van9erR7x8WHv6RziAN2x4="
+    },
+    {
+      "end_index": 3214,
+      "start_index": 2473,
+      "title": "mirantis.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnWoJm9auiUhYGuI_VgAN9ufL9xpHAtVkt-y6JRaRftzhCpuIUuwVNTknPoXecigV7Ch9U0k8n_Y7rwK3ienmp-Ul0XWBNWk5xv6EZUXBPJcOcNnOD_excRu3RH6uQ9JlSVPfH6uB2Zc8="
+    },
+    {
+      "end_index": 3975,
+      "start_index": 3214,
+      "title": "tovie.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH2CkQ1-LbCqPRWzLwO7Fi6683-19dBDgfdtYsm452fQ6Fia4da6Hx070LLVOm1nG208yrh_nlCVNvVHnKtXvM8uVCkRL6TL0aWK-ch8bdlwnwdPvpLR78UaDOMcINrMCat809vNmjcUTo42Q3QOEntHuUp02SJf7ocPOhA7fOx_HCcBQ=="
+    },
+    {
+      "end_index": 4636,
+      "start_index": 3975,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkrlbWQmm_f6I-cplidP4g-MEQxuUQ62pMlbErpMY2coyMgBPhxvtnRvF0loGmZ2PhDT9qZzg-bdsjOGX7VSVaArOySagxgE5s6TYfAsRMcplNmiL8txdRHx24nsazBXYy_rizHo9GCYwmco_i4cDiXqga"
+    },
+    {
+      "end_index": 5373,
+      "start_index": 4636,
+      "title": "gmicloud.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGelZZo_BLBobc8TRKvu7FdpWspWtn84kHJ0iVPuINOVTZU_F7B6u-SZ6oD1-BaCerKKBPsMvmi3jNTQVNYaO6VSpfPPa9klEg1BKXhq_RrZC6Q7ZSP2BH6C4xgsPDFk85d3WgS0XAdBH9qScRP7dK5IBlB-fOoAfylvZCQ785mc3RiL_rSchmnsH63WmO3430hhfkAoompKswGsFDicT620g=="
+    },
+    {
+      "end_index": 6119,
+      "start_index": 5373,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9hQuOkYXXb5op9JAEj3CTni51E6g_Ep0Ffjpc2F6U2OQV-Zf6TntLFKYNVAp54BhchYkdnJ_qIP2DzhErrFKEK8PhSn6Z6BlwqHcLpWniG8Buy6M64cXOPD6aY-Jw4tXY-FDl6rhj"
+    },
+    {
+      "end_index": 6859,
+      "start_index": 6119,
+      "title": "lumenova.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUx8Yt6_Wu-i53AznZxHJUpOhldrqIMeechhR_ojd4JxVkH_v5dQdN8nCdHCp5QGSMN3dxQxQxvC6-zJu68SKb786xiC84dcxNTPqMRJewU9qxEw1vbTz0hiIkaRXefUamB9_0D-ZolaU9aMCJ5CRF6j1ft0Iry4PdzlSfbVJvQf2INkuOBwNMg01O"
+    },
+    {
+      "end_index": 7545,
+      "start_index": 6859,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHI0XZT3pE9sSNorUqOerp3gZx6bgMCH0U1e14-Y70mLrBu5s4dUbtyVU8bQ9xWsjpT4oa0BasO1TC1AiCiKP9CiMjqDcVrjAzIgrW2IvMJbT1c9tA7ZwaN5PVIt19iViQe94EjohjBZ7GKCgSsfOSrrZwXHHdSwiisIUGJIRGFwNUO-1TUUoQ7pZbn"
+    },
+    {
+      "end_index": 8268,
+      "start_index": 7545,
+      "title": "skybiometry.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEg4ZMD5hkHSRltkltxqtkZDB7Zdwjx1TnLdEJLWABPW5w6cBCGYssrm0G6MrczUbd-kBrBta00YjhwSpSBdTsaO8kKVxaGRot_2Jtw_d0osmo2K28p_aZuiToTN5XkunNEhMJOQHKxxDwmijLg2nhZk53RvqXD9h7Z6onSg6tzscdkkCDVRFii3HKPKvlKMRSW"
+    },
+    {
+      "end_index": 8961,
+      "start_index": 8268,
+      "title": "deepchecks.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEgqZQqhj_VRQXO3-yBy93UCFuNjxCNJqG9kieH7jdO8jh9VJRaEVDCm7MVSUinV0AtOuWDbwMu3oH6iyZV8YVtunsR3wZtlTdwPWljyKCPj6UyDWVgG1hzB0MK-2CP1efVtCRC6kGgrsUl-AL8QIlYfZUjEL8="
+    },
+    {
+      "end_index": 9687,
+      "start_index": 8961,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGF38wjkag43RNrW6kOUXC8sYFnTkirmUX4hMPwBI1jYVFIhgApu0h8TajdgQRCW6N4eaO7B8GA_7nMoPreAO554sAnUpM_Gom5OdagNUDCgutKuCcXecE4SbVrYufg8CKGqXwcIpmTK2SsGC2gALpckt2TRTK5yLrDT68V0WV15kSuj32AykCVdMn_VDJwBg=="
+    },
+    {
+      "end_index": 11404,
+      "start_index": 10402,
+      "title": "siliconflow.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwZo5DIQxvskrQlC804vGvilL52oeCgwh8TXBVvlEMnVzEehpYrtLEyzZTmrTcmvUfDXIJ6cZdOA4vHkDZXiGoyK_Xw-pe2hr7Pjmw6K_Ad3gpngaroiPvBNRI2fiOvrCl7JMdC3Rttz3Z7cpdwLek9lJubWW1mQ8hLZKXwScucZ7m_w=="
+    },
+    {
+      "end_index": 12060,
+      "start_index": 11404,
+      "title": "skadden.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHlxA_YAPztvZ4ISKmheYcBPGR2TKBkgTon04cAWNu_dBjHL_WF0sNq9Yli3bW8TwjtBc8nHpGOONin0jbyjDlj6KmFtARyMTVIAH73YnTyQ_7hX79UnL6uu3N01J7V2pn_YJ_AmScrgxEP6Ftn1T2DHsSDMF5mqKXMC1nAzzFA3bo-SAi01MxaZtjYsXmTCXMUURyaLgNO4QftlkS1van9erR7x8WHv6RziAN2x4="
+    },
+    {
+      "end_index": 12860,
+      "start_index": 12060,
+      "title": "domo.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSxuc82tp57KBiK3NOX4hUKhSe1ElLPWlnk3exHLfk7bvUtgqS-KreZW2TmcgWtYNSl8o0B9hUihbhlwhGff0LMhW7KLSbd2qPLZE3Xb0zN4W5OSt55ZiGt06Bjh-AV4StM4QjpFNbkrggQzcsyEZeYcIoqO1rQfs10BY="
+    },
+    {
+      "end_index": 13665,
+      "start_index": 12860,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9hQuOkYXXb5op9JAEj3CTni51E6g_Ep0Ffjpc2F6U2OQV-Zf6TntLFKYNVAp54BhchYkdnJ_qIP2DzhErrFKEK8PhSn6Z6BlwqHcLpWniG8Buy6M64cXOPD6aY-Jw4tXY-FDl6rhj"
+    },
+    {
+      "end_index": 14424,
+      "start_index": 13665,
+      "title": "collibra.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1w0q97JO8m-myR1KtnJWQ9e4oulcXP0ENvBw-JwmNYATfr5t-hC53ClgB0lcLf_HvVuxPOHvfbFpKtYQSBmkCqmjK2PGycbVdunWMNdN2Adex6HrtYxcCtRyE8Wgmmicw6UWST0VjnEXVmst41cRMn5cchI1uNPVaJJ-h8NpZ8CjRndo4t8b4ZAnum7HtNi6B7c2hfTVWV-aGCYheAF3Jdk37nS2niwF04Fe_9cbtsQJh5x0M"
+    },
+    {
+      "end_index": 15199,
+      "start_index": 14424,
+      "title": "lumenova.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUx8Yt6_Wu-i53AznZxHJUpOhldrqIMeechhR_ojd4JxVkH_v5dQdN8nCdHCp5QGSMN3dxQxQxvC6-zJu68SKb786xiC84dcxNTPqMRJewU9qxEw1vbTz0hiIkaRXefUamB9_0D-ZolaU9aMCJ5CRF6j1ft0Iry4PdzlSfbVJvQf2INkuOBwNMg01O"
+    },
+    {
+      "end_index": 15821,
+      "start_index": 15199,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkrlbWQmm_f6I-cplidP4g-MEQxuUQ62pMlbErpMY2coyMgBPhxvtnRvF0loGmZ2PhDT9qZzg-bdsjOGX7VSVaArOySagxgE5s6TYfAsRMcplNmiL8txdRHx24nsazBXYy_rizHo9GCYwmco_i4cDiXqga"
+    },
+    {
+      "end_index": 16508,
+      "start_index": 15821,
+      "title": "gmicloud.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGelZZo_BLBobc8TRKvu7FdpWspWtn84kHJ0iVPuINOVTZU_F7B6u-SZ6oD1-BaCerKKBPsMvmi3jNTQVNYaO6VSpfPPa9klEg1BKXhq_RrZC6Q7ZSP2BH6C4xgsPDFk85d3WgS0XAdBH9qScRP7dK5IBlB-fOoAfylvZCQ785mc3RiL_rSchmnsH63WmO3430hhfkAoompKswGsFDicT620g=="
+    },
+    {
+      "end_index": 18266,
+      "start_index": 17250,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9hQuOkYXXb5op9JAEj3CTni51E6g_Ep0Ffjpc2F6U2OQV-Zf6TntLFKYNVAp54BhchYkdnJ_qIP2DzhErrFKEK8PhSn6Z6BlwqHcLpWniG8Buy6M64cXOPD6aY-Jw4tXY-FDl6rhj"
+    },
+    {
+      "end_index": 18963,
+      "start_index": 18266,
+      "title": "collibra.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1w0q97JO8m-myR1KtnJWQ9e4oulcXP0ENvBw-JwmNYATfr5t-hC53ClgB0lcLf_HvVuxPOHvfbFpKtYQSBmkCqmjK2PGycbVdunWMNdN2Adex6HrtYxcCtRyE8Wgmmicw6UWST0VjnEXVmst41cRMn5cchI1uNPVaJJ-h8NpZ8CjRndo4t8b4ZAnum7HtNi6B7c2hfTVWV-aGCYheAF3Jdk37nS2niwF04Fe_9cbtsQJh5x0M"
+    },
+    {
+      "end_index": 19684,
+      "start_index": 18963,
+      "title": "lumenova.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUx8Yt6_Wu-i53AznZxHJUpOhldrqIMeechhR_ojd4JxVkH_v5dQdN8nCdHCp5QGSMN3dxQxQxvC6-zJu68SKb786xiC84dcxNTPqMRJewU9qxEw1vbTz0hiIkaRXefUamB9_0D-ZolaU9aMCJ5CRF6j1ft0Iry4PdzlSfbVJvQf2INkuOBwNMg01O"
+    },
+    {
+      "end_index": 20413,
+      "start_index": 19684,
+      "title": "gmicloud.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGelZZo_BLBobc8TRKvu7FdpWspWtn84kHJ0iVPuINOVTZU_F7B6u-SZ6oD1-BaCerKKBPsMvmi3jNTQVNYaO6VSpfPPa9klEg1BKXhq_RrZC6Q7ZSP2BH6C4xgsPDFk85d3WgS0XAdBH9qScRP7dK5IBlB-fOoAfylvZCQ785mc3RiL_rSchmnsH63WmO3430hhfkAoompKswGsFDicT620g=="
+    },
+    {
+      "end_index": 21083,
+      "start_index": 20413,
+      "title": "thecorporategovernanceinstitute.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDycCwJ5tAQfImb5dE_TVPWTd_N_Ea3I87B-VaAACHOBazG05I3N4cVq6S7e1CPqjvrTUhbb_XhczT5M2pciPeiX5DCuOZ6yWz5Gc9JWTvoF75raVcOFojvpmwfkUiskRj1wtpM-7AO9nehU2s9TgM7xgcqyYA0qCD_dFT0p6EvFHxFga-LNm4V3NH7epIXmHFCGIgIbuNVCNEcjeXjRkB-mtV0b8="
+    },
+    {
+      "end_index": 21828,
+      "start_index": 21083,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlEv8yZjrvTHmFphxZTgsNt-g7O0WluzqTbhtfR9kyRCgPybcWv3h3-Le0KxWwyIS3M8TIlhHAGHj4M9A6mlivKv7YnVSIqdGbSbt4okxJ4ahplql4ujUHBUbm-1fp7HDYVoh0XFzB6wCLQMlae_OVrXcYKYYw3GQOCzIayfLK99SIdcC4CJnhMegdXb_ppd5MsFJryc0HOXEudqGidg=="
+    },
+    {
+      "end_index": 23761,
+      "start_index": 22661,
+      "title": "dev.to",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCqaERASuHwh3aIanj3mOYZVhN1SZsCDv9l2l79RW1_xR_4W0YTiCbBtyApsHMFzM7KdjuSwsx5sBMA5IQLGSejQS9B8SttfQOR0knB1hBSDfMR9qLSEiZCv6_11ukQ6qGvXbIaVxCbu3QhPwlpOcZwuxko_b9cPt0EW45RfXCzx_kUzvh-m7xmNZPzYNxXSopbt-MDBw="
+    },
+    {
+      "end_index": 24550,
+      "start_index": 23761,
+      "title": "tekrecruiter.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEx_slf-iAHgSrJFF36ndTTLtc11E8DEAomVecEdVA2aBIYaQVjBx07DNyxUFrcTZ3ea6idm02jfO-wHum7t5z9sqqqjbT0HarmJPXvGrqqgY9CWaZS7gSzhhZD4HrbcJAjUSh1BMMZ7PgyH5hcnrXdHHwCuo3g4uF43_ohkQdFEpct9O2LpgvXX2H9VISeRCB8Qg6v1jhipg=="
+    },
+    {
+      "end_index": 25280,
+      "start_index": 24550,
+      "title": "thirstysprout.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFNYZq2AM4DXRQNHKzas9oI-8ufO3FPro9eqlVPGtES-X7Mz9aJN5RhAtBasD6AJUQbv_Ryi0Qv8DiCzBDc1M0t5LYgHG5gXVG9NlhUMWvfn2lzsn6qHvJmNGvQ2hE2bM4tZftzdclJJRhq8aChRwwtzsE="
+    },
+    {
+      "end_index": 26075,
+      "start_index": 25280,
+      "title": "superwise.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH02CHLgTcXRra1pyS3QnNlJdJbFmSRbdWghZX171JM1c9iNwUNXbdXJXDGGgCpoFY2woshuVpwUTXQ5mNCXTI2jyIGki2JzkK2gxkwAJtt5IgFxyvU34-IC-psBk4M0-80e6tK287Z2gQkMQNNzTwRMeKUbmt9qFoKckRbwaI0ehos1C2K0Grz5tqkQwcTs0LmUHSp2g_8Dsp7_AE="
+    },
+    {
+      "end_index": 26794,
+      "start_index": 26075,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9hQuOkYXXb5op9JAEj3CTni51E6g_Ep0Ffjpc2F6U2OQV-Zf6TntLFKYNVAp54BhchYkdnJ_qIP2DzhErrFKEK8PhSn6Z6BlwqHcLpWniG8Buy6M64cXOPD6aY-Jw4tXY-FDl6rhj"
+    },
+    {
+      "end_index": 27540,
+      "start_index": 26794,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2K60_rebZystV0yV7pAr3iViXkJnqk9-5vuBIwQSP5_0kVMFH-zTQG84AV0sMPyMhkp9-UshYnt0xkdsWldgO_fndVBx3CpU9-nk6YxYmTJ6fmm5Yxnp5gOywRvZaqiart_dgaspNmRz2UMocsiqqP72J48gXAag0ng=="
+    },
+    {
+      "end_index": 28299,
+      "start_index": 27540,
+      "title": "dextralabs.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGP2Znz1QSbL_mkrU6T_7-4VDqTIZ-i9xBybfvPBNyHQ9Os4Lv7CQnxEwUzn75W_Uw_jlAAmv18_nNOY9oQvS8DE8LShDlIRLFazKvcIDOa654g6dS3Jp8cSGizV2b7u9WGgDJsP7AQtDTn3bpzp-ganXn-YhFenHIUvlCY8wPrFE_6ufY7Rzc="
+    },
+    {
+      "end_index": 29049,
+      "start_index": 28299,
+      "title": "skybiometry.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEg4ZMD5hkHSRltkltxqtkZDB7Zdwjx1TnLdEJLWABPW5w6cBCGYssrm0G6MrczUbd-kBrBta00YjhwSpSBdTsaO8kKVxaGRot_2Jtw_d0osmo2K28p_aZuiToTN5XkunNEhMJOQHKxxDwmijLg2nhZk53RvqXD9h7Z6onSg6tzscdkkCDVRFii3HKPKvlKMRSW"
+    },
+    {
+      "end_index": 29713,
+      "start_index": 29049,
+      "title": "modelop.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEcbsL81hF7M1I4iZJm_cWdwIov6RPe8E2OglmEUMEnVB6DIP869S3hPdTMrBhfCTizuvjFICqQhuLfgxwhpXRwDUMiYygA3KreEUujFutjn_qkVe1nIcZK57MR8w1CXi_uvZYdLKuyXnUn"
+    },
+    {
+      "end_index": 30417,
+      "start_index": 30288,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGF38wjkag43RNrW6kOUXC8sYFnTkirmUX4hMPwBI1jYVFIhgApu0h8TajdgQRCW6N4eaO7B8GA_7nMoPreAO554sAnUpM_Gom5OdagNUDCgutKuCcXecE4SbVrYufg8CKGqXwcIpmTK2SsGC2gALpckt2TRTK5yLrDT68V0WV15kSuj32AykCVdMn_VDJwBg=="
+    },
+    {
+      "end_index": 31113,
+      "start_index": 30417,
+      "title": "domo.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSxuc82tp57KBiK3NOX4hUKhSe1ElLPWlnk3exHLfk7bvUtgqS-KreZW2TmcgWtYNSl8o0B9hUihbhlwhGff0LMhW7KLSbd2qPLZE3Xb0zN4W5OSt55ZiGt06Bjh-AV4StM4QjpFNbkrggQzcsyEZeYcIoqO1rQfs10BY="
+    },
+    {
+      "end_index": 33148,
+      "start_index": 31996,
+      "title": "skadden.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHlxA_YAPztvZ4ISKmheYcBPGR2TKBkgTon04cAWNu_dBjHL_WF0sNq9Yli3bW8TwjtBc8nHpGOONin0jbyjDlj6KmFtARyMTVIAH73YnTyQ_7hX79UnL6uu3N01J7V2pn_YJ_AmScrgxEP6Ftn1T2DHsSDMF5mqKXMC1nAzzFA3bo-SAi01MxaZtjYsXmTCXMUURyaLgNO4QftlkS1van9erR7x8WHv6RziAN2x4="
+    },
+    {
+      "end_index": 34010,
+      "start_index": 33266,
+      "title": "thecorporategovernanceinstitute.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDycCwJ5tAQfImb5dE_TVPWTd_N_Ea3I87B-VaAACHOBazG05I3N4cVq6S7e1CPqjvrTUhbb_XhczT5M2pciPeiX5DCuOZ6yWz5Gc9JWTvoF75raVcOFojvpmwfkUiskRj1wtpM-7AO9nehU2s9TgM7xgcqyYA0qCD_dFT0p6EvFHxFga-LNm4V3NH7epIXmHFCGIgIbuNVCNEcjeXjRkB-mtV0b8="
+    },
+    {
+      "end_index": 34790,
+      "start_index": 34010,
+      "title": "tovie.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH2CkQ1-LbCqPRWzLwO7Fi6683-19dBDgfdtYsm452fQ6Fia4da6Hx070LLVOm1nG208yrh_nlCVNvVHnKtXvM8uVCkRL6TL0aWK-ch8bdlwnwdPvpLR78UaDOMcINrMCat809vNmjcUTo42Q3QOEntHuUp02SJf7ocPOhA7fOx_HCcBQ=="
+    },
+    {
+      "end_index": 35546,
+      "start_index": 34790,
+      "title": "nist.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcY7tuF0ANUvUOwjTXw6UoLf-n5uQgguNsbSbBkNlqEdWISk7CTBcNgGZezDAsTwx2-OVmbLlm4ct5mwL7Nt5P7HjfcAjWy00JsGY7qj13cj3HolBgN3OcxirsZgqnmvlvGB_xqHpWnMBuU91-u-gp"
+    },
+    {
+      "end_index": 36353,
+      "start_index": 35546,
+      "title": "collibra.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF1w0q97JO8m-myR1KtnJWQ9e4oulcXP0ENvBw-JwmNYATfr5t-hC53ClgB0lcLf_HvVuxPOHvfbFpKtYQSBmkCqmjK2PGycbVdunWMNdN2Adex6HrtYxcCtRyE8Wgmmicw6UWST0VjnEXVmst41cRMn5cchI1uNPVaJJ-h8NpZ8CjRndo4t8b4ZAnum7HtNi6B7c2hfTVWV-aGCYheAF3Jdk37nS2niwF04Fe_9cbtsQJh5x0M"
+    },
+    {
+      "end_index": 37111,
+      "start_index": 36353,
+      "title": "sentinelone.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG0gJrnRWJDq_JuNDsYomB8KfCmbD4R-k-YTeQlgHke4Ik_In5hdXNCtglh5h-IiAC77aCAKs1aUWgxUEEVBJ42us2OEN6QTa8FOkfyl9gRnbcYA9n7W2xE7B9gFh5x4VYLWEfCfBhqaFFSjXuJUsbnCiRqAHO1SafDQvVNKisycQ79mEcWEXbDvKbToIGYUA4ZrQkj-N8d3c8="
+    },
+    {
+      "end_index": 37814,
+      "start_index": 37111,
+      "title": "futureoflife.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ84gCl2U6ml3Ff7fFD75F0CjZUmRNR5I1LjLGBjQoZW1Ta-oEST-fa2TqKgc_WFj8I0eSQdyw5spqwGCHZRmkWF-uHn34mZu7cwmZHd-jLjLLekSInsP-04jWka0K2Ims99j97AYELQkK62QVygZOuuaC2TS5lFlsstq2"
+    },
+    {
+      "end_index": 38480,
+      "start_index": 37814,
+      "title": "responsible.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4AcCxovfkU8xXxYqCxqfrUD2C6Po6PRrv95YcK05-t3qywNfQQVAXECaYhG5jLZbguAJtIJpxjACoHQq9tLrheoucVZbIEpzeweOnc4g6UX-bVX-e4Q=="
+    },
+    {
+      "end_index": 39207,
+      "start_index": 38480,
+      "title": "dataiku.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHunul_mBgE3TbkSDQ6HI0UnQIkZsEybVXd78gpqcGq-Y-2cMeBnB1V4gKshwrO84Nj1wX6S-5Wm5HCuC6xhYn0MGXjN0Z9e_6IsAdtvTRlstLPTE4q34m8V_yJipeF3KQO0r4nIdDZ8MP-qVswxPgo_u-7tAGH4WnTGFfGu7Ij3SU3IVk="
+    },
+    {
+      "end_index": 39968,
+      "start_index": 39207,
+      "title": "aimagazine.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhdPL_GvFwEGAg92fXNyqSV0X0_IWHQY-w23Fr3IvPSfIH2QouDksaiRYPbDevmRrRFW5Yh_x8x_a_19qUIlTaiLG0AGXBUV4rn8i9VH5sLo80q5SX6DTk_0bPlH6YfJo4GLrDtAGfFlZKIBCbew=="
+    },
+    {
+      "end_index": 42018,
+      "start_index": 40708,
+      "title": "siliconflow.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwZo5DIQxvskrQlC804vGvilL52oeCgwh8TXBVvlEMnVzEehpYrtLEyzZTmrTcmvUfDXIJ6cZdOA4vHkDZXiGoyK_Xw-pe2hr7Pjmw6K_Ad3gpngaroiPvBNRI2fiOvrCl7JMdC3Rttz3Z7cpdwLek9lJubWW1mQ8hLZKXwScucZ7m_w=="
+    },
+    {
+      "end_index": 42710,
+      "start_index": 42018,
+      "title": "ertas.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvrPLGmu2_DzAa854O1bpwxVNeRosH-XXGHE8iMJ-XFRJpUKBKAoNY-G_cHEXvwlJw67QwP9P239eJnwclPEnq6wjFJCBEF-zP98HkMrQcxzvavkdGm88Ku4lDJDo1lhL_PEBoCqr_LFy6HyMRgOivqk00lvT1Iik="
+    },
+    {
+      "end_index": 43463,
+      "start_index": 42710,
+      "title": "arxiv.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHEiTFi1MSIbKKclo8n9hZMKgeiohcmK9RruqQjwyLJfVptLoIx206AMfbqWYZVrvHUYCIF6tk_R4DrLAlZwOJ_AH1-3ONmwJTlCbFeKY2CLUPZ4ffoMg4bJurN"
+    },
+    {
+      "end_index": 44155,
+      "start_index": 43463,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGrnSsN0fSrKqlvVT-hVKsb1EPxBw_IykV2MW96ID5nT08ewOV1Wqk-o1b2D-dCYyVl_gj0mA48Y2xRE8Kl--KOV_BOpdUznUz1PGI3kgjleQC70aRGIcj-O-K4zGcXI2P4AwTp54bi78KgTibCa08"
+    },
+    {
+      "end_index": 44997,
+      "start_index": 44155,
+      "title": "forbes.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFh-HjnboYTt1g_Vz3_69lC14tmkCcE5VL-4ZHKQft4K_h8hDTGvb1G5lxB_rimtR9gWdpMhZgEUK3O8mSknrvc-ayMp30xU-jnrFylZSDw_UetTKLJtC_ozDDgsMe5VWBVS_Mv4vQtDvNaeyhBd90Qgs1JpoO-4_BAYcAmHeF--g2X5kcRg1cWD-B1CbiyGqPoS7UeclV6iR7ID8n1r-F75uWd8L-6eFTa_Ol8s8Qn6fao6S6Xmyl40aZDMj60hFmgwA=="
+    },
+    {
+      "end_index": 45727,
+      "start_index": 44997,
+      "title": "inworld.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfWRGRiYLCb8YQ6af-RQyw4KuM1jcoGHkPWN6ICIPvGfMBY8zhMyNBB24FrYumgHQQDXpPqzr_DN0O_znRLqwq3xLa2V1FPPXhFFFREGOy9DdBFl1VidnyXU-kXhWvlDVbeyykXU0n9FwktO3_VNMr"
+    },
+    {
+      "end_index": 46424,
+      "start_index": 45727,
+      "title": "mirantis.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnWoJm9auiUhYGuI_VgAN9ufL9xpHAtVkt-y6JRaRftzhCpuIUuwVNTknPoXecigV7Ch9U0k8n_Y7rwK3ienmp-Ul0XWBNWk5xv6EZUXBPJcOcNnOD_excRu3RH6uQ9JlSVPfH6uB2Zc8="
+    },
+    {
+      "end_index": 47129,
+      "start_index": 46531,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkrlbWQmm_f6I-cplidP4g-MEQxuUQ62pMlbErpMY2coyMgBPhxvtnRvF0loGmZ2PhDT9qZzg-bdsjOGX7VSVaArOySagxgE5s6TYfAsRMcplNmiL8txdRHx24nsazBXYy_rizHo9GCYwmco_i4cDiXqga"
+    },
+    {
+      "end_index": 47957,
+      "start_index": 47129,
+      "title": "gmicloud.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGelZZo_BLBobc8TRKvu7FdpWspWtn84kHJ0iVPuINOVTZU_F7B6u-SZ6oD1-BaCerKKBPsMvmi3jNTQVNYaO6VSpfPPa9klEg1BKXhq_RrZC6Q7ZSP2BH6C4xgsPDFk85d3WgS0XAdBH9qScRP7dK5IBlB-fOoAfylvZCQ785mc3RiL_rSchmnsH63WmO3430hhfkAoompKswGsFDicT620g=="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-02T07:44:42Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQEm5lvzqCoZNQ",
+    "post_urn": "urn:li:share:7489586963843330048",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Multimodal Generative AI Driving Innovation Across Industries"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Multimodal Generative AI Driving Innovation Across Industries",
+  "status": "published",
+  "trend": {
+    "category": "AI releases|business",
+    "evidence_score": 0.9,
+    "novelty_score": 0.8,
+    "practical_value_score": 0.9,
+    "recency_score": 0.9,
+    "relevance_score": 0.9,
+    "sources": [
+      {
+        "claim_supported": "The Claude 3 models add image capability and can process charts, graphics, and other visuals for businesses.",
+        "published_at": "2024-03-04",
+        "publisher": "Anthropic",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Anthropic Unveils Business Friendly Claude 3 AI Models",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH83br8ct99Ly5kST4MMFnHjUVlc1rSZ2iLi11moyJ4ZDgDtvNnA7_9_Lk0bmBT7eiybnFCKKmqBNFCukJsEBcAMAlhGehq-FIJM3ZtmYl7s0WpULOZ5l4Ba2sxxUZHJCNAm20mgmKZwMs6160fX9dir6souC-SSIINzlcxNVOJa5gIWW3PGpJlQvLu"
+      },
+      {
+        "claim_supported": "The Claude 3 models have sophisticated vision capabilities, processing various visual formats including photos, charts, graphs, and technical diagrams.",
+        "published_at": "2024-03-04",
+        "publisher": "Anthropic",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Introducing the next generation of Claude - Anthropic",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBejbviy4bW9j_vP1jaaMHH9T0gQduMMayz3NkL95HAgN3IlT_tBk71F1Dql8OsQ_QkWmCgj_XuU243kYsMLIxPMucxrzxlCmxnHkrSo5FyCr_XHB0xZvt4ETcF_trHh-TwdNJfxT_Aq4="
+      },
+      {
+        "claim_supported": "Claude 3's multimodality, processing text and image data, opens a wide range of possibilities for analyzing complex financial reports and generating visual content.",
+        "published_at": "2024-03-06",
+        "publisher": "Medium",
+        "quality_score": 0.7,
+        "source_type": "independent",
+        "title": "Exploring the Capabilities and Potential of Anthropic's Claude 3 AI Models - Medium",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvmaWhMqNa4-GfOKpMGkSHbMYjy-2bjbuaEoNJ-dEr7eOL4EqZ9fEX3uPDtwCMV6fTQJLxhLQ1lD6RAlobGQGuirp0DZpIiuzganuG01RVvXUshuswCYBvJmMJ56OM6swZDaZ1Ws9YuOjdIeTUp0HT0z5ph4Qjk2yemOuv-jejm_36YFoih3wdH8j-aTJ2KMLh9NJy_cNf57jeykNku-Q8VfVEB7pBglpD0ZQRUYglhHutHnY="
+      },
+      {
+        "claim_supported": "Google Cloud predicts multimodal AI will enhance business operations in 2025, with applications in financial services (analyzing market commentary videos) and manufacturing (processing sensor data for predictive maintenance).",
+        "published_at": "2024-12-20",
+        "publisher": "Google Cloud",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Google Cloud: How AI Will Reshape Enterprise Tech in 2025",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsa942paucuLe3yrGbhEE5TPPEO1JNs_xdxZhIYu7BxKY4FVvYzu3eorVPWwTZ6158vo0K7r_FlXkiTjpiwbM9KHGGAuLuhavLdEMJnIT3Ys53XfIuxzrg5416z_T3IZDESBCU-aHRSFknKPy9s-5yJcEJZqtXu3HYtuKK6nUr7uh5TlgFpjetl3S8rQWaq_L211wewYK6ZU5wAg=="
+      },
+      {
+        "claim_supported": "Multimodal AI will deliver more context by processing information from text, images, audio, and video, leading to more intuitive interactions and improved accuracy of AI outputs.",
+        "published_at": "2024-12-17",
+        "publisher": "Google Cloud",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Google Cloud predicts AI trends for businesses in 2025",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhE48IvnSWjBXszT9HLzB4w1zVu6Z6xxIiD4X-66MLF9YgdfS80klgYJoNcS7xjfqAJxv53NeMgD7RdfntjjzugeRPd6XM5b8aaoiZZi-PqiX-d7VbSiYN4qph8uacExwLNGJbBKv3MfgDzaRzvt_YiSEVy-yBhoWAY4CNvmfpaAEx8-sUXRfL6GR_Bm8wekV7dQIMKkX8KRzKkgscO6Y="
+      },
+      {
+        "claim_supported": "Google introduced specialized LLMs for video (Veo 2), audio (Chirp 3), and images (Imagen 3) at Cloud Next 2025, which can help enterprises achieve more accuracy and reduce costs.",
+        "published_at": "2025-04-15",
+        "publisher": "CIO",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Google's AI innovations at Cloud Next 2025: What CIOs need to know",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZAWBuYwtLodrDPGfX0kIY3-WoInpKJnDXsOE67FZfyjXPXz5S6VqtPkq0CGV8lhrTarzjl-10A7BB91SJ42yCFYhBADAX79c4GeXaT311XfATX2cZjYGbimFzJTblPsOQxrSwXTe-HyBzCWZtoo1FFqdNzPlRhmqPhxV7AFMmuPhHwmn5wNkvSRKK7NTO_80NPVsGz9nh2IgjcEVCTGx4bzwR5w=="
+      },
+      {
+        "claim_supported": "Sora is a multimodal generative AI model now available in Azure AI Foundry, designed to help creative teams bring ideas to life.",
+        "published_at": null,
+        "publisher": "Microsoft Azure",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Azure OpenAI Service",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECz1IzmLhbARftYI7EPTHTtPlAoJ2T8_MamzJAHQmlSRbTM7iXzMWbAgboubC4guEyYEW0gYVPlEY5DjDFLdYb98BXMSPjg0DwStgSBovIGCob9lmOtoGbLSVk5lxwWIkkXVsByZwVvsdFWlw81wTEu2moO1dDwICvVg=="
+      },
+      {
+        "claim_supported": "Azure OpenAI provides access to DALL-E, covering text generation, image creation, and advanced AI-powered solutions.",
+        "published_at": "2026-07-02",
+        "publisher": "Dataforest",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Microsoft Azure OpenAI: Cloud-Hosted Enterprise-Grade - Dataforest",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxegK8SGY9mB22u8Geuh2RbaFVEw7vTYT28SNC6fzxVD4r5FubTJ9IjCQn2GGHog3-jIW1U7U6QNgtSH-jAj4MD9mF8MqsXYYsA-or4Nr9Kp5K75n-_Ky1U4Xa33bXy7TnjI0sc6YDL-w4R85Hjux07MKfQnJwd6oN1zkw0CW7y_wXh9-12gNnTHAj4jpU"
+      }
+    ],
+    "summary": "Multimodal generative AI, capable of processing and generating content across text, images, video, and audio, is rapidly advancing and transforming enterprise operations. New models like Anthropic's Claude 3 family integrate sophisticated vision capabilities, allowing for the analysis of diverse visual formats alongside text. Google Cloud predicts that multimodal AI will be a pivotal force in 2025, enhancing enterprise search, predictive maintenance in manufacturing, and overall contextual understanding. Additionally, offerings like Azure OpenAI Service are incorporating multimodal models such as DALL-E and Sora, enabling creative teams to bring ideas to life through seamless API integration and scalable deployments.",
+    "topic": "Multimodal Generative AI Driving Innovation Across Industries"
+  },
+  "visual": {
+    "alt_text": "An insight card illustrating multimodal AI, with icons representing text, images, video, and audio converging into a central processing unit, signifying the integration and generation of diverse content.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQEm5lvzqCoZNQ",
+    "mime_type": "image/png",
+    "path": "assets/20260802T074427Z-multimodal-generative-ai-driving-innovation-across.png",
+    "width": 1200
+  }
+}
