@@ -36,6 +36,30 @@ def test_dry_run_does_not_publish(tmp_path: Path):
     assert result.report_path
 
 
+def test_invalid_draft_gets_one_revision_before_visual_generation(tmp_path: Path):
+    class RevisingGemini(FakeGemini):
+        def __init__(self):
+            self.revision_count = 0
+
+        def generate_post(self, cfg, candidate):
+            draft = super().generate_post(cfg, candidate)
+            draft.body = "x" * (cfg.max_post_chars + 1)
+            return draft
+
+        def revise_post(self, cfg, candidate, draft, validation_reasons):
+            self.revision_count += 1
+            assert "Post length" in validation_reasons[0]
+            return super().generate_post(cfg, candidate)
+
+    gemini = RevisingGemini()
+    agent = LinkedInAIAgent(config(tmp_path), gemini=gemini)
+
+    result = agent.run(dry_run=True)
+
+    assert result.status == "dry_run_ok"
+    assert gemini.revision_count == 1
+
+
 def test_normalize_alt_text_falls_back_and_truncates():
     assert normalize_alt_text("", "AI topic", "insight_card").startswith("Square LinkedIn insight card")
     assert len(normalize_alt_text("x" * 400, "AI topic", "diagram")) == 300

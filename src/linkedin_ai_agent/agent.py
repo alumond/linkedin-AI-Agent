@@ -58,7 +58,11 @@ class LinkedInAIAgent:
         normalize_draft(draft)
         draft_report = validate_draft(draft, self.config)
         if not draft_report.passed:
-            raise ValueError("; ".join(draft_report.reasons))
+            draft = gemini.revise_post(self.config, candidate, draft, draft_report.reasons)
+            normalize_draft(draft)
+            draft_report = validate_draft(draft, self.config)
+            if not draft_report.passed:
+                raise ValueError("Draft revision failed validation: " + "; ".join(draft_report.reasons))
         asset_path = self._visual_path(draft)
         if draft.visual_style == "diagram":
             render_diagram(draft, self.config, asset_path)

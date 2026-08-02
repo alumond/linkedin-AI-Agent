@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import json
 import os
 import time
 from pathlib import Path
@@ -10,7 +11,7 @@ import requests
 
 from .config import AgentConfig
 from .json_utils import parse_json_object
-from .models import DraftPost, TrendCandidate, draft_from_dict, trend_from_dict
+from .models import DraftPost, TrendCandidate, draft_from_dict, to_dict, trend_from_dict
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
@@ -86,6 +87,7 @@ Return only JSON with this shape:
 
     def generate_post(self, config: AgentConfig, candidate: TrendCandidate) -> DraftPost:
         sources = "\n".join(f"- {source.title}: {source.url} ({source.source_type})" for source in candidate.sources)
+        target_min, target_max = post_length_target(config)
         prompt = f"""
 Write a LinkedIn post for this source-grounded Data and AI trend.
 
@@ -97,7 +99,8 @@ Sources:
 
 Voice: {config.voice}
 Audience: {config.audience}
-Length: {config.min_post_chars}-{config.max_post_chars} characters.
+Hard length limit for body: {config.min_post_chars}-{config.max_post_chars} characters.
+Aim for {target_min}-{target_max} body characters so the final draft stays safely inside the hard limit.
 
 Rules:
 - Do not claim personal hands-on testing.
@@ -129,6 +132,39 @@ Rules:
   "visual_prompt": "...",
   "alt_text": "..."
 }}
+"""
+        response = self._generate_content(
+            config.text_model,
+            {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"response_mime_type": "application/json"}},
+        )
+        return draft_from_dict(parse_json_object(output_text_from_generate_content(response)))
+
+    def revise_post(
+        self,
+        config: AgentConfig,
+        candidate: TrendCandidate,
+        draft: DraftPost,
+        validation_reasons: list[str],
+    ) -> DraftPost:
+        target_min, target_max = post_length_target(config)
+        prompt = f"""
+Revise this source-grounded LinkedIn draft so it passes every listed validation issue.
+
+Topic: {candidate.topic}
+Validation issues:
+{chr(10).join(f"- {reason}" for reason in validation_reasons)}
+
+Current draft JSON:
+{json.dumps(to_dict(draft), ensure_ascii=False)}
+
+Requirements:
+- Preserve the topic, factual meaning, source URLs, claims, visual direction, and honest point of view.
+- Do not add facts, quotations, statistics, source URLs, or personal testing claims.
+- Keep the body between {config.min_post_chars} and {config.max_post_chars} characters.
+- Aim for {target_min}-{target_max} body characters.
+- Retain a practical implication, conversational closing question, and 1 to 3 restrained hashtags.
+- Do not use em dashes, emojis, hype, clickbait, or generic AI phrasing.
+- Return only the complete revised JSON object using exactly the same fields as the current draft.
 """
         response = self._generate_content(
             config.text_model,
@@ -196,6 +232,13 @@ Rules:
             time.sleep(wait_seconds)
         assert last_response is not None
         raise RuntimeError(gemini_error_message(last_response))
+
+
+def post_length_target(config: AgentConfig) -> tuple[int, int]:
+    """Return a comfortable target range inside the configured hard limits."""
+    target_min = min(config.max_post_chars, config.min_post_chars + 200)
+    target_max = max(target_min, config.max_post_chars - 150)
+    return target_min, target_max
 
 
 def output_text_from_interaction(interaction: Any) -> str:
