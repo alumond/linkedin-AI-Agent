@@ -1,0 +1,100 @@
+name: Weekday LinkedIn Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without publishing to LinkedIn"
+        required: true
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+  schedule:
+    - cron: "0 8 * * 1-5"
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+      LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_TOKEN_EXPIRES_AT: ${{ vars.LINKEDIN_TOKEN_EXPIRES_AT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -e .
+
+      - name: Restore automation state
+        run: |
+          git fetch origin automation-state || true
+          if git show-ref --verify --quiet refs/remotes/origin/automation-state; then
+            git checkout origin/automation-state -- .state reports || true
+          fi
+
+      - name: Check LinkedIn token
+        id: token
+        run: |
+          python -m linkedin_ai_agent.cli token-status > token_status.json || true
+          STATUS=$(python -c "import json; print(json.load(open('token_status.json')).get('status','missing'))")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+
+      - name: Open token renewal issue
+        if: steps.token.outputs.status == 'expiring_soon'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --state open --search "LinkedIn token expires soon in:title" --json number --jq '.[0].number')
+          if [ -z "$existing" ]; then
+            gh issue create --title "LinkedIn token expires soon" --body "Renew the personal LinkedIn OAuth token within seven days and update LINKEDIN_ACCESS_TOKEN."
+          fi
+
+      - name: Run agent
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m linkedin_ai_agent.cli run --dry-run
+          else
+            python -m linkedin_ai_agent.cli run
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linkedin-agent-reports
+          path: |
+            reports/*.json
+            assets/*.png
+            token_status.json
+          if-no-files-found: ignore
+
+      - name: Push audit state
+        if: always()
+        run: |
+          mkdir -p /tmp/linkedin-agent-state
+          cp -R .state /tmp/linkedin-agent-state/.state || true
+          cp -R reports /tmp/linkedin-agent-state/reports || true
+          git fetch origin automation-state || true
+          if git show-ref --verify --quiet refs/remotes/origin/automation-state; then
+            git checkout automation-state
+          else
+            git checkout --orphan automation-state
+            git rm -rf . || true
+          fi
+          mkdir -p .state reports
+          cp -R /tmp/linkedin-agent-state/.state/. .state/ || true
+          cp -R /tmp/linkedin-agent-state/reports/. reports/ || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f .state reports
+          git commit -m "Update LinkedIn agent audit state" || exit 0
+          git push origin automation-state
