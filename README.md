@@ -60,7 +60,7 @@ python -m linkedin_ai_agent.cli token-status
 
 ## GitHub Actions
 
-The workflow runs at `08:00 UTC` Monday-Friday, which is `09:00 Africa/Lagos`. Store these repository secrets before enabling live scheduled posting:
+The workflow runs at `08:17 UTC` Monday-Friday, which is `09:17 Africa/Lagos`. Store these repository secrets before enabling live scheduled posting:
 
 - `GEMINI_API_KEY`
 - `LINKEDIN_CLIENT_ID`

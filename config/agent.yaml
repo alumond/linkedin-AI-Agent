@@ -28,7 +28,7 @@ brand:
   - '#F8FAFC'
   typography: Inter
 timezone: Africa/Lagos
-schedule_cron_utc: 0 8 * * 1-5
+schedule_cron_utc: 17 8 * * 1-5
 source_allowlist: []
 preferred_source_domains:
 - ai.google.dev
