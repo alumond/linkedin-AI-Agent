@@ -1,0 +1,372 @@
+{
+  "draft": {
+    "alt_text": "Infographic illustrating advantages of Small Language Models (SLMs) including reduced costs, faster processing, improved data privacy, and on-device capability, compared to larger AI models.",
+    "body": "Small Language Models (SLMs) and specialized AI are rapidly gaining traction, exemplified by Microsoft's Phi series and Google's Gemma. Designed with fewer parameters than larger foundational models, SLMs offer significant advantages for organizations: reduced operational costs, faster inference speeds, enhanced data privacy, and flexible deployment, including direct on-device capabilities.\n\nThis shift reflects enterprises moving beyond AI experimentation towards practical, scalable implementations for specific business needs. For targeted tasks like content summarization, classification, and retrieval-augmented generation (RAG) within defined domains, SLMs often match or exceed the performance of much larger models. They are making an impact in areas like on-device AI, edge computing, and powering specialized intelligent assistants. Major technology companies actively release and refine SLMs, a trend that points to substantial market growth. This enables organizations to build and deploy precise, resource-efficient AI solutions.\n\nConsidering these advantages, how might SLMs address unique challenges within your industry or organization?",
+    "category": "AI releases",
+    "claims": [
+      "The artificial intelligence landscape is witnessing a significant shift towards Small Language Models (SLMs) and specialized AI models.",
+      "SLMs, exemplified by Microsoft's Phi series and Google's Gemma, are designed with fewer parameters than large foundational models.",
+      "SLMs offer advantages in cost-effectiveness, faster inference, enhanced data privacy, and flexible deployment, including on-device capabilities.",
+      "This trend is driven by enterprise demand to move beyond AI experimentation to practical, scalable implementations for specific business needs.",
+      "SLMs can often match or exceed the performance of much larger models for targeted tasks.",
+      "Key applications for SLMs include on-device AI, edge computing, specialized agents, intelligent assistants, content summarization, classification, and retrieval-augmented generation (RAG) within defined domains.",
+      "Major technology companies are actively releasing and refining SLMs.",
+      "The market for SLMs is projected for substantial growth."
+    ],
+    "hashtags": [
+      "#AI",
+      "#MachineLearning",
+      "#SLMs"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcjRgrvtl5QCFiWLRi9L9UFnQQK7SCGbwEfZLe9l4aLB0GlAf499Ji3kgYOGGlrve1ffv7xZwppx7npSMlohBiIpowi60wrqEwhTJhCrbpytvj_a67D5p7lx7rSgyn_N-0BJlVDLFgfwgDxjqRVtbOryvWjpsZPgY4Xoq6rpKyIdG3fNTiy-XgamIRrhaUXkynEfeYwNS1PQ==",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXkCCp4-cCFOUr_ZFVZpqxZ3ye3XmOjZrLCLDRUEXjA69xapx12XrVHoWHwrWcPKIgSNRFntZ0vIbE8HzUCNMBW7Li2ua7COQ2VGH6TPgTBmO6P0dzLaM11Gapbs4Wn5eo78fkb7F1kCo-rHq5cjA=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM1SNI-lcwF4Wg9hGW-oytTPqnonxSv_54SCiRvalGFTnzK4bPt-bsihtG5PxoqH85WwbBHcCf-U5eyN0DwvXXdBYsVZhb0Kodg-Ir9mEqL2UYs_9yvPdQQNcL-TG3tJ5-UetMXtxLZhhrBsnqw1SefI96hQIsDmzw6dD-LSWb2oGJew8y52hMDS8vTZWCehbqu8w0FhATaK3AiZcL0ADHBmEQzAL5g-L4bOvlk0f8unIFP7Bs0mhLYO0B4hmGHrAvVCYv-2vDDx-b1RJLEehpWsDXsb_72iC2wbkbOMRwdTz82qlE6xl5OBIXXkO-BRRfD8Sp",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQkzdA-Udcg-uQz-i0yXhT3pwyVCj_bixlM_nynuCJY9MkN2PGfP80ZLxsz0JomA_3PsZ2SFhGfsMVmWoI6Ju51_Xv5ZOrleCEbWa44JvMfN8X2XiBgW6savJqD4kCkNfTCx61bIkFasl1jMLfOzTo-QasivSvDJXMzHGc9A0_NQTgxkKty8RtAuIsty8YxraWiawqijD0"
+    ],
+    "topic": "The Rise of Small Language Models (SLMs) and Specialized AI for Efficient and Domain-Specific Applications",
+    "visual_prompt": "An infographic showing the benefits of Small Language Models (SLMs) over Large Language Models (LLMs) for enterprise applications: lower cost, faster processing, better privacy, and on-device deployment, with icons representing each benefit.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcjRgrvtl5QCFiWLRi9L9UFnQQK7SCGbwEfZLe9l4aLB0GlAf499Ji7kgYOGGlrve1ffv7xZwppx7npSMlohBiIpowi60wrqEwhTJhCrbpytvj_a67D5p7lx7rSgyn_N-0BJlVDLFgfwgDxjqRVtbOryvWjpsZPgY4Xoq6rpKyIdG3fNTiy-XgamIRrhaUXkynEfeYwNS1PQ=="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM1SNI-lcwF4Wg9hGW-oytTPqnonxSv_54SCiRvalGFTnzK4bPt-bsihtG5PxoqH85VwbBHcCf-U5eyN0DwvzXdBYsVZhb2Kodg-Ir9mEqL2UYs_9yvPdQQNcL-TG7tJ5-UetMXtxLZhhrBsnqw1SefI96hQIsDmzw6dD-LSWb2oGJew8y52hMDS8vTZWCehbqu8w0FhATaK7AiZcL0ADHBmEQzAL5g-L4bOvlk0f8unIFP7Bs0mhLYO0B4hmQHrAvVCYv-2vDDx-b1RJLEehpWsDXsb_72iC2wbkbOMRwdTz82qlE6xl5OBIXXkO-BRRfD8Sp"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjavegJr3IvyuEmnZgKlKfbB7oQSfrchRfm96v-ZzUdcHgHMtLW7xsGfehdTLMd2aMHIWLslTo7ogLowTydcsN_FN6V8elNsbMCUKEJyX2UO229lw_DboLAbtYX4YykcDcK8JbIuucGPmZGkvrX2XaBCN15qGwV3l7DM24d8ntmLNG8hckb3t6JBGS_LyboUncYllWSel4sretDwA="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQkzdA-Udcg-uQz-i0yXhT3pwyVCj_bixlM_nynuCJY9MkN2PGfP80ZLxsz0JomA_3PsZ2SFxGfsMVmWoI6Ju51_Xv5ZOrleCEbWa44JvMfN8X2XiBgW6savJqD4kKkNfTCx61bIkFasl1jMLfOzTo-QasivSvDJXMzHGc9A0_NQTgxkKty8RtAuIsty8YxraWiawqijD0"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "lmstudio.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGYbm3mooyBSB7dKvQizhJN00eg1AvVw2u9ccfpNtLOdJoYWHvtu_PeDhxZvhQu0oSCRP6BzsNZRVyaJ_iObZ7lWrUomseth2U0cibDdFQ_6umN6z0Q_C2LuvgkhMc="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "cloudgeometry.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHN64wBIS2jwygNyUPKZlzRs6VwGN5eIzQPIDyejA4ub0vbzPZsWcUY1iFx3lPP4u6UPJ6GUP8ZxOdUejklfRV1zr7fOa-d5t8GyolAIyA40EsE9OVMjmcCxbnazcgBGiX16gQI3Qa5ec3-VwHCvwTP0MRlgnbwozOdU5nCbxIAcYms9a3BP5rQm9Arx0qcHZ8xMwa89cDF"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "kore.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGs2SsWcQqfzAIP27V8X8czUlMNvVVXT-U03XodgYz5R-uHzyxwTMfjUobzAvVK5fcXAsaODQNZBquMCHLSTqQ8-ay8u-_b9ua_scgwmNjUMuMTWV0Td-_PwOsAlrPYQmZLEUww-fTxxGJYBiF5NqjvCApw5ez7M2CaEqR8JV9-1Nx15gla0IrrTcuT3vMaWea9q0FAuGOsDQ=="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "centricconsulting.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1tdC-BHhCZFIqYgMjdgadDV0wg17a_9xSNl87n2fHrG14tcX6ENnKgK-lJLVt3j9mLQILDB1Lvsry2eWwYOYms4dqGS80p5louO4WXy75Bqkqy8RFwGZwLJt4Elg2jNewv7tRfucodvb5Kdh5f0BUFygAXTt17HCizT5FOJa4V5CHDDXm9m5VV0pLAtfv_h_DU2aaTx_2N9u9"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "redhat.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEk_sEnIhwkhbpKv872gff_JUbsafzxYDNCn6MckHopX4BWVdVFf47-SwDtFM7z-amoZYthtJhOC34y4oNDPT2v-NjULBRIbaAvwReE05b25tBeEenSklnhzCE5_eiOEJeHQIazBMQ7s5ERs7jecbgvrnEkyPza8x7SwiRgz4scgXsK"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "anaconda.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHftUy-XHrKCMOr-uvRVwSgfV6GL0RpKfsTZhxbBu7rEHGl4mcA_wesrm__prVbnAmPLhea-VMsQME6tPD-q1UVVH5c1wk2YROvasahP4r-2KMogPHxkbz3AcHJDkbmMaUKrbpbJOvZbyyFgySFFgGx1QVX8HwR9JtXUmbFivhG9MWa"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "saventech.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFo0Xz0aBD30Ulf_pMLkIt5hEX9ZjWsjpOGtQTWS_lkPGQ93yPnQbXoSvepw0-lX4OHLz9sKQSl-0b2JeDJUbF_thh0AU9Wp_Fo9dfOnH3btrqCskKoYHFDJzIQp9oTTp5gbyenTYsqnTRQzknbP_oHxGyj8IKDJ_C26g0P1CE43BkZng8Twj07"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "cloudcom.net",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8LO-SflLyBwIBuO4BMAHqS4aKqxrKtmCBTzjqNT1DfUdDw4fr-y7iI74wHqQrJe9xI3iEt_wDy-RwIeHaBEXBoCoJY3W676YHDKk0Q09Bc8QjIA1PWp7cgaKdU70f5FNg8-imnEuorMMpup4iDcm-oq5sLgXWlBKWhZ351SH5Jx4="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "intellaix.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDEtw2EL9FIOMy8LnJvwO790E6smQdD1b1QCKikiG8--pyspXOVZfgvEhk4msSOQtNuKtcJFfF51GEq6kxLRzSOlRe8yTHMAqVJfu0Ua-o-8a6mzNYDT4GvTeCVuGMzB8wQe4bYUrpyeaplRHCPBNUnqvH5rMyNUQZcnM="
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGr4LIJreqFFrDmJNtk2W48wwuek1FG6-JpXQvP-g810k5OM57f8xacc0u0k_rICEQzRAEksD1XB7cY6ZI_jPHNxNcGOLuMqMKhYBoqS94CthM4fTGtmru3GOXWK9eCNviTehpKTLhYBeb97ZBcEfWhzlqkWq1vZFhpy09FWxnm0JbuQb6MkKq0noli3Jj4Ltbh4WPWmOJf3NNL-UCPeB0Y"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "lopezresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2tKRedd6REF2iXLOl2tzxRnstzNqjzSnsdwSQ0VBvRJfs0NylGRreX-pZgabKfs7IVj4l6GTiChmSkEP3wmbHnZIxQVv5iULltmdrY6t93spXQ1P_XkDR3yonbdBwF7lj951v7VWb_6kwXQxORTOuaoSIzn9KlYD9yFgfkkychN8v9X2VRoatGfwvml5_hVJBpsDxBCtdZ-pfFr9BhlCGwh0d"
+    },
+    {
+      "end_index": 634,
+      "start_index": 346,
+      "title": "inference.net",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF88JTNJGgj2W7ZTTKhHNueu_8q8b3XjFrDhFXPbHezd6QJdRkZeEOWmR94fsxXOvajLC9jHVzcyGKqDx-0XjyDuwVjiiUtpkdfcUBFVjAysIrbnJZA5h-ZCs5a9Jz8cj1ibkJDpHGWLjrT"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcjRgrvtl5QCFiWLRi9L9UFnQQK7SCGbwEfZLe9l4aLB0GlAf499Ji7kgYOGGlrve1ffv7xZwppx7npSMlohBiIpowi60wrqEwhTJhCrbpytvj_a67D5p7lx7rSgyn_N-0BJlVDLFgfwgDxjqRVtbOryvWjpsZPgY4Xoq6rpKyIdG3fNTiy-XgamIRrhaUXkynEfeYwNS1PQ=="
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "wikipedia.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEr-zdIeU_JRT1UB4hPMGzuMxDpbjJtRsZJSYUdoACnNMTz73CcZ27exbmYrGs1DR1TCY_KC0nFZMGuHGPE3oYMSNcdAO2j680CGgWWJSfm3gG9FSLpdgdgvoZ2Lps8FwN2CQPoeZHsC4_x_5iz"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "cloudgeometry.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHN64wBIS2jwygNyUPKZlzRs6VwGN5eIzQPIDyejA4ub0vbzPZsWcUY1iFx3lPP4u6UPJ6GUP8ZxOdUejklfRV1zr7fOa-d5t8GyolAIyA40EsE9OVMjmcCxbnazcgBGiX16gQI3Qa5ec3-VwHCvwTP0MRlgnbwozOdU5nCbxIAcYms9a3BP5rQm9Arx0qcHZ8xMwa89cDF"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "anaconda.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHftUy-XHrKCMOr-uvRVwSgfV6GL0RpKfsTZhxbBu7rEHGl4mcA_wesrm__prVbnAmPLhea-VMsQME6tPD-q1UVVH5c1wk2YROvasahP4r-2KMogPHxkbz3AcHJDkbmMaUKrbpbJOvZbyyFgySFFgGx1QVX8HwR9JtXUmbFivhG9MWa"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "deviniti.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPUieZFDYMtAy6FcY03xdDxJNK6S86EMOpSCtw8Rly3ZK6s3x2c1vso_HUNkjxhOgU5K-TE5BlBjte-cJTP1-hHs70fr4lBIYT73bqIvuytRrEmBjXyT6zUUuoXcHXS5plTMVxc9fJxwoNPsNuDroL9OAQz5XH_EWtCA8_g2zo9PdWJd4RBSaYRuTyXZZmTpsd"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGr4LIJreqFFrDmJNtk2W48wwuek1FG6-JpXQvP-g810k5OM57f8xacc0u0k_rICEQzRAEksD1XB7cY6ZI_jPHNxNcGOLuMqMKhYBoqS94CthM4fTGtmru3GOXWK9eCNviTehpKTLhYBeb97ZBcEfWhzlqkWq1vZFhpy09FWxnm0JbuQb6MkKq0noli3Jj4Ltbh4WPWmOJf3NNL-UCPeB0Y"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "functionize.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyH3u-YiSUlQv0UcNPLlwtdtvK19YK-Mor7JhonThTtaI16P-0CTh4jccFcjR4zS2Psp9k8HWmu5FlrQRp0ZtugN-amJjlywWGcWwnWlYBr_Ybuwf6-Wz7zD0tpDvQyCcBbteQ9uWhEoXwTIFjjGVvrnArhoR0LD9CovQeTI_SxtJp3_5ZGy4oBrMryK3BoDUSi3-wsGhxllKqTD0J"
+    },
+    {
+      "end_index": 873,
+      "start_index": 636,
+      "title": "inference.net",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF88JTNJGgj2W7ZTTKhHNueu_8q8b3XjFrDhFXPbHezd6QJdRkZeEOWmR94fsxXOvajLC9jHVzcyGKqDx-0XjyDuwVjiiUtpkdfcUBFVjAysIrbnJZA5h-ZCs5a9Jz8cj1ibkJDpHGWLjrT"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "lmstudio.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGYbm3mooyBSB7dKvQizhJN00eg1AvVw2u9ccfpNtLOdJoYWHvtu_PeDhxZvhQu0oSCRP6BzsNZRVyaJ_iObZ7lWrUomseth2U0cibDdFQ_6umN6z0Q_C2LuvgkhMc="
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "forbes.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHzKBTRVLHbF1u1XL0XiDmYujo_B_de4YIqSHgMGJs3_wS1_nuuN9hUd-wzLeMA_Z2LwyNzLdHX3rRkBfeEbZ93DQusxPjvWbBrvJG_AoW__qflYdPCCdekydNYLGMEQmiSnZibnH0asj2z2AqplHZVC4r1tuLlAh9rDLwwaH9y-Jy6d7hhR5xK-884zy0OkgyD_rVsP6keDd0mW6dsFk="
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "redhat.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEk_sEnIhwkhbpKv872gff_JUbsafzxYDNCn6MckHopX4BWVdVFf47-SwDtFM7z-amoZYthtJhOC34y4oNDPT2v-NjULBRIbaAvwReE05b25tBeEenSklnhzCE5_eiOEJeHQIazBMQ7s5ERs7jecbgvrnEkyPza8x7SwiRgz4scgXsK"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "saventech.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFo0Xz0aBD30Ulf_pMLkIt5hEX9ZjWsjpOGtQTWS_lkPGQ93yPnQbXoSvepw0-lX4OHLz9sKQSl-0b2JeDJUbF_thh0AU9Wp_Fo9dfOnH3btrqCskKoYHFDJzIQp9oTTp5gbyenTYsqnTRQzknbP_oHxGyj8IKDJ_C26g0P1CE43BkZng8Twj07"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBwMFCAPEiZ3ZqGHwB-OL4-tT2sZg7sna8J4pexejb8MlSsiXSaQO6f3cHvh6q2NABTWSuMXnqUYe-j9yIAPHnPVVrtDVeCrHRk6nDIc8f39b1LLRFCmx11v7rx6jNEJqBQwpJ959ft1nDoF5b2rGvvn_RnDfpCGWeRE7GF_gKTRvJZV6u6jUoFxYZUbqoo065Mkqf"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "turingpost.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCbfKHy1burlUUHVj5_Ib96JcP8J_MHTp5uqiA2YNGAsrSUvAYHBVWf7abCysQdB7hyu5iHzsT1uVOqdorigSKkjyUlD2YBMvBgLzYAY4WQ-iiuMg-Q29CikDyteyNcp8="
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "functionize.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyH3u-YiSUlQv0UcNPLlwtdtvK19YK-Mor7JhonThTtaI16P-0CTh4jccFcjR4zS2Psp9k8HWmu5FlrQRp0ZtugN-amJjlywWGcWwnWlYBr_Ybuwf6-Wz7zD0tpDvQyCcBbteQ9uWhEoXwTIFjjGVvrnArhoR0LD9CovQeTI_SxtJp3_5ZGy4oBrMryK3BoDUSi3-wsGhxllKqTD0J"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "lopezresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2tKRedd6REF2iXLOl2tzxRnstzNqjzSnsdwSQ0VBvRJfs0NylGRreX-pZgabKfs7IVj4l6GTiChmSkEP3wmbHnZIxQVv5iULltmdrY6t93spXQ1P_XkDR3yonbdBwF7lj951v7VWb_6kwXQxORTOuaoSIzn9KlYD9yFgfkkychN8v9X2VRoatGfwvml5_hVJBpsDxBCtdZ-pfFr9BhlCGwh0d"
+    },
+    {
+      "end_index": 1076,
+      "start_index": 875,
+      "title": "reddit.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrB34zw7eQZhSeq_etkyE2Yxft3OCsLIWthjMLvUCUmmvJ4FvsPIIraleL3PghF8e3zrFmQd5cPMmr9eJClsLNWfvMOAyfCNWRzShxj6GJpCkdwtlZEFGz-2kw6vF1hodpl3hOm2oeIq5i67uFfSAu1YkyLJU2dAyJ0hvH0h7sJ98WI8YBFXTBnyDcYI3yVdltC3kZ2ujtGxVPTfZs"
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcjRgrvtl5QCFiWLRi9L9UFnQQK7SCGbwEfZLe9l4aLB0GlAf499Ji7kgYOGGlrve1ffv7xZwppx7npSMlohBiIpowi60wrqEwhTJhCrbpytvj_a67D5p7lx7rSgyn_N-0BJlVDLFgfwgDxjqRVtbOryvWjpsZPgY4Xoq6rpKyIdG3fNTiy-XgamIRrhaUXkynEfeYwNS1PQ=="
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "wikipedia.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXkCCp4-cCFOUr_ZFVXpqxZ3ye3XmOjZrLCLDRUEXjA69xapx12XrVHoWHwrWcPKIgSNRFntZ0vIbE8HzUCNMBW7Li2ua7COQ2VGH6TPgTBmO6P0dzLaM11Gapbs4Wn5eo78fkb7F1kCo-rHq5cjA="
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "google.dev",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGiiEA3tNnOIJJDWJgt7saZkE8TwMKKUqKXdImF_Z9uo6u8bInEACOjr3UwC7EoWuCzZ7M7hV8hwActNyRycCNpBbpXhSWz2rsuPiDUGAXfF_yalCi5aN6iQ4ozaeOumACjkGTC"
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQkzdA-Udcg-uQz-i0yXhT3pwyVCj_bixlM_nynuCJY9MkN2PGfP80ZLxsz0JomA_3PsZ2SFxGfsMVmWoI6Ju51_Xv5ZOrleCEbWa44JvMfN8X2XiBgW6savJqD4kKkNfTCx61bIkFasl1jMLfOzTo-QasivSvDJXMzHGc9A0_NQTgxkKty8RtAuIsty8YxraWiawqijD0"
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "ciodive.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFVrv7GN0njV13zlqAGv22M0heczbjtzKtaM2EVfdpS2JbWIV3_eHX4jBotNe9h5LwF28n92rdKxDXx2kgXK5yanienf3TuwgH46JhSztI1jLQTQ7rS2EiNMgzeYhepeP7bkowjrooSt9xScDHDEZEbPaBM5wfeuq4N--dfxJXV-PrPqg=="
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "anaconda.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHftUy-XHrKCMOr-uvRVwSgfV6GL0RpKfsTZhxbBu7rEHGl4mcA_wesrm__prVbnAmPLhea-VMsQME6tPD-q1UVVH5c1wk2YROvasahP4r-2KMogPHxkbz3AcHJDkbmMaUKrbpbJOvZbyyFgySFFgGx1QVX8HwR9JtXUmbFivhG9MWa"
+    },
+    {
+      "end_index": 1212,
+      "start_index": 1078,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBwMFCAPEiZ3ZqGHwB-OL4-tT2sZg7sna8J4pexejb8MlSsiXSaQO6f3cHvh6q2NABTWSuMXnqUYe-j9yIAPHnPVVrtDVeCrHRk6nDIc8f39b1LLRFCmx11v7rx6jNEJqBQwpJ959ft1nDoF5b2rGvvn_RnDfpCGWeRE7GF_gKTRvJZV6u6jUoFxYZUbqoo065Mkqf"
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-04T10:51:24Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQFSxYiDkNxJOQ",
+    "post_urn": "urn:li:share:7490358723639545856",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "The Rise of Small Language Models (SLMs) and Specialized AI for Efficient and Domain-Specific Applications"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "The Rise of Small Language Models (SLMs) and Specialized AI for Efficient and Domain-Specific Applications",
+  "status": "published",
+  "trend": {
+    "category": "AI releases",
+    "evidence_score": 0.95,
+    "novelty_score": 0.9,
+    "practical_value_score": 0.98,
+    "recency_score": 0.95,
+    "relevance_score": 0.98,
+    "sources": [
+      {
+        "claim_supported": "Microsoft's Phi-3 models are introduced as capable and cost-effective small language models (SLMs) that outperform larger models in certain benchmarks, offering practical choices for generative AI applications and supporting the idea of specialized, efficient AI.",
+        "published_at": "2024-04-23",
+        "publisher": "Microsoft Azure Blog",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "Introducing Phi-3: Redefining what's possible with SLMs | Microsoft Azure Blog",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcjRgrvtl5QCFiWLRi9L9UFnQQK7SCGbwEfZLe9l4aLB0GlAf499Ji7kgYOGGlrve1ffv7xZwppx7npSMlohBiIpowi60wrqEwhTJhCrbpytvj_a67D5p7lx7rSgyn_N-0BJlVDLFgfwgDxjqRVtbOryvWjpsZPgY4Xoq6rpKyIdG3fNTiy-XgamIRrhaUXkynEfeYwNS1PQ=="
+      },
+      {
+        "claim_supported": "Mentions the release of Google's Gemma series, including Gemma 2 (June 2024) and Gemma 4 (April 2026), and their capabilities, confirming the ongoing development and attention to SLMs.",
+        "published_at": "2026-04-02",
+        "publisher": "Wikipedia",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Gemma (language model) - Wikipedia",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXkCCp4-cCFOUr_ZFVXpqxZ3ye3XmOjZrLCLDRUEXjA69xapx12XrVHoWHwrWcPKIgSNRFntZ0vIbE8HzUCNMBW7Li2ua7COQ2VGH6TPgTBmO6P0dzLaM11Gapbs4Wn5eo78fkb7F1kCo-rHq5cjA="
+      },
+      {
+        "claim_supported": "Details ongoing updates to the Phi-3 family, including fine-tuning capabilities and the introduction of Phi-3-vision, reinforcing the continuous development and practical business applications of SLMs.",
+        "published_at": "2024-07-25",
+        "publisher": "Microsoft Azure Blog",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "Announcing Phi-3 fine-tuning, new generative AI models, and other Azure AI updates to empower organizations to customize and scale AI applications | Microsoft Azure Blog",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM1SNI-lcwF4Wg9hGW-oytTPqnonxSv_54SCiRvalGFTnzK4bPt-bsihtG5PxoqH85VwbBHcCf-U5eyN0DwvzXdBYsVZhb0Kodg-Ir9mEqL2UYs_9yvPdQQNcL-TG7tJ5-UetMXtxLZhhrBsnqw1SefI96hQIsDmzw6dD-LSWb2oGJew8y52hMDS8vTZWCehbqu8w0FhATaK7AiZcL0ADHBmEQzAL5g-L4bOvlk0f8unIFP7Bs0mhLYO0B4hmQHrAvVCYv-2vDDx-b1RJLEehpWsDXsb_72iC2wbkbOMRwdTz82qlE6xl5OBIXXkO-BRRfD8Sp"
+      },
+      {
+        "claim_supported": "Announces the release of Gemma 4, highlighting its capabilities for enterprise AI, including complex logic, offline code generation, and agentic workflows, emphasizing its role in secure and compliant deployments.",
+        "published_at": "2026-04-02",
+        "publisher": "Google Cloud",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "Gemma 4 available on Google Cloud",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQkzdA-Udcg-uQz-i0yXhT3pwyVCj_bixlM_nynuCJY9MkN2PGfP80ZLxsz0JomA_3PsZ2SFxGfsMVmWoI6Ju51_Xv5ZOrleCEbWa44JvMfN8X2XiBgW6savJqD4kCkNfTCx61bIkFasl1jMLfOzTo-QasivSvDJXMzHGc9A0_NQTgxkKty8RtAuIsty8YxraWiawqijD0"
+      },
+      {
+        "claim_supported": "Discusses the growing adoption of SLMs in enterprises for their reduced computational requirements, lower operational costs, enhanced data privacy, and simplified deployment, reinforcing the business drivers for this trend.",
+        "published_at": "2025-04-28",
+        "publisher": "Red Hat",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "The rise of small language models in enterprise AI - Red Hat",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEk_sEnIhwkhbpKv872gff_JUbsafzxYDNCn6MckHopX4BWVdVFf47-SwDtFM7z-amoZYthtJhOC34y4oNDPT2v-NjULBRIbaAvwReE05b25tBeEenSklnhzCE5_eiOEJeHQIazBMQ7s5ERs7jecbgvrnEkyPza8x7SwiRgz4scgXsK"
+      },
+      {
+        "claim_supported": "Highlights the efficiency of SLMs for tasks like analyzing customer feedback and generating product descriptions, emphasizing their focused training and superior business outcomes in specific use cases.",
+        "published_at": "2025-05-09",
+        "publisher": "Forbes",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "How Small Language Models Deliver Big Business Benefits - Forbes",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHzKBTRVLHbF1u1XL0XiDmYujo_B_de4YIqSHgMGJs3_wS1_nuuN9hUd-wzLeMA_Z2LwyNzLdHX3rRkBfeEbZ93DQusxPjvWbBrvJG_AoW__qflYdPCCdekydNYLGMEQmiSnZibnH0asj2z2AqplHZVC4r1tuLlAh9rDLwwaH9y-Jy6d7hhR5xK-884zy0OkgyD_rVsP6keDd0mW6dsFk="
+      }
+    ],
+    "summary": "The artificial intelligence landscape is witnessing a significant shift towards Small Language Models (SLMs) and specialized AI models. These models, exemplified by Microsoft's Phi series and Google's Gemma, are designed with fewer parameters than large foundational models, offering notable advantages in cost-effectiveness, faster inference, enhanced data privacy, and flexible deployment, including on-device capabilities. This trend is driven by enterprise demand to move beyond AI experimentation to practical, scalable implementations for specific business needs, where SLMs can often match or exceed the performance of much larger models for targeted tasks. Key applications include on-device AI, edge computing, specialized agents, intelligent assistants, content summarization, classification, and retrieval-augmented generation (RAG) within defined domains. Major technology companies are actively releasing and refining SLMs, with the market for these models projected for substantial growth.",
+    "topic": "The Rise of Small Language Models (SLMs) and Specialized AI for Efficient and Domain-Specific Applications"
+  },
+  "visual": {
+    "alt_text": "Infographic illustrating advantages of Small Language Models (SLMs) including reduced costs, faster processing, improved data privacy, and on-device capability, compared to larger AI models.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQFSxYiDkNxJOQ",
+    "mime_type": "image/png",
+    "path": "assets/20260804T105114Z-the-rise-of-small-language-models--slms--and-speci.png",
+    "width": 1200
+  }
+}
