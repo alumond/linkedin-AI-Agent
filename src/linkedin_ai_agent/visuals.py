@@ -117,7 +117,7 @@ def _draw_concept_grid(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: di
     gap = 20
     left = 64
     card_w = 448
-    card_h = 440
+    card_h = 500
     for index, (label, note, best, icon) in enumerate(items[:5]):
         row = index // cols
         col = index % cols
@@ -126,36 +126,36 @@ def _draw_concept_grid(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: di
         box = (x1, y1, x1 + card_w, y1 + card_h)
         border = art["accent"] if index % 3 == 0 else "#D8DEE8"
         _plain_panel(draw, box, 18, art["paper"], border, 4)
-        _draw_icon(draw, icon, (x1 + card_w // 2, y1 + 86), 64, art)
-        _center_text(draw, (x1 + card_w // 2, y1 + 174), label, _font(29, bold=True), art["ink"])
-        _draw_wrapped_text(draw, note, (x1 + 34, y1 + 220), card_w - 68, _font(23), art["ink"], line_gap=8, max_lines=4)
-        draw.line((x1 + 34, y1 + 348, x1 + card_w - 34, y1 + 348), fill="#D4DAE3", width=3)
-        draw.text((x1 + 34, y1 + 374), "Best for:", font=_font(22, bold=True), fill=art["accent"])
-        _draw_wrapped_text(draw, best, (x1 + 126, y1 + 374), card_w - 160, _font(21), art["ink"], line_gap=6, max_lines=2)
+        _draw_icon(draw, icon, (x1 + card_w // 2, y1 + 92), 64, art)
+        _center_text(draw, (x1 + card_w // 2, y1 + 184), label, _font(31, bold=True), art["ink"])
+        _draw_wrapped_text(draw, note, (x1 + 34, y1 + 240), card_w - 68, _font(24), art["ink"], line_gap=10, max_lines=4)
+        draw.line((x1 + 34, y1 + 390, x1 + card_w - 34, y1 + 390), fill="#D4DAE3", width=3)
+        draw.text((x1 + 34, y1 + 422), "Best for:", font=_font(23, bold=True), fill=art["accent"])
+        _draw_wrapped_text(draw, best, (x1 + 135, y1 + 422), card_w - 170, _font(22), art["ink"], line_gap=7, max_lines=2)
 
 
 def _draw_decision_strip(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
-    y = 1848
+    y = 1936
     _section_title(draw, str(theme["choose_title"]).upper(), y - 60, art)
     items = list(theme["criteria"])
-    panel = (64, y, 2336, y + 140)
+    panel = (64, y, 2336, y + 210)
     _plain_panel(draw, panel, 12, _mix(art["paper"], "#FFFFFF", 0.45), "#CDD6E0", 3)
     slot_w = (2336 - 64) // len(items)
     for index, (label, icon) in enumerate(items):
         x = 64 + index * slot_w
         if index:
-            draw.line((x, y + 18, x, y + 122), fill="#C9D1DC", width=3)
-        _draw_icon(draw, icon, (x + 70, y + 70), 48, art)
-        _draw_wrapped_text(draw, label, (x + 130, y + 42), slot_w - 148, _font(25, bold=True), art["ink"], line_gap=6, max_lines=2)
+            draw.line((x, y + 28, x, y + 182), fill="#C9D1DC", width=3)
+        _draw_icon(draw, icon, (x + 80, y + 105), 34, art)
+        _draw_wrapped_text(draw, label, (x + 142, y + 78), slot_w - 170, _font(27, bold=True), art["ink"], line_gap=8, max_lines=2)
 
 
 def _draw_takeaway(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
-    draw.rectangle((0, 2296, WORK_CANVAS, WORK_CANVAS), fill=art["ink"])
-    draw.text((96, 2326), "KEY TAKEAWAY", font=_font(34, bold=True), fill=art["accent2"])
+    draw.rectangle((0, 2200, WORK_CANVAS, WORK_CANVAS), fill=art["ink"])
+    draw.text((96, 2244), "KEY TAKEAWAY", font=_font(42, bold=True), fill=art["accent2"])
     takeaway = _takeaway_text(draft, str(theme["takeaway"]))
-    _draw_wrapped_text(draw, takeaway, (420, 2322), 1420, _font(28), art["paper"], line_gap=6, max_lines=2)
-    _draw_icon(draw, "chart", (2110, 2354), 58, art)
-    draw.line((1940, 2320, 1940, 2388), fill=_mix(art["paper"], art["ink"], 0.35), width=3)
+    _draw_wrapped_text(draw, takeaway, (480, 2240), 1280, _font(36), art["paper"], line_gap=12, max_lines=3)
+    draw.line((1860, 2234, 1860, 2376), fill=_mix(art["paper"], art["ink"], 0.35), width=4)
+    _draw_icon(draw, "chart", (2110, 2304), 88, art)
 
 
 def _section_title(draw: ImageDraw.ImageDraw, title: str, y: int, art: dict[str, str]) -> None:
@@ -337,7 +337,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
                 ("Validation", "Tests whether performance generalizes.", "trustworthy deployment", "shield"),
             ],
             "choose_title": "Choose the right model based on",
-            "criteria": [("features and target", "chart"), ("dataset size", "database"), ("noise and outliers", "bell"), ("interpretability", "magnify"), ("prediction accuracy", "target")],
+            "criteria": [("Features & target", "chart"), ("Dataset size", "database"), ("Noise & outliers", "bell"), ("Interpretability", "magnify"), ("Prediction accuracy", "target")],
             "takeaway": "There is no single best model. Understand the data, pick the right model, validate well, and iterate.",
         }
     if any(word in text for word in ("governance", "regulation", "responsible", "risk", "safety", "policy")):
@@ -370,7 +370,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
                 ("Training", "Make policy usable for product and business teams.", "consistent practice", "tree"),
             ],
             "choose_title": "Prioritize controls based on",
-            "criteria": [("user impact", "target"), ("data sensitivity", "database"), ("model autonomy", "network"), ("legal exposure", "shield"), ("monitoring ability", "chart")],
+            "criteria": [("User impact", "target"), ("Data sensitivity", "database"), ("Model autonomy", "network"), ("Legal exposure", "shield"), ("Monitoring ability", "chart")],
             "takeaway": "The strongest AI governance is practical: clear ownership, visible evidence, and review at the right moments.",
         }
     if any(word in text for word in ("agent", "workflow", "automation", "toolkit")):
@@ -403,7 +403,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
                 ("Iteration", "Workflow performance improves with review.", "learning loop", "tree"),
             ],
             "choose_title": "Automate only when you understand",
-            "criteria": [("task frequency", "clock"), ("error cost", "shield"), ("data access", "database"), ("review point", "target"), ("success metric", "chart")],
+            "criteria": [("Task frequency", "clock"), ("Error cost", "shield"), ("Data access", "database"), ("Review point", "target"), ("Success metric", "chart")],
             "takeaway": "The best agent workflows remove manual handoffs while making accountability easier to see.",
         }
     return {
@@ -435,7 +435,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
             ("Next Step", "What small experiment would test value?", "low-risk learning", "target"),
         ],
         "choose_title": "Read the signal through",
-        "criteria": [("evidence quality", "magnify"), ("business relevance", "target"), ("data readiness", "database"), ("risk level", "shield"), ("actionability", "chart")],
+        "criteria": [("Evidence quality", "magnify"), ("Business relevance", "target"), ("Data readiness", "database"), ("Risk level", "shield"), ("Actionability", "chart")],
         "takeaway": "Strong AI adoption starts with evidence, clear use cases, and disciplined review.",
     }
 
