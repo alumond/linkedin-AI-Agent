@@ -1,0 +1,119 @@
+{
+  "draft": {
+    "alt_text": "An insight card depicting a developer collaborating with an AI coding assistant. The AI interface shows code being generated rapidly, symbolizing increased productivity in software development.",
+    "body": "AI-powered code generation is fundamentally reshaping how engineering teams operate, driving substantial gains in software development productivity. The landscape now features advanced AI coding agents such as Cursor, Claude Code, Codex, GitHub Copilot (Agent Mode), and Google Gemini Code Assist. These tools move beyond simple autocomplete, handling multi-step tasks and comprehending entire repositories, which boosts developer efficiency.\n\nEvidence of this impact is clear. Developers with high AI usage are achieving up to 2.3 times faster code merge rates compared to those without AI, according to benchmark reports by Opsera and LinearB. This shift points towards more autonomous AI assistance in coding, debugging, and refactoring processes.\n\nHowever, the adoption of these powerful agents demands thoughtful implementation. Organizations must establish clear governance to manage potential issues like architectural drift and new security vulnerabilities introduced by AI-generated code. The aim is to accelerate development without compromising code quality or control.\n\nWhat strategies are you employing to integrate AI coding agents effectively into your development workflows, and what challenges have you observed?",
+    "category": "tools",
+    "claims": [
+      "AI-powered code generation tools and agents are fundamentally reshaping software development, leading to significant productivity gains for engineering teams.",
+      "The landscape in 2026 is dominated by advanced AI coding agents like Cursor, Claude Code, Codex, GitHub Copilot (Agent Mode), and Google Gemini Code Assist, which go beyond simple autocomplete to handle multi-step tasks and understand entire repositories.",
+      "Developers with high AI usage are achieving up to 2.3 times faster code merge rates compared to those without AI (Opsera and LinearB benchmark reports).",
+      "This trend emphasizes the shift towards more autonomous AI assistance in coding, debugging, and refactoring.",
+      "There is a need for robust governance to manage potential issues like architectural drift and security vulnerabilities introduced by AI-generated code."
+    ],
+    "hashtags": [
+      "#AICodeGeneration",
+      "#SoftwareDevelopment",
+      "#DeveloperProductivity"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbkARiL-H1Rjh0J6x8MjHepLa3WwbIrEzQdTWulG9t2VHKkJah9UuAa67WsF9jcuAimufdHJplMwOzrZ5oDXS1fLfsFSOH-jjdxkL12K0o-BxJEboHh_IELfgkVmWU6fqup2P1gDQXPSqhG-puXc=",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFC7nJ2E2dUWxvpaeieWgItzHnPiKI291Q8l3axfIMWtuAUADC42JWpGI-00s7B37cf1J--s2_6eVfcph1hUYTuWKjUhogHxS7TvG2JXggBaY1LbMWT2U-qXU7-5-wepOkpss7pKhg0d9rMMP2P_EuJq5PgXpnD6g==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbMD5_vTAgmrmMdVtn3AL-LNyAumkeBEmRYAgUB65L520tAE3t9oAiLlxG_xULG9h5dwdCinhvM_9jBmUukk5LGVjfNhmUqy0zbH332-mnq2LhHaq5PUYbCYwlF72Q5jxGV9w=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUk81ZHZLXcKzoEBPQpNHJNO1KIpjHq_v0vZQgwzvzFdqqvrWHWlgH1yR6Va65IQP6jufyL1_W4pZXxfFiZGX4QA5BNm1J2LNNtl__DGibbG_bDm8f7tzCoIglD0R9MqEhvIGn9exesAI8bvWAurSe4DjUxSb4qNU86T6NfA0TJzVR32ni"
+    ],
+    "topic": "AI-Powered Code Generation and Software Development Productivity",
+    "visual_prompt": "An insight card illustrating AI code generation, showing a developer working alongside a glowing AI interface, with lines of code rapidly appearing. Focus on speed and efficiency.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-05T10:47:49Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQHIMgPipp36ZQ",
+    "post_urn": "urn:li:share:7490720211743100928",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "AI-Powered Code Generation and Software Development Productivity"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "AI-Powered Code Generation and Software Development Productivity",
+  "status": "published",
+  "trend": {
+    "category": "tools",
+    "evidence_score": 0.9,
+    "novelty_score": 0.8,
+    "practical_value_score": 0.95,
+    "recency_score": 0.95,
+    "relevance_score": 0.95,
+    "sources": [
+      {
+        "claim_supported": "Reviews top AI coding agents for 2026 (Cursor, Claude Code, Codex, GitHub Copilot, Cline), distinguishing agents from assistants and highlighting their autonomous capabilities.",
+        "published_at": "2026-01-02",
+        "publisher": "Vertex AI Search (Google)",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Best AI Coding Agents for 2026: Real-World Developer Reviews",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbkARiL-H1RjhJ0J6x8MjHepLa3WwbIrEzQdTWulG9t2VHKkJah9UuAa67WsF9jcuAimufdHJplMwOzrZ5oDXS1fLfsFSOH-jjdxkL12K0o-BxJEboHl_IELfgkVmWU6fqup2P1gDQXPSqhG-puXc="
+      },
+      {
+        "claim_supported": "Mentions Google introducing highly optimized Gemini models for scaling production agents and AlphaEvolve (Gemini-powered code-optimization agent) becoming generally available on Gemini Enterprise Agent Platform.",
+        "published_at": "2026-08-01",
+        "publisher": "Trending Stories",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "Google Unveils July 2026 AI Upgrades for Developers and Everyday Use | Trending Stories",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFC7nJ2E2dUWxvpaeieWgItzHqPiKI291Q8l3axfIMWtuAUADC42JWpGI-00s7B37cf1J--s2_6eVfcph1hUYTuWKjUhogHxS7TvG2JXggBaY1LbMWT2U-qXU7-5-wepOkpss7pKhg0d9rMMP2P_EuJq5PgXpnD6g=="
+      },
+      {
+        "claim_supported": "Reviews 9 best AI coding tools for 2026, including Cursor, Codex, Claude Code, GitHub Copilot, and Amazon Q Developer, emphasizing their ability to generate code, debug, and understand large codebases.",
+        "published_at": "2026-03-16",
+        "publisher": "Zapier",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "The 9 best AI coding tools in 2026 - Zapier",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbMD5_vTAgmrmMdVtn3AL-LNyAumkeBEmRYAgUB65L520tAE3t9oAiLlxG_xULG9h5dwdCinhvM_9jBmUukk5LGVjfNhmUqy0zbH332-mnq2LhHaq5PUYbCYwlF72Q5jxGV9w="
+      },
+      {
+        "claim_supported": "Provides benchmark data for 2026, showing AI reduces time-to-PR by up to 58% but highlights challenges with AI-generated pull requests waiting longer in review and introducing more security vulnerabilities.",
+        "published_at": "2026-06-24",
+        "publisher": "Opsera",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "AI Coding Impact 2026 Benchmark Report - Opsera",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUk81ZHZLXcKzoEBPQpNHJNOtKIpjHq_v0vZQgwzvzFdqqvrWHWlgH1yR6Va65IQP6jufyL1_W4pZXxfFiZGX4QA5BNm1J2LNNtl__DGibbG_bDm8f7tzCoIglD0R9MqEhvIGn9exesAI8bvWAurSe4DjUxSb4qNU86T6NfA0TJzVR32ni"
+      },
+      {
+        "claim_supported": "Reports that developers in the highest AI usage band merged code at 2.3 times their June 2025 rate by May 2026, based on analysis of 2.7 million pull requests.",
+        "published_at": "2026-06-25",
+        "publisher": "LinearB",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "2026 Software Engineering Benchmarks Report - LinearB",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGnM8dWqtIkrOujLB2o-nBafHizbdNXreDYPGDbFxqJeZLk6FBxCjYrvkCzeOp9nsvBgKohsXod-X1er34TVI0AqI_KipnPqt5NpjKCGVh0iAiex8WRBfV4BRXNrWz6ImF2LUj1Tycd8StuEAdBIn_VzmGMMQek_C7P4V6Butk="
+      }
+    ],
+    "summary": "AI-powered code generation tools and agents are fundamentally reshaping software development, leading to significant productivity gains for engineering teams. The landscape in 2026 is dominated by advanced AI coding agents like Cursor, Claude Code, Codex, GitHub Copilot (Agent Mode), and Google Gemini Code Assist, which go beyond simple autocomplete to handle multi-step tasks and understand entire repositories. Benchmarks indicate that developers with high AI usage are achieving up to 2.3 times faster code merge rates compared to those without AI. This trend emphasizes the shift towards more autonomous AI assistance in coding, debugging, and refactoring, although it also highlights the need for robust governance to manage potential issues like architectural drift and security vulnerabilities introduced by AI-generated code.",
+    "topic": "AI-Powered Code Generation and Software Development Productivity"
+  },
+  "visual": {
+    "alt_text": "An insight card depicting a developer collaborating with an AI coding assistant. The AI interface shows code being generated rapidly, symbolizing increased productivity in software development.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQHIMgPipp36ZQ",
+    "mime_type": "image/png",
+    "path": "assets/20260805T104735Z-ai-powered-code-generation-and-software-developmen.png",
+    "width": 1200
+  }
+}
