@@ -58,12 +58,150 @@ def extract_image_bytes(interaction: object) -> bytes:
 
 def _draw_infographic_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
     theme = _infographic_theme(draft)
-    _draw_infographic_header(draw, draft, art, theme)
-    _draw_need_and_goal(draw, art, theme)
-    _draw_example_strip(draw, art, theme)
-    _draw_concept_grid(draw, art, theme)
-    _draw_decision_strip(draw, art, theme)
-    _draw_takeaway(draw, draft, art, theme)
+    _draw_premium_header(draw, draft, art, theme)
+    _draw_premium_summary(draw, art, theme)
+    _draw_premium_examples(draw, art, theme)
+    _draw_premium_concepts(draw, art, theme)
+    _draw_premium_checklist(draw, art, theme)
+    _draw_premium_takeaway(draw, draft, art, theme)
+
+
+def _draw_premium_header(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
+    draw.rectangle((0, 0, WORK_CANVAS, 520), fill=art["ink"])
+    draw.rounded_rectangle((86, 72, 430, 138), radius=33, fill=_mix(art["accent"], art["ink"], 0.18))
+    draw.text((126, 88), _short_category(draft.category).upper(), font=_font(30, bold=True), fill=art["paper"])
+
+    title = str(theme["title"]).upper()
+    lines = _wrap(title, 23)[:2]
+    y = 174 if len(lines) == 1 else 132
+    for index, line in enumerate(lines):
+        fill = art["paper"] if index == 0 else art["accent2"]
+        draw.text((86, y + index * 110), line, font=_font(82, bold=True), fill=fill)
+    _draw_wrapped_text(draw, str(theme["subtitle"]), (90, 382), 1320, _font(38, bold=True), _mix(art["paper"], "#FFFFFF", 0.15), line_gap=8, max_lines=2)
+
+    _draw_signal_module(draw, (1710, 86, 2310, 430), art)
+
+
+def _draw_signal_module(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], art: dict[str, str]) -> None:
+    x1, y1, x2, y2 = box
+    draw.rounded_rectangle((x1, y1, x2, y2), radius=44, fill=_mix(art["paper"], art["ink"], 0.9), outline=_mix(art["paper"], art["ink"], 0.68), width=3)
+    draw.text((x1 + 46, y1 + 38), "SIGNAL MAP", font=_font(32, bold=True), fill=art["accent2"])
+    chart = (x1 + 70, y1 + 122, x2 - 58, y2 - 54)
+    draw.line((chart[0], chart[3], chart[2], chart[3]), fill=art["paper"], width=7)
+    draw.line((chart[0], chart[3], chart[0], chart[1]), fill=art["paper"], width=7)
+    points = [
+        (chart[0] + 34, chart[3] - 34),
+        (chart[0] + 130, chart[3] - 82),
+        (chart[0] + 232, chart[3] - 64),
+        (chart[0] + 334, chart[3] - 142),
+        (chart[0] + 438, chart[3] - 206),
+    ]
+    draw.line(points, fill=art["accent2"], width=11)
+    for px, py in points:
+        draw.ellipse((px - 15, py - 15, px + 15, py + 15), fill=art["accent"], outline=art["paper"], width=4)
+
+
+def _draw_premium_summary(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    _premium_panel(draw, (80, 590, 1132, 930), art["paper"], "#D8DEE8")
+    draw.rectangle((80, 590, 104, 930), fill=art["accent2"])
+    draw.text((154, 638), str(theme["why_title"]).upper(), font=_font(44, bold=True), fill=art["ink"])
+    _draw_wrapped_text(draw, str(theme["why_text"]), (154, 714), 850, _font(36), art["ink"], line_gap=16, max_lines=4)
+
+    _premium_panel(draw, (1200, 590, 2320, 930), art["paper"], _mix(art["accent"], art["paper"], 0.3))
+    _draw_clean_target(draw, (1348, 760), 112, art)
+    draw.text((1518, 644), "PRACTICAL GOAL", font=_font(40, bold=True), fill=art["accent"])
+    draw.text((1518, 706), str(theme["goal"]).upper(), font=_font(54, bold=True), fill=art["ink"])
+    draw.text((1522, 778), str(theme["goal_note"]), font=_font(34), fill=_mix(art["ink"], art["paper"], 0.28))
+    _draw_mini_steps(draw, (1518, 842), list(theme["criteria"])[:3], art)
+
+
+def _draw_mini_steps(draw: ImageDraw.ImageDraw, xy: tuple[int, int], items: list[tuple[str, str]], art: dict[str, str]) -> None:
+    x, y = xy
+    for index, (label, _icon) in enumerate(items):
+        left = x + index * 238
+        draw.rounded_rectangle((left, y, left + 208, y + 54), radius=27, fill=_mix(art["accent"], art["paper"], 0.82))
+        draw.text((left + 22, y + 14), str(label).upper()[:18], font=_font(20, bold=True), fill=art["ink"])
+
+
+def _draw_premium_examples(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    _premium_section_title(draw, "REAL-WORLD EXAMPLES", 1030, art)
+    examples = list(theme["examples"])[:5]
+    card_w = 420
+    gap = 48
+    for index, (label, value, _icon) in enumerate(examples):
+        x = 80 + index * (card_w + gap)
+        _premium_panel(draw, (x, 1096, x + card_w, 1346), art["paper"], "#DDE4ED")
+        draw.rounded_rectangle((x + 28, 1126, x + 112, 1210), radius=28, fill=_mix(art["accent"], art["paper"], 0.85))
+        draw.text((x + 52, 1149), f"{index + 1}", font=_font(34, bold=True), fill=art["accent"])
+        _draw_wrapped_text(draw, str(label), (x + 136, 1132), 240, _font(35, bold=True), art["ink"], line_gap=8, max_lines=2)
+        draw.text((x + 30, 1260), str(value), font=_font(44, bold=True), fill=art["accent"])
+        draw.line((x + 30, 1312, x + card_w - 30, 1312), fill=art["accent2"], width=5)
+
+
+def _draw_premium_concepts(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    _premium_section_title(draw, str(theme["grid_title"]).upper(), 1448, art)
+    concepts = list(theme["concepts"])[:3]
+    card_w = 720
+    gap = 40
+    for index, (label, note, best, _icon) in enumerate(concepts):
+        x = 80 + index * (card_w + gap)
+        _premium_panel(draw, (x, 1516, x + card_w, 1846), art["paper"], art["accent"] if index == 0 else "#DDE4ED")
+        draw.text((x + 42, 1558), f"0{index + 1}", font=_font(42, bold=True), fill=art["accent"])
+        draw.text((x + 132, 1562), str(label).upper(), font=_font(42, bold=True), fill=art["ink"])
+        _draw_wrapped_text(draw, str(note), (x + 44, 1640), card_w - 88, _font(32), art["ink"], line_gap=14, max_lines=3)
+        draw.rounded_rectangle((x + 44, 1760, x + card_w - 44, 1818), radius=29, fill=_mix(art["accent2"], art["paper"], 0.76))
+        draw.text((x + 72, 1776), f"Best for: {best}", font=_font(25, bold=True), fill=art["ink"])
+
+
+def _draw_premium_checklist(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    title = str(theme["choose_title"]).upper()
+    draw.text((80, 1922), title, font=_font(38, bold=True), fill=art["accent"])
+    items = list(theme["criteria"])[:5]
+    x = 80
+    for label, _icon in items:
+        width = 420
+        draw.rounded_rectangle((x, 1988, x + width, 2082), radius=47, fill=art["paper"], outline="#DDE4ED", width=4)
+        draw.ellipse((x + 32, 2016, x + 82, 2066), fill=art["accent"], outline=art["ink"], width=4)
+        draw.line((x + 45, 2042, x + 57, 2054, x + 74, 2028), fill=art["paper"], width=6)
+        _draw_wrapped_text(draw, str(label), (x + 104, 2018), width - 126, _font(28, bold=True), art["ink"], line_gap=6, max_lines=2)
+        x += width + 35
+
+
+def _draw_premium_takeaway(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
+    draw.rectangle((0, 2156, WORK_CANVAS, WORK_CANVAS), fill=art["ink"])
+    draw.rounded_rectangle((80, 2220, 438, 2300), radius=40, fill=art["accent2"])
+    draw.text((124, 2242), "TAKEAWAY", font=_font(34, bold=True), fill=art["ink"])
+    takeaway = _takeaway_text(draft, str(theme["takeaway"]))
+    _draw_wrapped_text(draw, takeaway, (500, 2216), 1320, _font(40), art["paper"], line_gap=16, max_lines=3)
+    _draw_takeaway_sparkline(draw, (1980, 2230, 2310, 2350), art)
+
+
+def _draw_takeaway_sparkline(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], art: dict[str, str]) -> None:
+    x1, y1, x2, y2 = box
+    points = [(x1 + 18, y2 - 16), (x1 + 92, y1 + 72), (x1 + 162, y1 + 92), (x1 + 238, y1 + 30), (x2 - 18, y1 + 8)]
+    draw.line(points, fill=art["accent2"], width=13)
+    for px, py in points:
+        draw.ellipse((px - 15, py - 15, px + 15, py + 15), fill=art["accent"])
+
+
+def _premium_panel(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], fill: str, outline: str) -> None:
+    x1, y1, x2, y2 = box
+    draw.rounded_rectangle((x1 + 12, y1 + 16, x2 + 12, y2 + 16), radius=34, fill="#D8DEE7")
+    draw.rounded_rectangle(box, radius=34, fill=fill, outline=outline, width=4)
+
+
+def _premium_section_title(draw: ImageDraw.ImageDraw, title: str, y: int, art: dict[str, str]) -> None:
+    draw.line((80, y, 790, y), fill=art["accent"], width=6)
+    draw.line((1610, y, 2320, y), fill=art["accent"], width=6)
+    _center_text(draw, (1200, y), title, _font(42, bold=True), art["accent"])
+
+
+def _draw_clean_target(draw: ImageDraw.ImageDraw, center: tuple[int, int], size: int, art: dict[str, str]) -> None:
+    x, y = center
+    for radius, color in ((size, art["accent"]), (int(size * 0.72), art["paper"]), (int(size * 0.43), art["accent"]), (int(size * 0.16), art["paper"])):
+        draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=color)
+    draw.line((x + 36, y - 36, x + 122, y - 122), fill=art["ink"], width=14)
+    draw.polygon([(x + 122, y - 122), (x + 104, y - 58), (x + 58, y - 104)], fill=art["ink"])
 
 
 def _draw_infographic_header(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
