@@ -178,7 +178,9 @@ Requirements:
     def generate_illustration(self, config: AgentConfig, draft: DraftPost, output_path: Path) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         prompt = (
-            f"Create a square 1:1 editorial illustration for LinkedIn. No text in the image. "
+            f"Create a square 1:1 polished educational infographic for LinkedIn, similar to a premium explainer poster. "
+            f"Use a bold dark header, clear title area, icon-led example tiles, concise concept panels, and a bottom key takeaway. "
+            f"Make it dense, useful, and professionally designed, not sparse or skeletal. Keep text short and legible. "
             f"Topic: {draft.topic}. Direction: {draft.visual_prompt}. "
             f"Use a polished professional visual style with colors {', '.join(config.brand_colors)}."
         )

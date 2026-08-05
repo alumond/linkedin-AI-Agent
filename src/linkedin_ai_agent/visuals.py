@@ -18,30 +18,26 @@ SCALE = 1
 
 
 def render_insight_card(draft: DraftPost, config: AgentConfig, output_path: Path) -> Path:
-    """Render a topic-specific editorial visual without generative-image dependencies."""
+    """Render a dense educational infographic card without generative-image dependencies."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     art = _art_direction(draft)
-    image = _paper_background(WORK_CANVAS, art, draft.topic)
+    image = _infographic_background(WORK_CANVAS, art)
     draw = ImageDraw.Draw(image)
 
-    _draw_scene(draw, draft, art)
-    _draw_editorial_copy(draw, draft, art)
-    _draw_corner_mark(draw, art)
+    _draw_infographic_card(draw, draft, art)
 
     image.resize((CANVAS, CANVAS), Image.Resampling.LANCZOS).save(output_path, "PNG", optimize=True)
     return output_path
 
 
 def render_diagram(draft: DraftPost, config: AgentConfig, output_path: Path) -> Path:
-    """Render a restrained editorial process diagram with physical depth."""
+    """Render a structured educational infographic for diagram-style drafts."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     art = _art_direction(draft)
-    image = _paper_background(WORK_CANVAS, art, draft.topic + " diagram")
+    image = _infographic_background(WORK_CANVAS, art)
     draw = ImageDraw.Draw(image)
 
-    _draw_diagram_story(draw, art)
-    _draw_editorial_copy(draw, draft, art, compact=True)
-    _draw_corner_mark(draw, art)
+    _draw_infographic_card(draw, draft, art)
 
     image.resize((CANVAS, CANVAS), Image.Resampling.LANCZOS).save(output_path, "PNG", optimize=True)
     return output_path
@@ -58,6 +54,399 @@ def extract_image_bytes(interaction: object) -> bytes:
                 if isinstance(data, bytes):
                     return data
     raise ValueError("Gemini response did not contain image bytes.")
+
+
+def _draw_infographic_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    _draw_infographic_header(draw, draft, art, theme)
+    _draw_need_and_goal(draw, art, theme)
+    _draw_example_strip(draw, art, theme)
+    _draw_concept_grid(draw, art, theme)
+    _draw_decision_strip(draw, art, theme)
+    _draw_takeaway(draw, draft, art, theme)
+
+
+def _draw_infographic_header(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
+    draw.rectangle((0, 0, WORK_CANVAS, 360), fill=art["ink"])
+    for x in range(44, 325, 58):
+        for y in range(54, 265, 48):
+            digit = "1" if (x + y) % 3 == 0 else "0"
+            draw.text((x, y), digit, font=_font(27, bold=True), fill=_mix(art["accent"], art["ink"], 0.45))
+    title = str(theme["title"]).upper()
+    lines = _wrap(title, 24)[:2]
+    y = 78 if len(lines) == 1 else 42
+    for index, line in enumerate(lines):
+        fill = art["paper"] if index == 0 else art["accent2"]
+        _center_text(draw, (1120, y + index * 120), line, _font(88, bold=True), fill)
+    subtitle = str(theme["subtitle"])
+    _center_text(draw, (1120, 286), subtitle[:92], _font(40, bold=True), art["paper"])
+    _draw_header_chart(draw, (2060, 112), art)
+
+
+def _draw_need_and_goal(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    left = (64, 410, 1288, 622)
+    right = (1350, 410, 2336, 622)
+    _plain_panel(draw, left, 28, art["paper"], _mix(art["accent2"], art["paper"], 0.35), 5)
+    _plain_panel(draw, right, 28, art["paper"], _mix(art["accent"], art["paper"], 0.35), 5)
+    _draw_icon(draw, str(theme["icon"]), (184, 516), 82, art)
+    draw.text((310, 448), str(theme["why_title"]).upper(), font=_font(40, bold=True), fill=art["ink"])
+    _draw_wrapped_text(draw, str(theme["why_text"]), (310, 506), 870, _font(31), art["ink"], line_gap=10, max_lines=3)
+    _draw_icon(draw, "target", (1480, 516), 86, art)
+    draw.text((1602, 448), "GOAL:", font=_font(54, bold=True), fill=art["accent"])
+    draw.text((1602, 516), str(theme["goal"]).upper(), font=_font(39, bold=True), fill=art["ink"])
+    draw.text((1602, 570), str(theme["goal_note"]), font=_font(31), fill=_mix(art["ink"], art["paper"], 0.28))
+
+
+def _draw_example_strip(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    _section_title(draw, "REAL-WORLD EXAMPLES", 716, art)
+    examples = list(theme["examples"])
+    x = 64
+    for label, value, icon in examples:
+        box = (x, 780, x + 410, 1088)
+        _plain_panel(draw, box, 22, art["paper"], "#D8DEE8", 4)
+        _draw_icon(draw, icon, (x + 205, 880), 88, art)
+        _center_text(draw, (x + 205, 1000), label, _font(36, bold=True), art["ink"])
+        _center_text(draw, (x + 205, 1052), value, _font(35, bold=True), art["accent"])
+        x += 466
+
+
+def _draw_concept_grid(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    _section_title(draw, str(theme["grid_title"]).upper(), 1184, art)
+    items = list(theme["concepts"])
+    cols = 5
+    gap = 20
+    left = 64
+    card_w = 448
+    card_h = 440
+    for index, (label, note, best, icon) in enumerate(items[:5]):
+        row = index // cols
+        col = index % cols
+        x1 = left + col * (card_w + gap)
+        y1 = 1244 + row * (card_h + 24)
+        box = (x1, y1, x1 + card_w, y1 + card_h)
+        border = art["accent"] if index % 3 == 0 else "#D8DEE8"
+        _plain_panel(draw, box, 18, art["paper"], border, 4)
+        _draw_icon(draw, icon, (x1 + card_w // 2, y1 + 86), 64, art)
+        _center_text(draw, (x1 + card_w // 2, y1 + 174), label, _font(29, bold=True), art["ink"])
+        _draw_wrapped_text(draw, note, (x1 + 34, y1 + 220), card_w - 68, _font(23), art["ink"], line_gap=8, max_lines=4)
+        draw.line((x1 + 34, y1 + 348, x1 + card_w - 34, y1 + 348), fill="#D4DAE3", width=3)
+        draw.text((x1 + 34, y1 + 374), "Best for:", font=_font(22, bold=True), fill=art["accent"])
+        _draw_wrapped_text(draw, best, (x1 + 126, y1 + 374), card_w - 160, _font(21), art["ink"], line_gap=6, max_lines=2)
+
+
+def _draw_decision_strip(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
+    y = 1848
+    _section_title(draw, str(theme["choose_title"]).upper(), y - 60, art)
+    items = list(theme["criteria"])
+    panel = (64, y, 2336, y + 140)
+    _plain_panel(draw, panel, 12, _mix(art["paper"], "#FFFFFF", 0.45), "#CDD6E0", 3)
+    slot_w = (2336 - 64) // len(items)
+    for index, (label, icon) in enumerate(items):
+        x = 64 + index * slot_w
+        if index:
+            draw.line((x, y + 18, x, y + 122), fill="#C9D1DC", width=3)
+        _draw_icon(draw, icon, (x + 70, y + 70), 48, art)
+        _draw_wrapped_text(draw, label, (x + 130, y + 42), slot_w - 148, _font(25, bold=True), art["ink"], line_gap=6, max_lines=2)
+
+
+def _draw_takeaway(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
+    draw.rectangle((0, 2296, WORK_CANVAS, WORK_CANVAS), fill=art["ink"])
+    draw.text((96, 2326), "KEY TAKEAWAY", font=_font(34, bold=True), fill=art["accent2"])
+    takeaway = _takeaway_text(draft, str(theme["takeaway"]))
+    _draw_wrapped_text(draw, takeaway, (420, 2322), 1420, _font(28), art["paper"], line_gap=6, max_lines=2)
+    _draw_icon(draw, "chart", (2110, 2354), 58, art)
+    draw.line((1940, 2320, 1940, 2388), fill=_mix(art["paper"], art["ink"], 0.35), width=3)
+
+
+def _section_title(draw: ImageDraw.ImageDraw, title: str, y: int, art: dict[str, str]) -> None:
+    draw.line((64, y, 800, y), fill=art["accent"], width=5)
+    draw.line((1600, y, 2336, y), fill=art["accent"], width=5)
+    _center_text(draw, (1200, y - 2), title, _font(39, bold=True), art["accent"])
+
+
+def _plain_panel(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], radius: int, fill: str, outline: str, width: int) -> None:
+    x1, y1, x2, y2 = box
+    draw.rounded_rectangle((x1 + 9, y1 + 12, x2 + 9, y2 + 12), radius=radius, fill="#D8DDE5")
+    draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
+
+
+def _draw_header_chart(draw: ImageDraw.ImageDraw, origin: tuple[int, int], art: dict[str, str]) -> None:
+    x, y = origin
+    draw.line((x, y + 180, x + 250, y + 180), fill=art["paper"], width=8)
+    draw.line((x, y + 180, x, y - 20), fill=art["paper"], width=8)
+    draw.polygon([(x + 250, y + 180), (x + 222, y + 162), (x + 222, y + 198)], fill=art["paper"])
+    draw.polygon([(x, y - 20), (x - 18, y + 10), (x + 18, y + 10)], fill=art["paper"])
+    points = [(x + 32, y + 142), (x + 82, y + 116), (x + 132, y + 86), (x + 184, y + 38), (x + 230, y + 18)]
+    draw.line(points, fill=art["accent2"], width=10)
+    for px, py in points:
+        draw.ellipse((px - 11, py - 11, px + 11, py + 11), fill=art["accent"], outline=art["paper"], width=3)
+
+
+def _draw_icon(draw: ImageDraw.ImageDraw, icon: str, center: tuple[int, int], size: int, art: dict[str, str]) -> None:
+    x, y = center
+    ink = art["ink"]
+    accent = art["accent"]
+    accent2 = art["accent2"]
+    paper = art["paper"]
+    if icon in {"target", "goal"}:
+        for r, color in ((size, accent), (int(size * 0.68), paper), (int(size * 0.38), accent), (int(size * 0.14), paper)):
+            draw.ellipse((x - r, y - r, x + r, y + r), fill=color)
+        draw.line((x + size // 3, y - size // 3, x + size, y - size), fill=ink, width=max(5, size // 10))
+        draw.polygon([(x + size, y - size), (x + size - 12, y - size + 40), (x + size - 42, y - size + 12)], fill=ink)
+    elif icon == "house":
+        draw.polygon([(x - size, y), (x, y - size), (x + size, y), (x + size - 18, y + size), (x - size + 18, y + size)], fill=paper, outline=ink)
+        draw.polygon([(x - size - 14, y), (x, y - size - 28), (x + size + 14, y)], fill=accent)
+        draw.rectangle((x - 22, y + 20, x + 22, y + size), fill=accent2)
+        draw.rectangle((x + 42, y + 22, x + 86, y + 64), fill="#B9DBF0", outline=ink, width=3)
+    elif icon == "car":
+        draw.rounded_rectangle((x - size, y - 12, x + size, y + size // 2), radius=22, fill=accent2, outline=ink, width=5)
+        draw.polygon([(x - 56, y - 12), (x - 22, y - 58), (x + 58, y - 58), (x + 94, y - 12)], fill=paper, outline=ink)
+        for wx in (x - 58, x + 62):
+            draw.ellipse((wx - 24, y + 28, wx + 24, y + 76), fill=ink)
+    elif icon == "box":
+        draw.polygon([(x - size, y - 35), (x, y - size), (x + size, y - 35), (x, y + 8)], fill=accent2, outline=ink)
+        draw.polygon([(x - size, y - 35), (x, y + 8), (x, y + size), (x - size, y + 20)], fill="#D6913C", outline=ink)
+        draw.polygon([(x + size, y - 35), (x, y + 8), (x, y + size), (x + size, y + 20)], fill="#B97128", outline=ink)
+    elif icon == "thermo":
+        draw.rounded_rectangle((x - 18, y - size, x + 18, y + 36), radius=18, fill=paper, outline=ink, width=5)
+        draw.ellipse((x - 46, y + 14, x + 46, y + 106), fill=accent, outline=ink, width=5)
+        draw.rounded_rectangle((x - 9, y - size + 22, x + 9, y + 42), radius=9, fill=accent)
+    elif icon == "clock":
+        draw.ellipse((x - size, y - size, x + size, y + size), fill=paper, outline=ink, width=7)
+        draw.line((x, y, x, y - size + 32), fill=ink, width=8)
+        draw.line((x, y, x + size // 2, y + 16), fill=ink, width=8)
+        for dx in (-size - 16, -size - 36, size + 18):
+            draw.line((x + dx, y - 20, x + dx + 36, y - 20), fill=accent, width=6)
+    elif icon == "chart":
+        draw.line((x - size, y + size, x + size, y + size), fill=ink, width=7)
+        draw.line((x - size, y + size, x - size, y - size), fill=ink, width=7)
+        pts = [(x - size + 18, y + 48), (x - 34, y + 8), (x + 10, y + 20), (x + 82, y - 58)]
+        draw.line(pts, fill=accent, width=9)
+        for px, py in pts:
+            draw.ellipse((px - 10, py - 10, px + 10, py + 10), fill=accent2)
+    elif icon == "shield":
+        points = [(x, y - size), (x + size, y - size // 2), (x + size * 3 // 4, y + size // 2), (x, y + size), (x - size * 3 // 4, y + size // 2), (x - size, y - size // 2)]
+        draw.polygon(points, fill=paper, outline=accent, width=8)
+        draw.line((x - 36, y, x - 4, y + 34, x + 58, y - 42), fill=accent, width=12)
+    elif icon == "magnify":
+        draw.ellipse((x - size, y - size, x + size // 2, y + size // 2), fill=paper, outline=accent, width=10)
+        draw.line((x + size // 3, y + size // 3, x + size, y + size), fill=ink, width=15)
+    elif icon == "tree":
+        draw.line((x, y - size // 2, x, y + size), fill=ink, width=7)
+        for dx, dy in ((-58, -14), (58, -14), (-82, 52), (82, 52)):
+            draw.line((x, y + 10, x + dx, y + dy), fill=ink, width=6)
+            draw.rounded_rectangle((x + dx - 24, y + dy - 24, x + dx + 24, y + dy + 24), radius=10, fill=accent2, outline=ink, width=4)
+        draw.rounded_rectangle((x - 28, y - size - 8, x + 28, y - size + 48), radius=10, fill=accent, outline=ink, width=4)
+    elif icon == "network":
+        nodes = [(x, y - size), (x - size, y - 12), (x + size, y - 12), (x - 52, y + size), (x + 64, y + size)]
+        for a, b in ((0, 1), (0, 2), (1, 3), (2, 4), (3, 4), (1, 4)):
+            draw.line((nodes[a][0], nodes[a][1], nodes[b][0], nodes[b][1]), fill=accent, width=5)
+        for px, py in nodes:
+            draw.ellipse((px - 20, py - 20, px + 20, py + 20), fill=paper, outline=ink, width=5)
+    elif icon == "database":
+        draw.ellipse((x - size, y - size, x + size, y - size // 3), fill=paper, outline=ink, width=5)
+        draw.rectangle((x - size, y - size * 2 // 3, x + size, y + size), fill=paper, outline=ink, width=5)
+        for yy in (y - 20, y + 46):
+            draw.arc((x - size, yy - 36, x + size, yy + 36), 0, 180, fill=accent, width=5)
+    elif icon == "bell":
+        draw.arc((x - size, y - size, x + size, y + size), 200, 340, fill=accent, width=13)
+        draw.rounded_rectangle((x - 70, y - 42, x + 70, y + 56), radius=38, fill=paper, outline=ink, width=5)
+        draw.ellipse((x - 22, y + 58, x + 22, y + 102), fill=accent2, outline=ink, width=4)
+    else:
+        draw.ellipse((x - size, y - size, x + size, y + size), fill=paper, outline=accent, width=8)
+        draw.text((x - size // 2, y - size // 2), "AI", font=_font(size // 2, bold=True), fill=ink)
+
+
+def _infographic_background(size: int, art: dict[str, str]) -> Image.Image:
+    image = Image.new("RGB", (size, size), "#F6F8FB")
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((0, 360, size, size), fill="#F6F8FB")
+    for y in range(380, size, 180):
+        draw.line((0, y, size, y), fill="#EEF2F6", width=2)
+    return image
+
+
+def _draw_wrapped_text(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    xy: tuple[int, int],
+    max_width: int,
+    font: ImageFont.ImageFont,
+    fill: str,
+    line_gap: int = 8,
+    max_lines: int = 3,
+) -> None:
+    words = text.split()
+    lines: list[str] = []
+    current = ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        left, top, right, bottom = draw.textbbox((0, 0), candidate, font=font)
+        if current and right - left > max_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    x, y = xy
+    line_height = draw.textbbox((0, 0), "Ag", font=font)[3] + line_gap
+    for index, line in enumerate(lines[:max_lines]):
+        if index == max_lines - 1 and len(lines) > max_lines:
+            while draw.textbbox((0, 0), line + "...", font=font)[2] > max_width and " " in line:
+                line = line.rsplit(" ", 1)[0]
+            line += "..."
+        draw.text((x, y + index * line_height), line, font=font, fill=fill)
+
+
+def _takeaway_text(draft: DraftPost, fallback: str) -> str:
+    if draft.claims:
+        return f"{draft.claims[0].rstrip('.')}. Validate the evidence, then choose the practical next step."
+    return fallback
+
+
+def _infographic_theme(draft: DraftPost) -> dict[str, object]:
+    text = f"{draft.category} {draft.topic} {draft.visual_prompt}".lower()
+    if any(word in text for word in ("regression", "forecast", "prediction", "predictive")):
+        return {
+            "title": "Regression Models: Predicting Continuous Values",
+            "subtitle": "Classification predicts categories. Regression predicts numbers.",
+            "why_title": "Why regression matters",
+            "why_text": "When the target is a continuous value, models estimate numbers from patterns in data.",
+            "goal": "Predict a number",
+            "goal_note": "(continuous value)",
+            "icon": "chart",
+            "examples": [
+                ("House Price", "$450k", "house"),
+                ("Cab Fare", "$32", "car"),
+                ("Sales Forecast", "12.5k units", "box"),
+                ("Temperature", "31.4 C", "thermo"),
+                ("Delivery Time", "23.6 min", "clock"),
+            ],
+            "grid_title": "Popular Regression Models",
+            "concepts": [
+                ("Linear", "Models a linear relationship between features and target.", "simple, interpretable patterns", "chart"),
+                ("Ridge", "Adds L2 regularization to reduce overfitting.", "many correlated features", "shield"),
+                ("Lasso", "Uses L1 regularization and can remove weak features.", "leaner feature sets", "magnify"),
+                ("Decision Tree", "Splits the data into readable decision paths.", "non-linear patterns", "tree"),
+                ("Random Forest", "Combines many trees to improve stability.", "robust prediction", "tree"),
+                ("Gradient Boosting", "Builds sequential models that correct earlier errors.", "high accuracy on structured data", "chart"),
+                ("SVR", "Fits a margin around the best relationship.", "small to medium datasets", "chart"),
+                ("Neural Network", "Learns complex non-linear relationships across layers.", "large, high-signal data", "network"),
+                ("Baseline", "Simple benchmark before complex modeling.", "sanity checks", "target"),
+                ("Validation", "Tests whether performance generalizes.", "trustworthy deployment", "shield"),
+            ],
+            "choose_title": "Choose the right model based on",
+            "criteria": [("features and target", "chart"), ("dataset size", "database"), ("noise and outliers", "bell"), ("interpretability", "magnify"), ("prediction accuracy", "target")],
+            "takeaway": "There is no single best model. Understand the data, pick the right model, validate well, and iterate.",
+        }
+    if any(word in text for word in ("governance", "regulation", "responsible", "risk", "safety", "policy")):
+        return {
+            "title": _headline_from_topic(draft.topic, "AI Governance: From Principles to Enforcement"),
+            "subtitle": "Good governance turns fast-moving AI into accountable operating practice.",
+            "why_title": "Why governance matters",
+            "why_text": "AI systems now affect real decisions, so teams need controls that are documented and reviewable.",
+            "goal": "Reduce unmanaged risk",
+            "goal_note": "(without slowing useful adoption)",
+            "icon": "shield",
+            "examples": [
+                ("Model Reviews", "before launch", "magnify"),
+                ("Risk Tiers", "clear owners", "shield"),
+                ("Data Checks", "quality gates", "database"),
+                ("Incident Logs", "fast response", "bell"),
+                ("Audit Trail", "evidence ready", "clock"),
+            ],
+            "grid_title": "Core Governance Building Blocks",
+            "concepts": [
+                ("Inventory", "Track where AI is used and who owns it.", "visibility before control", "database"),
+                ("Risk Rating", "Classify systems by impact, exposure and uncertainty.", "prioritized reviews", "shield"),
+                ("Data Controls", "Check source, consent, quality and drift.", "safer inputs", "database"),
+                ("Human Review", "Keep accountable people in consequential decisions.", "target"),
+                ("Testing", "Evaluate performance, bias, security and failure modes.", "release gates", "magnify"),
+                ("Monitoring", "Watch live systems after deployment.", "early warning", "chart"),
+                ("Documentation", "Record decisions, evidence and limitations.", "auditable work", "box"),
+                ("Incident Response", "Define escalation paths before problems occur.", "fast action", "bell"),
+                ("Vendor Review", "Assess third-party models and tools.", "external risk", "network"),
+                ("Training", "Make policy usable for product and business teams.", "consistent practice", "tree"),
+            ],
+            "choose_title": "Prioritize controls based on",
+            "criteria": [("user impact", "target"), ("data sensitivity", "database"), ("model autonomy", "network"), ("legal exposure", "shield"), ("monitoring ability", "chart")],
+            "takeaway": "The strongest AI governance is practical: clear ownership, visible evidence, and review at the right moments.",
+        }
+    if any(word in text for word in ("agent", "workflow", "automation", "toolkit")):
+        return {
+            "title": _headline_from_topic(draft.topic, "AI Agents: From Task to Workflow"),
+            "subtitle": "Useful agents connect tools, evidence and review into repeatable workflows.",
+            "why_title": "Why agents matter",
+            "why_text": "Callable tools let an AI system gather context, run steps and hand off decisions with a record.",
+            "goal": "Automate repeatable work",
+            "goal_note": "(keep judgment accountable)",
+            "icon": "network",
+            "examples": [
+                ("Research", "source scan", "magnify"),
+                ("Analysis", "pattern check", "chart"),
+                ("Operations", "handoffs", "box"),
+                ("Monitoring", "alerts", "bell"),
+                ("Review", "human signoff", "target"),
+            ],
+            "grid_title": "Agent Workflow Components",
+            "concepts": [
+                ("Trigger", "A clear event starts the workflow.", "bounded entry points", "bell"),
+                ("Context", "The agent retrieves the right files, data or sources.", "grounded work", "database"),
+                ("Tool Call", "A task is executed through a controlled system.", "repeatable actions", "network"),
+                ("Validation", "Outputs are checked against rules or evidence.", "quality gates", "shield"),
+                ("Memory", "Relevant history guides what not to repeat.", "continuity", "database"),
+                ("Escalation", "Uncertain cases move to a person.", "risk control", "target"),
+                ("Logging", "Each action leaves a trace.", "audit readiness", "box"),
+                ("Monitoring", "Failures and drift are watched over time.", "stable operation", "chart"),
+                ("Permissions", "Access is limited to what the task needs.", "least privilege", "shield"),
+                ("Iteration", "Workflow performance improves with review.", "learning loop", "tree"),
+            ],
+            "choose_title": "Automate only when you understand",
+            "criteria": [("task frequency", "clock"), ("error cost", "shield"), ("data access", "database"), ("review point", "target"), ("success metric", "chart")],
+            "takeaway": "The best agent workflows remove manual handoffs while making accountability easier to see.",
+        }
+    return {
+        "title": _headline_from_topic(draft.topic, "Data and AI Brief"),
+        "subtitle": "A practical map of what changed, why it matters, and what to watch next.",
+        "why_title": "Why it matters",
+        "why_text": "The signal is useful when teams can connect the news to decisions, risks and near-term action.",
+        "goal": "Turn signal into action",
+        "goal_note": "(with evidence and judgment)",
+        "icon": "chart",
+        "examples": [
+            ("Product Teams", "roadmap input", "box"),
+            ("Data Teams", "quality check", "database"),
+            ("Executives", "risk view", "target"),
+            ("Analysts", "evidence scan", "magnify"),
+            ("Operations", "workflow fit", "clock"),
+        ],
+        "grid_title": "What Professionals Should Check",
+        "concepts": [
+            ("Trigger", "What changed recently and who announced it?", "fresh context", "bell"),
+            ("Evidence", "Which sources support the main claim?", "better judgment", "magnify"),
+            ("Use Case", "Where could this help real work?", "practical fit", "target"),
+            ("Limits", "What does the evidence not prove yet?", "risk awareness", "shield"),
+            ("Data Need", "What inputs would make this reliable?", "quality control", "database"),
+            ("Workflow", "Which process would change first?", "adoption path", "network"),
+            ("Cost", "What resources or tradeoffs are implied?", "clear decisions", "chart"),
+            ("Governance", "Who owns review and accountability?", "safer rollout", "shield"),
+            ("Skills", "What should teams learn or update?", "capability building", "tree"),
+            ("Next Step", "What small experiment would test value?", "low-risk learning", "target"),
+        ],
+        "choose_title": "Read the signal through",
+        "criteria": [("evidence quality", "magnify"), ("business relevance", "target"), ("data readiness", "database"), ("risk level", "shield"), ("actionability", "chart")],
+        "takeaway": "Strong AI adoption starts with evidence, clear use cases, and disciplined review.",
+    }
+
+
+def _headline_from_topic(topic: str, fallback: str) -> str:
+    cleaned = " ".join(topic.replace(" and ", " & ").split())
+    if not cleaned:
+        return fallback
+    if len(cleaned) <= 58:
+        return cleaned
+    return cleaned[:55].rsplit(" ", 1)[0] + "..."
 
 
 def _draw_scene(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:

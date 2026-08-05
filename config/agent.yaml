@@ -77,12 +77,14 @@ models:
   image: gemini-3.1-flash-image
 visuals:
   allow_ai_illustrations: false
-  direction: topic-specific editorial art with tactile depth and varied palettes
+  direction: polished educational infographic cards with bold headers, icons, example tiles, concise model or concept panels, and a clear takeaway
   avoid:
   - neon-by-default
   - glowing brains and circuit-board cliches
   - robot faces and generic AI imagery
-  - text-heavy quote cards
+  - sparse skeleton diagrams
+  - abstract single-object scenes
+  - text-only quote cards
   - synthetic photorealism
 linkedin:
   owner_urn: urn:li:person:0GDezBSPGQ
