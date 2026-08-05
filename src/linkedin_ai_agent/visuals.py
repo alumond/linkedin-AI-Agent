@@ -71,15 +71,45 @@ def _draw_premium_header(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[
     draw.rounded_rectangle((86, 72, 430, 138), radius=33, fill=_mix(art["accent"], art["ink"], 0.18))
     draw.text((126, 88), _short_category(draft.category).upper(), font=_font(30, bold=True), fill=art["paper"])
 
-    title = str(theme["title"]).upper()
-    lines = _wrap(title, 23)[:2]
-    y = 174 if len(lines) == 1 else 132
-    for index, line in enumerate(lines):
+    title_lines = _header_title_lines(str(theme["title"]))
+    y = 170 if len(title_lines) == 1 else 156
+    max_width = 1510
+    for index, line in enumerate(title_lines):
         fill = art["paper"] if index == 0 else art["accent2"]
-        draw.text((86, y + index * 110), line, font=_font(82, bold=True), fill=fill)
-    _draw_wrapped_text(draw, str(theme["subtitle"]), (90, 382), 1320, _font(38, bold=True), _mix(art["paper"], "#FFFFFF", 0.15), line_gap=8, max_lines=2)
+        _draw_fit_text(draw, (86, y + index * 100), line, max_width, 76, 56, fill, bold=True)
+    _draw_wrapped_text(draw, str(theme["subtitle"]), (90, 390), 1320, _font(38, bold=True), _mix(art["paper"], "#FFFFFF", 0.15), line_gap=8, max_lines=2)
 
     _draw_signal_module(draw, (1710, 86, 2310, 430), art)
+
+
+def _header_title_lines(title: str) -> list[str]:
+    cleaned = " ".join(title.upper().split())
+    if ":" in cleaned:
+        first, second = cleaned.split(":", 1)
+        second = second.strip()
+        return [f"{first.strip()}:", second] if second else [f"{first.strip()}:"]
+    lines = _wrap(cleaned, 27)
+    if len(lines) <= 2:
+        return lines
+    return [lines[0], " ".join(lines[1:])]
+
+
+def _draw_fit_text(
+    draw: ImageDraw.ImageDraw,
+    xy: tuple[int, int],
+    text: str,
+    max_width: int,
+    start_size: int,
+    min_size: int,
+    fill: str,
+    bold: bool = False,
+) -> None:
+    size = start_size
+    font = _font(size, bold=bold)
+    while size > min_size and draw.textbbox((0, 0), text, font=font)[2] > max_width:
+        size -= 2
+        font = _font(size, bold=bold)
+    draw.text(xy, text, font=font, fill=fill)
 
 
 def _draw_signal_module(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], art: dict[str, str]) -> None:
@@ -104,8 +134,10 @@ def _draw_signal_module(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int
 def _draw_premium_summary(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
     _premium_panel(draw, (80, 590, 1132, 930), art["paper"], "#D8DEE8")
     draw.rectangle((80, 590, 104, 930), fill=art["accent2"])
+    draw.rounded_rectangle((904, 664, 1068, 828), radius=42, fill=_mix(art["accent2"], art["paper"], 0.78))
+    _draw_icon(draw, str(theme["icon"]), (986, 746), 58, art)
     draw.text((154, 638), str(theme["why_title"]).upper(), font=_font(44, bold=True), fill=art["ink"])
-    _draw_wrapped_text(draw, str(theme["why_text"]), (154, 714), 850, _font(36), art["ink"], line_gap=16, max_lines=4)
+    _draw_wrapped_text(draw, str(theme["why_text"]), (154, 714), 680, _font(36), art["ink"], line_gap=16, max_lines=4)
 
     _premium_panel(draw, (1200, 590, 2320, 930), art["paper"], _mix(art["accent"], art["paper"], 0.3))
     _draw_clean_target(draw, (1348, 760), 112, art)
@@ -128,42 +160,42 @@ def _draw_premium_examples(draw: ImageDraw.ImageDraw, art: dict[str, str], theme
     examples = list(theme["examples"])[:5]
     card_w = 420
     gap = 48
-    for index, (label, value, _icon) in enumerate(examples):
+    for index, (label, value, icon) in enumerate(examples):
         x = 80 + index * (card_w + gap)
-        _premium_panel(draw, (x, 1096, x + card_w, 1346), art["paper"], "#DDE4ED")
-        draw.rounded_rectangle((x + 28, 1126, x + 112, 1210), radius=28, fill=_mix(art["accent"], art["paper"], 0.85))
-        draw.text((x + 52, 1149), f"{index + 1}", font=_font(34, bold=True), fill=art["accent"])
-        _draw_wrapped_text(draw, str(label), (x + 136, 1132), 240, _font(35, bold=True), art["ink"], line_gap=8, max_lines=2)
-        draw.text((x + 30, 1260), str(value), font=_font(44, bold=True), fill=art["accent"])
-        draw.line((x + 30, 1312, x + card_w - 30, 1312), fill=art["accent2"], width=5)
+        _premium_panel(draw, (x, 1096, x + card_w, 1386), art["paper"], "#DDE4ED")
+        draw.rounded_rectangle((x + 122, 1128, x + 298, 1274), radius=38, fill=_mix(art["accent"], art["paper"], 0.87))
+        _draw_icon(draw, icon, (x + 210, 1198), 58, art)
+        _center_text(draw, (x + card_w // 2, 1310), str(label), _font(31, bold=True), art["ink"])
+        _center_text(draw, (x + card_w // 2, 1354), str(value), _font(31, bold=True), art["accent"])
 
 
 def _draw_premium_concepts(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
-    _premium_section_title(draw, str(theme["grid_title"]).upper(), 1448, art)
+    _premium_section_title(draw, str(theme["grid_title"]).upper(), 1488, art)
     concepts = list(theme["concepts"])[:3]
     card_w = 720
     gap = 40
-    for index, (label, note, best, _icon) in enumerate(concepts):
+    for index, (label, note, best, icon) in enumerate(concepts):
         x = 80 + index * (card_w + gap)
-        _premium_panel(draw, (x, 1516, x + card_w, 1846), art["paper"], art["accent"] if index == 0 else "#DDE4ED")
-        draw.text((x + 42, 1558), f"0{index + 1}", font=_font(42, bold=True), fill=art["accent"])
-        draw.text((x + 132, 1562), str(label).upper(), font=_font(42, bold=True), fill=art["ink"])
-        _draw_wrapped_text(draw, str(note), (x + 44, 1640), card_w - 88, _font(32), art["ink"], line_gap=14, max_lines=3)
-        draw.rounded_rectangle((x + 44, 1760, x + card_w - 44, 1818), radius=29, fill=_mix(art["accent2"], art["paper"], 0.76))
-        draw.text((x + 72, 1776), f"Best for: {best}", font=_font(25, bold=True), fill=art["ink"])
+        _premium_panel(draw, (x, 1556, x + card_w, 1878), art["paper"], art["accent"] if index == 0 else "#DDE4ED")
+        _draw_icon(draw, icon, (x + 92, 1624), 38, art)
+        draw.text((x + 168, 1592), f"0{index + 1}", font=_font(32, bold=True), fill=art["accent"])
+        draw.text((x + 168, 1630), str(label).upper(), font=_font(40, bold=True), fill=art["ink"])
+        _draw_wrapped_text(draw, str(note), (x + 44, 1702), card_w - 88, _font(30), art["ink"], line_gap=13, max_lines=3)
+        draw.rounded_rectangle((x + 44, 1810, x + card_w - 44, 1858), radius=24, fill=_mix(art["accent2"], art["paper"], 0.76))
+        draw.text((x + 72, 1823), f"Best for: {best}", font=_font(23, bold=True), fill=art["ink"])
 
 
 def _draw_premium_checklist(draw: ImageDraw.ImageDraw, art: dict[str, str], theme: dict[str, object]) -> None:
     title = str(theme["choose_title"]).upper()
-    draw.text((80, 1922), title, font=_font(38, bold=True), fill=art["accent"])
+    draw.text((80, 1942), title, font=_font(38, bold=True), fill=art["accent"])
     items = list(theme["criteria"])[:5]
     x = 80
     for label, _icon in items:
         width = 420
-        draw.rounded_rectangle((x, 1988, x + width, 2082), radius=47, fill=art["paper"], outline="#DDE4ED", width=4)
-        draw.ellipse((x + 32, 2016, x + 82, 2066), fill=art["accent"], outline=art["ink"], width=4)
-        draw.line((x + 45, 2042, x + 57, 2054, x + 74, 2028), fill=art["paper"], width=6)
-        _draw_wrapped_text(draw, str(label), (x + 104, 2018), width - 126, _font(28, bold=True), art["ink"], line_gap=6, max_lines=2)
+        draw.rounded_rectangle((x, 2008, x + width, 2102), radius=47, fill=art["paper"], outline="#DDE4ED", width=4)
+        draw.ellipse((x + 32, 2036, x + 82, 2086), fill=art["accent"], outline=art["ink"], width=4)
+        draw.line((x + 45, 2062, x + 57, 2074, x + 74, 2048), fill=art["paper"], width=6)
+        _draw_wrapped_text(draw, str(label), (x + 104, 2038), width - 126, _font(28, bold=True), art["ink"], line_gap=6, max_lines=2)
         x += width + 35
 
 
@@ -480,7 +512,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
         }
     if any(word in text for word in ("governance", "regulation", "responsible", "risk", "safety", "policy")):
         return {
-            "title": _headline_from_topic(draft.topic, "AI Governance: From Principles to Enforcement"),
+            "title": "AI Governance: From Principles to Enforcement",
             "subtitle": "Good governance turns fast-moving AI into accountable operating practice.",
             "why_title": "Why governance matters",
             "why_text": "AI systems now affect real decisions, so teams need controls that are documented and reviewable.",
@@ -513,7 +545,7 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
         }
     if any(word in text for word in ("agent", "workflow", "automation", "toolkit")):
         return {
-            "title": _headline_from_topic(draft.topic, "AI Agents: From Task to Workflow"),
+            "title": "AI Agents: From Task to Workflow",
             "subtitle": "Useful agents connect tools, evidence and review into repeatable workflows.",
             "why_title": "Why agents matter",
             "why_text": "Callable tools let an AI system gather context, run steps and hand off decisions with a record.",
