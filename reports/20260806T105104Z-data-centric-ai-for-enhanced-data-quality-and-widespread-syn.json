@@ -1,0 +1,312 @@
+{
+  "draft": {
+    "alt_text": "An insight card depicting the convergence of data-centric AI, high data quality, and synthetic data generation. Visual elements include graphs, data points, abstract AI models, and secure data pipelines, highlighting enterprise AI modernization.",
+    "body": "A clear shift in enterprise AI points to a stronger emphasis on data itself. Market reports from 2026 confirm widespread adoption: 75% of businesses now use synthetic data for AI model training, as noted by AI Magicx. This move is largely driven by stringent privacy regulations, the need for cost reduction, and the increasing maturity of synthetic data generation technologies.\n\nAlongside this, improving data quality is critical. The Forrester Wave\u2122: Data Quality Solutions, Q1 2026, highlights how these solutions are evolving. They now incorporate AI-driven automation, offer multimodal insights, and provide end-to-end observability. This evolution is vital for building trusted and scalable AI systems.\n\nCompanies are also investing in unified data platforms, as discussed at Google Cloud Next 2026 and in IBM's 'Data and AI Modernization, 2026' report. These platforms aim to manage and govern diverse datasets, unlocking AI's full potential. For data engineers and AI practitioners, this means focusing on strong data governance and exploring synthetic data tools, not just for privacy but also for dataset expansion and bias mitigation.\n\nWhat strategies are you implementing to enhance data quality and integrate synthetic data in your AI initiatives?",
+    "category": "data engineering",
+    "claims": [
+      "75% of businesses are now using synthetic data for AI model training.",
+      "Synthetic data adoption is driven by privacy regulations, cost reduction, and technical maturity.",
+      "Data quality solutions are evolving to include AI-driven automation, multimodal insights, and end-to-end observability.",
+      "Enterprises are investing in unified data platforms to manage and govern diverse datasets for AI.",
+      "These trends are critical for building trusted and scalable AI systems in 2026 and beyond."
+    ],
+    "hashtags": [
+      "#DataEngineering",
+      "#AITrends",
+      "#SyntheticData"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzKWOTLPrxIwSOPdnMm_Kvhm2lZEC-p_BsoOvBrRZjDEqo0YjZ3rypl-o0P3H6DWkSHdcBo25y534FYFwPPoE1J3NBmKpcnVVXI6jlERI6flo8Kvwp83qK1_qxpDAn4W2BXv0ovZvDqlo5EBXokph4qjVord3493TuNABpRu9_pT2pxP731BTQQ8LSuLotZtHuSWfudjDLlRFbulsomERcE7E9oLqb4M_gUq9yEKOSNsATjTjA6s6InOTYTjwt_bQ==",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQMVICKWokIaa6RUs7fOE8Zg6PfFPc5EmT_WIYEmwUU5OiOviUevvmHi6QXFg02HpMQLQO_t8IA-tYjGSZIc3kcCCihNRPMGgW2HpHLOG05k3DQdkAa5bY8nMz7rv_aeJSxyxRh3-Y6nMSFK48izRI7doA7wDbl2n9gWJ9YH7BxngalvAmZW3-S3nmp-E=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_PMt8flxALIM01ENAH8FIsYyMB35J72AUDCKihuj3MeNzEhH11NlI2tryA9oyTPtHKUNz9O8YSpygUiVU1w0OkT9E3-tIWmDxrM-2sS1GVz7mST1MnMvBGypnKu6OsB4rsVpo1PmQHH20zwIOQla2eJ_xmRJ0MeEO-SH3JbvEU2h698_-w=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH7CpN41xQ4ANKdsxXazi3RDzs27Pb0ekjLgG-jrO7J5xND_sq06BNQethqJXXFRysGVcMCjPkHn0Z6sQq7ttBl8iawbUnbRo_YHyXXA5YVuicqfkKNJzrm8BqBsA5sEIsdgWYobPwVmRldusNvmwQ=="
+    ],
+    "topic": "Data-Centric AI for Enhanced Data Quality and Widespread Synthetic Data Generation in the Enterprise",
+    "visual_prompt": "A clean, modern insight card visually representing data quality metrics, synthetic data generation, and a secure, unified data platform. Emphasize data flow and interconnectedness.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 1802,
+      "start_index": 565,
+      "title": "thebusinessresearchcompany.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrRVIPwlf40qO_I1t1CtNBV-u521-2VtLzfyuvfyml3yKulHDVRVYn4__-nreSZtkJr0J24i_iBGof6f5H1c9inC-_BMWkINmnUOYgTeVJxtw_85t472HOVv695JScyj-CMPc22judVsp0FWgt4JjfcEmjv1elkCe8pkpMKfcz3GyelAKbtwnuf7cQYezWI1ji-1pogfBF26Fv63coKz2PI2NnD8iJ0wsrwQ=="
+    },
+    {
+      "end_index": 2663,
+      "start_index": 1802,
+      "title": "precedenceresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0gS4pw8oSWQL_yjZOu3FzL4gmHfxjQu9q_YIcsyzF8O_K4kFPpTtq6vdJlHjG5EBvLBZvD4kqOlgCSFB_mDmdsI1Z29XnJcx7eZWxF9TGpyQYxxAat_IVlD7Y06K2I2iW7qcM3wGE7ZrPVCQD9DfRo70cbaKQV14tpxDJ6iXp6-RMS9wJzjMPwwxPqIShMtL6pw=="
+    },
+    {
+      "end_index": 3375,
+      "start_index": 2663,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyl3WplInE9EC11rEDN1LkL5iW3xZ8XeOti5TUDipYjWWPwtEl7TgG-6w6bBKHVm9hg6FXRw3Upo8YtoYslfEUQiMFwMcy1yl0cfPtnPmSvsP6SSjEUnY46XAATcdOnqJrTQN3UfAPBuzXSs3xuYkMhi3yCf2rZcesK5VFQNASU1-7aAnuwywsqyTHyLsKM9yaSjYSgiBFys4YFixveP9zVPNzxbtSDeS3Ix0="
+    },
+    {
+      "end_index": 4200,
+      "start_index": 3375,
+      "title": "weforum.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzH4n-X85pMcgCw9EQ1r1D2j2aO6wZRGL36SgMtzaRSRPQbyVX5e3VgfVGVjAJJcgSxn6Qb6AB20ZlW68CnAQK-QlKR4Sb5N6rqLPhJBaGFk5lS4GkbSjeR1QUDIw466WRtmrR5vqro5g3VaDBkfkFrMKTbgTA0kQqOv3q-1wicniKDbfzd-ZdRvFuJbKxtQ3IqgrWPvi_gsTLuNQM7bT0Zw=="
+    },
+    {
+      "end_index": 6148,
+      "start_index": 5920,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyl3WplInE9EC11rEDN1LkL5iW3xZ8XeOti5TUDipYjWWPwtEl7TgG-6w6bBKHVm9hg6FXRw3Upo8YtoYslfEUQiMFwMcy1yl0cfPtnPmSvsP6SSjEUnY46XAATcdOnqJrTQN3UfAPBuzXSs3xuYkMhi3yCf2rZcesK5VFQNASU1-7aAnuwywsqyTHyLsKM9yaSjYSgiBFys4YFixveP9zVPNzxbtSDeS3Ix0="
+    },
+    {
+      "end_index": 6933,
+      "start_index": 6769,
+      "title": "thebusinessresearchcompany.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrRVIPwlf40qO_I1t1CtNBV-u521-2VtLzfyuvfyml3yKulHDVRVYn4__-nreSZtkJr0J24i_iBGof6f5H1c9inC-_BMWkINmnUOYgTeVJxtw_85t472HOVv695JScyj-CMPc22judVsp0FWgt4JjfcEmjv1elkCe8pkpMKfcz3GyelAKbtwnuf7cQYezWI1ji-1pogfBF26Fv63coKz2PI2NnD8iJ0wsrwQ=="
+    },
+    {
+      "end_index": 7683,
+      "start_index": 6933,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDWUrCNN1D5NKB9up1ArgA66mqcY139wAzjt_sz249pFpxypa5l1hLVoM0_s_Fn-gpDmqJoTUow5nhij3upWgCjD0SH0R5sWCy9ESKVOtowPqQtLrHkyHRmKG5SZuPyo4gSRB0dNWEwyO3o6ZlgFiBcA0A_ooWkYq2TFqaO0TYf2cJ06Fy-_P4Za1LDRkUJSsY4N3qHd6jbVNV-eBl"
+    },
+    {
+      "end_index": 8465,
+      "start_index": 7683,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrA4VCwoz4TvXFC3ymcnFsGG6on-i_y17tYgXVNIfacQczJ-kQ_RCxzDHlGNOVY6t57HpdnU7QajjKuiWaTGCoUbtPI8UJzK4hbohkaIVEsDdr10YKNcEXtmQjCpxc5mYtf2G_C4UsrLPR"
+    },
+    {
+      "end_index": 9329,
+      "start_index": 8465,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAkXUB6BNzJmmDQ5OTt2gdNtLU_6NUhSe5Fv3w5UPyk7dwEsv8uXsWSO_gzxztbihz770neb6RSueI2OAaXGowqltV43bxUMSG5MrIOm1ITGYOOYKcVRIUHn4IWyJmX5vCaCsgM5RO-DLGu0MysHNaJUQrUg3r_gxjEBA2AMVihR4aQas8ZZaiRYO1i9WOsJ6YaJFRdOZ6NiWIyfpY7A=="
+    },
+    {
+      "end_index": 11197,
+      "start_index": 10120,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyl3WplInE9EC11rEDN1LkL5iW3xZ8XeOti5TUDipYjWWPwtEl7TgG-6w6bBKHVm9hg6FXRw3Upo8YtoYslfEUQiMFwMcy1yl0cfPtnPmSvsP6SSjEUnY46XAATcdOnqJrTQN3UfAPBuzXSs3xuYkMhi3yCf2rZcesK5VFQNASU1-7aAnuwywsqyTHyLsKM9yaSjYSgiBFys4YFixveP9zVPNzxbtSDeS3Ix0="
+    },
+    {
+      "end_index": 12013,
+      "start_index": 11197,
+      "title": "thebusinessresearchcompany.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrRVIPwlf40qO_I1t1CtNBV-u521-2VtLzfyuvfyml3yKulHDVRVYn4__-nreSZtkJr0J24i_iBGof6f5H1c9inC-_BMWkINmnUOYgTeVJxtw_85t472HOVv695JScyj-CMPc22judVsp0FWgt4JjfcEmjv1elkCe8pkpMKfcz3GyelAKbtwnuf7cQYezWI1ji-1pogfBF26Fv63coKz2PI2NnD8iJ0wsrwQ=="
+    },
+    {
+      "end_index": 12785,
+      "start_index": 12013,
+      "title": "kiteworks.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQESnvDd-rxPpUKxRIK4dKvlNHvL-59-EEJ-7hVTe8AjGvfjBFXl1aq0IKVb1FF9RNAqOUXwbeb6KxLRD8xGc2jnNb1Kuc4bqS2fbGxK5AQ_ZF4xIw8C3UQ1jzASGaje7YTiDUpO4wlfpX02AN6Mp-ko8iuXrzoBbqhiikBdb1TOBuSyPqSn_s77ZAM3HYDWkPjtqHipBww="
+    },
+    {
+      "end_index": 12785,
+      "start_index": 12013,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAkXUB6BNzJmmDQ5OTt2gdNtLU_6NUhSe5Fv3w5UPyk7dwEsv8uXsWSO_gzxztbihz770neb6RSueI2OAaXGowqltV43bxUMSG5MrIOm1ITGYOOYKcVRIUHn4IWyJmX5vCaCsgM5RO-DLGu0MysHNaJUQrUg3r_gxjEBA2AMVihR4aQas8ZZaiRYO1i9WOsJ6YaJFRdOZ6NiWIyfpY7A=="
+    },
+    {
+      "end_index": 13546,
+      "start_index": 12785,
+      "title": "kai.security",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFyAvkYpZOmDbqXutl1PGP6BnqOOxpR6d_Zzlatn9zrO0D-E9fCwfaiu1ywn5Jvx69czF2TKEBkCqGk4raW_dfF5_2UcZOn9okI2ampvko7OpHBs83YihA8sR8Ajl71aYVUsTTL4b4gyqy4FkmFIcXb4InOBZ2s3IVHQyn73XY="
+    },
+    {
+      "end_index": 14381,
+      "start_index": 13546,
+      "title": "torq.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQED58PDlln3GdUdYmBDjq3ZE_93JwMAw_KjCnEv0L7dZbMz5-E3AsR6piRBwcMCIigMYLZo-3R0moJfgvxSlAluXNpn7a5qyntTtdsgnjRhx-KJ4skveoz8AI1Ek0zeih8GoKYIowgRn8MhtQ=="
+    },
+    {
+      "end_index": 16079,
+      "start_index": 14949,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyl3WplInE9EC11rEDN1LkL5iW3xZ8XeOti5TUDipYjWWPwtEl7TgG-6w6bBKHVm9hg6FXRw3Upo8YtoYslfEUQiMFwMcy1yl0cfPtnPmSvsP6SSjEUnY46XAATcdOnqJrTQN3UfAPBuzXSs3xuYkMhi3yCf2rZcesK5VFQNASU1-7aAnuwywsqyTHyLsKM9yaSjYSgiBFys4YFixveP9zVPNzxbtSDeS3Ix0="
+    },
+    {
+      "end_index": 16899,
+      "start_index": 16226,
+      "title": "thebusinessresearchcompany.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrRVIPwlf40qO_I1t1CtNBV-u521-2VtLzfyuvfyml3yKulHDVRVYn4__-nreSZtkJr0J24i_iBGof6f5H1c9inC-_BMWkINmnUOYgTeVJxtw_85t472HOVv695JScyj-CMPc22judVsp0FWgt4JjfcEmjv1elkCe8pkpMKfcz3GyelAKbtwnuf7cQYezWI1ji-1pogfBF26Fv63coKz2PI2NnD8iJ0wsrwQ=="
+    },
+    {
+      "end_index": 17783,
+      "start_index": 16899,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1O9veGWJM2iAG8WUSheAJmzJbEMlgo0tX9g4lWzqnQzDl0wXuJ4MbFPYphgb5GII5rI1XxKil6KycwUgJcac72pTzWzHBcZ_tk8zIAk_Pk1KAB-__brOrLXQhy8I2iV5hL5FUQijaXeh3drAJMHOpmTSsNjwM47sJtL0pH4Vm6gAPwWG82v64m2xKbi8oGeZ_iXWzPDjkzgFm3yMELCQsHDNbQqwydMy5bsdOwpWR5YiyfIhKBVK19RkzsfnDDGJBHYs="
+    },
+    {
+      "end_index": 18530,
+      "start_index": 17783,
+      "title": "weforum.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9BDV53vSLYx64H-vc6YkkGyBK-5NP6j-W732Hu9WSATk0f5-fkrQHQS-6YhFHTn5wuXmNDdBi_pP9J3c5W2zh82BAXMaqiSSLQvmSEaNkND6iwild0xSPmn7N8jMMDpreZ92-Ozjqz0BwstH__0g_L5l1xcXKUhTRV4ePyLkaTKDFdiNaz-8ImovIOWMXsFpiTsbLd29Knpw6LCBO_M9erVA="
+    },
+    {
+      "end_index": 19436,
+      "start_index": 18530,
+      "title": "cyberhaven.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaN6u5DOqnxRjAzAFQm9mLhw7tD08tVloyxuRdbq_TgtP3YHPrw4-TPSokxOGvNrZDxy4k_lM1S4NfV48WAZdgekzLlhWUpQ__HJy3qCylaTdLkcVZZlGeLFeWIhjHb1__CcRf4dJpkSSib9rQlW18JbyDogohDbyeDhrOhyxCwFKmzv8XKEfRW6ZxBHbvWw=="
+    },
+    {
+      "end_index": 21160,
+      "start_index": 20140,
+      "title": "redmondmag.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFdLJSvahDnIL7wDoAvJjv-EPvtldHd44Mz02mLfImy5fltN3dTiyLtiwfoK7vuHfR2l0WFxpIh8rqVssUEJKeV9p4t4yHW_8Vzc9wjluVgeOyU4IqU4udjSvDSxogwTl3OA4Afuu-qJqP_DNQNF0fyfrBKkl0yVQiE7WQWbifEusWRU8HsaKv82-tdrM6az8sK6GltecPSuY473Mw="
+    },
+    {
+      "end_index": 22114,
+      "start_index": 21160,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGpmYJWa_oEShKAky6Mb4zTcaDbo9yWZ3bU7VYTftMCBxr-g2Ru4nlrKSQZjAYt2Gs0kQxADa92LQ2zt1RFv75J6IiEM6gGaTdJWtkkZnVN8T8s_UPbkrJGWcJkLwCaAV5zvsjId6EmXEnpVi_yJpM2l0noxlgBcmWRnUA="
+    },
+    {
+      "end_index": 22114,
+      "start_index": 21160,
+      "title": "cybersecuritystats.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHz-ANMJGqqIL8ekgh_V3_mcyAmZcNHP0sl6NYygq9v5GS_WAX68OUMMcsLcIkTPlyX2DVBYZFA8dJEGVwI15VZtfzLX7AKQYQUpuxeh9PjP99Q9xb1q0vci4r-9HyEvH83afCKtXjRS2sMHGGIIduz_hPiAvtRrr6FlsoROjZa8CRp36Kct4OmDHm9QUQ="
+    },
+    {
+      "end_index": 22857,
+      "start_index": 22114,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXdbqQGcnyU3fZOvtnV6CzQ6YmIrRR1V6QYXgjFaa4-V1JWKNqD_BLYW2tdmLSEJgKaRC9B2RLD7zmUlTtgqcpeK__t-zjo1kU4QGW71CrzpydcKx7tzSVad2s0HwJfOCSV7XEScA9E0idWuMNRh5gqQ=="
+    },
+    {
+      "end_index": 22857,
+      "start_index": 22114,
+      "title": "torq.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQED58PDlln3GdUdYmBDjq3ZE_93JwMAw_KjCnEv0L7dZbMz5-E3AsR6piRBwcMCIigMYLZo-3R0moJfgvxSlAluXNpn7a5qyntTtdsgnjRhx-KJ4skveoz8AI1Ek0zeih8GoKYIowgRn8MhtQ=="
+    },
+    {
+      "end_index": 23689,
+      "start_index": 22857,
+      "title": "thebusinessresearchcompany.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrRVIPwlf40qO_I1t1CtNBV-u521-2VtLzfyuvfyml3yKulHDVRVYn4__-nreSZtkJr0J24i_iBGof6f5H1c9inC-_BMWkINmnUOYgTeVJxtw_85t472HOVv695JScyj-CMPc22judVsp0FWgt4JjfcEmjv1elkCe8pkpMKfcz3GyelAKbtwnuf7cQYezWI1ji-1pogfBF26Fv63coKz2PI2NnD8iJ0wsrwQ=="
+    },
+    {
+      "end_index": 24549,
+      "start_index": 23689,
+      "title": "precedenceresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0gS4pw8oSWQL_yjZOu3FzL4gmHfxjQu9q_YIcsyzF8O_K4kFPpTtq6vdJlHjG5EBvLBZvD4kqOlgCSFB_mDmdsI1Z29XnJcx7eZWxF9TGpyQYxxAat_IVlD7Y06K2I2iW7qcM3wGE7ZrPVCQD9DfRo70cbaKQV14tpxDJ6iXp6-RMS9wJzjMPwwxPqIShMtL6pw=="
+    },
+    {
+      "end_index": 26420,
+      "start_index": 25246,
+      "title": "precedenceresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0gS4pw8oSWQL_yjZOu3FzL4gmHfxjQu9q_YIcsyzF8O_K4kFPpTtq6vdJlHjG5EBvLBZvD4kqOlgCSFB_mDmdsI1Z29XnJcx7eZWxF9TGpyQYxxAat_IVlD7Y06K2I2iW7qcM3wGE7ZrPVCQD9DfRo70cbaKQV14tpxDJ6iXp6-RMS9wJzjMPwwxPqIShMtL6pw=="
+    },
+    {
+      "end_index": 27232,
+      "start_index": 26420,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXdbqQGcnyU3fZOvtnV6CzQ6YmIrRR1V6QYXgjFaa4-V1JWKNqD_BLYW2tdmLSEJgKaRC9B2RLD7zmUlTtgqcpeK__t-zjo1kU4QGW71CrzpydcKx7tzSVad2s0HwJfOCSV7XEScA9E0idWuMNRh5gqQ=="
+    },
+    {
+      "end_index": 28074,
+      "start_index": 27232,
+      "title": "marketsandmarkets.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyl3WplInE9EC11rEDN1LkL5iW3xZ8XeOti5TUDipYjWWPwtEl7TgG-6w6bBKHVm9hg6FXRw3Upo8YtoYslfEUQiMFwMcy1yl0cfPtnPmSvsP6SSjEUnY46XAATcdOnqJrTQN3UfAPBuzXSs3xuYkMhi3yCf2rZcesK5VFQNASU1-7aAnuwywsqyTHyLsKM9yaSjYSgiBFys4YFixveP9zVPNzxbtSDeS3Ix0="
+    },
+    {
+      "end_index": 28882,
+      "start_index": 28074,
+      "title": "redmondmag.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFdLJSvahDnIL7wDoAvJjv-EPvtldHd44Mz02mLfImy5fltN3dTiyLtiwfoK7vuHfR2l0WFxpIh8rqVssUEJKeV9p4t4yHW_8Vzc9wjluVgeOyU4IqU4udjSvDSxogwTl3OA4Afuu-qJqP_DNQNF0fyfrBKkl0yVQiE7WQWbifEusWRU8HsaKv82-tdrM6az8sK6GltecPSuY473Mw="
+    },
+    {
+      "end_index": 29746,
+      "start_index": 28882,
+      "title": "prnewswire.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEMRIEQRTELViSkNwMihlDKEtF1RMfEtYqyJIyCnHGSn7-DTfPgR2j5Zmil3tECFFNBlPp0rhhFfJ_pq0Lx7In_ZHHuiQ5nHlf2Zo5z_NX4aC5wS-avpPdywHwU6XKqTqp8fuaWBpixuR0ntqHspsbnc4kUsOPSxCC3mAw28Nwjr7cnjUcl9E51YgsgNA8UYlIDBEiuK3lgDka25oYFAXqfDaR4uQHdInLUq7ansb8UnbbIPddXZkyvZg-9mdFjou6r3G0DjhDFbXU="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-06T10:51:04Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQFdCUdHad-bxw",
+    "post_urn": "urn:li:share:7491083418143870976",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Data-Centric AI for Enhanced Data Quality and Widespread Synthetic Data Generation in the Enterprise"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Data-Centric AI for Enhanced Data Quality and Widespread Synthetic Data Generation in the Enterprise",
+  "status": "published",
+  "trend": {
+    "category": "data engineering",
+    "evidence_score": 0.9,
+    "novelty_score": 0.8,
+    "practical_value_score": 0.9,
+    "recency_score": 0.9,
+    "relevance_score": 0.9,
+    "sources": [
+      {
+        "claim_supported": "Forrester's Q1 2026 report highlights that data quality has become critical for promoting trust in data and AI for modern enterprises, with leading platforms integrating generative and agentic AI across profiling, classification, validation, and remediation.",
+        "published_at": "2026-03-29",
+        "publisher": "Forrester Research",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "The Forrester Wave\u2122: Data Quality Solutions, Q1 2026",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQMVICKWokIaa6RUs7fOE8Zg6PfFPc5EmT_WIYEmwUU5OiOviUevvmHi6QXFg02HpMQLQO_t8IA-tYjGSZIc3kcCCihNRPMGgW2HpHLOG05k3DQdkAa5bY8nMz7rv_aeJSxyxRh3-Y6nMSFK48izRI7doA7wDbl2n9gWJ9YH7BxngalvAmZW3-S3nmp-E="
+      },
+      {
+        "claim_supported": "Gartner's 2026 data strategy report confirms that 75% of enterprises are now using synthetic data for AI model training, up from under 40% in 2024, driven by privacy regulations, cost pressure, and technical maturity.",
+        "published_at": "2026-04-12",
+        "publisher": "AI Magicx",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Synthetic Data Is Eating AI Training: How 75% of Businesses Are Replacing Real Customer Data - AI Magicx",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_PMt8flxALIM01ENAH8FIsYyMB35jJ72AUDCKihuj3MeNzEhH11NlI2tryA9oyTPtHKUNz9O8YSpygUiVU1w0OkT9E3-tIWmDxrM-2sS1GVz7mST1MnMvBGypnKu6OsB4rsVpo1PmQHH20zwIOQla2eJ_xmRJ0MeEO-SH3JbvEU2h698_-w="
+      },
+      {
+        "claim_supported": "IBM's 2026 outlook emphasizes that AI conversations must be intertwined with data, and data modernization is a catalyst for enterprises to thrive in the age of intelligence.",
+        "published_at": "2026-02-16",
+        "publisher": "IBM",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Data and AI Modernization, 2026 - IBM",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHzKWOTLPrxIwSOPdnMm_Kvhm2lZEC-p_BsoOvBrRZjDEqo0YjZ3rypl-o0P3H6DWkSHdcBo25y534FYFwPPoE1J3NBmKpcnVVXI6jlERI6flo8Kvwp83qK1_qxpDAn4W2BXv0ovZvDqlo5EBXokph4qjVord3493TuNABpRu9_pT2pxP731BTQQ8LSuLotZtHuSWfudjDLlRFbulsomERcE7E9oLqb4M_gUq9yEKOSNsATJtA6s6InOTYTjwt_bQ=="
+      },
+      {
+        "claim_supported": "At Google Cloud Next 2026, data was central, with tools like Knowledge Catalog and Smart Storage aiming to improve AI system performance by enabling companies to use data where it lives without migration.",
+        "published_at": "2026-04-29",
+        "publisher": "YouTube (Futurum Research)",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Google Cloud Next 2026: The Signals That Matter for Enterprise AI - YouTube",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH7CpN41xQ4ANKdsxXazi3RDzs27Pb0ekjLgG-jrO7J5xND_sq06BNQethqJXXFRysGVcMCjPkHn0Z6sQq7ttBl8iawbUnbRo_YHyXXA5YVuicqfkKNJzrm8BqBsA5sEIsdgWYobPwVmRldusNvmwQ=="
+      },
+      {
+        "claim_supported": "The synthetic data generation market is projected for strong growth from 2026 to 2034, driven by the increasing adoption of synthetic datasets as safer alternatives to real-world data due to privacy regulations and cybersecurity concerns.",
+        "published_at": "2026-06-26",
+        "publisher": "Fortune Business Insights",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Synthetic Data Generation Market Growth, Industry Analysis, 2026-2034",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFrBWYgglZwoHf3lnjPb1D_uSm60l71I1SydWPtYvcdD2isLb9DSBDm4SmZO2lXtdpFk6gPqHItMbrv3ddWzFKkXmmJ8l0Cd7GpZ5bcoITMy0X4LOP_V31h7xyHaa5G4A96qr_VxT-AtObVTmZ1Wcvun0JBnU6amdDBFJr_Gb6JB2f6d5d8RPl8rwckv62uy-hs3Q="
+      }
+    ],
+    "summary": "The focus in enterprise AI is shifting to data-centric approaches, with significant attention on improving data quality and leveraging synthetic data generation. Market reports from 2026 confirm that a substantial percentage of enterprises are now using synthetic data for AI model training, driven by privacy regulations, cost reduction, and technical maturity. Data quality solutions are evolving to incorporate AI-driven automation, multimodal insights, and end-to-end observability, becoming critical for building trusted and scalable AI systems. Companies are investing in unified data platforms that can manage and govern diverse datasets to unlock AI's full potential.",
+    "topic": "Data-Centric AI for Enhanced Data Quality and Widespread Synthetic Data Generation in the Enterprise"
+  },
+  "visual": {
+    "alt_text": "An insight card depicting the convergence of data-centric AI, high data quality, and synthetic data generation. Visual elements include graphs, data points, abstract AI models, and secure data pipelines, highlighting enterprise AI modernization.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQFdCUdHad-bxw",
+    "mime_type": "image/png",
+    "path": "assets/20260806T105103Z-data-centric-ai-for-enhanced-data-quality-and-wide.png",
+    "width": 1200
+  }
+}
