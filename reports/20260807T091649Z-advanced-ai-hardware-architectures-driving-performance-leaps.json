@@ -1,0 +1,410 @@
+{
+  "draft": {
+    "alt_text": "Visual representation of advanced AI hardware architectures, featuring interconnected chip designs and data pathways, symbolizing significant performance and efficiency improvements for AI.",
+    "body": "AI's rapid growth hinges on specialized hardware. NVIDIA's Blackwell architecture, announced March and launching Q4 2024, sets a new standard. It features a dual-die configuration, 208 billion transistors, and 5th-gen NVLink, delivering up to 30x performance over its Hopper predecessor for specific AI workloads. This design addresses modern AI's intense demands.\n\nGoogle Cloud's TPU v5e, generally available since November 2023, offers a cost-efficient alternative. It provides up to 2x higher training performance and 2.5x higher inference performance per dollar than previous TPU generations. Built for scalable, versatile AI.\n\nThese architectural leaps are crucial for powering the next generation of large language models and generative AI systems, making advanced AI more accessible and efficient. This translates to faster development cycles and more sophisticated applications.\n\nFor data scientists and AI engineers, understanding these innovations informs infrastructure choices, optimizes model training, and refines deployment strategies. For business leaders, this means more efficient AI adoption and faster time-to-market for AI-powered products. How are these hardware developments shaping your approach to AI model development and deployment?",
+    "category": "AI releases",
+    "claims": [
+      "NVIDIA's Blackwell architecture, announced March 2024 and launched Q4 2024, has a dual-die configuration and 208 billion transistors.",
+      "Blackwell uses 5th-generation NVLink.",
+      "Blackwell offers up to 30 times more performance than Hopper for certain workloads.",
+      "Google Cloud's TPU v5e has been generally available since November 2023.",
+      "TPU v5e provides up to 2 times higher training performance per dollar compared to previous generations.",
+      "TPU v5e provides up to 2.5 times higher inference performance per dollar compared to previous generations.",
+      "These innovations are crucial for powering large language models and generative AI systems."
+    ],
+    "hashtags": [
+      "#AIHardware",
+      "#GenerativeAI",
+      "#DataScience"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAzRewX8jNTxU4D2NKfZjtozWgZ6oVoQLSs9iRlYU7I0ldpjO9HaaavZRbCbgjcSqwpo2eYEjMOOOkH3_lwsHQfpbPBDKpNA22GZC7leavdPaHrDG82e19RCI_hV6lDAx26pKQAbkUP8hPGUnWEMwx7klHuDIfZENWJ_FI4eB8yuc4Ow5hoXhl",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAntPzJR6wqnhlkkzlOe4PkDz1V6RSjyVqnF3MvZgdI62rbJs9yo2lptYzSAXjlO6FzNPx5r_yZaT2V8eZ6UZSQXHA_k6EU3soU669JbY3W3FqYwVH5kzSRT9EIMEIKzFOoIG_rn7DG3I3q8L4EoqCReIYfcvp72y4EU3_MJHKmvOGfRhYtO9s",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvsRaQQ88OGeyH280jRjLyIRIThtJyi5qlskjy0gOhc_EWB7u_jMH6ZeGnGKtpm_Ahn3BTQh54jPubdoOJ5WBl1eJ61d1acAncmVEtIthAwkI9ILqWIEdLLyGqGNuU3S9EvjVIVCc0MvxB-LTfxCjLwmyJlP-R",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbMSJbL2dgk00EZrCN9Yfo2jJ35ab8DVgiOcUaS_rFge9ODNH_OoWVqSTR9DxKbr9xXiyPU07cpZ9VPgBvoDZa9f3a1prxxgKn6XDSSxTd7liq3xZUKZJGOSXxBgtt2RCHBVxmAm2DhRBx6FYYnnd3uHpPWQZzOrj_la5ywCf5JbLC7ouNGUQF42OBQ6jKRWn4gzNp"
+    ],
+    "topic": "Advanced AI Hardware Architectures Driving Performance Leaps",
+    "visual_prompt": "An abstract design showing interconnected specialized AI chips (like GPUs and TPUs) with light trails representing data flow, signifying performance and efficiency gains. Include elements that subtly suggest the dual-die nature of Blackwell and the cost-efficiency of TPU v5e.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 595,
+      "start_index": 348,
+      "title": "wikipedia.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEhck_hwQLvpbdS7zxp1--00wetY049JmbjzrmFKuWFQRVCROoVj5HS6s0aMv5CPSoVEPkEEGtkVc0F4XnyafcEAbQNab9FPSWOhzNqfF6q2i59JvOaQI_LzZLkc8ooqebQKg=="
+    },
+    {
+      "end_index": 595,
+      "start_index": 348,
+      "title": "nih.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEYzWsQsJnvFRJA1Q6ZrrOB1Z56AbE4T18kuZ3dabXc8F4qOP_dex0LRcluErNM0jKouiyF4n7zCBdVbVJNBRj7R1QOvD0q3diQZvc9HN-EHyrkVoaRwIuNoUhBIOZcy9r3x8QmnhH3wd4W5t-d"
+    },
+    {
+      "end_index": 595,
+      "start_index": 348,
+      "title": "isomorphiclabs.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHys6xG-WW0UVI2S5JueIuxTPqc1ZYim4wpEq5SmuYjWHD086wJLfE4SPkLP5gYQNeDYa256wVrsltdlTxAbBNvQoiko2VnwC8a6Txpm9zHqKHMAZHAxNSilklXMZSRTCzM7TBQjYfaXiI233nkXJeNg9TgpvbAOOsy0VZAo0bYD5RF4fwjaImVL1bgE0EAXGk7TYxustrxccQ0Vwf7VI3_3xtw3eYe38kQ8dD4xV52A=="
+    },
+    {
+      "end_index": 595,
+      "start_index": 348,
+      "title": "blog.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtWn_uR7kqVsLnWo_Ev-ygCyokcQbGMrCXy4sk9aG7CJhKI7f5Dk0LChZ4fDo-nWhNzP9Z5KNWehcZQOjny6bQAnUgCVtEWtWFeNPTdvv3UAHceyvn-TRi8vwUxBCcJinq6_pTT37PRtYZvmN1otoSR7859hwPkAYHg6PRnYH_eDioYIjx3HRg9ZReDlfeFaYjLB5_vU6jR_Ro"
+    },
+    {
+      "end_index": 836,
+      "start_index": 596,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGg7Gr3l9E91qR7zFROG9PVIT38_x-NRjoXao4NyiYuoyJToBaAPnRNXYJg6KQrpX1X_8PactxC86yafueStKjW6jNvtNZQWcKeMw_K6DxITfqtQTYNPmzcYJYGwStDXoCfwC78heSmVqtOSJ8h_qlr7wkVvZljIIlKQBz-V7-cUpYLtQc6it8QsiegqfXSPNbbyPU="
+    },
+    {
+      "end_index": 985,
+      "start_index": 837,
+      "title": "weforum.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0ObUWm_eXyZgioY-sRVNV1pQ6qof6QGeNSNWU8fGqgylno4HXSfbznYF7i1fN1OPC7dZp_x25Zu0n2J3AdRDo2qF4OfLwRooDoKUOKIP1WmAHBKOK8SQB1hitHivhjfeKMPrZRi6J9o5_YjPjIY5kXBTLWXcJlI7I4yCVVk1toSv7v3O6ZvX42AoekOErug=="
+    },
+    {
+      "end_index": 985,
+      "start_index": 837,
+      "title": "theguardian.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENXdUOQfMfDpAgRkGQKHriX49I4Ze5FViFZahJCLkpkfs7jjPTZxdddnZypmspsc5sZTfStL2b4T0VlAQkhHpfS-B6ec-iiSP4lBMWBjJj7v-C88TXlxSVoPUDKwyWsoSsk2ZyuuZOFl0ItFzanRJ9vZUoUjR9LdjJPdLioMIityAxFoBKsDoVgCQ7YzRjZT3-XDMiZQIO"
+    },
+    {
+      "end_index": 985,
+      "start_index": 837,
+      "title": "blog.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEupXkl7TxRWuBFWoVoM-zUJXRmtcl-5F7ZlhqogGEHFHXB9X87mUeOGiI-LWgdTHzM053J-w-4rBlVD9yzIMJCfCssVIL9Nsb7OrJMXjrAxvPzmUpV-B_o6rmwwlbVDEbXbxohF6bow92WoiHF4ugFNJKa8fjgvVi2XpxH0XJzEQhLp-b0IQyABG3cFDowQFds_LMHMQk="
+    },
+    {
+      "end_index": 6365,
+      "start_index": 6064,
+      "title": "fpt.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvsRaQQ88OGeyH280jRjLyIRIThtJyi5qlskjy0gOhc_EWB7u_jMH6ZeGnGKtpm_Ahn3BTQh54jPubdoOJ5WBl1eJ61d1acAncmVEtIthAwkI9ILqWIEdLLyGqGNuU3S9EvjVIVCc0MvxB-LTfxKDiWmyJlP-R"
+    },
+    {
+      "end_index": 6365,
+      "start_index": 6064,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF5c9vXZQRgq92on282f6eV_7QMlahTw70RtuP8KmO34Ec4s0urR_gKdpEGRJ5ctm4lcsQyqip3l-Ieae0f2tlo-4_G1JFx8-cuCmzBp0yRxQ7krKCl9pdzMnSUj0xcDY2pXOomMp5oq2TUT6INUD5hV3hNO20L1AbC-a4eX3ONJ64zOvsnHBrSMihc1QAurYBVYXAcy1mYtPK7vQm6JFXxAoc8PBO05NURk4TLTCPDJIAKedf10qQ="
+    },
+    {
+      "end_index": 6365,
+      "start_index": 6064,
+      "title": "wikipedia.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEigi-CfOcTaS0Bag3a3NgGWWV-yDmV9vzOTBtfvSxj2fx6a4HM-9i4W7DMOljm9WijpADorHgrHiXhd9lVWtYKV7rK87rBAe0mXSgJZt1wUmma7B_UM6B5IlxXPSuo7_MZDCt89zfsau6k2A9GrZx_HQcDFTZo"
+    },
+    {
+      "end_index": 6365,
+      "start_index": 6064,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFnakX66FDVuYJMdy22PPvKqxCU0HODTq-dIMouSBh-22MUWdQgJsbxRS7nV3NOmWDvxGIwl-ztJw0RAqrC8wh_ze8s7QpNxK25czvvskjCqSevgSadxmyGQlk1t0HuRvc3foyONWfTkGqw_ZhBKT3WsYd-UA=="
+    },
+    {
+      "end_index": 6365,
+      "start_index": 6064,
+      "title": "nvidia.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAzRewX8jNTxU4D2NKfZjtozWgZ6oVoQLSs9iRlYU7I0ldpjO9HaaavZRbCbgjcSqwpo2eYEjMOqOkH3_lwsHQfpbPBDKpNA22GZC7leavdPaHrDG82e19RCI_hV6lDAx26pKQAbkUP8hPGUnWEMwx7klHuDIfZENWJ_FI4eB8yuc4Ow5hoXhl"
+    },
+    {
+      "end_index": 6690,
+      "start_index": 6366,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAntPzJR6wqnhlkkzlOe4PkDz1V6RSjyVqnF3MvZgdI62rbJs9yo2lptYzSAXjlO6FzNPx5r_yZaT2V8eZ6UZSQXHA_k6EU3soU669JbY3W3FqYwVH5kzSRT9EIMEIKzFOoIG_rn7DG3I3q8L4EoqCReIYfcvp72y4EU3_MJHKmvOGfRhYtO9s"
+    },
+    {
+      "end_index": 6690,
+      "start_index": 6366,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbMSJbL2dgk00EZrCN9Yfo2jJ35ab8DVgiOcUaS_rFge9ODNH-OoWVqSTR9DxKbr9xXiyPU07cpZ9VPgBvoDZa9f3a1prxxgKn6XDSSxTd7liq3xZUKZJGOSXxBgtt2RCHBVxmAm2DhRBx6FYYmnd3uHpPWQZzOrj_la5ywCf5JjLC7ouNGUQF42OBQ6jKRWn4gzNp"
+    },
+    {
+      "end_index": 6690,
+      "start_index": 6366,
+      "title": "datacenterfrontier.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG68ZUMHnYNoQgA3tylHqzW8dGYYfTWPemqSYDKqyWCIIzzAf_4ayWGO7HTK62r2dWFqqA8nHQ3oicMHMf4QLQWgODqZPWu7iAWtzHd5bEBYTQe_vpZTKfxv88rVoQ9SZBl-7SbmWhk21J0HzTWf2DwlabFWMo5xcgrAg1HP8kARHhBbSNRsvHRFCYL-hbv4JQ1-PXxUZn-9vJarZ_Am1mq06DaWxNotzt98AJqS_8-ybCPhGmnjQUVIJUUAiyapFzmnhB1Im2yYL88ZkABffw="
+    },
+    {
+      "end_index": 6690,
+      "start_index": 6366,
+      "title": "semianalysis.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrskp5ODNsMPFq-9tk2LJHobDXkhNsVxtxja24XRR1stDQ3cWYHz4gsLl3EZfwykiSvcjXQ6iTCbiSeXQ0aLbPTIvvI1VZ9qqXoEjOWw-fsVJ5ZivbZqmcughgtGOWOBe6g8Apx_t-cfElbicr0QoqR0hM0-B7dAHVMeRNzEH3mjg="
+    },
+    {
+      "end_index": 6690,
+      "start_index": 6366,
+      "title": "ciodive.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEt1130idSgCpOq1Ij7ypxkFlYcaQx1KX-ZDY59CrbJawJ1WXx4sf016NLlkdSzQuBCcIGaOuarbU9xNkzVjSbjnCnrZI6J37e9DlXQwy_BRtgPm6UbHuyvKgZRl4dOyz-1VRSrfMFWld3oTUiMCwYsE_-StHBBBWEjW-ukSfq-t2sI"
+    },
+    {
+      "end_index": 6805,
+      "start_index": 6691,
+      "title": "fpt.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvsRaQQ88OGeyH280jRjLyIRIThtJyi5qlskjy0gOhc_EWB7u_jMH6ZeGnGKtpm_Ahn3BTQh54jPubdoOJ5WBl1eJ61d1acAncmVEtIthAwkI9ILqWIEdLLyGqGNuU3S9EvjVIVCc0MvxB-LTfxKDiWmyJlP-R"
+    },
+    {
+      "end_index": 6805,
+      "start_index": 6691,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF5c9vXZQRgq92on282f6eV_7QMlahTw70RtuP8KmO34Ec4s0urR_gKdpEGRJ5ctm4lcsQyqip3l-Ieae0f2tlo-4_G1JFx8-cuCmzBp0yRxQ7krKCl9pdzMnSUj0xcDY2pXOomMp5oq2TUT6INUD5hV3hNO20L1AbC-a4eX3ONJ64zOvsnHBrSMihc1QAurYBVYXAcy1mYtPK7vQm6JFXxAoc8PBO05NURk4TLTCPDJIAKedf10qQ="
+    },
+    {
+      "end_index": 11103,
+      "start_index": 10963,
+      "title": "mckinsey.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZXO3Dij7vSGDxEh6WMiYwJxcfIPskrZhcETu92_2oStq50oP00WYPe0FzFC3s2-3yqoF8id3vMxCRGmALUBbwyt8-MLM8sKxhxfx_7S7tofbGMDWS9u3pgMjA0JUtkGQBP1Cg7ItXi4B25I15vH5f1s4hxwb_-4A="
+    },
+    {
+      "end_index": 11191,
+      "start_index": 11104,
+      "title": "upenn.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAKYFbWEhAAkr-nOC2wFZyZRZjXSVVxsjTaK3PtT1gg-0KOFi8ktbniHV0cM_XREQQ6GWTwAvIE4NkVlp-sGPxv3H236kSYUqLWnX0XARqXKQVxAsi7-LzLDDm0yitKcW5mIaUiLaEVNm7FVmRN2oR2yxGakjrRUlX3kHlbwgprlRbfDgitP84TeinMg=="
+    },
+    {
+      "end_index": 11374,
+      "start_index": 11192,
+      "title": "deloitte.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFafnT4PfLY7EtcjN3U2xHbK8LpkvrJ6EVWSWoBGhju9PdffblfBGm8AchdZLHH3fxL_GoK6CxUlxA-o4b-7uZxVqUL2rI0p83QO4MDA4xqxSUJRrp0Xm3RwgjQvVA_afAM7cgDEhoJojsMOHU4ajQH5ZW26qdwjni5xJzvDaL_tru0qQ9orYgD3QaWJo4tdCojQ-t5H7-gLD_B__2p_Qqq"
+    },
+    {
+      "end_index": 11560,
+      "start_index": 11375,
+      "title": "lucidworks.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOVZDJjyGssCQ5-SmCrVL54R63Rf0DaDSjX6i6BNwqAMs5ucuakVCuviivBwaZAuGnRyftCq5cv6P3JcKRM1q0RKfSjadD6jaTqat6PB4FCGTPGElCECRNVdR7SRSbXLKm2c7IFJLAiOANcNRKrWe_7w=="
+    },
+    {
+      "end_index": 15895,
+      "start_index": 15679,
+      "title": "siliconvalley.center",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEE3feE24Yscv0fHKNUnmQT7ORodFZQuh2udTBRHMGyTdbqF6ovO4SIe3Xo0GkW7xFQxygx9p97TgmZPJn-ytTJSYmstbwmR6cb75rVMo1AIykR0jyffg7EIYn3mYN2H04w8vqsxLqJssXAIAFsL2CC3qNeBAfL4i8qxzBzkCHJ"
+    },
+    {
+      "end_index": 15895,
+      "start_index": 15679,
+      "title": "zenodo.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2L7b78PYDucG1iWzji0-GGG2vO8gtvAM6YXz-PZjzmwiwyw9BA-MYUgqkANEwtnm5SH7sCGYwgZQISMNeYLFLSOSbnWVN4mXKfCBDqWkH7mhsozAP6ETwjypFLF5X"
+    },
+    {
+      "end_index": 16022,
+      "start_index": 15896,
+      "title": "siliconvalley.center",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEE3feE24Yscv0fHKNUnmQT7ORodFZQuh2udTBRHMGyTdbqF6ovO4SIe3Xo0GkW7xFQxygx9p97TgmZPJn-ytTJSYmstbwmR6cb75rVMo1AIykR0jyffg7EIYn3mYN2H04w8vqsxLqJssXAIAFsL2CC3qNeBAfL4i8qxzBzkCHJ"
+    },
+    {
+      "end_index": 16223,
+      "start_index": 16023,
+      "title": "jmir.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3LgW92hrRA0wMebmm6nx6dxJKhe9kyAm9cHDm8uzd8bT8xvg2cRCr5bQrsyRdEIGA9XDn31cIbDFq2lglrRjr2rmcLl2t056bVmO6vsm5aZbHEhSSDklBVd3gvQ=="
+    },
+    {
+      "end_index": 19170,
+      "start_index": 18921,
+      "title": "sidecar.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYvhsAdelJoAqUILfHnbgRK2MpT4nqUZCzEZSWrKmOUWr67LF-SAVVv1qBZ6SVv2yPGi5-wn4alucikFv1mUzeGFKNsPdvzE-06VZXFMtb0dM--QtjaiZZnxCTZeK2OIr_y_KAwdhhGvcOn-lZrbT6qbWE8tvn_WxR0UAL-kG8CA=="
+    },
+    {
+      "end_index": 19170,
+      "start_index": 18921,
+      "title": "anthropic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-FSP_JppCazKKJLXU1bheNTh7Uf7ncrEuxHY2Fom56sE4quyJhFd0BuOy1Tj6KsjpiD02pgHE_-iZDt83dcq9gL4yx0ej3dBc7KnsdjZMVDY5aAaOWZfRjFkjBt_vLnZe-j1bpUzcmwDoMw=="
+    },
+    {
+      "end_index": 19170,
+      "start_index": 18921,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErYI6m2VMVhc_l586wIg0JAclYMxJ2GWFjQJIQU99lJEqds0iAM4dIUs-sbhMSBHZY9IXpLfKNBDgCFdP1qTMUOeggr0xGNo7xtOglGZKRfMIN4xyXHCnRcQYQWb94y6M8rP8aBnc="
+    },
+    {
+      "end_index": 19387,
+      "start_index": 19171,
+      "title": "anthropic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-FSP_JppCazKKJLXU1bheNTh7Uf7ncrEuxHY2Fom56sE4quyJhFd0BuOy1Tj6KsjpiD02pgHE_-iZDt83dcq9gL4yx0ej3dBc7KnsdjZMVDY5aAaOWZfRjFkjBt_vLnZe-j1bpUzcmwDoMw=="
+    },
+    {
+      "end_index": 19516,
+      "start_index": 19388,
+      "title": "hyperight.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBVDKL-P3iPgX_CSAnHpe4Abk3EPBjN-mXttcNbtNB80IcxMyWUdKyhnhaAV_8Wt2AjgxuLrCDDX6DMxyDnIwd-2NjmO3SzwjCvFxB8aadazRfdVo9KIepc8b-mGMULHVrYbBcBfRYcyF5Lajt3rLN8FIK4TsFx97_6jJsntLT5ub9uhj9NUlmGpFe"
+    },
+    {
+      "end_index": 19516,
+      "start_index": 19388,
+      "title": "anthropic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-FSP_JppCazKKJLXU1bheNTh7Uf7ncrEuxHY2Fom56sE4quyJhFd0BuOy1Tj6KsjpiD02pgHE_-iZDt83dcq9gL4yx0ej3dBc7KnsdjZMVDY5aAaOWZfRjFkjBt_vLnZe-j1bpUzcmwDoMw=="
+    },
+    {
+      "end_index": 22471,
+      "start_index": 22194,
+      "title": "dataknow.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpXIcJFujiu-vFqwbcWSEUE06lha9pE8Iavv4Fr9IvKz_qJMrZKJoYoeQAQM-zehh1qhl7BQg_yqTGnj-fYjR2HsHw5WkAnLh0TmHS21a3lQK7I-Z6bfp-0S2LkldBrUV3Bw8X6NnCSx5S2XxOYzh4"
+    },
+    {
+      "end_index": 22471,
+      "start_index": 22194,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGx-ch37-3pRYkG6BgmjxrmtHHnR1t26gMWVzNgBQLKG6K6v5NWI5_OWTbdm2Be7lgCPjJIyhcH0LA96BcWdQ4VMwKu4NHkUpSnX5_5aStlFfVmKNtZUicboWtdI8fUuZchmNwdOA=="
+    },
+    {
+      "end_index": 22682,
+      "start_index": 22472,
+      "title": "dataknow.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpXIcJFujiu-vFqwbcWSEUE06lha9pE8Iavv4Fr9IvKz_qJMrZKJoYoeQAQM-zehh1qhl7BQg_yqTGnj-fYjR2HsHw5WkAnLh0TmHS21a3lQK7I-Z6bfp-0S2LkldBrUV3Bw8X6NnCSx5S2XxOYzh4"
+    },
+    {
+      "end_index": 22917,
+      "start_index": 22683,
+      "title": "dataknow.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpXIcJFujiu-vFqwbcWSEUE06lha9pE8Iavv4Fr9IvKz_qJMrZKJoYoeQAQM-zehh1qhl7BQg_yqTGnj-fYjR2HsHw5WkAnLh0TmHS21a3lQK7I-Z6bfp-0S2LkldBrUV3Bw8X6NnCSx5S2XxOYzh4"
+    },
+    {
+      "end_index": 22917,
+      "start_index": 22683,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGx-ch37-3pRYkG6BgmjxrmtHHnR1t26gMWVzNgBQLKG6K6v5NWI5_OWTbdm2Be7lgCPjJIyhcH0LA96BcWdQ4VMwKu4NHkUpSnX5_5aStlFfVmKNtZUicboWtdI8fUuZchmNwdOA=="
+    },
+    {
+      "end_index": 22917,
+      "start_index": 22683,
+      "title": "dev.to",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJq_WQCn_5F1sHD-naUSXNpBm9Tbbp_VUfxJOvVCTp70aBYH7m1WzbhUyUjMy0qvoDyGf0iFrZwToHMo-9BnqLAFXMfJud8cARCHGx4MjTX6zIf2lVuLgbubm50bSURJc_xQLmsPPbFwrJ0K7tgiA-xC_eZEQzav21NaBhhUdpy2P7OWypgIVM5GEGPY_pqXfkNI-Vlg=="
+    },
+    {
+      "end_index": 25815,
+      "start_index": 25643,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEicIvXiemC11xnjek_nE3Q20BvSfGwXU0qi97oHjUbOuTR_QnUAB3jZHVYCrJsLdZ4TNUyNGpmZGoilNFbQ00ixBeTJNIReFRQXbZRq_l-7u_lD0p2C_gu47kCXMHKhOF_eFWWrzI="
+    },
+    {
+      "end_index": 25964,
+      "start_index": 25816,
+      "title": "technologymagazine.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQX2bNihotgUYBebUWqrf4Rnw9lXzXoybiWChlG-tZEz8uaxu-1dzR_ualotfpD-spfBdeSgSGSDT-mYAzyglIpkC41OCYPYK4fTLiNeFoEmpyrNdabmfMEfPxHZpGQrMJMBmgWgs0e7PD5x6fQv8rnw87Lx00HU7rEr4lm8SKt_AghxGvDQByjjKBnLUrv-z8"
+    },
+    {
+      "end_index": 26200,
+      "start_index": 25965,
+      "title": "fpt.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvsRaQQ88OGeyH280jRjLyIRIThtJyi5qlskjy0gOhc_EWB7u_jMH6ZeGnGKtpm_Ahn3BTQh54jPubdoOJ5WBl1eJ61d1acAncmVEtIthAwkI9ILqWIEdLLyGqGNuU3S9EvjVIVCc0MvxB-LTfxKDiWmyJlP-R"
+    },
+    {
+      "end_index": 26200,
+      "start_index": 25965,
+      "title": "technologymagazine.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQX2bNihotgUYBebUWqrf4Rnw9lXzXoybiWChlG-tZEz8uaxu-1dzR_ualotfpD-spfBdeSgSGSDT-mYAzyglIpkC41OCYPYK4fTLiNeFoEmpyrNdabmfMEfPxHZpGQrMJMBmgWgs0e7PD5x6fQv8rnw87Lx00HU7rEr4lm8SKt_AghxGvDQByjjKBnLUrv-z8"
+    },
+    {
+      "end_index": 29081,
+      "start_index": 28810,
+      "title": "hyperight.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBVDKL-P3iPgX_CSAnHpe4Abk3EPBjN-mXttcNbtNB80IcxMyWUdKyhnhaAV_8Wt2AjgxuLrCDDX6DMxyDnIwd-2NjmO3SzwjCvFxB8aadazRfdVo9KIepc8b-mGMULHVrYbBcBfRYcyF5Lajt3rLN8FIK4TsFx97_6jJsntLT5ub9uhj9NUlmGpFe"
+    },
+    {
+      "end_index": 29081,
+      "start_index": 28810,
+      "title": "anthropic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-FSP_JppCazKKJLXU1bheNTh7Uf7ncrEuxHY2Fom56sE4quyJhFd0BuOy1Tj6KsjpiD02pgHE_-iZDt83dcq9gL4yx0ej3dBc7KnsdjZMVDY5aAaOWZfRjFkjBt_vLnZe-j1bpUzcmwDoMw=="
+    },
+    {
+      "end_index": 29288,
+      "start_index": 29082,
+      "title": "hyperight.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBVDKL-P3iPgX_CSAnHpe4Abk3EPBjN-mXttcNbtNB80IcxMyWUdKyhnhaAV_8Wt2AjgxuLrCDDX6DMxyDnIwd-2NjmO3SzwjCvFxB8aadazRfdVo9KIepc8b-mGMULHVrYbBcBfRYcyF5Lajt3rLN8FIK4TsFx97_6jJsntLT5ub9uhj9NUlmGpFe"
+    },
+    {
+      "end_index": 29449,
+      "start_index": 29289,
+      "title": "anthropic.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-FSP_JppCazKKJLXU1bheNTh7Uf7ncrEuxHY2Fom56sE4quyJhFd0BuOy1Tj6KsjpiD02pgHE_-iZDt83dcq9gL4yx0ej3dBc7KnsdjZMVDY5aAaOWZfRjFkjBt_vLnZe-j1bpUzcmwDoMw=="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-07T09:16:49Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4D10AQGCEfc9-JzSRA",
+    "post_urn": "urn:li:share:7491422084233846784",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Advanced AI Hardware Architectures Driving Performance Leaps"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Advanced AI Hardware Architectures Driving Performance Leaps",
+  "status": "published",
+  "trend": {
+    "category": "AI releases",
+    "evidence_score": 1.0,
+    "novelty_score": 0.9,
+    "practical_value_score": 1.0,
+    "recency_score": 0.9,
+    "relevance_score": 0.9,
+    "sources": [
+      {
+        "claim_supported": "Cloud TPU v5e became generally available on November 9, 2023, offering a 2.3X improvement in price-performance for training LLMs compared to TPU v4.",
+        "published_at": "2023-11-09",
+        "publisher": "Google Cloud Blog",
+        "quality_score": 1.0,
+        "source_type": "primary",
+        "title": "Cloud TPU v5e is generally available | Google Cloud Blog",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAntPzJR6wqnhlkkzlOe4PkDz1V6RSjyVqnF3MvZgdI62rbJs9yo2lptYzSAXjlO6FzNPx5r_yZaT2V8eZ6UZSQXHA_k6EU3soU669JbY3W3FqYwVH5kzSRT9EIMEIKzFOoIG_rn7DG3I3q8L4EoqCReIYfcvp72y4EU3_MJHKmvOGfRhYtO9s"
+      },
+      {
+        "claim_supported": "NVIDIA Blackwell, launched in 2024, is a new GPU architecture designed for AI and cloud computing, succeeding Hopper and offering significant improvements in compute performance and memory bandwidth.",
+        "published_at": "2026-04-15",
+        "publisher": "FPT AI Factory",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "What is Nvidia Blackwell? Architecture and specs overview - FPT AI Factory",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFvsRaQQ88OGeyH280jRjLyIRIThtJyi5qlskjy0gOhc_EWB7u_jMH6ZeGnGKtpm_Ahn3BTQh54jPubdoOJ5WBl1eJ61d1acAncmVEtIthAwkI9ILqWIEdLLyGqGNuU3S9EvjVIVCc0MvxB-LTfxCjLwmyJlP-R"
+      },
+      {
+        "claim_supported": "Cloud TPU v5e, in preview since August 2023, is the most cost-efficient, versatile, and scalable Cloud TPU, offering up to 2x higher training performance and 2.5x inference performance per dollar compared to TPU v4.",
+        "published_at": "2023-08-29",
+        "publisher": "Google Cloud Blog",
+        "quality_score": 1.0,
+        "source_type": "primary",
+        "title": "Announcing Cloud TPU v5e and A3 GPUs in GA | Google Cloud Blog",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbMSJbL2dgk00EZrCN9Yfo2jJ35ab8DVgiOcUaS_rFge9ODNH-OoWVqSTR9DxKbr9xXiyPU07cpZ9VPgBvoDZa9f3a1prxxgKn6XDSSxTd7liq3xZUKZJGOSXxBgtt2RCHBVxmAm2DhRBx6FYYnnd3uHpPWQZzOrj_la5ywCf5JjLC7ouNGUQF42OBQ6jKRWn4gzNp"
+      },
+      {
+        "claim_supported": "NVIDIA officially announced the Blackwell architecture at GTC on March 18, 2024, focusing on B100 and B200 datacenter accelerators, designed for the generative AI era.",
+        "published_at": "2024-03-18",
+        "publisher": "Wikipedia",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Blackwell (microarchitecture) - Wikipedia",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEigi-CfOcTaS0Bag3a3NgGWWV-yDmV9vzOTBtfvSxj2fx6a4HM-9i4W7DMOljm9WijpADorHgrHiXhd9lVWtYKV7rK87rBAe0mXSgJZt1wUmma7B_UM6B5IlxXPSuo7_MZDCt89zfsau6k2A9GrZx_HQcDFTZo"
+      },
+      {
+        "claim_supported": "NVIDIA Blackwell-architecture GPUs feature 208 billion transistors and a dual-die design with a 10 TB/s chip-to-chip interconnect, designed for unparalleled AI performance and scalability.",
+        "published_at": null,
+        "publisher": "NVIDIA",
+        "quality_score": 1.0,
+        "source_type": "primary",
+        "title": "NVIDIA Blackwell Architecture Technical Overview",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAzRewX8jNTxU4D2NKfZjtozWgZ6oVoQLSs9iRlYU7I0ldpjO9HaaavZRbCbgjcSqwpo2eYEjMOqOkH3_lwsHQfpbPBDKpNA22GZC7leavdPaHrDG82e19RCI_hV6lDAx26pKQAbkUP8hPGUnWEMwx7klHuDIfZENWJ_FI4eB8yuc4Ow5hoXhl"
+      }
+    ],
+    "summary": "The rapid evolution of AI is being propelled by specialized hardware architectures designed for training and inference, leading to significant performance and efficiency gains. NVIDIA's Blackwell architecture, announced in March 2024 and launched in Q4 2024, represents a monumental leap in GPU design with a dual-die configuration, 208 billion transistors, and 5th-generation NVLink, offering up to 30 times more performance than its predecessor, Hopper, for certain workloads. Similarly, Google Cloud's TPU v5e, generally available since November 2023, provides a cost-efficient, versatile, and scalable platform for medium and large-scale AI training and inference, delivering up to 2x higher training performance per dollar and 2.5x inference performance per dollar compared to previous generations. These innovations are crucial for powering the next generation of large language models and generative AI systems.",
+    "topic": "Advanced AI Hardware Architectures Driving Performance Leaps"
+  },
+  "visual": {
+    "alt_text": "Visual representation of advanced AI hardware architectures, featuring interconnected chip designs and data pathways, symbolizing significant performance and efficiency improvements for AI.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4D10AQGCEfc9-JzSRA",
+    "mime_type": "image/png",
+    "path": "assets/20260807T091647Z-advanced-ai-hardware-architectures-driving-perform.png",
+    "width": 1200
+  }
+}
