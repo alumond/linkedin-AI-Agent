@@ -86,8 +86,10 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         reasons.append("Primary source link is missing.")
     if not draft.supporting_source_urls:
         reasons.append("Supporting source link is missing.")
-    if len(draft.hashtags) > 3:
-        reasons.append("More than three hashtags were provided.")
+    if len(draft.hashtags) < 1:
+        reasons.append("At least one hashtag is required.")
+    if len(draft.hashtags) > 10:
+        reasons.append("More than ten hashtags were provided.")
     if any(term in lowered for term in HYPE_TERMS):
         reasons.append("Post contains excessive hype or clickbait language.")
     found_slop = sorted({term for term in AI_SLOP_TERMS if re.search(rf"\b{re.escape(term)}\b", lowered)})
@@ -108,17 +110,24 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         warnings.append("Post appears to contain a quotation; verify it before live publishing.")
     if "i tested" in lowered or "i used this myself" in lowered:
         reasons.append("Post implies personal testing that may not have happened.")
+    if "Discussion prompts:" not in body:
+        warnings.append("Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts.")
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 
-def validate_visual(path: Path, alt_text: str) -> VisualAsset:
+def validate_visual(path: Path, alt_text: str, allow_landscape: bool = False) -> VisualAsset:
     with Image.open(path) as image:
         width, height = image.size
         mime = Image.MIME.get(image.format, "application/octet-stream")
-    if width != height:
-        raise ValueError(f"Image must be square. Got {width}x{height}.")
-    if width < 900:
-        raise ValueError(f"Image is too small for LinkedIn. Got {width}px.")
+    if width == height:
+        if width < 900:
+            raise ValueError(f"Image is too small for LinkedIn. Got {width}px.")
+    elif allow_landscape and abs((width / height) - (16 / 9)) <= 0.03:
+        if width < 1200 or height < 675:
+            raise ValueError(f"Landscape image is too small for LinkedIn. Got {width}x{height}.")
+    else:
+        expected = "square or approved 16:9 landscape" if allow_landscape else "square"
+        raise ValueError(f"Image must be {expected}. Got {width}x{height}.")
     if not alt_text or len(alt_text) > 300:
         raise ValueError("Alt text must be present and 300 characters or fewer.")
     return VisualAsset(path=str(path), mime_type=mime, width=width, height=height, alt_text=alt_text)

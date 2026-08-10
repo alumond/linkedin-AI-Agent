@@ -36,6 +36,9 @@ def main(argv: list[str] | None = None) -> int:
     run = sub.add_parser("run")
     run.add_argument("--dry-run", action="store_true")
 
+    featured = sub.add_parser("featured-dashboard")
+    featured.add_argument("--dry-run", action="store_true")
+
     sub.add_parser("token-status")
     sub.add_parser("whoami")
     preflight = sub.add_parser("preflight")
@@ -135,6 +138,15 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({"status": "skipped", "reason": "LinkedIn token metadata is missing or expired.", "token": token}, indent=2))
             return 2
         result = agent.run(dry_run=args.dry_run)
+        print(json.dumps(to_dict(result), indent=2))
+        return 0 if result.status != "skipped" else 2
+
+    if args.command == "featured-dashboard":
+        token = agent.token_status()
+        if not args.dry_run and token.get("status") in {"missing", "expired"}:
+            print(json.dumps({"status": "skipped", "reason": "LinkedIn token metadata is missing or expired.", "token": token}, indent=2))
+            return 2
+        result = agent.publish_featured_dashboard(dry_run=args.dry_run)
         print(json.dumps(to_dict(result), indent=2))
         return 0 if result.status != "skipped" else 2
 
