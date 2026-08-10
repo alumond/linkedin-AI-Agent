@@ -1,0 +1,516 @@
+{
+  "draft": {
+    "alt_text": "Insight card showing the core concepts of Responsible AI and Explainable AI. Text highlights 'EU AI Act 2026' driving demand for 'Verifiable Trust,' 'Transparency,' 'Auditability,' 'Training Data Attribution,' 'Complete Audit Trails,' and 'Contestability' for AI systems, especially in financial s...",
+    "body": "With the EU AI Act taking effect in August 2026, enterprises face increased urgency to implement Responsible AI (RAI) and Explainable AI (XAI). This means focusing beyond technical sophistication to embed verifiable trust and transparency directly into AI systems. The goal is regulatory compliance, especially crucial where AI decisions profoundly impact individuals.\n\nHigh-risk sectors like financial services and healthcare are at the forefront of this shift. Organizations in these areas are actively prioritizing capabilities that ensure their AI systems are auditable and ethical. Key priorities include training data attribution, providing complete audit trails for AI decisions, and enabling contestability for individuals impacted by AI outputs.\n\nThe Responsible AI Institute, for instance, is pushing for verifiable trust in financial services, highlighting the need for these capabilities as foundational. This proactive approach helps meet compliance requirements and ensures ethical deployment, emphasizing genuine accountability.\n\nHow are you preparing your AI initiatives for the stricter regulatory landscape ahead?",
+    "category": "Responsible AI",
+    "claims": [
+      "The EU AI Act, effective August 2026, is driving demand for Responsible AI (RAI) and Explainable AI (XAI) in enterprises.",
+      "The focus is on building verifiable trust, transparency, and auditability into AI systems for regulatory compliance.",
+      "High-risk sectors like financial services and healthcare are prioritizing RAI/XAI due to AI decisions directly impacting individuals.",
+      "Organizations are prioritizing capabilities such as training data attribution, complete audit trails, and contestability.",
+      "The Responsible AI Institute is working to bring verifiable trust to autonomous AI in financial services."
+    ],
+    "hashtags": [
+      "#ResponsibleAI",
+      "#ExplainableAI",
+      "#AIGovernance"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3qscgqTxGSw5AeOjlfLfqtvPB2HAhlBFelRz8GGsE6NEKoWg7ukQsbavJEV-eD7YDfIbByV-Y9B1gEUQbjCXypemcwFofzxUMeQdTklnikf9to-075iZZkby4iw3IJ64=",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrLQ7DjIWm4g-LyXHZT43FL765Mv4IjaXbrbKY9T0l81tb03msEnALGKLpyD8cgJRzED6tqkuOYLal2CdvxxjgyGxg_c1W5hyffdJZOYQrE5s7ClmigqfTDucBw9wIKVO-x_BGMJis3mmfVzm9hWajfZDIgDRcSUg==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGm8eVWhIiG5_W6i96twLxriKQurBs0qsvVY0E1OkVkjVgfPitKgr9-fwKh_RLepvQGT0FZ_ciYoT33uXnB6lVGaWVueyQf79HQ6pl6kM_YPoRn4cSJdTS_XxJN-TWeYWSSyzVxche1SfLJjKLjwz-c3H3dLHRp2WE13p5eY7rCg1kmOXuWc8ey6JizwIpnfBTBuVIBC0llRw==",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEc-dUvipskD9N2rwp-aqON0UX_LXo37N3qK8V19M-lvthat8GA89yZyg0UkjgGZFW4xOYfj8e-aESQ2rVbeCKF-5UfvhP6ps81alWvFJ4Sa6woEfn0xE4PW0iIWnlM609x4KArGKtDeWnxCCmWb2JugHpWFL3Q16hXd_BxT7pa0_myzuSXraBBo1SjaA=="
+    ],
+    "topic": "Responsible AI and Explainable AI (XAI) for Regulatory Compliance",
+    "visual_prompt": "An insight card illustrating the intersection of Responsible AI (RAI), Explainable AI (XAI), and regulatory compliance. The card should feature icons representing trust, transparency, audit trails, and data attribution, with 'EU AI Act 2026' prominently displayed, perhaps with a shield or legal gavel symbol. The overall aesthetic should be professional and clear, in a corporate tech style.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "drugtargetreview.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHy3pj6RDIqfK019Gs3O_BRq2_XdNzhY7dpXtE54q5GenpzNHdJerek-La_0q4FVqBjc_IHzoHCWSwO_eOUetO9HF-COxf6fanjYJBa9bD6-fitgn-jHugL4bA0eNVE84XV1F1F9ZpEAAliGq-APIeRXkliV3XIStDiKLTtRFcInNHy-LTpJ9SgeQ-bGIjt-LqYXXv-F-I-0RFbPMljB3QrUA=="
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9ZdDOl3P70Wc2aH23GUqW2OAAnjU7tgY3gZaEXA6d6sdSx6XS9jA1r9mk1i4MNdNs_ppoV856Oe0IjRB9Viqq7hkRLh1Ivk0aSQgFb3uG36RyNk-9A_8BC4Bd_ZBpezRjQVHUAJaoq3bs4MTzEbJ6pk5Thy07K-KuRx8M1fR3XEHhxk_YUvnP3EkxCAc38irkus7STR5Q"
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "forbes.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHruAgpAxi9CPW7UmtzaGILyMxkNxAtSiNJ35_SG05-eT1w_llP0yJPbAfaKgNYvErQuNeH7mV6CafnD70SLAzTRDOuSBfeU-ZsikRfkHKeaFeQm5Oe_jPZI8aLBjzvGZHg9AD0MIqQeNu5Qa-0cr3wYBQBOKlKr7AScK2GKttYzzGywGa7VnPxkgMg0oh8x4Hg62hiKgGPWl8Q1L15fGhQgnLifMx-YM4TLSU="
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "fueler.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGu0fZhRokqHGQ_PLPJoIsDmCwdXiVmm9tsCyLik1GhPtui-K-NZm-I7cqcqRQ0M_mEid6ELtKr5NwQuQTrU387Tbxy9Tt2ffOucR-XlkH7hUYNmBZLGLHzj-VQG_FGBENCif1M6V6e5aHf02JbUX-ryeZJu2VsCUvuow=="
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "news-medical.net",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfDvL-Ayr8MsPKJUrH_FZHk4vtLKswT8YlrW0iBSEMNNGqSNYFS6_eVrBGaV_jtZSQ6giNG-fzLWt2mjhPFVeA4noXSEiEPhNwzQxGE3iLWbm0rowinWHD231k_Dopian6uc-GLlOJ-PlOBvJHwWT6cxwVBE3WZpjdhFc582gBU--Gu06AuVfLKONsdWQwbU7M1HqLfQrW1CPV8B809AeFYdzUYLdg78sKf-jzBsY="
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "lbl.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOP_lZCEiZQeCuDCfgpTyMV02UfCJlvIeJJxjb6KP3t2aYKtxhAIptjFvMn7SqHRW_2Uc0OGxZsvXXmCUg4hYSdSFnpz4KuCU7MmL2HpOWWkG3uXbQ8OfeSkFzpW5gJ18O1BeHh2XUkxsklJ5Dy30Ew0gkBRbQb6ZTdhjXL00r6El7t7G1Mg7QkUzJa9C9WBE6hLXsokcO2Dc23D2MRJiW2skuPjdwwAwDifE="
+    },
+    {
+      "end_index": 684,
+      "start_index": 519,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF7gnF3YxNoBeBzNjgO8igYC9FCQGAYuRMLXTNbfyjgrN5SV6o0rm0SIWF0nE5EW6gu4ZGM3O77QB_lrESrVr2gdsf5AQdvMhW2-O097zzPruZ3y2LM_evdDRYpUa8-OQVsff3hvab2lwmbfGkN1Yc5NxBjVyjgPG0g70QsPLjmxDk2MQfVlE0P-lPKtf_KYnMpjRJ2ePtSyvLYYGw6Uxk="
+    },
+    {
+      "end_index": 1641,
+      "start_index": 684,
+      "title": "drugtargetreview.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHy3pj6RDIqfK019Gs3O_BRq2_XdNzhY7dpXtE54q5GenpzNHdJerek-La_0q4FVqBjc_IHzoHCWSwO_eOUetO9HF-COxf6fanjYJBa9bD6-fitgn-jHugL4bA0eNVE84XV1F1F9ZpEAAliGq-APIeRXkliV3XIStDiKLTtRFcInNHy-LTpJ9SgeQ-bGIjt-LqYXXv-F-I-0RFbPMljB3QrUA=="
+    },
+    {
+      "end_index": 2412,
+      "start_index": 1641,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9ZdDOl3P70Wc2aH23GUqW2OAAnjU7tgY3gZaEXA6d6sdSx6XS9jA1r9mk1i4MNdNs_ppoV856Oe0IjRB9Viqq7hkRLh1Ivk0aSQgFb3uG36RyNk-9A_8BC4Bd_ZBpezRjQVHUAJaoq3bs4MTzEbJ6pk5Thy07K-KuRx8M1fR3XEHhxk_YUvnP3EkxCAc38irkus7STR5Q"
+    },
+    {
+      "end_index": 3175,
+      "start_index": 2412,
+      "title": "forbes.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHruAgpAxi9CPW7UmtzaGILyMxkNxAtSiNJ35_SG05-eT1w_llP0yJPbAfaKgNYvErQuNeH7mV6CafnD70SLAzTRDOuSBfeU-ZsikRfkHKeaFeQm5Oe_jPZI8aLBjzvGZHg9AD0MIqQeNu5Qa-0cr3wYBQBOKlKr7AScK2GKttYzzGywGa7VnPxkgMg0oh8x4Hg62hiKgGPWl8Q1L15fGhQgnLifMx-YM4TLSU="
+    },
+    {
+      "end_index": 3898,
+      "start_index": 3175,
+      "title": "fueler.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGu0fZhRokqHGQ_PLPJoIsDmCwdXiVmm9tsCyLik1GhPtui-K-NZm-I7cqcqRQ0M_mEid6ELtKr5NwQuQTrU387Tbxy9Tt2ffOucR-XlkH7hUYNmBZLGLHzj-VQG_FGBENCif1M6V6e5aHf02JbUX-ryeZJu2VsCUvuow=="
+    },
+    {
+      "end_index": 4696,
+      "start_index": 3898,
+      "title": "news-medical.net",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfDvL-Ayr8MsPKJUrH_FZHk4vtLKswT8YlrW0iBSEMNNGqSNYFS6_eVrBGaV_jtZSQ6giNG-fzLWt2mjhPFVeA4noXSEiEPhNwzQxGE3iLWbm0rowinWHD231k_Dopian6uc-GLlOJ-PlOBvJHwWT6cxwVBE3WZpjdhFc582gBU--Gu06AuVfLKONsdWQwbU7M1HqLfQrW1CPV8B809AeFYdzUYLdg78sKf-jzBsY="
+    },
+    {
+      "end_index": 5499,
+      "start_index": 4696,
+      "title": "lbl.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOP_lZCEiZQeCuDCfgpTyMV02UfCJlvIeJJxjb6KP3t2aYKtxhAIptjFvMn7SqHRW_2Uc0OGxZsvXXmCUg4hYSdSFnpz4KuCU7MmL2HpOWWkG3uXbQ8OfeSkFzpW5gJ18O1BeHh2XUkxsklJ5Dy30Ew0gkBRbQb6ZTdhjXL00r6El7t7G1Mg7QkUzJa9C9WBE6hLXsokcO2Dc23D2MRJiW2skuPjdwwAwDifE="
+    },
+    {
+      "end_index": 6271,
+      "start_index": 6091,
+      "title": "responsible.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3qscgqTxGSw5AeOjlfLfqtvPB2HAhlBFelRz8GGsE6NEKoWg7ukQsbavJEV-eD7YDfIbByV-Y9B1gEUQbjCXypemcwFofzxUMeQdTklnikf9to-075iZZkby4iw7IJ64="
+    },
+    {
+      "end_index": 6271,
+      "start_index": 6091,
+      "title": "seekr.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrLQ7DjIWm4g-LyXHZT43FL765Mv4IjaXbrbKY9T0l81tb03msEnALGKLpyJd8cgJRzED6tqkuOYLal2CdvxxjgyGxg_c1W5hyffdJZOYQrE5s7ClmigqfTDucBw9wIKVO-x_BGMJis3mmfVzm9hWajfZDIgDRcSUg"
+    },
+    {
+      "end_index": 6271,
+      "start_index": 6091,
+      "title": "glean.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGm8eVWhIiG5_W6i96twLxriKQurBs0qsvVY0E1OkVkjVgfPitKgr9-fwKh_RLepvQGT0FZ_ciYoT33uXnB6lVGaWVueyQf79HQ6pl6kM_YPoRn4cSJdTS_XxJN-TWeYWSSyzVxche1SfLJjKLjwz-c3H3dLHRp2WE13p5eY7rCg1kmOXuWc8ey6JizwIpnfBTBuVIBC0llRw=="
+    },
+    {
+      "end_index": 6271,
+      "start_index": 6091,
+      "title": "medicaleconomics.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEc-dUvipskD9N2rwp-aqON0UX_LXo37N3qK8V19M-lvthat8GA89yZyg0UkjgGZFW4xOYfj8e-aESQ2rVbeCKF-5UfvhP6ps81alWvFJ4Sa6woEfn0xE4PW0iIWnlM609x4KArGKtDeWnxCCmWb2JugHpWFL3Q16hXd_BxT7pa0_myzuSXraBBo1SjaA=="
+    },
+    {
+      "end_index": 6271,
+      "start_index": 6091,
+      "title": "prnewswire.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmL2BHPq82OOrK3iucJUMXLEb22g7WplDcmjfqjnzd579qmfMxObaqfsdurtgm4ijVEHkMDOffqQxL1PzZBP_CDuR-BNF1HK6UJx8JGnBq3T_233ngWRqxqghJjwYUnmR7M456wXOuh1RASsCFBDZeORFZBegk-uyPz4egjs4wiYb7Beo2Yp-IjO5OYw4jLduUF3Q_pqHP21GlJ9LXr-xn9is-KmXRGH8JiDS9bZzfQfkuxYFYvNFampHZUGdgEC5LhAgkgnW0d4d5VR8_6yV4sK269Aq_XgCr729hls_l8xVyNEbVmCJ6"
+    },
+    {
+      "end_index": 7053,
+      "start_index": 6271,
+      "title": "responsible.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3qscgqTxGSw5AeOjlfLfqtvPB2HAhlBFelRz8GGsE6NEKoWg7ukQsbavJEV-eD7YDfIbByV-Y9B1gEUQbjCXypemcwFofzxUMeQdTklnikf9to-075iZZkby4iw7IJ64="
+    },
+    {
+      "end_index": 7757,
+      "start_index": 7053,
+      "title": "seekr.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrLQ7DjIWm4g-LyXHZT43FL765Mv4IjaXbrbKY9T0l81tb03msEnALGKLpyJd8cgJRzED6tqkuOYLal2CdvxxjgyGxg_c1W5hyffdJZOYQrE5s7ClmigqfTDucBw9wIKVO-x_BGMJis3mmfVzm9hWajfZDIgDRcSUg"
+    },
+    {
+      "end_index": 8534,
+      "start_index": 7757,
+      "title": "glean.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGm8eVWhIiG5_W6i96twLxriKQurBs0qsvVY0E1OkVkjVgfPitKgr9-fwKh_RLepvQGT0FZ_ciYoT33uXnB6lVGaWVueyQf79HQ6pl6kM_YPoRn4cSJdTS_XxJN-TWeYWSSyzVxche1SfLJjKLjwz-c3H3dLHRp2WE13p5eY7rCg1kmOXuWc8ey6JizwIpnfBTBuVIBC0llRw=="
+    },
+    {
+      "end_index": 9321,
+      "start_index": 8534,
+      "title": "medicaleconomics.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEc-dUvipskD9N2rwp-aqON0UX_LXo37N3qK8V19M-lvthat8GA89yZyg0UkjgGZFW4xOYfj8e-aESQ2rVbeCKF-5UfvhP6ps81alWvFJ4Sa6woEfn0xE4PW0iIWnlM609x4KArGKtDeWnxCCmWb2JugHpWFL3Q16hXd_BxT7pa0_myzuSXraBBo1SjaA=="
+    },
+    {
+      "end_index": 10322,
+      "start_index": 9321,
+      "title": "prnewswire.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmL2BHPq82OOrK3iucJUMXLEb22g7WplDcmjfqjnzd579qmfMxObaqfsdurtgm4ijVEHkMDOffqQxL1PzZBP_CDuR-BNF1HK6UJx8JGnBq3T_233ngWRqxqghJjwYUnmR7M456wXOuh1RASsCFBDZeORFZBegk-uyPz4egjs4wiYb7Beo2Yp-IjO5OYw4jLduUF3Q_pqHP21GlJ9LXr-xn9is-KmXRGH8JiDS9bZzfQfkuxYFYvNFampHZUGdgEC5LhAgkgnW0d4d5VR8_6yV4sK269Aq_XgCr729hls_l8xVyNEbVmCJ6"
+    },
+    {
+      "end_index": 11061,
+      "start_index": 10814,
+      "title": "vector-labs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPLwpjdy6vDjrQvE-RWrud1bde4xjEDpHqWhkz0YZFgeDD-C1mZUqeDglfiQGXEnb2CoR9PnIsEzXAeUvnN56EwtsLByo4uediHFQilY8BpJzYNWMcujBP50s0A0A1vCQO1C3tL3H7Amlsebnp3sGiltXuPYevI0Epi_2YIV6pNNvKKVAc9EU8KqBwUkMklI8FWeZtDPNT5sBjeiX2J2wzS-E="
+    },
+    {
+      "end_index": 11061,
+      "start_index": 10814,
+      "title": "particle41.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8V9eeRZ_iEvb5K2F-tMUQRj7b52R0o6bivUkBkmCOV9xmt9J7-Du7DtSnhPgU8JGd8gYkEY-KXeXzDaC0DSkaz6xUYH9e26_vEr5SV6juShG9FigU2q7V7yGlbYS60WrkXEcGxEZ9iD9XzMeOOVsZnNJW1Q=="
+    },
+    {
+      "end_index": 11061,
+      "start_index": 10814,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGIwIaAsbZ99L5d5j8QdM2NrV95F8q5z54wcpwgtnH0j8dCTuWaDcpjO13Y-0AeNCIcU8J2rSsny6nUkUVolE0BBzjzaomiBqjA8AUgd_LwF-h98sP8IlzOgMoNeTY9dTOTKyjt9vjN4GHYaMXgnCkEBoeB-8QX7gAVKmuqVp_OUmehVPOHZJ8nvs6NcF7AH1jcOORdrOyTRkCYe7lRDAvf5otyyz_vKrfqGz3G7z0EbwaKkOyt8L__a6_1YA=="
+    },
+    {
+      "end_index": 11061,
+      "start_index": 10814,
+      "title": "nirajiitr.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxYePtu4hbkzdJFceh08KX-M16S8slq2vl_aBJ0MWZrk-tp07BXCnsnVFu8ckAFAqB05Wr8gDOmyd9Su_VST5-wuyTEME2deN37ckEdIKjb7vV4s88DOFRTA4UvBrSUbin7iNzjghEXULFmklLzGtydSH65eiu"
+    },
+    {
+      "end_index": 11061,
+      "start_index": 10814,
+      "title": "integrate.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGU0SFyVczttsmEb40Bnjgmw8rltF5HfaM-j9sV-d_BfZgN53_e2lJJ0O2Zb4sxkF4vFPEOu663U8I43ZNNJVqGzNA0oDkzuroCvKr72PBBsZVgAq7Y9PDNNwJ1N1Wd8TFthgmHg2Ey5YKcRV6a6vUqNSiih1Geaqzjv6XD9h4cK_aTW1QvVXamoXsYW7KDH5w81_fWjv8ojV-0LGE="
+    },
+    {
+      "end_index": 11983,
+      "start_index": 11061,
+      "title": "vector-labs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPLwpjdy6vDjrQvE-RWrud1bde4xjEDpHqWhkz0YZFgeDD-C1mZUqeDglfiQGXEnb2CoR9PnIsEzXAeUvnN56EwtsLByo4uediHFQilY8BpJzYNWMcujBP50s0A0A1vCQO1C3tL3H7Amlsebnp3sGiltXuPYevI0Epi_2YIV6pNNvKKVAc9EU8KqBwUkMklI8FWeZtDPNT5sBjeiX2J2wzS-E="
+    },
+    {
+      "end_index": 12698,
+      "start_index": 11983,
+      "title": "particle41.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8V9eeRZ_iEvb5K2F-tMUQRj7b52R0o6bivUkBkmCOV9xmt9J7-Du7DtSnhPgU8JGd8gYkEY-KXeXzDaC0DSkaz6xUYH9e26_vEr5SV6juShG9FigU2q7V7yGlbYS60WrkXEcGxEZ9iD9XzMeOOVsZnNJW1Q=="
+    },
+    {
+      "end_index": 13519,
+      "start_index": 12698,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGIwIaAsbZ99L5d5j8QdM2NrV95F8q5z54wcpwgtnH0j8dCTuWaDcpjO13Y-0AeNCIcU8J2rSsny6nUkUVolE0BBzjzaomiBqjA8AUgd_LwF-h98sP8IlzOgMoNeTY9dTOTKyjt9vjN4GHYaMXgnCkEBoeB-8QX7gAVKmuqVp_OUmehVPOHZJ8nvs6NcF7AH1jcOORdrOyTRkCYe7lRDAvf5otyyz_vKrfqGz3G7z0EbwaKkOyt8L__a6_1YA=="
+    },
+    {
+      "end_index": 14283,
+      "start_index": 13519,
+      "title": "nirajiitr.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxYePtu4hbkzdJFceh08KX-M16S8slq2vl_aBJ0MWZrk-tp07BXCnsnVFu8ckAFAqB05Wr8gDOmyd9Su_VST5-wuyTEME2deN37ckEdIKjb7vV4s88DOFRTA4UvBrSUbin7iNzjghEXULFmklLzGtydSH65eiu"
+    },
+    {
+      "end_index": 15058,
+      "start_index": 14283,
+      "title": "integrate.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGU0SFyVczttsmEb40Bnjgmw8rltF5HfaM-j9sV-d_BfZgN53_e2lJJ0O2Zb4sxkF4vFPEOu663U8I43ZNNJVqGzNA0oDkzuroCvKr72PBBsZVgAq7Y9PDNNwJ1N1Wd8TFthgmHg2Ey5YKcRV6a6vUqNSiih1Geaqzjv6XD9h4cK_aTW1QvVXamoXsYW7KDH5w81_fWjv8ojV-0LGE="
+    },
+    {
+      "end_index": 15794,
+      "start_index": 15623,
+      "title": "sentinelone.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoWJgm0cY-QdUzxDL0ASlbyK34ka7Jqr7YIHWj8J0BS9D4uP0A6QbJ8Pig2omQihThlPNgDgv-ApcAgGmQ-DlGjO7xjbQhXOoZInfvtWEitoKqKKEmMMJoDDVD-nf3kcQhTrFEkTvryYgtlyoc0ogJlgDJBzQuPABgNIUx6zYi5iE8kAs3vR3NRfDF0g=="
+    },
+    {
+      "end_index": 15794,
+      "start_index": 15623,
+      "title": "novustechworld.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZUqiNWLmL5Jgr2Iwm6z6Di6AuxtS_9JHF20ab1lVnIcCUHZ7dwlBqF9HrWcF5Mf4cF6V3gKcTUXhTv31i_zoEDgo3ZPONEHl-QlXUzTbjW4WDuzLljNxyJouQmFDI0fj3hK9vmVSdSfqOLtdfVppt7JTNix4pW-4liNivO8uuskdTu3h-n81_NP_R_Hl2TIbq"
+    },
+    {
+      "end_index": 15794,
+      "start_index": 15623,
+      "title": "flexisit.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF22PHupoc2dr4Y11juIZCSj5kcz3JWhTkFjoWMsngMlR9P3zsQFOwnVMOnWcnc6wfMR2knRD5t6EpE8qeVw8LArnVAylGHGNw3doqyxUo2DJIKeNnoHDKSKAFcOajR-ez_K7Z_jF0y9WRq2XKYCUCfnNfK2ZbJD2-4UvxUs-IO5ydzUEaKSyW87RP5FgfUARW1"
+    },
+    {
+      "end_index": 15794,
+      "start_index": 15623,
+      "title": "fortinet.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUljkkYzOoDQix02ny8ioWpU9JmQa3M4Pg0iSniv36Dy1khF_SVRAvdQVdsQP64lqlE-58r0x6DA5sU8_MwnIFZ91Z6UewpLjpxLseNR6j2h6uQ43gAze67EuL9eDvU1rOfzWuwDtKo5AgTmfsCV9FdeK8gOFrDqHwDGXZkg6gLw1N4lw="
+    },
+    {
+      "end_index": 15794,
+      "start_index": 15623,
+      "title": "darktrace.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_q5S_VUqobo_XFYV9IHp0V2hoNI3geM8ooUTTdUu6YQiRxGmGErUhcjCv4oMF_kQtd93NoqvXxYo2Pu_GxSQyPm0xEGurhD6scfnSx9on6ZH80mHPRzt1AQqxR32Zn0Ltkqb_evAbruq6tnp-HzpdAWhFM27h_cL3HByUNwMdqEqesgrphzDGn6ENTVQLVkL15V4="
+    },
+    {
+      "end_index": 16623,
+      "start_index": 15794,
+      "title": "sentinelone.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoWJgm0cY-QdUzxDL0ASlbyK34ka7Jqr7YIHWj8J0BS9D4uP0A6QbJ8Pig2omQihThlPNgDgv-ApcAgGmQ-DlGjO7xjbQhXOoZInfvtWEitoKqKKEmMMJoDDVD-nf3kcQhTrFEkTvryYgtlyoc0ogJlgDJBzQuPABgNIUx6zYi5iE8kAs3vR3NRfDF0g=="
+    },
+    {
+      "end_index": 17404,
+      "start_index": 16623,
+      "title": "novustechworld.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZUqiNWLmL5Jgr2Iwm6z6Di6AuxtS_9JHF20ab1lVnIcCUHZ7dwlBqF9HrWcF5Mf4cF6V3gKcTUXhTv31i_zoEDgo3ZPONEHl-QlXUzTbjW4WDuzLljNxyJouQmFDI0fj3hK9vmVSdSfqOLtdfVppt7JTNix4pW-4liNivO8uuskdTu3h-n81_NP_R_Hl2TIbq"
+    },
+    {
+      "end_index": 18196,
+      "start_index": 17404,
+      "title": "flexisit.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF22PHupoc2dr4Y11juIZCSj5kcz3JWhTkFjoWMsngMlR9P3zsQFOwnVMOnWcnc6wfMR2knRD5t6EpE8qeVw8LArnVAylGHGNw3doqyxUo2DJIKeNnoHDKSKAFcOajR-ez_K7Z_jF0y9WRq2XKYCUCfnNfK2ZbJD2-4UvxUs-IO5ydzUEaKSyW87RP5FgfUARW1"
+    },
+    {
+      "end_index": 19020,
+      "start_index": 18196,
+      "title": "ieee-icc.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_v4BbIvVxY6h5lMwoUz9OyT0FKmVsU7lpz_iwyFGa0D3_z9SV8y8VscZsP4pxKsGXC9lq3inNcX0PXog6FE53N4cF_4559zN870WnnDV_08x1Igu7CS8Umbt1ymstwa9VW7oFeZ54ckN_ilJiXurATRbNDA8vRV5N7TigVkl_qDYnnjApji4MxU_y4_uz4C7cL0RHHCqxmEbGzLmtxTLIKE4oWLsc5Fox_iPl3uu0u4BuYO1J4A=="
+    },
+    {
+      "end_index": 19754,
+      "start_index": 19020,
+      "title": "fortinet.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUljkkYzOoDQix02ny8ioWpU9JmQa3M4Pg0iSniv36Dy1khF_SVRAvdQVdsQP64lqlE-58r0x6DA5sU8_MwnIFZ91Z6UewpLjpxLseNR6j2h6uQ43gAze67EuL9eDvU1rOfzWuwDtKo5AgTmfsCV9FdeK8gOFrDqHwDGXZkg6gLw1N4lw="
+    },
+    {
+      "end_index": 20514,
+      "start_index": 19754,
+      "title": "darktrace.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_q5S_VUqobo_XFYV9IHp0V2hoNI3geM8ooUTTdUu6YQiRxGmGErUhcjCv4oMF_kQtd93NoqvXxYo2Pu_GxSQyPm0xEGurhD6scfnSx9on6ZH80mHPRzt1AQqxR32Zn0Ltkqb_evAbruq6tnp-HzpdAWhFM27h_cL3HByUNwMdqEqesgrphzDGn6ENTVQLVkL15V4="
+    },
+    {
+      "end_index": 21375,
+      "start_index": 21097,
+      "title": "invisibletech.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFBENek7L5AzIpVKLSvIWpPqwKc3XY4CeFrvyTLxC2K_TYJztpl88avX6arvLXmdDI_eL7QwTu96-2VDBTx5IAPTsOIaxoSZkOO3xe-KOVAXbX4vQVSF6Gt9yNTd1NaJ4vkJ7hHpvp-Fcc_zZ4gw=="
+    },
+    {
+      "end_index": 21375,
+      "start_index": 21097,
+      "title": "ycombinator.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIhTbMku4uYTbr96YbC7tV9MXZuRyd0hTPPfKLggYW3CsJ1EaU1tv2RWg8HHOXUa9n9gddhW_5mZukDfLajhy2YOJEPvI0j322OgGoEGGJWaUTwA_E_7cNwbqIHT3LnKKvTmWt2sK0_AnTVK71FJxX9wYkDJfG62CP18Ok-ltWPDg="
+    },
+    {
+      "end_index": 21375,
+      "start_index": 21097,
+      "title": "dataintelo.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3q_f0ByoONMT43jFVsC8NrMaYUM_Yo6PZfutqcD_UtllPoy0-n6m8TbliDvwakXJfLaXs2qdE1hVyjdAMWO_3hgUiEmcX_5CIxfYZJ8AtaEcpyHLbH-dj9DFfKqPfPmpguN0ZOQqJ596jf6ZTlzlhyxFiwcNfeAEG0RlLAZA="
+    },
+    {
+      "end_index": 21375,
+      "start_index": 21097,
+      "title": "digitalapplied.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyRTdmICa6lOewwCF99WUR80huvBs0JnGrcb0VcPS090ywyATQshopFXgVoZwDV0PPbRDT4T11tPJJvlTeeCRMcEMS3uZBbdMeBlOUwKpu_q-8yfFqaBQ6-JomPyqBCAbjdPsQ7kXtjJs5PBe-JUSXWfncZjYG-mrkD__vWqVp0VDOXfd_UJ4="
+    },
+    {
+      "end_index": 21375,
+      "start_index": 21097,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZCBuwhpLHz95CAjz8cOOEvePERK2sfVNAfX7O0ZD1McoPmptg-x1993BqCvDMcw_jT0uf1q7PYqprS12gwzLEc8FFKW5gK2jVXHKC_6K8P4RKZd-4ztwdTvZ1L7jQoo0fED5OGg=="
+    },
+    {
+      "end_index": 22226,
+      "start_index": 21375,
+      "title": "invisibletech.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFBENek7L5AzIpVKLSvIWpPqwKc3XY4CeFrvyTLxC2K_TYJztpl88avX6arvLXmdDI_eL7QwTu96-2VDBTx5IAPTsOIaxoSZkOO3xe-KOVAXbX4vQVSF6Gt9yNTd1NaJ4vkJ7hHpvp-Fcc_zZ4gw=="
+    },
+    {
+      "end_index": 22952,
+      "start_index": 22226,
+      "title": "ycombinator.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIhTbMku4uYTbr96YbC7tV9MXZuRyd0hTPPfKLggYW3CsJ1EaU1tv2RWg8HHOXUa9n9gddhW_5mZukDfLajhy2YOJEPvI0j322OgGoEGGJWaUTwA_E_7cNwbqIHT3LnKKvTmWt2sK0_AnTVK71FJxX9wYkDJfG62CP18Ok-ltWPDg="
+    },
+    {
+      "end_index": 23678,
+      "start_index": 22952,
+      "title": "dataintelo.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3q_f0ByoONMT43jFVsC8NrMaYUM_Yo6PZfutqcD_UtllPoy0-n6m8TbliDvwakXJfLaXs2qdE1hVyjdAMWO_3hgUiEmcX_5CIxfYZJ8AtaEcpyHLbH-dj9DFfKqPfPmpguN0ZOQqJ596jf6ZTlzlhyxFiwcNfeAEG0RlLAZA="
+    },
+    {
+      "end_index": 24451,
+      "start_index": 23678,
+      "title": "digitalapplied.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyRTdmICa6lOewwCF99WUR80huvBs0JnGrcb0VcPS090ywyATQshopFXgVoZwDV0PPbRDT4T11tPJJvlTeeCRMcEMS3uZBbdMeBlOUwKpu_q-8yfFqaBQ6-JomPyqBCAbjdPsQ7kXtjJs5PBe-JUSXWfncZjYG-mrkD__vWqVp0VDOXfd_UJ4="
+    },
+    {
+      "end_index": 25212,
+      "start_index": 24451,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZCBuwhpLHz95CAjz8cOOEvePERK2sfVNAfX7O0ZD1McoPmptg-x1993BqCvDMcw_jT0uf1q7PYqprS12gwzLEc8FFKW5gK2jVXHKC_6K8P4RKZd-4ztwdTvZ1L7jQoo0fED5OGg=="
+    },
+    {
+      "end_index": 25963,
+      "start_index": 25838,
+      "title": "aiworldjournal.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0XLUAte1q7TE5ucvJoGQ1p4v-7bIvcDBLzg6PQfN9GNfN1AKi2DIrCunsikmEGzo7B1QYmnFl6PT1JUuHUHQiyb04jPFI1YZ4Bcq1Eb5pGJeIlsdgLryEjloyOIfqKuofthcLBvX9Xw9PeHUh3D9WvW-mDlAvw77O9z9v3sbK8Qc6ILw2Iza2qXXqW7H_Ap1M3D37V25rxAjyDSaPI_VqXxNPREqK_plWLMrsUYnP"
+    },
+    {
+      "end_index": 25963,
+      "start_index": 25838,
+      "title": "temple.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHi96gQzA-X8GByU29MeYbh6yTdwa4QcS0fN4NQll9AvPNqa2ZubiR0Joe2rGyWK4rWpWIjlouHm0ICLgnN6CX3S_LZRsM2Al6sh71HV-72Ld4G7yXSVrfko7Da5ymMJjJQwAqZs-qkPi_YrRM3uBi2Fmo65qOOBvaL5j-X1ezvmJpAuqxHj5p4B5EZgo5-fScXpLXI0bPvt_l-HFqk-GML1I7avYJgX30P7FE="
+    },
+    {
+      "end_index": 25963,
+      "start_index": 25838,
+      "title": "vttresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfxuDsYRN9zbDDvFXCbxceER-4X6YJ-fnBN7NUGsgo09xtX75kF3QmGQba1zxtS2uOHXvgfzfoY4ujVVCjXd1wf87VXZK4onsbQNK2c0NL1n-TE5_EvrufpxqFRu0u3_JrnYqAcZJeQA-ngYjS1fP4kIGxfOk2hRm5exMnrtfy5_IVqtm7QcXnxBtvA7S_LyYuqmZ2aj1iTWyrl_IgEAWwyt0uPg=="
+    },
+    {
+      "end_index": 25963,
+      "start_index": 25838,
+      "title": "europa.eu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHSmjNaSHHnrGYsCRVp8m2dqs0IbT88g52hD5VkMi6CtGdsZYlnWcpIxJuOlJEQZKD6tfxvzfVfbq420l6B8U0PLNnQ9KxXXjkAbkQ0kqCU-xa8hdxF31JFWqoVKXxf2G8trIL-ABUz3T-yyWie-72Dbpu1oL6r"
+    },
+    {
+      "end_index": 25963,
+      "start_index": 25838,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFKeUYlyP9qlwez77IdC-Vm0CnkGKW4gIWXFureqtra5caOlY6O_7eQ3hSt8uze4RdPGEdZfw4492byHDY-Eqk97wSItx2U53u6cFjs3gJxu5D2DE_njIXLkZeSpIAgAGz4s_I70uv5R45JQzU9ijeVyKbUdKcMqxw3ITigSwCyc4CONhHO1F6oyW8gDlG_7kc41gb-Mb2x_28IbPxWXoKLg12YOu7uDJeAOeBN7cfa5W9W6pTt"
+    },
+    {
+      "end_index": 26921,
+      "start_index": 25963,
+      "title": "aiworldjournal.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0XLUAte1q7TE5ucvJoGQ1p4v-7bIvcDBLzg6PQfN9GNfN1AKi2DIrCunsikmEGzo7B1QYmnFl6PT1JUuHUHQiyb04jPFI1YZ4Bcq1Eb5pGJeIlsdgLryEjloyOIfqKuofthcLBvX9Xw9PeHUh3D9WvW-mDlAvw77O9z9v3sbK8Qc6ILw2Iza2qXXqW7H_Ap1M3D37V25rxAjyDSaPI_VqXxNPREqK_plWLMrsUYnP"
+    },
+    {
+      "end_index": 27709,
+      "start_index": 27023,
+      "title": "temple.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHi96gQzA-X8GByU29MeYbh6yTdwa4QcS0fN4NQll9AvPNqa2ZubiR0Joe2rGyWK4rWpWIjlouHm0ICLgnN6CX3S_LZRsM2Al6sh71HV-72Ld4G7yXSVrfko7Da5ymMJjJQwAqZs-qkPi_YrRM3uBi2Fmo65qOOBvaL5j-X1ezvmJpAuqxHj5p4B5EZgo5-fScXpLXI0bPvt_l-HFqk-GML1I7avYJgX30P7FE="
+    },
+    {
+      "end_index": 28550,
+      "start_index": 27709,
+      "title": "vttresearch.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfxuDsYRN9zbDDvFXCbxceER-4X6YJ-fnBN7NUGsgo09xtX75kF3QmGQba1zxtS2uOHXvgfzfoY4ujVVCjXd1wf87VXZK4onsbQNK2c0NL1n-TE5_EvrufpxqFRu0u3_JrnYqAcZJeQA-ngYjS1fP4kIGxfOk2hRm5exMnrtfy5_IVqtm7QcXnxBtvA7S_LyYuqmZ2aj1iTWyrl_IgEAWwyt0uPg=="
+    },
+    {
+      "end_index": 29302,
+      "start_index": 28550,
+      "title": "europa.eu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHSmjNaSHHnrGYsCRVp8m2dqs0IbT88g52hD5VkMi6CtGdsZYlnWcpIxJuOlJEQZKD6tfxvzfVfbq420l6B8U0PLNnQ9KxXXjkAbkQ0kqCU-xa8hdxF31JFWqoVKXxf2G8trIL-ABUz3T-yyWie-72Dbpu1oL6r"
+    },
+    {
+      "end_index": 30175,
+      "start_index": 29302,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFKeUYlyP9qlwez77IdC-Vm0CnkGKW4gIWXFureqtra5caOlY6O_7eQ3hSt8uze4RdPGEdZfw4492byHDY-Eqk97wSItx2U53u6cFjs3gJxu5D2DE_njIXLkZeSpIAgAGz4s_I70uv5R45JQzU9ijeVyKbUdKcMqxw3ITigSwCyc4CONhHO1F6oyW8gDlG_7kc41gb-Mb2x_28IbPxWXoKLg12YOu7uDJeAOeBN7cfa5W9W6pTt"
+    },
+    {
+      "end_index": 30937,
+      "start_index": 30740,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFM5LfoGnOc5bypTUCQdxvYj492FS-1iUy9VnkCQmUyU4mbpRonHgMYD4e0uQGwTwfGrEPnCpzW6cribPRyMClR6CNYU1g_wmlttUIHMR4SS5_cHT6b7xRmWU1EHUSJ4A8lvtj4RejFLxfnlSRUjjOgxqE3aXWB7MlyynQakfSrZgxQ3Eu_b1rvL4fAy3t7JTQVEKQ="
+    },
+    {
+      "end_index": 31822,
+      "start_index": 30937,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFM5LfoGnOc5bypTUCQdxvYj492FS-1iUy9VnkCQmUyU4mbpRonHgMYD4e0uQGwTwfGrEPnCpzW6cribPRyMClR6CNYU1g_wmlttUIHMR4SS5_cHT6b7xRmWU1EHUSJ4A8lvtj4RejFLxfnlSRUjjOgxqE3aXWB7MlyynQakfSrZgxQ3Eu_b1rvL4fAy3t7JTQVEKQ="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-10T09:48:27Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQEbH8Y2yDVRWg",
+    "post_urn": "urn:li:share:7492517211270545409",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Responsible AI and Explainable AI (XAI) for Regulatory Compliance"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Responsible AI and Explainable AI (XAI) for Regulatory Compliance",
+  "status": "published",
+  "trend": {
+    "category": "Responsible AI",
+    "evidence_score": 0.9,
+    "novelty_score": 0.75,
+    "practical_value_score": 0.9,
+    "recency_score": 0.95,
+    "relevance_score": 0.95,
+    "sources": [
+      {
+        "claim_supported": "AI systems are moving from recommending to acting in regulated workflows, necessitating new control models for decision authority, human oversight, and escalation paths.",
+        "published_at": "2026-10-23",
+        "publisher": "Responsible AI Institute",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "RAISE 2026 | Responsible AI",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3qscgqTxGSw5AeOjlfLfqtvPB2HAhlBFelRz8GGsE6NEKoWg7ukQsbavJEV-eD7YDfIbByV-Y9B1gEUQbjCXypemcwFofzxUMeQdTklnikf9to-075iZZkby4iw7IJ64="
+      },
+      {
+        "claim_supported": "The EU AI Act's transparency provisions taking effect in August 2026 make Explainable AI (XAI) crucial for enterprises, especially in finance, defense, and healthcare.",
+        "published_at": "2026-02-26",
+        "publisher": "Seekr",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "Explainable AI: The Complete Enterprise Guide for 2026 - Seekr",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrLQ7DjIWm4g-LyXHZT43FL765Mv4IjaXbrbKY9T0l81tb03msEnALGKLpyJd8cgJRzED6tqkuOYLal2CdvxxjgyGxg_c1W5hyffdJZOYQrE5s7ClmigqfTDucBw9wIKVO-x_BGMJis3mmfVzm9hWajfZDIgDRcSUg=="
+      },
+      {
+        "claim_supported": "AI compliance is an ethical imperative in regulated industries like healthcare and finance, requiring robust governance, tamper-resistant audit trails, and approval gates for sensitive actions.",
+        "published_at": "2026-06-01",
+        "publisher": "Glean",
+        "quality_score": 0.85,
+        "source_type": "independent",
+        "title": "Top 7 industries with stringent AI compliance needs in 2026 - Glean",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGm8eVWhIiG5_W6i96twLxriKQurBs0qsvVY0E1OkVkjVgfPitKgr9-fwKh_RLepvQGT0FZ_ciYoT33uXnB6lVGaWVueyQf79HQ6pl6kM_YPoRn4cSJdTS_XxJN-TWeYWSSyzVxche1SfLJjKLjwz-c3H3dLHRp2WE13p5eY7rCg1kmOXuWc8ey6JizwIpnfBTBuVIBC0llRw=="
+      },
+      {
+        "claim_supported": "Responsible AI in healthcare means clinically grounded automation that supports transparent, collaborative decision-making and reinforces clinical reasoning, particularly for processes like prior authorization.",
+        "published_at": "2026-03-26",
+        "publisher": "Medical Economics",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "What responsible AI should look like in 2026 | Medical Economics",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEc-dUvipskD9N2rwp-aqON0UX_LXo37N3qK8V19M-lvthat8GA89yZyg0UkjgGZFW4xOYfj8e-aESQ2rVbeCKF-5UfvhP6ps81alWvFJ4Sa6woEfn0xE4PW0iIWnlM609x4KArGKtDeWnxCCmWb2JugHpWFL3Q16hXd_BxT7pa0_myzuSXraBBo1SjaA=="
+      },
+      {
+        "claim_supported": "The Responsible AI Institute launched TrustX for Finance to define how autonomous AI systems are evaluated, controlled, and approved for production in financial services, providing a structured path to verifiable trust.",
+        "published_at": "2026-06-15",
+        "publisher": "PR Newswire (Responsible AI Institute)",
+        "quality_score": 0.95,
+        "source_type": "primary",
+        "title": "Responsible AI Institute Launches TrustX for Finance to Bring Verifiable Trust to Autonomous AI in Financial Services - PR Newswire",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmL2BHPq82OOrK3iucJUMXLEb22g7WplDcmjfqjnzd579qmfMxObaqfsdurtgm4ijVEHkMDOffqQxL1PzZBP_CDuR-BNF1HK6UJx8JGnBq3T_233ngWRqxqghJjwYUnmR7M456wXOuh1RASsCFBDZeORFZBegk-uyPz4egjs4wiYb7Beo2Yp-IjO5OYw4jLduUF3Q_pqHP21GlJ9LXr-xn9is-KmXRGH8JiDS9bZzfQfkuxYFYvNFampHZUGdgEC5LhAgkgnW0d4d5VR8_6yV4sK269Aq_XgCr729hls_l8xVyNEbVmCJ6=="
+      }
+    ],
+    "summary": "With new regulations like the EU AI Act taking effect in August 2026, there's a heightened demand for Responsible AI (RAI) and Explainable AI (XAI) across enterprises. This trend focuses on building verifiable trust, transparency, and auditability into AI systems, especially in high-risk sectors such as financial services and healthcare, where AI decisions directly impact individuals. Organizations are prioritizing capabilities like training data attribution, complete audit trails, and contestability to meet compliance requirements and ensure ethical deployment.",
+    "topic": "Responsible AI and Explainable AI (XAI) for Regulatory Compliance"
+  },
+  "visual": {
+    "alt_text": "Insight card showing the core concepts of Responsible AI and Explainable AI. Text highlights 'EU AI Act 2026' driving demand for 'Verifiable Trust,' 'Transparency,' 'Auditability,' 'Training Data Attribution,' 'Complete Audit Trails,' and 'Contestability' for AI systems, especially in financial s...",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQEbH8Y2yDVRWg",
+    "mime_type": "image/png",
+    "path": "assets/20260810T094826Z-responsible-ai-and-explainable-ai--xai--for-regula.png",
+    "width": 1200
+  }
+}
