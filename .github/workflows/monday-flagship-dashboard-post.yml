@@ -1,4 +1,4 @@
-name: Weekday LinkedIn Post
+name: Monday Flagship Dashboard Post
 
 on:
   workflow_dispatch:
@@ -9,8 +9,14 @@ on:
         default: "false"
         type: choice
         options: ["true", "false"]
+      force_publish:
+        description: "Publish dashboard post even when not in the one-time date window"
+        required: true
+        default: "false"
+        type: choice
+        options: ["true", "false"]
   schedule:
-    - cron: "17 8 * * 1-5"
+    - cron: "0 10 10 8 *"
 
 permissions:
   contents: write
@@ -20,34 +26,36 @@ jobs:
   post:
     runs-on: ubuntu-latest
     env:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
-      LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
       LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
       LINKEDIN_TOKEN_EXPIRES_AT: ${{ vars.LINKEDIN_TOKEN_EXPIRES_AT }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Guard one-time flagship date
+        id: guard
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_publish }}" = "true" ]; then
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+          elif [ "$(date -u +%F)" = "2026-08-10" ]; then
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            echo "This workflow is only allowed to publish on 2026-08-10."
+          fi
+
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.allowed == 'true'
         with:
           python-version: "3.11"
 
-      - name: Skip regular automation on flagship day
-        id: flagship
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%F)" = "2026-08-10" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Skipping regular weekday post because the one-time flagship dashboard post is scheduled later today."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Install dependencies
-        if: steps.flagship.outputs.skip != 'true'
+        if: steps.guard.outputs.allowed == 'true'
         run: python -m pip install -e .
 
       - name: Restore automation state
-        if: steps.flagship.outputs.skip != 'true'
+        if: steps.guard.outputs.allowed == 'true'
         run: |
           git fetch origin automation-state || true
           if git show-ref --verify --quiet refs/remotes/origin/automation-state; then
@@ -55,7 +63,7 @@ jobs:
           fi
 
       - name: Check LinkedIn token
-        if: steps.flagship.outputs.skip != 'true'
+        if: steps.guard.outputs.allowed == 'true'
         id: token
         run: |
           python -m linkedin_ai_agent.cli token-status > token_status.json || true
@@ -63,7 +71,7 @@ jobs:
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
 
       - name: Open token renewal issue
-        if: steps.flagship.outputs.skip != 'true' && steps.token.outputs.status == 'expiring_soon'
+        if: steps.guard.outputs.allowed == 'true' && steps.token.outputs.status == 'expiring_soon'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -72,27 +80,26 @@ jobs:
             gh issue create --title "LinkedIn token expires soon" --body "Renew the personal LinkedIn OAuth token within seven days and update LINKEDIN_ACCESS_TOKEN."
           fi
 
-      - name: Run agent
-        if: steps.flagship.outputs.skip != 'true'
+      - name: Publish featured dashboard post
+        if: steps.guard.outputs.allowed == 'true'
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
-            python -m linkedin_ai_agent.cli run --dry-run
+            python -m linkedin_ai_agent.cli featured-dashboard --dry-run
           else
-            python -m linkedin_ai_agent.cli run
+            python -m linkedin_ai_agent.cli featured-dashboard
           fi
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: linkedin-agent-reports
+          name: monday-flagship-dashboard-post
           path: |
             reports/*.json
-            assets/*.png
             token_status.json
           if-no-files-found: ignore
 
       - name: Push audit state
-        if: always() && steps.flagship.outputs.skip != 'true'
+        if: always() && steps.guard.outputs.allowed == 'true'
         run: |
           mkdir -p /tmp/linkedin-agent-state
           cp -R .state /tmp/linkedin-agent-state/.state || true
@@ -110,5 +117,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f .state reports
-          git commit -m "Update LinkedIn agent audit state" || exit 0
+          git commit -m "Update LinkedIn featured dashboard audit state" || exit 0
           git push origin automation-state
