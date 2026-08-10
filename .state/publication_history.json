@@ -61,5 +61,14 @@
     "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3qscgqTxGSw5AeOjlfLfqtvPB2HAhlBFelRz8GGsE6NEKoWg7ukQsbavJEV-eD7YDfIbByV-Y9B1gEUQbjCXypemcwFofzxUMeQdTklnikf9to-075iZZkby4iw3IJ64=",
     "report_path": "reports/20260810T094827Z-responsible-ai-and-explainable-ai--xai--for-regulatory-compl.json",
     "topic": "Responsible AI and Explainable AI (XAI) for Regulatory Compliance"
+  },
+  {
+    "category": "portfolio",
+    "created_at": "2026-08-10T10:52:40Z",
+    "image_urn": "urn:li:image:D4E10AQEwR0q-hTsxGQ",
+    "post_urn": "urn:li:share:7492533367016620032",
+    "primary_source_url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center",
+    "report_path": "reports/20260810T105240Z-retail-revenue-leakage-review.json",
+    "topic": "Retail Revenue Leakage Review"
   }
 ]

@@ -1,0 +1,60 @@
+{
+  "draft": {
+    "alt_text": "Landscape executive retail revenue dashboard showing revenue, profit, category contribution, channel economics, customer quality, and return pressure versus margin.",
+    "body": "I built a retail revenue dashboard to answer a question leaders actually care about:\n\nIs growth creating better business performance, or just more activity?\n\nDataset:\n2,160 synthetic retail operations rows covering 18 months, 5 regions, 4 channels, 6 product categories, campaigns, orders, revenue, gross profit, customers, returns, support tickets, fulfillment delay, stockout risk, satisfaction, and data quality flags.\n\nProcess:\nI generated the data with Python, aggregated KPIs by month, category, channel, and region, then designed a 16:9 executive dashboard with HTML, CSS, and SVG. No chart library. The goal was not decoration. It was decision support.\n\nAnalyst note:\nRevenue is up, but the real review is whether gross profit, repeat customers, return pressure, and fulfillment speed are moving in the same direction. A dashboard should make that tension visible fast.\n\nProject and data:\nhttps://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center\n\nDiscussion prompts:\nWhat metric would you add before presenting this to leadership?\nDo you prefer dashboards that explain the decision, or dashboards that only show the numbers?",
+    "category": "portfolio",
+    "claims": [
+      "The dataset contains 2,160 synthetic retail operations rows.",
+      "The dashboard was generated with Python, HTML, CSS, and SVG.",
+      "The analysis compares revenue growth with profit, retention, returns, and fulfillment pressure."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#DashboardDesign",
+      "#Python",
+      "#DataStorytelling",
+      "#KPIReporting",
+      "#GrowthAnalytics",
+      "#DecisionSupport",
+      "#AnalyticsPortfolio",
+      "#DataForBusiness"
+    ],
+    "primary_source_url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center",
+    "supporting_source_urls": [
+      "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/data/retail_operations_kpis.csv",
+      "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/scripts/build_dashboard.py"
+    ],
+    "topic": "Retail Revenue Leakage Review",
+    "visual_prompt": "Screenshot-ready retail revenue leakage dashboard.",
+    "visual_style": "landscape_dashboard"
+  },
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-10T10:52:40Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQEwR0q-hTsxGQ",
+    "post_urn": "urn:li:share:7492533367016620032",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Retail Revenue Leakage Review"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Retail Revenue Leakage Review",
+  "status": "published",
+  "visual": {
+    "alt_text": "Landscape executive retail revenue dashboard showing revenue, profit, category contribution, channel economics, customer quality, and return pressure versus margin.",
+    "height": 900,
+    "linkedin_image_urn": "urn:li:image:D4E10AQEwR0q-hTsxGQ",
+    "mime_type": "image/png",
+    "path": "assets/featured_retail_revenue_leakage_review.png",
+    "width": 1600
+  }
+}
