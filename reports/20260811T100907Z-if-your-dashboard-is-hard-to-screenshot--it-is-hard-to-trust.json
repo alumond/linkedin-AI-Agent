@@ -1,0 +1,107 @@
+{
+  "draft": {
+    "alt_text": "Premium insight card comparing growth, margin, retention, and operations health as linked business decisions.",
+    "body": "The hard part of analytics is not building the dashboard. It is naming the trade-off clearly.\n\nIf your dashboard is hard to screenshot, it is hard to trust.\n\nThe best dashboards are built for boardroom consumption.\n\nA useful report should force three questions before anyone celebrates a KPI:\n1) What improved?\n2) What got worse while it improved?\n3) Who owns the next action?\n\nI use that standard in my portfolio work. The retail command center links 2,160 synthetic operations rows across revenue, margin, retention, returns, fulfillment delay, and stockout risk. The point is not to make charts look busy. The point is to make a manager see where growth is leaking.\n\nMy read:\nIf a metric has no owner, no threshold, and no correction path, it is not decision support. It is noise with better formatting.\n\nProject context:\nhttps://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center\n\nDiscussion prompts:\n1) Which trade-off should analysts show more honestly in dashboards?\n2) What control would you add before trusting a weekly KPI pack?",
+    "category": "dashboard design",
+    "claims": [
+      "The flagship repository includes a 2,160-row synthetic retail dataset and portfolio-facing dashboard artifacts.",
+      "The project links revenue, margin, retention, returns, fulfillment delay, and stockout indicators in one decision-ready stack.",
+      "The objective is to drive business decisions, not visual decoration."
+    ],
+    "hashtags": [
+      "#DashboardDesign",
+      "#ExecutiveDashboard",
+      "#DataVisualization",
+      "#DecisionSupport",
+      "#BusinessIntelligence",
+      "#DataAnalytics"
+    ],
+    "primary_source_url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center",
+    "supporting_source_urls": [
+      "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/data/retail_operations_kpis.csv",
+      "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/scripts/build_dashboard.py",
+      "https://almond-owolabi-portfolio-s3pd81.v2.appdeploy.ai/"
+    ],
+    "topic": "If your dashboard is hard to screenshot, it is hard to trust.",
+    "visual_prompt": "Optimize visual hierarchy for single-screen storytelling and decision clarity.",
+    "visual_style": "diagram:snapshot_ready"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-11T10:09:07Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQHjc2JkfQmeHg",
+    "post_urn": "urn:li:share:7492884798558871554",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "If your dashboard is hard to screenshot, it is hard to trust."
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": null
+  },
+  "selected_topic": "If your dashboard is hard to screenshot, it is hard to trust.",
+  "status": "published",
+  "trend": {
+    "category": "dashboard design",
+    "evidence_score": 1.0,
+    "novelty_score": 0.95,
+    "practical_value_score": 0.99,
+    "recency_score": 1.0,
+    "relevance_score": 0.98,
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Retail Revenue Command Center",
+        "url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Synthetic retail dataset",
+        "url": "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/data/retail_operations_kpis.csv"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Project source code",
+        "url": "https://github.com/alumond/linkedin-AI-Agent/blob/main/projects/retail-revenue-command-center/scripts/build_dashboard.py"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "Portfolio",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Portfolio site",
+        "url": "https://almond-owolabi-portfolio-s3pd81.v2.appdeploy.ai/"
+      }
+    ],
+    "summary": "The best dashboards are built for boardroom consumption.",
+    "topic": "If your dashboard is hard to screenshot, it is hard to trust."
+  },
+  "visual": {
+    "alt_text": "Premium insight card comparing growth, margin, retention, and operations health as linked business decisions.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQHjc2JkfQmeHg",
+    "mime_type": "image/png",
+    "path": "assets/20260811T100905Z-if-your-dashboard-is-hard-to-screenshot--it-is-har.png",
+    "width": 1200
+  }
+}

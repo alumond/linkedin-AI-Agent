@@ -79,5 +79,14 @@
     "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAZYCxEfMjeQqeQryuwl2R7-Pr4JMbG4RYTri8rMu502_sQwz9emzuTsgBs2pFSIIqlyZPReb2nI8Cv7gYLm42gF7S4lQWJmFcGlREnE9ZBt_35X0yC3-MsrDcIK-_vT_f8csEuYHaR1eXg_nvVYOYj5o8swXMnxOZmgfcuUUqi-2gEjO8_hoT4zAhWPNujhjnJ198YhnL8GN5Y79cokBw8zgUitk=",
     "report_path": "reports/20260811T095246Z-advancements-in-retrieval-augmented-generation--rag--archite.json",
     "topic": "Advancements in Retrieval-Augmented Generation (RAG) Architectures for Enterprise Applications"
+  },
+  {
+    "category": "dashboard design",
+    "created_at": "2026-08-11T10:09:07Z",
+    "image_urn": "urn:li:image:D4E10AQHjc2JkfQmeHg",
+    "post_urn": "urn:li:share:7492884798558871554",
+    "primary_source_url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center",
+    "report_path": "reports/20260811T100907Z-if-your-dashboard-is-hard-to-screenshot--it-is-hard-to-trust.json",
+    "topic": "If your dashboard is hard to screenshot, it is hard to trust."
   }
 ]
