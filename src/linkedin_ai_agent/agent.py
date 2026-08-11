@@ -521,7 +521,8 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
             ],
             visual_style="illustration" if self.config.allow_ai_illustrations else profile["visual_style"],
             visual_prompt=(
-                "Create a realistic editorial LinkedIn image, not an infographic. Show a real business data work moment: "
+                f"Create a realistic editorial LinkedIn image for this context: {candidate.topic} {candidate.summary}. "
+                "Do not make a generic stock photo. Show a real business data work moment that visually fits the specific topic. "
                 "a professional analyst or small team reviewing data on a laptop in a modern workspace, with subtle charts "
                 "on a screen in the background. Use natural light, credible business styling, premium photography feel, "
                 "no visible words, no flowcharts, no icons, no robot imagery, no text overlay."
@@ -580,31 +581,34 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
             if not draft_report.passed:
                 return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
             if self.config.visual_provider == "codex_manual":
-                if not dry_run:
-                    return self._skip(
-                        "Weekday post requires a Codex-generated image staged through preview before live publishing.",
-                        candidate=candidate,
-                        citations=[],
-                        draft=draft,
-                    )
+                codex_asset = self._codex_manual_visual_path(draft)
+                visual = validate_visual(codex_asset, draft.alt_text)
                 result = PublishResult(
-                    status="dry_run_ok",
-                    dry_run=True,
+                    status="dry_run_ok" if dry_run else "published",
+                    dry_run=dry_run,
                     topic=draft.topic,
                     post_urn=None,
                     image_urn=None,
                 )
+                if not dry_run:
+                    linkedin = self.linkedin or LinkedInClient.from_env(self.config)
+                    image_urn = linkedin.upload_image(visual)
+                    visual.linkedin_image_urn = image_urn
+                    post_urn = linkedin.publish_post(draft, image_urn)
+                    result.post_urn = post_urn
+                    result.image_urn = image_urn
                 report_path = write_report(
                     self.config.reports_dir,
                     {
                         "status": result.status,
-                        "dry_run": True,
+                        "dry_run": dry_run,
                         "selected_topic": candidate.topic,
                         "trend": candidate,
                         "draft": draft,
-                        "visual": None,
+                        "visual": visual,
                         "visual_generation": {
                             "provider": "codex_manual",
+                            "asset": str(codex_asset),
                             "prompt": draft.visual_prompt,
                             "alt_text": draft.alt_text,
                         },
@@ -614,6 +618,18 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
                     },
                 )
                 result.report_path = str(report_path)
+                if not dry_run:
+                    self.history.append(
+                        {
+                            "created_at": result.created_at,
+                            "topic": draft.topic,
+                            "category": draft.category,
+                            "post_urn": result.post_urn,
+                            "image_urn": result.image_urn,
+                            "primary_source_url": draft.primary_source_url,
+                            "report_path": str(report_path),
+                        }
+                    )
                 return result
             visual = self._render_visual(draft)
             image_urn = None
@@ -895,6 +911,10 @@ Discussion prompts:
         stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:50] or "visual"
         return self.config.assets_dir / f"{stamp}-{slug}.png"
+
+    def _codex_manual_visual_path(self, draft: DraftPost) -> Path:
+        slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
+        return self.config.assets_dir / f"codex_weekday_{slug}.png"
 
 
 def token_metadata(expires_in: int) -> dict[str, str]:
