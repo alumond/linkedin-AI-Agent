@@ -84,7 +84,8 @@ models:
   text: gemini-2.5-flash
   image: gemini-3.1-flash-image
 visuals:
-  allow_ai_illustrations: true
+  allow_ai_illustrations: false
+  provider: codex_manual
   direction: realistic editorial LinkedIn images with real-life business/data scenes, people, laptops, workspaces, dashboards in the background, and no flowchart-style layouts
   avoid:
   - neon-by-default

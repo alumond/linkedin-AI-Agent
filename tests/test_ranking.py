@@ -30,6 +30,7 @@ def config(tmp_path: Path) -> AgentConfig:
         text_model="gemini-3.6-flash",
         image_model="gemini-3.1-flash-image",
         allow_ai_illustrations=False,
+        visual_provider="local",
         linkedin_owner_urn="urn:li:person:test",
         linkedin_version="202605",
         reports_dir=tmp_path / "reports",

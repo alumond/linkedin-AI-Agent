@@ -31,6 +31,7 @@ class AgentConfig:
     text_model: str
     image_model: str
     allow_ai_illustrations: bool
+    visual_provider: str
     linkedin_owner_urn: str
     linkedin_version: str
     reports_dir: Path
@@ -70,6 +71,7 @@ def load_config(path: str | Path) -> AgentConfig:
         text_model=str(models.get("text", "gemini-2.5-flash")),
         image_model=str(models.get("image", "gemini-3.1-flash-image")),
         allow_ai_illustrations=bool(visuals.get("allow_ai_illustrations", False)),
+        visual_provider=str(visuals.get("provider", "local")),
         linkedin_owner_urn=str(linkedin.get("owner_urn", "")),
         linkedin_version=str(linkedin.get("version", "202605")),
         reports_dir=Path(dirs.get("reports", "reports")),

@@ -576,10 +576,46 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
         try:
             draft = self._fallback_draft(candidate)
             normalize_draft(draft)
-            visual = self._render_visual(draft)
             draft_report = validate_draft(draft, self.config)
             if not draft_report.passed:
                 return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
+            if self.config.visual_provider == "codex_manual":
+                if not dry_run:
+                    return self._skip(
+                        "Weekday post requires a Codex-generated image staged through preview before live publishing.",
+                        candidate=candidate,
+                        citations=[],
+                        draft=draft,
+                    )
+                result = PublishResult(
+                    status="dry_run_ok",
+                    dry_run=True,
+                    topic=draft.topic,
+                    post_urn=None,
+                    image_urn=None,
+                )
+                report_path = write_report(
+                    self.config.reports_dir,
+                    {
+                        "status": result.status,
+                        "dry_run": True,
+                        "selected_topic": candidate.topic,
+                        "trend": candidate,
+                        "draft": draft,
+                        "visual": None,
+                        "visual_generation": {
+                            "provider": "codex_manual",
+                            "prompt": draft.visual_prompt,
+                            "alt_text": draft.alt_text,
+                        },
+                        "gemini_grounding_citations": [],
+                        "safety": {"trend": None, "draft": draft_report},
+                        "publish": result,
+                    },
+                )
+                result.report_path = str(report_path)
+                return result
+            visual = self._render_visual(draft)
             image_urn = None
             post_urn = None
             if not dry_run:
