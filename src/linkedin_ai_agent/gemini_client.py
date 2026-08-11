@@ -123,6 +123,9 @@ Aim for {target_min}-{target_max} body characters so the final draft stays safel
 
 Rules:
 - Follow the style variant "Hook -> Contrarian angle -> Practical move -> Invite input".
+- Format for LinkedIn native readability: short paragraphs, clear section labels in uppercase, hyphen bullets where useful, and generous spacing.
+- Do not use Markdown bold or italics because LinkedIn API posts show the asterisks/underscores as plain text.
+- Use section labels such as "WHY THIS MATTERS:", "THE COMMON MISTAKE:", "BETTER MOVE:", "MY TAKE:", or "PRACTICAL RULE:" when they fit naturally.
 - Open with a concrete anchor: a decision, metric, or change that changes outcomes.
 - Build immediate reader relevance by stating one practical implication in plain language by the second third of the post.
 - Make the post sound like it came from a practical data analyst who understands business decisions, not a generic AI news page.

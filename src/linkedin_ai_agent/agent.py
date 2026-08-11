@@ -416,13 +416,16 @@ class LinkedInAIAgent:
 
 {candidate.summary}
 
+WHY THIS MATTERS:
 This is the part of data work people avoid because it is uncomfortable. A chart can show movement, but it cannot choose the trade-off for the team. Someone still has to decide whether speed matters more than accuracy, whether growth matters more than margin, whether automation is safe enough, or whether a metric is trusted enough to guide action.
 
 That is where a serious analyst becomes valuable.
 
+WEAK REPORTING:
 A weak report says:
 The number went up.
 
+BETTER REPORTING:
 A better report says:
 The number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.
 
@@ -433,20 +436,20 @@ This is also why governance is not just paperwork. In practical analytics, gover
 For freelancers, remote workers, and digital talent, this is a major positioning point. Do not sell yourself as someone who can only build reports. That is too small. Sell the ability to make messy decisions clearer with data.
 
 The work is not only:
-clean the data.
-build the dashboard.
-send the report.
+- clean the data
+- build the dashboard
+- send the report
 
 The real work is:
-define the metric.
-explain the trade-off.
-show the risk.
-name the owner.
-recommend the next action.
+- define the metric
+- explain the trade-off
+- show the risk
+- name the owner
+- recommend the next action
 
 That is the difference between being seen as a tool user and being trusted as a business partner.
 
-My blunt take:
+MY TAKE:
 If a metric has no owner, no threshold, no review rhythm, and no consequence, it should not sit proudly on an executive dashboard. It should be fixed, parked, or removed.
 
 Otherwise, the team is not managing performance. It is decorating uncertainty.
@@ -461,8 +464,10 @@ Q2: What control would make a weekly report easier to trust?"""
 
 {candidate.summary}
 
+WHY THIS MATTERS:
 The real value is helping a business decide what to do next. That can mean cleaning a messy file, defining the right KPI, finding a growth leak, explaining customer behavior, or turning a confusing report into one clear management action.
 
+THE COMMON MISTAKE:
 This is where a lot of analysts play too small. They show charts, but they do not force a decision. They list tools, but they do not show judgment. They talk about data, but they do not connect it to revenue, retention, cost, speed, quality, or risk.
 
 A business does not care that the table was cleaned in Python if the output still does not answer a commercial question.
@@ -474,11 +479,11 @@ It does not care that the model is complex if nobody can explain what action sho
 That is why good data work needs a sharper standard.
 
 Before touching the tool, ask:
-What decision is this supposed to improve?
-Who will use the answer?
-What metric will prove the answer mattered?
-What action should happen if the number moves?
-What should be ignored because it creates noise?
+- What decision is this supposed to improve?
+- Who will use the answer?
+- What metric will prove the answer mattered?
+- What action should happen if the number moves?
+- What should be ignored because it creates noise?
 
 This is the kind of thinking that makes data useful for business growth. Growth is not only more sales. It can be better retention, fewer refunds, faster fulfillment, cleaner customer segments, stronger pricing decisions, better campaign focus, or less reporting waste.
 
@@ -494,11 +499,11 @@ That is a stronger brand.
 
 That is also a stronger service.
 
-My practical rule:
+MY PRACTICAL RULE:
 Every analysis should end with one of three things:
-keep doing this.
-stop doing this.
-change this now.
+- keep doing this
+- stop doing this
+- change this now
 
 If it ends with "interesting insight", it probably was not sharp enough.
 
