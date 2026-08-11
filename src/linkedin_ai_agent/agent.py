@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import inspect
 import json
 import os
 import random
@@ -640,14 +641,20 @@ Discussion prompts:
         asset_path = self._visual_path(draft)
         style, variant = self._visual_base_and_variant(draft.visual_style)
         if style == "diagram":
-            render_diagram(draft, self.config, asset_path, variant=variant)
+            self._render_with_optional_variant(render_diagram, draft, asset_path, variant)
         elif style == "insight_card":
-            render_insight_card(draft, self.config, asset_path, variant=variant)
+            self._render_with_optional_variant(render_insight_card, draft, asset_path, variant)
         elif style == "illustration":
-            render_insight_card(draft, self.config, asset_path, variant=variant)
+            self._render_with_optional_variant(render_insight_card, draft, asset_path, variant)
         else:
-            render_insight_card(draft, self.config, asset_path, variant=variant)
+            self._render_with_optional_variant(render_insight_card, draft, asset_path, variant)
         return validate_visual(asset_path, draft.alt_text)
+
+    def _render_with_optional_variant(self, renderer, draft: DraftPost, asset_path: Path, variant: str) -> None:
+        if "variant" in inspect.signature(renderer).parameters:
+            renderer(draft, self.config, asset_path, variant=variant)
+            return
+        renderer(draft, self.config, asset_path)
 
     def generate(self, candidate: TrendCandidate) -> tuple[DraftPost, VisualAsset]:
         gemini = self.gemini or GeminiClient()
