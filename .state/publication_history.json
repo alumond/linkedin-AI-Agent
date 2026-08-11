@@ -88,5 +88,14 @@
     "primary_source_url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center",
     "report_path": "reports/20260811T100907Z-if-your-dashboard-is-hard-to-screenshot--it-is-hard-to-trust.json",
     "topic": "If your dashboard is hard to screenshot, it is hard to trust."
+  },
+  {
+    "category": "data cleaning",
+    "created_at": "2026-08-11T10:33:11Z",
+    "image_urn": "urn:li:image:D4E10AQEaWizK-1zZyg",
+    "post_urn": "urn:li:share:7492890862222221312",
+    "primary_source_url": "",
+    "report_path": "reports/20260811T103313Z-data-cleaning-is-where-business-truth-usually-shows-up.json",
+    "topic": "Data cleaning is where business truth usually shows up."
   }
 ]
