@@ -1,0 +1,234 @@
+{
+  "draft": null,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 631,
+      "start_index": 489,
+      "title": "drugdiscoverynews.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkyUDSuDOJAm6ypUEkmbEM3QACYMSVonhpzNuJ5wxaB7tMMAbC56u1-AZ6nNY9TgK_JYvOKXMxyaN02dTZSodxf1eYgNW-1KsIA7G1CS2T0mpE9aFFpushAVfSiFT2d_dwupF5eJUCJEGRgYSA6mXZ8jGhS72dvgmESxrHv-3AU7I3ZA=="
+    },
+    {
+      "end_index": 749,
+      "start_index": 633,
+      "title": "drugdiscoverynews.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkyUDSuDOJAm6ypUEkmbEM3QACYMSVonhpzNuJ5wxaB7tMMAbC56u1-AZ6nNY9TgK_JYvOKXMxyaN02dTZSodxf1eYgNW-1KsIA7G1CS2T0mpE9aFFpushAVfSiFT2d_dwupF5eJUCJEGRgYSA6mXZ8jGhS72dvgmESxrHv-3AU7I3ZA=="
+    },
+    {
+      "end_index": 4457,
+      "start_index": 4285,
+      "title": "sustainabilitymag.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHc5JQxN82o-VlfUYp-AIVl1gfRz2ZXcIa7Ml79YUHQVizenZbrSzOtEf2nk8LUBWG3M28TiXIahNT5Jng9n8ySuUV8SsRy3pImgnmNVYUfJuRLXv6i_1KskyDFBWDr_65L0AiOlWObxS-wcZRDTRqpwc8jzAWym5FhGwvJCQ=="
+    },
+    {
+      "end_index": 4457,
+      "start_index": 4285,
+      "title": "brookings.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUqarT69YXGxiOwLASkJraWq8yh6Dy2Y0utknnqDLeEKPIoniwf5jied61OBI2L7XRhHbYdmV0z-jqSEQpgbgHIE3MJChFwCg9XGckwnn9TZqOGcvwBmdWWX2imlr5ovlPfXlr-wTdq_2Ft3zgMxuB8Wt1jEl3HYozP5k0vWQpw_3fEVTP_YHkjrR9Lg8-8Md-xccL98Y="
+    },
+    {
+      "end_index": 4593,
+      "start_index": 4459,
+      "title": "brookings.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUqarT69YXGxiOwLASkJraWq8yh6Dy2Y0utknnqDLeEKPIoniwf5jied61OBI2L7XRhHbYdmV0z-jqSEQpgbgHIE3MJChFwCg9XGckwnn9TZqOGcvwBmdWWX2imlr5ovlPfXlr-wTdq_2Ft3zgMxuB8Wt1jEl3HYozP5k0vWQpw_3fEVTP_YHkjrR9Lg8-8Md-xccL98Y="
+    },
+    {
+      "end_index": 4787,
+      "start_index": 4595,
+      "title": "sustainabilitymag.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHc5JQxN82o-VlfUYp-AIVl1gfRz2ZXcIa7Ml79YUHQVizenZbrSzOtEf2nk8LUBWG3M28TiXIahNT5Jng9n8ySuUV8SsRy3pImgnmNVYUfJuRLXv6i_1KskyDFBWDr_65L0AiOlWObxS-wcZRDTRqpwc8jzAWym5FhGwvJCQ=="
+    },
+    {
+      "end_index": 4787,
+      "start_index": 4595,
+      "title": "brookings.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUqarT69YXGxiOwLASkJraWq8yh6Dy2Y0utknnqDLeEKPIoniwf5jied61OBI2L7XRhHbYdmV0z-jqSEQpgbgHIE3MJChFwCg9XGckwnn9TZqOGcvwBmdWWX2imlr5ovlPfXlr-wTdq_2Ft3zgMxuB8Wt1jEl3HYozP5k0vWQpw_3fEVTP_YHkjrR9Lg8-8Md-xccL98Y="
+    },
+    {
+      "end_index": 8745,
+      "start_index": 8467,
+      "title": "falkordb.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQSRmoICnk7SNHD3YeliFptlqrrnGE5xJYQDiQ-yQ4H5RET8CAXYVo1JaH7Ys2w1QvZqpiTxaPMGNMX-d5UJEoeCr5N0XyzH03wAeW3i5Sadlxw7cKTmdxrgUlZooNbzH9WfqHcg=="
+    },
+    {
+      "end_index": 8745,
+      "start_index": 8467,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4mYHr9pDps4HmhVaomlOJR5iwT28BMvKkqoMPJZGxTN-KB-0xAZUhj2lEuD_KcWtL1NNcjA8QZvSVJeffEyhgsum4_xPhS5Aldchc0MECZomlZu5TRrE0Ub7yjKorg77LBDtuPGEAkTw="
+    },
+    {
+      "end_index": 8745,
+      "start_index": 8467,
+      "title": "aiintime.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEQG4gyCyAOHd_aYJFG-U0UjfbAj5qJWT-lcH5NVXslWNoOFXpmJvCgyFiq8rOfcuXizDA-CMi9m_ATqY1a2GaPhhg0P4-e8hPdfdVoGvAc4kU6QFwKbqyfTlpQ19g9DKuNNE="
+    },
+    {
+      "end_index": 8912,
+      "start_index": 8747,
+      "title": "atlan.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4mYHr9pDps4HmhVaomlOJR5iwT28BMvKkqoMPJZGxTN-KB-0xAZUhj2lEuD_KcWtL1NNcjA8QZvSVJeffEyhgsum4_xPhS5Aldchc0MECZomlZu5TRrE0Ub7yjKorg77LBDtuPGEAkTw="
+    },
+    {
+      "end_index": 12439,
+      "start_index": 12309,
+      "title": "domino.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHS0pQgEb0kcQRgjfO2d3UGxV6Sg-puAD7eZM9OWqtRFel8k9nb9P9QAY0QWFYsmUxddkZBBrOBSv-Y0zoCzzFTuE__-MPxpai5NoCBDklbjZw6qW43ZV_vFsSMzms0uBy28I3HxnWaUhS9_U0gMqxs_zEzVtur3kiKgXjHmHzY7l_CXQ=="
+    },
+    {
+      "end_index": 12542,
+      "start_index": 12440,
+      "title": "futureagi.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGN_dZMSMV8hwTq7TgZz9_r39p7Y7rs9wyKKwyvRTSPMozrgLCHFkUVdEuTBxvkXSYeZkF0-7sFiY4vUMi8hgH8Pe0bk3hFFBnefN_KDnyZQyDTiPsHvCT9063yIwW5K7LbYZjxv9Y3XPkEK0kpSUs8"
+    },
+    {
+      "end_index": 12542,
+      "start_index": 12440,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1vud97AjiMezXeuPvZDPJbn5gy-7W2jF8pte6QvBCgY1EWbS_12SdzAIOrRf3y3Fpc-YTsTg2kDZAcEMqeOWeXs_AX8bQts0z7sCeRs4MiSbRcSkK1mwpDYMD3Hx-D3WtYwSkw-u025PJkYbjWxx4QsAGiFo394KQypwhwZxROsmq9Uq3ihZ89Rps9JlUetB9dOc5AvNv5dPHugwrxXHvY9qPNSPVGS6QaoaXO4YsP6s="
+    },
+    {
+      "end_index": 12710,
+      "start_index": 12544,
+      "title": "mayerbrown.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGR2OLd8nik8tWIUow9-SBj1fx6a07LDnMJeWXP1vouPXR85N63E6dCU0Ptgs8yg6gZQ1uzZDGY53r9RmjYZPiQeUKqnvmxiJ419WnXipZi6dK0w4CW0gfO_qkW5aYq3FyEPE0ywWO1e1-MMmyr3HBJ8S9sdtTz6-Zcz0wdos_8KCQQqr_ooeoPAUsH_2IJMlxveh7VtHfL5p94JttNrD5FvDVJmCFNK7VF2_mGAz9LKblHfY98UBEhog=="
+    },
+    {
+      "end_index": 12944,
+      "start_index": 12712,
+      "title": "domino.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHS0pQgEb0kcQRgjfO2d3UGxV6Sg-puAD7eZM9OWqtRFel8k9nb9P9QAY0QWFYsmUxddkZBBrOBSv-Y0zoCzzFTuE__-MPxpai5NoCBDklbjZw6qW43ZV_vFsSMzms0uBy28I3HxnWaUhS9_U0gMqxs_zEzVtur3kiKgXjHmHzY7l_CXQ=="
+    },
+    {
+      "end_index": 16458,
+      "start_index": 16324,
+      "title": "auxis.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4D4o90Bi6GwVZ4MImLyTARlDhe2VHRxQwH-n4iTfYGwZZIqzMF2KzHoAyyleeGjCB2jz0-pOUsZD7JnSRTcDxRcQ3Txaa7pZ66FYznlJ4JbrTkwtoI5KjRt28OLFSwDwFEZjsE5-pC1G8DCqFRvmN_pigb77qSmRRTSQD6Blx_8PR02K9lQ=="
+    },
+    {
+      "end_index": 16698,
+      "start_index": 16460,
+      "title": "novelvista.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeVz9LFKjYNxrjZoultu63KU_Z5BtmwgmCU6G3bmvu6mfxGSlqr1NOyI5Jutz9rGraC2dXeJKyrOvwTHqWecWmPdHcmwtKF0LPPOmaHzFzeLRSEN2Cun-llWnAZJ50obwpDxFRz8yPyvoqKPvskmpLElt9fS29MJkpWhFGJhCmgTFT3F6WUHpCn13vRBF_"
+    },
+    {
+      "end_index": 16698,
+      "start_index": 16460,
+      "title": "auxis.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4D4o90Bi6GwVZ4MImLyTARlDhe2VHRxQwH-n4iTfYGwZZIqzMF2KzHoAyyleeGjCB2jz0-pOUsZD7JnSRTcDxRcQ3Txaa7pZ66FYznlJ4JbrTkwtoI5KjRt28OLFSwDwFEZjsE5-pC1G8DCqFRvmN_pigb77qSmRRTSQD6Blx_8PR02K9lQ=="
+    },
+    {
+      "end_index": 16698,
+      "start_index": 16460,
+      "title": "verdict.co.uk",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGrxDNs_IobvH-Z_Knn6GA89l6o_ER8KDitzZ8LzfYwY03m5GEjXUWUWmoXQ_ZXBEvEplZMUwFJaJB7--WWQL4FlJ78ToFJlePF6lQ6bscyScptIi40e1_yuyvqLbMmqqrZx5K3G9C__yZgBDU="
+    },
+    {
+      "end_index": 16879,
+      "start_index": 16700,
+      "title": "darktrace.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKWu9o0cP2OygsJm4WmyCpfkZkiqgOoR7MQcS6UZ47UF0NRQZLjTVc7lbX5oG2BANCehqZt3HAuJO-rPjRz9-cV2whbPsCmo6eYvnRaAq2CRCMqF8uUrTE3GhCnw_jTk6vAuEn8e0Bbqx95ylr4jtLwMt8T99tCB4p"
+    },
+    {
+      "end_index": 20486,
+      "start_index": 20325,
+      "title": "templeton-recruitment.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH71XBQB5_DJLCKoFKFza1zMuEQcKABFF72r6ws2OJ1rs8rZfa5apBJ38lLf0TJApIN7_JYKEy2JAADJuFo5ZjTmVX4Nx-Y6ev7Btpdw9DXmGiDdDUCp7g_ICnMmREGUPER9A3azJ2fFXO4lR7cCVZUdFBTBOpe3494ycsu42ulFjDayAYyLP22oMQJxBhXFJ8fkBpDt8Zkkw=="
+    },
+    {
+      "end_index": 20486,
+      "start_index": 20325,
+      "title": "airbyte.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjZyp4tScKeMV40hkFXRYtDBkSa4RNhaJ9SaaxiCvG2Bj01HRFWbYNFnGLjEDny1OtUa6LO1ieYf4i0_z137ajmP5a3P3X74KH5Qqt1nXgVdmQQcNAfn8J-DKnfamxpmbAABNmHmuu2DKi36RklDv53_M="
+    },
+    {
+      "end_index": 20486,
+      "start_index": 20325,
+      "title": "datamites.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFK4rHiyGAC0pTOTKFK5KyNg86GP4Zf43QPMRGCFIxzzA67uBFp-GVQEznO6sXRgsRozmR0lizt172v2yUl3KoNu-IlDjUoTmlc4jNHwjWUsxY7b1981YlBlqjxS2OjAMwVnSXCnJsXgq-vlYHzTw=="
+    },
+    {
+      "end_index": 20607,
+      "start_index": 20488,
+      "title": "datamites.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFK4rHiyGAC0pTOTKFK5KyNg86GP4Zf43QPMRGCFIxzzA67uBFp-GVQEznO6sXRgsRozmR0lizt172v2yUl3KoNu-IlDjUoTmlc4jNHwjWUsxY7b1981YlBlqjxS2OjAMwVnSXCnJsXgq-vlYHzTw=="
+    },
+    {
+      "end_index": 20698,
+      "start_index": 20609,
+      "title": "datamites.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFK4rHiyGAC0pTOTKFK5KyNg86GP4Zf43QPMRGCFIxzzA67uBFp-GVQEznO6sXRgsRozmR0lizt172v2yUl3KoNu-IlDjUoTmlc4jNHwjWUsxY7b1981YlBlqjxS2OjAMwVnSXCnJsXgq-vlYHzTw=="
+    },
+    {
+      "end_index": 20884,
+      "start_index": 20698,
+      "title": "datamites.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFK4rHiyGAC0pTOTKFK5KyNg86GP4Zf43QPMRGCFIxzzA67uBFp-GVQEznO6sXRgsRozmR0lizt172v2yUl3KoNu-IlDjUoTmlc4jNHwjWUsxY7b1981YlBlqjxS2OjAMwVnSXCnJsXgq-vlYHzTw=="
+    },
+    {
+      "end_index": 20884,
+      "start_index": 20698,
+      "title": "appinventiv.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGTQXPSK9gTg9Am6xhrLsBiP48ExPoNiwWVg_ZiYXRPlsZMw1OEjJjOSarNVq7xmp-I_seIuKFknlpIhGLmvd8xDpz0_bdwQCWMlCMmKT5iHDvZuEfnC6Px5tY4QKopn-woOJzxkUfp-XH4ZLN1nTEX"
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-11T09:43:43Z",
+    "dry_run": true,
+    "image_urn": null,
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": "render_insight_card() takes 3 positional arguments but 4 were given",
+    "status": "skipped",
+    "topic": "Enterprise Adoption and Governance of Agentic AI Systems"
+  },
+  "reason": "render_insight_card() takes 3 positional arguments but 4 were given",
+  "status": "skipped",
+  "topic": "Enterprise Adoption and Governance of Agentic AI Systems",
+  "trend": {
+    "category": "AI releases",
+    "evidence_score": 0.9,
+    "novelty_score": 0.9,
+    "practical_value_score": 0.9,
+    "recency_score": 0.9,
+    "relevance_score": 0.9,
+    "sources": [
+      {
+        "claim_supported": "Announces Singapore's IMDA released the Model AI Governance Framework for Agentic AI in January 2026, providing guidance for developers and deployers on managing risks.",
+        "published_at": "2026-04-01",
+        "publisher": "mayerbrown.com",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Singapore's Agentic AI Framework: Practical Guidance for Market Entry - Mayer Brown",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGR2OLd8nik8tWIUow9-SBj1fx6a07LDnMJeWXP1vouPXR85N63E6dCU0Ptgs8yg6gZQ1uzZDGY53r9RmjYZPiQeUKqnvmxiJ419WnXipZi6dK0w4CW0gfO_qkW5aYq3FyEPE0ywWO1e1-MMmyr3HBJ8S9sdtTz6-Zcz0wdos_8KCQQqr_ooeoPAUsH_2IJMlxveh7VtHfL5p94JttNrD5FvDVJmCFNK7VF2_mGAz9LKblHfY98UBEhog=="
+      },
+      {
+        "claim_supported": "Cites Stanford AI Index 2025 showing a 280x fall in query cost for GPT-3.5 level performance from 2022 to 2024, making agentic AI economically feasible. States the agentic AI market is expanding from ~$5B in 2024 to over $47B by 2030.",
+        "published_at": "2025-11-20",
+        "publisher": "dominodatalab.com",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Agentic AI frameworks: A guide for enterprise teams - Domino Data Lab",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHS0pQgEb0kcQRgjfO2d3UGxV6Sg-puAD7eZM9OWqtRFel8k9nb9P9QAY0QWFYsmUxddkZBBrOBSV-Y0zoCzzFTuE__-MPxpai5NoCBDklbjZw6qW43ZV_vFsSMzms0uBy28I3HxnWaUhS9_U0gMqxs_zEzVtur3kiKgXjHmHzY7l_CXQ=="
+      },
+      {
+        "claim_supported": "Lists and compares several agentic AI frameworks that are stable or released between 2024 and 2025, including LangGraph, OpenAI Agents SDK (March 2025), Microsoft Agent Framework (Oct 2025), CrewAI, AutoGen, Mastra, and PydanticAI.",
+        "published_at": "2026-05-14",
+        "publisher": "futureagi.com",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Top Agentic AI Frameworks in 2026 (Compared) - Future AGI",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGN_dZMSMV8hwTq7TgZz9_r39p7Y7rs9wyKKwyvRTSPMozrgLCHFkUVdEuTBxvkXSYeZkF0-7sFiY4vUMi8hgH8Pe0bk3hFFBnefN_KDnyZQyDTiPsHvCT9063yIwW5K7LbYZjxv9Y3XPkEK0kpSUs8"
+      },
+      {
+        "claim_supported": "Introduces a new agentic AI benchmark suite (FieldWorkArena) for real-world field work tasks, published in 2024, indicating active research and development in practical applications.",
+        "published_at": null,
+        "publisher": "arxiv.org",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "FieldWorkArena: Agentic AI Benchmark for Real Field Work Tasks - arXiv",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_IBMhEaqP-fSgmVur_d82MOLuyO7iaL2hTiGx34IgcPjxRk7B94jz6EZ59lwb5S7dJhy66hlwzBs-_uNaimHxUxp5uc5irbO0hN3u1TxLDVz4C56yV9TPrQPWWL0="
+      }
+    ],
+    "summary": "Agentic AI, systems capable of autonomous multi-step planning and execution, is transitioning from research to enterprise deployment. This shift is driven by a dramatic reduction in AI query costs (e.g., a 280x fall for GPT-3.5 level performance from 2022 to 2024) and the emergence of robust frameworks (e.g., LangGraph, OpenAI Agents SDK, Microsoft Agent Framework). To manage the unique risks, governance frameworks are rapidly evolving, with Singapore's IMDA releasing a Model AI Governance Framework for Agentic AI in January 2026. The increasing market size, projected to expand from $5 billion in 2024 to over $47 billion by 2030, signals a new operating model for businesses requiring careful integration with existing identity, authorization, and audit systems.",
+    "topic": "Enterprise Adoption and Governance of Agentic AI Systems"
+  }
+}
