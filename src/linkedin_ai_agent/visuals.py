@@ -17,30 +17,118 @@ WORK_CANVAS = 2400
 SCALE = 1
 
 
-def render_insight_card(draft: DraftPost, config: AgentConfig, output_path: Path) -> Path:
+def render_insight_card(draft: DraftPost, config: AgentConfig, output_path: Path, variant: str = "default") -> Path:
     """Render a dense educational infographic card without generative-image dependencies."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    art = _art_direction(draft)
+    art = _art_direction(draft, variant=variant)
     image = _infographic_background(WORK_CANVAS, art)
     draw = ImageDraw.Draw(image)
 
-    _draw_infographic_card(draw, draft, art)
+    if variant == "focus_strip":
+        _draw_focus_strip_card(draw, draft, art)
+    elif variant == "stacked_grid":
+        _draw_stacked_grid_card(draw, draft, art)
+    elif variant == "editorial":
+        _draw_editorial_card(draw, draft, art)
+    elif variant == "grid_strategic":
+        _draw_grid_strategy_card(draw, draft, art)
+    else:
+        _draw_infographic_card(draw, draft, art)
 
     image.resize((CANVAS, CANVAS), Image.Resampling.LANCZOS).save(output_path, "PNG", optimize=True)
     return output_path
 
 
-def render_diagram(draft: DraftPost, config: AgentConfig, output_path: Path) -> Path:
-    """Render a structured educational infographic for diagram-style drafts."""
+def render_diagram(draft: DraftPost, config: AgentConfig, output_path: Path, variant: str = "default") -> Path:
+    """Render a diagram-led decision card with a distinct visual grammar from insight cards."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    art = _art_direction(draft)
+    art = _art_direction(draft, variant=variant)
     image = _infographic_background(WORK_CANVAS, art)
     draw = ImageDraw.Draw(image)
 
-    _draw_infographic_card(draw, draft, art)
+    if variant == "risk_loop":
+        _draw_risk_loop_layout(draw, draft, art)
+    elif variant == "clarity_tier":
+        _draw_clarity_tier_layout(draw, draft, art)
+    elif variant == "tradeoff_matrix":
+        _draw_tradeoff_matrix_layout(draw, draft, art)
+    elif variant == "snapshot_ready":
+        _draw_snapshot_layout(draw, draft, art)
+    else:
+        _draw_diagram_layout(draw, draft, art)
 
     image.resize((CANVAS, CANVAS), Image.Resampling.LANCZOS).save(output_path, "PNG", optimize=True)
     return output_path
+
+
+def _draw_diagram_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    draw.rounded_rectangle((84, 84, 2316, 2316), radius=52, fill=art["paper"], outline=art["shadow"], width=6)
+    _draw_editorial_copy(draw, draft, art, compact=True)
+    _draw_diagram_story(draw, art)
+    _section_title(draw, str(theme["grid_title"]).upper(), 1728, art)
+    _draw_decision_strip(draw, art, theme)
+    _draw_takeaway(draw, draft, art, theme)
+
+
+def _draw_focus_strip_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    _draw_premium_header(draw, draft, art, theme)
+    _draw_premium_section_title(draw, "PRIMARY DECISION", 960, art)
+    _draw_decision_strip(draw, art, theme)
+    _draw_premium_examples(draw, art, theme)
+    _draw_premium_takeaway(draw, draft, art, theme)
+
+
+def _draw_stacked_grid_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    _draw_premium_header(draw, draft, art, theme)
+    cards = [
+        ("REVENUE SIGNAL", "$ +11.6%", "chart"),
+        ("MARGIN SIGNAL", "$ +2.1%", "target"),
+        ("RETENTION SIGNAL", "82%", "magnify"),
+        ("RETURN PRESSURE", "4.8%", "bell"),
+    ]
+    base_x = 80
+    y = 620
+    for index, (label, value, icon) in enumerate(cards):
+        x = base_x + index * (430)
+        _premium_panel(draw, (x, y, x + 404, y + 330), art["paper"], art["accent"] if index % 2 == 0 else "#DDE4ED")
+        draw.rounded_rectangle((x + 32, y + 26, x + 142, y + 88), radius=22, fill=art["accent2"])
+        draw.text((x + 160, y + 36), label, font=_font(30, bold=True), fill=art["ink"])
+        _center_text(draw, (x + 202, y + 178), value, _font(58, bold=True), art["accent"])
+        _draw_icon(draw, icon, (x + 202, y + 258), 40, art)
+    _draw_premium_takeaway(draw, draft, art, theme)
+
+
+def _draw_editorial_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    _draw_premium_header(draw, draft, art, theme)
+    _draw_premium_section_title(draw, "EDITORIAL NOTE", 980, art)
+    _draw_premium_summary(draw, art, theme)
+    _draw_section_grid(draw, draft, art, theme)
+    _draw_premium_takeaway(draw, draft, art, theme)
+
+
+def _draw_grid_strategy_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    _draw_premium_header(draw, draft, art, theme)
+    _section_title(draw, str(theme["grid_title"]).upper(), 1110, art)
+    concepts = [
+        ("Discover", "source and scope", "magnify"),
+        ("Validate", "quality and confidence", "shield"),
+        ("Decide", "owner + timeline", "target"),
+        ("Measure", "variance + impact", "chart"),
+        ("Repeat", "optimize cycle", "network"),
+    ]
+    x = 80
+    y = 1180
+    for index, (label, note, icon) in enumerate(concepts):
+        _premium_panel(draw, (x + index * 356, y, x + index * 356 + 296, y + 300), art["paper"], "#DDE4ED")
+        _draw_icon(draw, icon, (x + index * 356 + 154, y + 95), 36, art)
+        draw.text((x + index * 356 + 32, y + 150), label.upper(), font=_font(26, bold=True), fill=art["ink"])
+        _draw_wrapped_text(draw, note, (x + index * 356 + 30, y + 184), 236, _font(23, bold=True), art["ink"], line_gap=8, max_lines=2)
+    _draw_premium_takeaway(draw, draft, art, theme)
 
 
 def extract_image_bytes(interaction: object) -> bytes:
@@ -543,7 +631,73 @@ def _infographic_theme(draft: DraftPost) -> dict[str, object]:
             "criteria": [("User impact", "target"), ("Data sensitivity", "database"), ("Model autonomy", "network"), ("Legal exposure", "shield"), ("Monitoring ability", "chart")],
             "takeaway": "The strongest AI governance is practical: clear ownership, visible evidence, and review at the right moments.",
         }
-    if any(word in text for word in ("agent", "workflow", "automation", "toolkit")):
+    if any(word in text for word in ("dashboard", "revenue", "retention", "kpi", "business intelligence", "profit", "customer", "reporting", "portfolio", "analytics", "growth", "margin", "returns")):
+        return {
+            "title": _headline_from_topic(draft.topic, "Business Analytics Decision Map"),
+            "subtitle": "Useful analytics links performance, pressure, and ownership in one view.",
+            "why_title": "Why it matters",
+            "why_text": "A metric becomes valuable when it changes a management decision, budget choice, or operating action.",
+            "goal": "Move from chart to action",
+            "goal_note": "(signal, owner, next step)",
+            "icon": "chart",
+            "examples": [
+                ("Revenue", "quality check", "chart"),
+                ("Margin", "pressure view", "target"),
+                ("Retention", "repeat signal", "magnify"),
+                ("Returns", "leakage watch", "bell"),
+                ("Owner", "next action", "shield"),
+            ],
+            "grid_title": "Decision-Ready Analytics Stack",
+            "concepts": [
+                ("Business Question", "Define the decision before choosing charts.", "prevents decorative reporting", "target"),
+                ("Data Source", "Map where each number comes from.", "trust and traceability", "database"),
+                ("KPI Logic", "Connect revenue, profit, retention, and service pressure.", "quality of growth", "chart"),
+                ("Variance", "Show what changed against plan or prior period.", "attention control", "bell"),
+                ("Owner", "Tie the signal to a person or team.", "clear accountability", "shield"),
+                ("Action", "State the next move if the threshold is crossed.", "decision speed", "network"),
+                ("Review", "Check if the action improved the metric later.", "learning loop", "clock"),
+                ("Evidence", "Keep source links and assumptions visible.", "audit-ready work", "magnify"),
+                ("Trade-off", "Expose what worsened while another KPI improved.", "better judgment", "target"),
+                ("Portfolio Proof", "Show data, code, output, and thinking together.", "client confidence", "box"),
+            ],
+            "choose_title": "Judge the dashboard by",
+            "criteria": [("Decision clarity", "target"), ("Data quality", "database"), ("Margin impact", "chart"), ("Customer signal", "magnify"), ("Action owner", "shield")],
+            "takeaway": "A strong dashboard does not ask people to admire charts. It tells them where to act next.",
+        }
+    if any(word in text for word in ("governance", "regulation", "responsible", "risk", "safety", "policy")):
+        return {
+            "title": "AI Governance: From Principles to Enforcement",
+            "subtitle": "Good governance turns fast-moving AI into accountable operating practice.",
+            "why_title": "Why governance matters",
+            "why_text": "AI systems now affect real decisions, so teams need controls that are documented and reviewable.",
+            "goal": "Reduce unmanaged risk",
+            "goal_note": "(without slowing useful adoption)",
+            "icon": "shield",
+            "examples": [
+                ("Model Reviews", "before launch", "magnify"),
+                ("Risk Tiers", "clear owners", "shield"),
+                ("Data Checks", "quality gates", "database"),
+                ("Incident Logs", "fast response", "bell"),
+                ("Audit Trail", "evidence ready", "clock"),
+            ],
+            "grid_title": "Core Governance Building Blocks",
+            "concepts": [
+                ("Inventory", "Track where AI is used and who owns it.", "visibility before control", "database"),
+                ("Risk Rating", "Classify systems by impact, exposure and uncertainty.", "prioritized reviews", "shield"),
+                ("Data Controls", "Check source, consent, quality and drift.", "safer inputs", "database"),
+                ("Human Review", "Keep accountable people in consequential decisions.", "target"),
+                ("Testing", "Evaluate performance, bias, security and failure modes.", "release gates", "magnify"),
+                ("Monitoring", "Watch live systems after deployment.", "early warning", "chart"),
+                ("Documentation", "Record decisions, evidence and limitations.", "auditable work", "box"),
+                ("Incident Response", "Define escalation paths before problems occur.", "fast action", "bell"),
+                ("Vendor Review", "Assess third-party models and tools.", "external risk", "network"),
+                ("Training", "Make policy usable for product and business teams.", "consistent practice", "tree"),
+            ],
+            "choose_title": "Prioritize controls based on",
+            "criteria": [("User impact", "target"), ("Data sensitivity", "database"), ("Model autonomy", "network"), ("Legal exposure", "shield"), ("Monitoring ability", "chart")],
+            "takeaway": "The strongest AI governance is practical: clear ownership, visible evidence, and review at the right moments.",
+        }
+    if any(word in text for word in ("ai agent", "ai agents", "agentic", "tool-calling agent")):
         return {
             "title": "AI Agents: From Task to Workflow",
             "subtitle": "Useful agents connect tools, evidence and review into repeatable workflows.",
@@ -854,6 +1008,154 @@ def _draw_diagram_story(draw: ImageDraw.ImageDraw, art: dict[str, str]) -> None:
         _center_text(draw, (x, y + _s(260)), label, font, art["ink"])
 
 
+def _draw_risk_loop_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    draw.rounded_rectangle((84, 84, 2316, 2316), radius=52, fill=art["paper"], outline=art["shadow"], width=6)
+    _draw_editorial_copy(draw, draft, art, compact=True)
+    points = [
+        (_s(840), _s(1320)),
+        (_s(1380), _s(920)),
+        (_s(1788), _s(1320)),
+        (_s(1380), _s(1760)),
+    ]
+    for start, end in zip(points, points[1:]):
+        draw.line((start[0], start[1], end[0], end[1]), fill=art["ink"], width=14, joint="curve")
+    colors = [art["accent"], art["accent2"], art["paper"], art["highlight"]]
+    for point, color in zip(points, colors):
+        _dimensional_sphere(draw, point, _s(120), color, art["ink"])
+        _center_text(draw, point, "RISK", _font(_s(30), bold=True), art["ink"])
+    _section_title(draw, "RISK LOOP", 1780, art)
+    _draw_decision_strip(draw, art, theme)
+    _draw_takeaway(draw, draft, art, theme)
+
+
+def _draw_clarity_tier_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    draw.rounded_rectangle((84, 84, 2316, 2316), radius=52, fill=art["paper"], outline=art["shadow"], width=6)
+    _draw_editorial_copy(draw, draft, art, compact=True)
+    tiers = [
+        ("Signal", art["shadow"], "data signal"),
+        ("Diagnosis", art["accent2"], "decision hygiene"),
+        ("Action", art["accent"], "owner + timeline"),
+    ]
+    y = 720
+    for index, (title, color, note) in enumerate(tiers):
+        x = 190 + index * 760
+        _premium_panel(draw, (x, y, x + 650, y + 320), color, art["paper"])
+        _draw_wrapped_text(draw, f"{index + 1} • {title}", (x + 40, y + 54), 560, _font(44, bold=True), art["ink"], line_gap=8, max_lines=2)
+        _draw_wrapped_text(draw, note, (x + 40, y + 146), 560, _font(32), art["ink"], line_gap=6, max_lines=2)
+        _draw_mini_steps(draw, (x + 40, y + 230), [("Owner", "target"), ("Due", "clock"), ("Check", "shield")], art)
+    _section_title(draw, "Clarity Ladder", 1170, art)
+    _draw_takeaway(draw, draft, art, theme)
+
+
+def _draw_tradeoff_matrix_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    draw.rounded_rectangle((84, 84, 2316, 2316), radius=52, fill=art["paper"], outline=art["shadow"], width=6)
+    _draw_editorial_copy(draw, draft, art, compact=True)
+    left = _s(260)
+    top = _s(720)
+    width = _s(920)
+    height = _s(760)
+    for row in range(2):
+        for col in range(2):
+            box = (left + col * (width + _s(120)), top + row * (height + _s(140)), left + col * (width + _s(120)) + width, top + row * (height + _s(140)) + height)
+            _premium_panel(draw, box, art["paper"], _mix(art["accent"], "#FFFFFF", 0.4))
+            title = ["Speed", "Quality", "Cost", "Risk"][row * 2 + col]
+            color = [art["accent2"], art["accent"], art["highlight"], art["shadow"]][row * 2 + col]
+            draw.text((box[0] + 52, box[1] + 48), title, font=_font(52, bold=True), fill=art["ink"])
+            _draw_wrapped_text(
+                draw,
+                f"Prioritize {title.lower()} where trade-off pressure is highest this week.",
+                (box[0] + 52, box[1] + 140),
+                width - 104,
+                _font(36),
+                art["ink"],
+                line_gap=12,
+                max_lines=4,
+            )
+            draw.rounded_rectangle((box[0] + 120, box[3] - 120, box[2] - 120, box[3] - 34), radius=22, fill=color)
+    _section_title(draw, "Trade-off matrix", 1640, art)
+    _draw_takeaway(draw, draft, art, theme)
+
+
+def _draw_snapshot_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
+    theme = _infographic_theme(draft)
+    draw.rounded_rectangle((84, 84, 2316, 2316), radius=52, fill=art["paper"], outline=art["shadow"], width=6)
+    draw.rectangle((84, 84, 2316, 540), fill=art["ink"])
+    draw.rounded_rectangle((142, 138, 560, 206), radius=34, fill=art["accent"])
+    draw.text((184, 156), _short_category(draft.category).upper(), font=_font(30, bold=True), fill=art["paper"])
+
+    title_lines = _wrap(draft.topic.upper(), 34)[:3]
+    y = 246 if len(title_lines) == 1 else 226
+    for index, line in enumerate(title_lines):
+        _draw_fit_text(draw, (142, y + index * 78), line, 1560, 64, 46, art["paper"], bold=True)
+    _draw_wrapped_text(draw, str(theme["subtitle"]), (154, 454), 1420, _font(32, bold=True), _mix(art["paper"], "#FFFFFF", 0.18), line_gap=6, max_lines=2)
+    _draw_signal_module(draw, (1710, 134, 2250, 464), art)
+
+    metrics = [
+        ("REVENUE", "+11.6%", "quality checked"),
+        ("MARGIN", "+2.1%", "pressure visible"),
+        ("RETENTION", "82%", "repeat signal"),
+        ("RETURNS", "4.8%", "leakage watch"),
+    ]
+    for index, (label, value, note) in enumerate(metrics):
+        x = 142 + index * 540
+        _premium_panel(draw, (x, 650, x + 486, 900), art["paper"], "#D8DEE8")
+        draw.text((x + 34, 692), label, font=_font(30, bold=True), fill=art["ink"])
+        draw.text((x + 34, 742), value, font=_font(68, bold=True), fill=art["accent"])
+        draw.rounded_rectangle((x + 34, 828, x + 420, 868), radius=20, fill=_mix(art["accent2"], art["paper"], 0.72))
+        draw.text((x + 54, 836), note.upper(), font=_font(20, bold=True), fill=art["ink"])
+
+    board = (142, 1010, 2258, 1988)
+    _premium_panel(draw, board, _mix(art["base"], "#FFFFFF", 0.52), "#D8DEE8")
+    draw.text((200, 1070), "EXECUTIVE DECISION VIEW", font=_font(42, bold=True), fill=art["ink"])
+    draw.text((200, 1128), "Growth is only credible when profit, retention, returns, and operations agree.", font=_font(31), fill=art["ink"])
+
+    chart = (220, 1230, 1200, 1830)
+    draw.line((chart[0], chart[3], chart[2], chart[3]), fill=art["ink"], width=6)
+    draw.line((chart[0], chart[3], chart[0], chart[1]), fill=art["ink"], width=6)
+    values = [0.38, 0.58, 0.47, 0.72, 0.66, 0.84]
+    labels = ["Q1", "Q2", "Q3", "Q4", "Q1", "Q2"]
+    bar_w = 86
+    gap = 70
+    for index, value in enumerate(values):
+        x = chart[0] + 90 + index * (bar_w + gap)
+        h = int((chart[3] - chart[1] - 70) * value)
+        fill = art["accent"] if index in {3, 5} else art["accent2"]
+        draw.rounded_rectangle((x, chart[3] - h, x + bar_w, chart[3]), radius=20, fill=fill)
+        _center_text(draw, (x + bar_w // 2, chart[3] + 44), labels[index], _font(25, bold=True), art["ink"])
+    points = [(chart[0] + 120 + i * 156, chart[3] - int(420 * v) - 72) for i, v in enumerate([0.30, 0.46, 0.42, 0.61, 0.57, 0.78])]
+    draw.line(points, fill=art["ink"], width=9)
+    for point in points:
+        draw.ellipse((point[0] - 13, point[1] - 13, point[0] + 13, point[1] + 13), fill=art["paper"], outline=art["ink"], width=5)
+
+    rows = [
+        ("Signal", "Revenue up, margin slower"),
+        ("Watch", "Returns and delay pressure"),
+        ("Decision", "Protect retention first"),
+        ("Owner", "Ops + growth review"),
+    ]
+    table_x = 1320
+    table_y = 1232
+    for index, (label, note) in enumerate(rows):
+        y1 = table_y + index * 136
+        fill = art["paper"] if index % 2 == 0 else _mix(art["accent2"], art["paper"], 0.86)
+        draw.rounded_rectangle((table_x, y1, 2160, y1 + 104), radius=28, fill=fill, outline="#D8DEE8", width=3)
+        draw.text((table_x + 36, y1 + 30), label.upper(), font=_font(26, bold=True), fill=art["accent"])
+        draw.text((table_x + 250, y1 + 30), note, font=_font(30, bold=True), fill=art["ink"])
+
+    _premium_section_title(draw, "SCREENSHOT READY ANALYTICS", 2046, art)
+    _draw_premium_takeaway(draw, draft, art, theme)
+
+
+def _draw_section_grid(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], theme: dict[str, object]) -> None:
+    draw.rounded_rectangle((80, 1140, 1520, 1528), radius=42, fill=_mix(art["accent2"], art["paper"], 0.82))
+    draw.text((122, 1168), str(theme["why_title"]).upper(), font=_font(38, bold=True), fill=art["ink"])
+    _draw_wrapped_text(draw, str(theme["why_text"]), (122, 1236), 1330, _font(40), art["ink"], line_gap=12, max_lines=3)
+    _draw_decision_strip(draw, art, theme)
+
+
 def _draw_editorial_copy(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str], compact: bool = False) -> None:
     x = _s(160)
     y = _s(172)
@@ -944,9 +1246,19 @@ def _soft_ellipse(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], col
     draw.ellipse(box, fill=color)
 
 
-def _art_direction(draft: DraftPost) -> dict[str, str]:
+def _art_direction(draft: DraftPost, variant: str = "default") -> dict[str, str]:
     text = f"{draft.category} {draft.topic}".lower()
-    if any(word in text for word in ("bionemo", "drug discovery", "drug-development", "molecular", "life-science", "scientific research")):
+    if variant == "focus_strip":
+        scene = "analytics"
+    elif variant == "stacked_grid":
+        scene = "pipeline"
+    elif variant in {"editorial", "grid_strategic"}:
+        scene = "research"
+    elif variant in {"decision_grid", "snapshot_ready"}:
+        scene = "business"
+    elif variant in {"risk_loop", "clarity_tier", "tradeoff_matrix"}:
+        scene = "governance"
+    elif any(word in text for word in ("bionemo", "drug discovery", "drug-development", "molecular", "life-science", "scientific research")):
         scene = "lab_workflow"
     elif any(word in text for word in ("data engineering", "database", "pipeline", "warehouse", "cloud", "infrastructure")):
         scene = "pipeline"
@@ -970,6 +1282,10 @@ def _art_direction(draft: DraftPost) -> dict[str, str]:
         {"base": "#EEE6F0", "paper": "#FFF8ED", "ink": "#2F2342", "accent": "#8756A6", "accent2": "#F19C79", "highlight": "#FFFFFF", "shadow": "#C6B8C9"},
         {"base": "#E8EDF1", "paper": "#FBF7EC", "ink": "#17324D", "accent": "#2D7A78", "accent2": "#D89B45", "highlight": "#FFFFFF", "shadow": "#BCC8CE"},
     ]
+    if scene in {"business", "analytics"}:
+        result = {"base": "#E8EDF1", "paper": "#FBF7EC", "ink": "#17324D", "accent": "#2D7A78", "accent2": "#D89B45", "highlight": "#FFFFFF", "shadow": "#BCC8CE"}
+        result["scene"] = scene
+        return result
     index = int(hashlib.sha256(draft.topic.encode("utf-8")).hexdigest(), 16) % len(palettes)
     result = dict(palettes[index])
     result["scene"] = scene

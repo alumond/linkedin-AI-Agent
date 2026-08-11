@@ -28,7 +28,8 @@ class GeminiClient:
 
     def research(self, config: AgentConfig, recent_topics: list[str]) -> tuple[list[TrendCandidate], list[dict[str, Any]]]:
         prompt = f"""
-Find 6 current, high-attention trends in data and artificial intelligence for a broad professional LinkedIn audience.
+Find 6 current, high-attention topics that build Almond's personal brand as a data analyst for business growth, KPI reporting, dashboards, business intelligence, impact analytics, and AI-assisted decision support.
+Use a "discussion-first" style and prioritize topics that can spark useful debate and practical action for recruiters, founders, operators, analytics managers, remote teams, and business leaders.
 Use Google Search grounding. Do not scrape LinkedIn.
 
 Editorial topics: {", ".join(config.editorial_topics)}
@@ -42,8 +43,23 @@ Hard evidence requirements for every candidate:
 - Prefer the configured preferred source domains before using any other source.
 - Avoid trend-list blogs, Medium posts, marketing listicles, SEO consulting pages, and Wikipedia as primary evidence.
 - Do not use "agentic AI adoption is rising" as the topic unless there is a specific new report, product release, benchmark, standard, or research finding.
+- Do not select abstract AI news unless it can be turned into a practical lesson about dashboards, KPI quality, reporting, growth analytics, decision support, data cleaning, portfolio proof, or business performance.
 - Prioritize hot topics with a recent trigger: product launch, model release, benchmark result, regulation, enterprise adoption signal, major research paper, infrastructure change, or public company announcement.
+- Prioritize topics with strong engagement value:
+  - a counterintuitive outcome or correction of a common belief
+  - a real operational trade-off executives must decide on
+  - a measurable business lever (revenue, retention, cost, speed, risk, talent)
+  - a decision framework that can be copied quickly
+- Prefer content angles that make Almond look hireable or client-ready:
+  - how to turn messy data into clear decisions
+  - why dashboards fail when KPIs have no owner
+  - how GitHub projects can prove analytics skill
+  - what data analysts should show instead of listing tools
+  - how teams can use AI to reduce reporting waste
+  - how impact data and business analytics connect
 - Avoid evergreen explainers unless there is a fresh reason professionals should care this week.
+- Prefer developments that touch business outcomes: growth velocity, operating efficiency, pricing power, risk reduction, hiring productivity, or decision quality.
+- Favour concrete hooks, unexpected shifts, and practical implications over generic technical updates.
 
 Return only JSON with this shape:
 {{
@@ -92,7 +108,7 @@ Return only JSON with this shape:
         sources = "\n".join(f"- {source.title}: {source.url} ({source.source_type})" for source in candidate.sources)
         target_min, target_max = post_length_target(config)
         prompt = f"""
-Write a LinkedIn post for this source-grounded Data and AI trend.
+Write a LinkedIn post that builds Almond's personal brand as a data analyst for business growth, dashboards, KPI reporting, business intelligence, impact analytics, and decision support.
 
 Topic: {candidate.topic}
 Summary: {candidate.summary}
@@ -106,6 +122,18 @@ Hard length limit for body: {config.min_post_chars}-{config.max_post_chars} char
 Aim for {target_min}-{target_max} body characters so the final draft stays safely inside the hard limit.
 
 Rules:
+- Follow the style variant "Hook -> Contrarian angle -> Practical move -> Invite input".
+- Open with a concrete anchor: a decision, metric, or change that changes outcomes.
+- Build immediate reader relevance by stating one practical implication in plain language by the second third of the post.
+- Make the post sound like it came from a practical data analyst who understands business decisions, not a generic AI news page.
+- Tie the topic back to at least one of these lanes: dashboards, KPIs, SQL/Python/Power BI, business growth, reporting automation, data cleaning, impact analytics, GitHub portfolio proof, remote data work, or decision support.
+- Include one line that shows judgment, such as what teams should stop doing, measure differently, or prove with data.
+- Include one short, light analogy or framing that makes the point memorable without sounding gimmicky.
+- Add a small comment-starter section at the end of the body using this exact label and two prompts:
+  Discussion prompts:
+  1) ...
+  2) ...
+- The prompts should be concise, opinionated, and designed to produce replies.
 - Do not claim personal hands-on testing.
 - Do not fabricate quotes or statistics.
 - Do not use vague quantified claims like "significant percentage", "many companies", or "most leaders" unless an exact sourced number is provided.
@@ -118,9 +146,10 @@ Rules:
 - Name the source when attributing a finding. Never write "experts agree", "studies show", or "industry reports suggest" without naming the source.
 - Write like a sharp human analyst: concrete, restrained, useful, and specific.
 - Vary sentence length naturally. Prefer active voice and plain verbs.
-- Include practical implications or actions.
+- Include practical implications or actions readers can use in meetings, planning, or reporting.
 - Include a conversational closing question.
-- Use 1 to 3 restrained hashtags.
+- Add a "Discussion prompts:" section with two short prompts at the end of the post to invite replies.
+- Use 6 to 10 specific, topic-relevant hashtags.
 - For visual_style, use only "insight_card" or "diagram".
 - Return only JSON matching this shape:
 {{
@@ -165,7 +194,8 @@ Requirements:
 - Do not add facts, quotations, statistics, source URLs, or personal testing claims.
 - Keep the body between {config.min_post_chars} and {config.max_post_chars} characters.
 - Aim for {target_min}-{target_max} body characters.
-- Retain a practical implication, conversational closing question, and 1 to 3 restrained hashtags.
+- Retain an attention-first opening line, a practical implication, conversational closing question, and 6 to 10 topic-relevant hashtags.
+- Keep the required "Discussion prompts:" section in the body with exactly two short prompts.
 - Do not use em dashes, emojis, hype, clickbait, or generic AI phrasing.
 - Return only the complete revised JSON object using exactly the same fields as the current draft.
 """

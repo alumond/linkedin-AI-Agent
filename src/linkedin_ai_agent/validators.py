@@ -80,8 +80,17 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     warnings: list[str] = []
     body = draft.body.strip()
     lowered = body.lower()
+    words = re.findall(r"\b[\w']+\b", body)
+    paragraphs = [part.strip() for part in re.split(r"\n\s*\n", body) if part.strip()]
+    first_line = next((line.strip() for line in body.splitlines() if line.strip()), "")
     if not (config.min_post_chars <= len(body) <= config.max_post_chars):
         reasons.append(f"Post length {len(body)} is outside {config.min_post_chars}-{config.max_post_chars} chars.")
+    if len(words) < 115:
+        reasons.append("Post body is too thin; it must contain enough context to avoid a title-only LinkedIn post.")
+    if len(paragraphs) < 5:
+        reasons.append("Post needs at least five short paragraphs or blocks: hook, context, analysis, project/source, and prompts.")
+    if first_line.lower().rstrip(".") == draft.topic.strip().lower().rstrip("."):
+        reasons.append("Post opens with the topic as a standalone heading; use a human hook before the topic.")
     if not draft.primary_source_url:
         reasons.append("Primary source link is missing.")
     if not draft.supporting_source_urls:
@@ -111,7 +120,12 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     if "i tested" in lowered or "i used this myself" in lowered:
         reasons.append("Post implies personal testing that may not have happened.")
     if "Discussion prompts:" not in body:
-        warnings.append("Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts.")
+        reasons.append("Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts.")
+    else:
+        prompts = body.split("Discussion prompts:", 1)[1]
+        numbered_prompts = re.findall(r"(?m)^\s*\d+\)", prompts)
+        if len(numbered_prompts) < 2:
+            reasons.append("Discussion prompts block must contain at least two numbered prompts.")
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 

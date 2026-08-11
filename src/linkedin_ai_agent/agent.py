@@ -420,7 +420,6 @@ class LinkedInAIAgent:
         return max(0, (weekday_index - 1) // 5)
 
     @staticmethod
-    @staticmethod
     def _pick_special_weekday_for_week(_week_position: int) -> int:
         seeded = random.SystemRandom()
         return seeded.randint(1, 5)
@@ -603,22 +602,49 @@ class LinkedInAIAgent:
 
     def _fallback_draft(self, candidate: TrendCandidate) -> DraftPost:
         profile = self._fallback_visual_profile(candidate)
-        body = f"""{candidate.topic}
+        bucket = self._candidate_bucket(candidate, profile["visual_style"])
+        if bucket in {"tradeoff", "governance"}:
+            body = f"""The hard part of analytics is not building the dashboard. It is naming the trade-off clearly.
+
+{candidate.topic}
 
 {candidate.summary}
 
-Most LinkedIn posts about analytics never trigger a decision. They only report activity.
+A useful report should force three questions before anyone celebrates a KPI:
+1) What improved?
+2) What got worse while it improved?
+3) Who owns the next action?
 
-I built a retail command center with 2,160 synthetic operations rows, then used it to prove a simple rule for decision-ready reporting.
-Growth must be tested against margin, retention, fulfillment speed, and returns pressure.
-When these move in opposite directions, the dashboard is where your plan should start changing today.
+I use that standard in my portfolio work. The retail command center links 2,160 synthetic operations rows across revenue, margin, retention, returns, fulfillment delay, and stockout risk. The point is not to make charts look busy. The point is to make a manager see where growth is leaking.
 
-That is the same principle clients, recruiters, and hiring teams look for: can you turn data into next action, not just a polished chart.
-My portfolio is the repo link below with code, dataset, and dashboard outputs you can audit.
+My read:
+If a metric has no owner, no threshold, and no correction path, it is not decision support. It is noise with better formatting.
+
+Project context:
+{FEATURED_DASHBOARD_LINK}
 
 Discussion prompts:
-1) Which single metric pair in your current reporting stack would create the clearest boardroom decision?
-2) What KPI would you remove first so the remaining view becomes easier to act on?"""
+1) Which trade-off should analysts show more honestly in dashboards?
+2) What control would you add before trusting a weekly KPI pack?"""
+        else:
+            body = f"""A good analytics post should make one business decision easier.
+
+{candidate.topic}
+
+{candidate.summary}
+
+This is the lane I care about: data work that helps teams decide where revenue is healthy, where retention is weakening, where operations are leaking value, and what action should happen next.
+
+In my retail command center project, I used 2,160 synthetic operations rows to connect revenue, profit, repeat customers, returns, fulfillment delay, and stockout risk. That is the difference between a dashboard that looks active and a dashboard that changes a meeting.
+
+For clients and hiring teams, tools are not the proof. The proof is whether the analyst can turn messy inputs into a clear business judgment, show the limits, and recommend the next move.
+
+Project context:
+{FEATURED_DASHBOARD_LINK}
+
+Discussion prompts:
+1) Which metric pair would make your current dashboard harder to ignore?
+2) What would you remove from a report if the goal was faster action?"""
 
         return DraftPost(
             topic=candidate.topic,
@@ -671,59 +697,19 @@ Discussion prompts:
         return draft, visual
 
     def run(self, dry_run: bool) -> PublishResult:
-        fallback_reason = ""
-        fallback_candidate = None
-        candidate = None
-        citations: list[dict[str, Any]] = []
-        trend_report = None
         weekday_index, special_weekday = self._weekday_rotation_state()
         required_bucket = self._required_bucket(weekday_index, special_weekday)
+        fallback_list = self._fallback_trend_candidates(required_bucket)
+        if not fallback_list:
+            return self._skip("No curated weekday topic is available after duplicate checks.", citations=[])
+        candidate = self._pick_fallback_candidate(fallback_list)
         try:
-            candidates, citations = self.research()
-        except Exception as exc:
-            fallback_reason = str(exc)
-            candidates = []
-        if not candidates:
-            fallback_list = self._fallback_trend_candidates(required_bucket)
-            if not fallback_list:
-                return self._skip(
-                    fallback_reason or "No trend passed ranking and evidence gates.",
-                    citations=citations,
-                )
-            fallback_candidate = self._pick_fallback_candidate(fallback_list)
-            candidate = fallback_candidate
-        else:
-            candidate = candidates[0]
-            trend_report = validate_trend(candidate, self.config, self.history)
-            if required_bucket and self._candidate_bucket(candidate) != required_bucket:
-                fallback_list = self._fallback_trend_candidates(required_bucket)
-                if fallback_list:
-                    fallback_candidate = self._pick_fallback_candidate(fallback_list)
-                    candidate = fallback_candidate
-                    trend_report = None
-            if trend_report is not None and not trend_report.passed:
-                fallback_list = self._fallback_trend_candidates()
-                if not fallback_list:
-                    return self._skip("; ".join(trend_report.reasons), candidate=candidate, citations=citations)
-                fallback_list = self._fallback_trend_candidates(required_bucket)
-                if not fallback_list:
-                    fallback_list = self._fallback_trend_candidates()
-                fallback_candidate = self._pick_fallback_candidate(fallback_list)
-                candidate = fallback_candidate
-                trend_report = None
-        try:
-            if fallback_candidate:
-                draft = self._fallback_draft(candidate)
-                normalize_draft(draft)
-                visual = self._render_visual(draft)
-                draft_report = validate_draft(draft, self.config)
-                if not draft_report.passed:
-                    return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=citations, draft=draft)
-            else:
-                draft, visual = self.generate(candidate)
-                draft_report = validate_draft(draft, self.config)
+            draft = self._fallback_draft(candidate)
+            normalize_draft(draft)
+            visual = self._render_visual(draft)
+            draft_report = validate_draft(draft, self.config)
             if not draft_report.passed:
-                return self._skip("; ".join(draft_report.reasons), candidate=candidate, draft=draft, citations=citations)
+                return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
             image_urn = None
             post_urn = None
             if not dry_run:
@@ -745,8 +731,8 @@ Discussion prompts:
                 "trend": candidate,
                 "draft": draft,
                 "visual": visual,
-                "gemini_grounding_citations": citations,
-                "safety": {"trend": trend_report, "draft": draft_report},
+                "gemini_grounding_citations": [],
+                "safety": {"trend": None, "draft": draft_report},
                 "publish": result,
             }
             report_path = write_report(self.config.reports_dir, payload)
@@ -765,7 +751,7 @@ Discussion prompts:
                 )
             return result
         except Exception as exc:
-            return self._skip(str(exc), candidate=candidate, citations=citations)
+            return self._skip(str(exc), candidate=candidate, citations=[])
 
     def featured_dashboard_draft(self) -> DraftPost:
         body = f"""I built a retail revenue dashboard to answer a question leaders actually care about:
@@ -785,8 +771,8 @@ Project and data:
 {FEATURED_DASHBOARD_LINK}
 
 Discussion prompts:
-What metric would you add before presenting this to leadership?
-Do you prefer dashboards that explain the decision, or dashboards that only show the numbers?"""
+1) What metric would you add before presenting this to leadership?
+2) Do you prefer dashboards that explain the decision, or dashboards that only show the numbers?"""
         return DraftPost(
             topic="Retail Revenue Leakage Review",
             category="portfolio",
@@ -1011,7 +997,7 @@ def token_metadata(expires_in: int) -> dict[str, str]:
 
 
 def normalize_draft(draft: DraftPost) -> None:
-    draft.hashtags = [tag if tag.startswith("#") else f"#{tag}" for tag in draft.hashtags[:3] if tag.strip()]
+    draft.hashtags = [tag if tag.startswith("#") else f"#{tag}" for tag in draft.hashtags[:10] if tag.strip()]
     draft.supporting_source_urls = dedupe_urls(draft.supporting_source_urls)[:3]
     draft.alt_text = normalize_alt_text(draft.alt_text, draft.topic, draft.visual_style)
 

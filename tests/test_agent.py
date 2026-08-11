@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 from PIL import Image
 
-from linkedin_ai_agent.agent import LinkedInAIAgent, dedupe_urls, normalize_alt_text
+from linkedin_ai_agent.agent import FEATURED_DASHBOARD_IMAGE, FEATURED_DASHBOARD_LINK, LinkedInAIAgent, dedupe_urls, normalize_alt_text
 from linkedin_ai_agent.models import DraftPost, VisualAsset
 from tests.test_ranking import config, trend
 
@@ -14,10 +14,24 @@ class FakeGemini:
         return [trend("Fresh Gemini Trend")], [{"title": "Citation", "url": "https://example.com"}]
 
     def generate_post(self, cfg, candidate):
+        body = """A practical AI update should connect source, risk, and action.
+
+Fresh Gemini Trend
+
+The source matters because teams need to know whether a change affects reporting quality, operating decisions, or the way analysts explain uncertainty. A post with only a headline does not help anyone decide what to do next.
+
+The useful move is to name the decision path clearly: what changed, why it matters, what should be checked, and what action is safe to take now. That keeps the content grounded instead of turning it into another generic technology update.
+
+Project context:
+https://example.com/primary
+
+Discussion prompts:
+1) What would you check before turning this into a workflow change?
+2) Which metric would prove the update is useful?"""
         return DraftPost(
             topic=candidate.topic,
             category=candidate.category,
-            body="A grounded Data and AI update for professionals. " * 6,
+            body=body,
             hashtags=["#AI", "#Data"],
             primary_source_url="https://arxiv.org/abs/123",
             supporting_source_urls=["https://example.com/story"],
@@ -29,14 +43,20 @@ class FakeGemini:
 
 
 def test_dry_run_does_not_publish(tmp_path: Path):
-    agent = LinkedInAIAgent(config(tmp_path), gemini=FakeGemini())
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 700
+    cfg.max_post_chars = 1300
+    agent = LinkedInAIAgent(cfg, gemini=FakeGemini())
     result = agent.run(dry_run=True)
     assert result.status == "dry_run_ok"
     assert result.post_urn is None
     assert result.report_path
+    report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
+    assert report["gemini_grounding_citations"] == []
+    assert "Discussion prompts:" in report["draft"]["body"]
 
 
-def test_invalid_draft_gets_one_revision_before_visual_generation(tmp_path: Path):
+def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):
     class RevisingGemini(FakeGemini):
         def __init__(self):
             self.revision_count = 0
@@ -52,11 +72,15 @@ def test_invalid_draft_gets_one_revision_before_visual_generation(tmp_path: Path
             return super().generate_post(cfg, candidate)
 
     gemini = RevisingGemini()
-    agent = LinkedInAIAgent(config(tmp_path), gemini=gemini)
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 700
+    cfg.max_post_chars = 1300
+    agent = LinkedInAIAgent(cfg, gemini=gemini)
 
-    result = agent.run(dry_run=True)
+    draft, visual = agent.generate(trend("Fresh Gemini Trend"))
 
-    assert result.status == "dry_run_ok"
+    assert draft.topic == "Fresh Gemini Trend"
+    assert visual.width == 1200
     assert gemini.revision_count == 1
 
 
@@ -97,14 +121,30 @@ def test_publish_staged_uses_exact_reviewed_draft_once(tmp_path: Path):
             return "urn:li:share:test"
 
     cfg = config(tmp_path)
+    cfg.min_post_chars = 700
+    cfg.max_post_chars = 1300
     fake_linkedin = FakeLinkedIn()
     agent = LinkedInAIAgent(cfg, linkedin=fake_linkedin)
     image_path = tmp_path / "approved.png"
     Image.new("RGB", (1200, 1200), "white").save(image_path)
+    body = """A staged post should publish the exact reviewed draft.
+
+A specific AI release
+
+The point of staging is to prevent the live publisher from changing the wording or visual after a human has approved it. That matters when the post carries a portfolio claim, a source link, or a business judgment that must stay consistent.
+
+This example keeps the wording complete enough for LinkedIn: it has context, analysis, a source path, and prompts. If the image changes after preview, the publish step should fail instead of posting a different asset.
+
+Project context:
+https://example.com/primary
+
+Discussion prompts:
+1) What should always be locked before publishing a post?
+2) Which mistake is worse: wrong text or wrong image?"""
     draft = DraftPost(
         topic="A specific AI release",
         category="AI releases",
-        body="The vendor released a specific feature on Tuesday. Teams can now test it against their existing workflow before deciding whether it is useful.",
+        body=body,
         hashtags=["#AI"],
         primary_source_url="https://example.com/primary",
         supporting_source_urls=["https://example.org/report"],
@@ -123,3 +163,32 @@ def test_publish_staged_uses_exact_reviewed_draft_once(tmp_path: Path):
     assert json.loads(staged_path.read_text(encoding="utf-8"))["status"] == "published"
     with pytest.raises(RuntimeError, match="cannot be published again"):
         agent.publish_staged()
+
+
+def test_featured_dashboard_dry_run_uses_fixed_post_without_gemini(tmp_path: Path):
+    class ExplodingGemini:
+        def research(self, cfg, recent_topics):
+            raise AssertionError("Featured dashboard post must not research with Gemini.")
+
+        def generate_post(self, cfg, candidate):
+            raise AssertionError("Featured dashboard post must not generate with Gemini.")
+
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 700
+    cfg.max_post_chars = 1300
+    cfg.assets_dir.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (1600, 900), "white").save(cfg.assets_dir / FEATURED_DASHBOARD_IMAGE)
+
+    agent = LinkedInAIAgent(cfg, gemini=ExplodingGemini())
+    result = agent.publish_featured_dashboard(dry_run=True)
+
+    assert result.status == "dry_run_ok"
+    assert result.post_urn is None
+    assert result.report_path
+    report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
+    body = report["draft"]["body"]
+    assert "2,160 synthetic retail operations rows" in body
+    assert "Analyst note:" in body
+    assert FEATURED_DASHBOARD_LINK in body
+    assert report["visual"]["width"] == 1600
+    assert report["visual"]["height"] == 900

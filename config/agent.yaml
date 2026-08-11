@@ -1,9 +1,17 @@
-audience: 'Broad professionals: beginners, practitioners, managers, and executives'
+audience: 'Recruiters, founders, operators, remote teams, analytics managers, and business leaders who need data talent that can turn dashboards, KPIs, and messy data into decisions'
 editorial_topics:
-- AI releases
-- AI research
-- data engineering
 - analytics
+- growth analytics
+- data for business growth
+- KPI reporting
+- dashboard design
+- business intelligence
+- decision support
+- data cleaning
+- reporting automation
+- AI for analytics
+- impact analytics
+- remote data careers
 - practical tools
 - business implications
 - careers
@@ -16,7 +24,7 @@ excluded_subjects:
 - medical advice
 - financial advice
 - adult or hateful content
-voice: insightful, human, practical, clear, and free of generic AI phrasing
+voice: sharp, human, commercially aware, practical, and built to position Almond as a data analyst for business growth and decision support
 post_length:
   min_chars: 700
   max_chars: 1300

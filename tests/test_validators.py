@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import pytest
 from PIL import Image
 
 from linkedin_ai_agent.models import DraftPost
@@ -31,6 +32,26 @@ def test_validate_visual_requires_square(tmp_path: Path):
     visual = validate_visual(path, "A concise alt text.")
     assert visual.width == 1200
     assert visual.height == 1200
+
+
+def test_validate_visual_accepts_landscape_only_when_allowed(tmp_path: Path):
+    path = tmp_path / "landscape.png"
+    Image.new("RGB", (1600, 900), "white").save(path)
+
+    with pytest.raises(ValueError, match="square"):
+        validate_visual(path, "A concise alt text.")
+
+    visual = validate_visual(path, "A concise alt text.", allow_landscape=True)
+    assert visual.width == 1600
+    assert visual.height == 900
+
+
+def test_validate_visual_rejects_small_landscape(tmp_path: Path):
+    path = tmp_path / "small-landscape.png"
+    Image.new("RGB", (800, 450), "white").save(path)
+
+    with pytest.raises(ValueError, match="too small"):
+        validate_visual(path, "A concise alt text.", allow_landscape=True)
 
 
 def test_validate_draft_rejects_ai_slop_patterns(tmp_path: Path):
