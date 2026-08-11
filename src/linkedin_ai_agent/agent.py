@@ -640,13 +640,13 @@ Discussion prompts:
         asset_path = self._visual_path(draft)
         style, variant = self._visual_base_and_variant(draft.visual_style)
         if style == "diagram":
-            render_diagram(draft, self.config, asset_path, variant)
+            render_diagram(draft, self.config, asset_path, variant=variant)
         elif style == "insight_card":
-            render_insight_card(draft, self.config, asset_path, variant)
+            render_insight_card(draft, self.config, asset_path, variant=variant)
         elif style == "illustration":
-            render_insight_card(draft, self.config, asset_path, variant)
+            render_insight_card(draft, self.config, asset_path, variant=variant)
         else:
-            render_insight_card(draft, self.config, asset_path, variant)
+            render_insight_card(draft, self.config, asset_path, variant=variant)
         return validate_visual(asset_path, draft.alt_text)
 
     def generate(self, candidate: TrendCandidate) -> tuple[DraftPost, VisualAsset]:
