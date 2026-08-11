@@ -572,6 +572,7 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
         if not fallback_list:
             return self._skip("No curated weekday topic is available after duplicate checks.", citations=[])
         candidate = self._pick_fallback_candidate(fallback_list)
+        draft: DraftPost | None = None
         try:
             draft = self._fallback_draft(candidate)
             normalize_draft(draft)
@@ -620,7 +621,7 @@ Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
                 )
             return result
         except Exception as exc:
-            return self._skip(str(exc), candidate=candidate, citations=[])
+            return self._skip(str(exc), candidate=candidate, draft=draft, citations=[])
 
     def featured_dashboard_draft(self) -> DraftPost:
         body = f"""I built a retail revenue dashboard to answer a question leaders actually care about:
