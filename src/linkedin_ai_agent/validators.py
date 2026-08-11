@@ -89,7 +89,7 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     if len(words) < 115:
         reasons.append("Post body is too thin; it must contain enough context to avoid a title-only LinkedIn post.")
     if len(paragraphs) < 5:
-        reasons.append("Post needs at least five short paragraphs or blocks: hook, context, analysis, project/source, and prompts.")
+        reasons.append("Post needs at least five short paragraphs or blocks: hook, context, analysis, practical detail, and closing.")
     if first_line.lower().rstrip(".") == draft.topic.strip().lower().rstrip("."):
         reasons.append("Post opens with the topic as a standalone heading; use a human hook before the topic.")
     if not draft.primary_source_url and not is_curated_weekday:
@@ -120,13 +120,9 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         warnings.append("Post appears to contain a quotation; verify it before live publishing.")
     if "i tested" in lowered or "i used this myself" in lowered:
         reasons.append("Post implies personal testing that may not have happened.")
-    if "Discussion prompts:" not in body:
-        reasons.append("Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts.")
-    else:
-        prompts = body.split("Discussion prompts:", 1)[1]
-        prompt_markers = re.findall(r"(?m)^\s*(?:\d+\)|Q\d+:)", prompts)
-        if len(prompt_markers) < 2:
-            reasons.append("Discussion prompts block must contain at least two prompts marked as Q1/Q2 or numbered prompts.")
+    final_block = paragraphs[-1] if paragraphs else ""
+    if len(final_block.split()) < 6:
+        reasons.append("Post closing is too weak; end with a memorable phrase or clear takeaway.")
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 

@@ -454,9 +454,7 @@ If a metric has no owner, no threshold, no review rhythm, and no consequence, it
 
 Otherwise, the team is not managing performance. It is decorating uncertainty.
 
-Discussion prompts:
-Q1: Which analytics trade-off do teams avoid talking about?
-Q2: What control would make a weekly report easier to trust?"""
+Better data work does not make the room louder. It makes the next move harder to ignore."""
         else:
             body = f"""Data work should not stop at \"I found an insight.\"
 
@@ -507,9 +505,7 @@ Every analysis should end with one of three things:
 
 If it ends with "interesting insight", it probably was not sharp enough.
 
-Discussion prompts:
-Q1: What data problem do you see businesses underestimating right now?
-Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
+Make the data useful enough that the next decision becomes obvious."""
 
         return DraftPost(
             topic=candidate.topic,

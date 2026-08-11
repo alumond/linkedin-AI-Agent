@@ -54,7 +54,8 @@ def test_dry_run_does_not_publish(tmp_path: Path):
     assert result.report_path
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
     assert report["gemini_grounding_citations"] == []
-    assert "Discussion prompts:" in report["draft"]["body"]
+    assert "Discussion prompts:" not in report["draft"]["body"]
+    assert report["draft"]["body"].strip().endswith("Make the data useful enough that the next decision becomes obvious.")
 
 
 def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):

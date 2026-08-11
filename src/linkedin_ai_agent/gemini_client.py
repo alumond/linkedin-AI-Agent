@@ -122,7 +122,7 @@ Hard length limit for body: {config.min_post_chars}-{config.max_post_chars} char
 Aim for {target_min}-{target_max} body characters so the final draft stays safely inside the hard limit.
 
 Rules:
-- Follow the style variant "Hook -> Contrarian angle -> Practical move -> Invite input".
+- Follow the style variant "Hook -> Contrarian angle -> Practical move -> memorable closing".
 - Format for LinkedIn native readability: short paragraphs, clear section labels in uppercase, hyphen bullets where useful, and generous spacing.
 - Do not use Markdown bold or italics because LinkedIn API posts show the asterisks/underscores as plain text.
 - Use section labels such as "WHY THIS MATTERS:", "THE COMMON MISTAKE:", "BETTER MOVE:", "MY TAKE:", or "PRACTICAL RULE:" when they fit naturally.
@@ -132,11 +132,8 @@ Rules:
 - Tie the topic back to at least one of these lanes: dashboards, KPIs, SQL/Python/Power BI, business growth, reporting automation, data cleaning, impact analytics, GitHub portfolio proof, remote data work, or decision support.
 - Include one line that shows judgment, such as what teams should stop doing, measure differently, or prove with data.
 - Include one short, light analogy or framing that makes the point memorable without sounding gimmicky.
-- Add a small comment-starter section at the end of the body using this exact label and two prompts:
-  Discussion prompts:
-  Q1: ...
-  Q2: ...
-- The prompts should be concise, opinionated, and designed to produce replies.
+- End with a catchy closing phrase, sharp takeaway, or memorable final line.
+- Do not force questions at the end unless the post genuinely needs one.
 - Do not claim personal hands-on testing.
 - Do not fabricate quotes or statistics.
 - Do not use vague quantified claims like "significant percentage", "many companies", or "most leaders" unless an exact sourced number is provided.
@@ -150,8 +147,7 @@ Rules:
 - Write like a sharp human analyst: concrete, restrained, useful, and specific.
 - Vary sentence length naturally. Prefer active voice and plain verbs.
 - Include practical implications or actions readers can use in meetings, planning, or reporting.
-- Include a conversational closing question.
-- Add a "Discussion prompts:" section with two short prompts at the end of the post to invite replies.
+- Include a strong final phrase or practical takeaway that makes the post feel complete.
 - Use 6 to 10 specific, topic-relevant hashtags.
 - For visual_style, use only "insight_card" or "diagram".
 - Return only JSON matching this shape:
@@ -197,8 +193,8 @@ Requirements:
 - Do not add facts, quotations, statistics, source URLs, or personal testing claims.
 - Keep the body between {config.min_post_chars} and {config.max_post_chars} characters.
 - Aim for {target_min}-{target_max} body characters.
-- Retain an attention-first opening line, a practical implication, conversational closing question, and 6 to 10 topic-relevant hashtags.
-- Keep the required "Discussion prompts:" section in the body with exactly two short prompts marked Q1 and Q2.
+- Retain an attention-first opening line, a practical implication, a strong closing phrase, and 6 to 10 topic-relevant hashtags.
+- Do not force a "Discussion prompts:" section unless it already fits naturally.
 - Do not use em dashes, emojis, hype, clickbait, or generic AI phrasing.
 - Return only the complete revised JSON object using exactly the same fields as the current draft.
 """
