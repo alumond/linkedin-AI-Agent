@@ -1,0 +1,474 @@
+{
+  "draft": null,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 862,
+      "start_index": 668,
+      "title": "isomorphiclabs.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFldfsxZ99LvOjWcsbf_VIyGqBQOyZ_uFsEHNFfY1vO1uw-j_MSdLJhjsHl8JvOd0PzzaWIKR6uSg1rPvMPbNw7MJS4u3Xp6-nYU58VdK-Mc90ib7uso1Yq4XEqqparDfZnPajU9ZTJSvI70Wiw8KEKKpX8D7sWWYM5fWjfk7bcTygigyxbtoNH-TohPMn7KznXKkfAVVMn3ZHHFFlWFStq3DZkzrUtXLkm34RvQfyE"
+    },
+    {
+      "end_index": 862,
+      "start_index": 668,
+      "title": "nih.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4iFzqI7_9-Fmb2YAmVPS-e39N1QjTeHx3VyU7bCW-tTTAlJEl1SSmj5GP2MavqhScH0pUFWqsZFsnQ94klU010l0vq_hlSQbAd1o6W1mWEp3M_XiBmhxNjLewqwpXc9sqnEM8FGTX98sKPqU="
+    },
+    {
+      "end_index": 862,
+      "start_index": 668,
+      "title": "blog.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb6GTPbA6IS7a3Xvd3_nvYac9lC-TPrrbdDgpIqbssPjvdxkj9Chv_4pwLBxyxoEfMcribi8PGQuHYf7RUP9SrQq1m-JtbL8wlLhsVvWFPe3Qb1JMORIRDGwuCUvEIIMfBkdT5V7YJ6Q1XiSckv0CwMohqLAmQq8z4ilMimD9UAOu_5XBxs9SKeJcgozqBw_4DjRTszbB6ayY="
+    },
+    {
+      "end_index": 862,
+      "start_index": 668,
+      "title": "isomorphiclabs.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENl92lV32dT-t95aUJmxvBKHDv7foPI3ySnkkUscepgsIJ2CkFCdQv4qKXCXGCo5ZJhgL9CtB_-6ouqzkvqdlAz7ErUFCBJKlBgtxJ7iOevlXGi6qn_stXbTuObQgUI1Ve4D-pSJuBsQUZcG9YWwMCbubWtH6wb6TZLEIkd89xn86MNTaVwoQ="
+    },
+    {
+      "end_index": 862,
+      "start_index": 668,
+      "title": "astrobiology.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXrATqEFV4v5UBYcV63dnr9K4Loc3IMX_YH_RPuw6eIqDdhhV3ThIbzinD6l16P1Pve58NoKhi3qvxZP5rdK5UqEJk3SYG2OC9P1uDozZG_veL7jjn-YfWE1U1sS1WHaa1Ve63dUCpko_f5I-st4nrHcyKBTJGqhzNTFsjcTaDoTpxLlOJyMNsoDEdjoKyHick0CQvkPuxRGZIA8gp9gNi9ODmGW4W9zBZpJZk"
+    },
+    {
+      "end_index": 1619,
+      "start_index": 862,
+      "title": "blog.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGb6GTPbA6IS7a3Xvd3_nvYac9lC-TPrrbdDgpIqbssPjvdxkj9Chv_4pwLBxyxoEfMcribi8PGQuHYf7RUP9SrQq1m-JtbL8wlLhsVvWFPe3Qb1JMORIRDGwuCUvEIIMfBkdT5V7YJ6Q1XiSckv0CwMohqLAmQq8z4ilMimD9UAOu_5XBxs9SKeJcgozqBw_4DjRTszbB6ayY="
+    },
+    {
+      "end_index": 2179,
+      "start_index": 1619,
+      "title": "isomorphiclabs.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENl92lV32dT-t95aUJmxvBKHDv7foPI3ySnkkUscepgsIJ2CkFCdQv4qKXCXGCo5ZJhgL9CtB_-6ouqzkvqdlAz7ErUFCBJKlBgtxJ7iOevlXGi6qn_stXbTuObQgUI1Ve4D-pSJuBsQUZcG9YWwMCbubWtH6wb6TZLEIkd89xn86MNTaVwoQ="
+    },
+    {
+      "end_index": 2749,
+      "start_index": 2179,
+      "title": "nih.gov",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4iFzqI7_9-Fmb2YAmVPS-e39N1QjTeHx3VyU7bCW-tTTAlJEl1SSmj5GP2MavqhScH0pUFWqsZFsnQ94klU010l0vq_hlSQbAd1o6W1mWEp3M_XiBmhxNjLewqwpXc9sqnEM8FGTX98sKPqU="
+    },
+    {
+      "end_index": 3311,
+      "start_index": 2749,
+      "title": "acs.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFW0wH-5og9AfwXsr8pVT9fmaqfW32BpBx7-4F7k-amXRAFrxIfZ5VlqEDTjjdNxWIyPh9k-KkHGBGjDNjM8yOEbq1oBclJ6Xmt0zZKqiYTe_oVd6pBlA3j1kKCli4jxMegUXlD1mZwrqjiltA="
+    },
+    {
+      "end_index": 4013,
+      "start_index": 3708,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTaB67A07oiW9yC5JtEYvSYMsDFIlMyYNgcYsNSSdnreJuaWpGvQYp8UdPbLPMae5TcBaoskY78Tc6_dsFxzgz-rSZEQA2ef_6SbT51QCaFGpRBEhMuRXsnk8kuHI3_6q9knXnal3oOEoa_l-J-p4U83pliFVBbA=="
+    },
+    {
+      "end_index": 4013,
+      "start_index": 3708,
+      "title": "venturebeat.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmgrdJ0uwi1VpqzcrjEjVGcgDczDdZUMXZoFxfSFXM7WQZk6vDAtXEJ8fIWaR1mP2K36P3lnrOa4IOaHCPUZ644lGLhgujbh1fNhUHCdRtaoXLPcxi4-oTLAQGGdmCGOa9oQQNBGcmqnJH8J5n7SsFLH5MeZ35VhhkasA3uo587AoBovMIgr3X9iTR7m4clffadtohWnqP5orpxpL9XwMFoLltQhYNvAFfkZVu5ihcmPoYps32XSAtiPTlX98H3Q=="
+    },
+    {
+      "end_index": 4013,
+      "start_index": 3708,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLpd9nIEdcMCjDoAj8XkpZ4A0k87mqF_ChNadcmv0JSsCZjGmZxmhSCbW-OBxM-4BsNt_YflC-GRifUKnt--V9OENHr7bctGZwFZI1zATE5SP-xdSRCue2lZXzv2UcXPyiFZR2ml0bPfnqR76I_XbP8CQPK6tGyAKle7KECfbP6Mzvqx05i7f1oN1l3SF_jP4m"
+    },
+    {
+      "end_index": 4013,
+      "start_index": 3708,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQ1biB1NfR0wAbiUfpj5h9JE4cI9hLHB6MZBAQ1suzlIdIlLNvr0eyV67AfwZoi7PPbtCQi0MP7ERFEEEkpjJ-K3ZAoxyWqXEiHmgLdrcA3wxVzi2QuWwhaB6-TmUaVp5554mf"
+    },
+    {
+      "end_index": 4182,
+      "start_index": 4014,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRfbKjw-gC_ldz44vxtrBhx92Wha2VLRIBjnWSX3fIUrULh9ZrcmH7CsVFYTKep76pFuGVgmoLPDUH6b1CAR9r3_ttg1fS9z-po1rephKjmyMS4vfHdCw-rA4kXRuKPP5yUiSkWeqxv0rhgewkftuWvqlBEgxpbsabCT8Vi7luVlTg7lFm6_K8Ob20u3liiHqM2mId5mXZPVBYkrgX3hY="
+    },
+    {
+      "end_index": 4320,
+      "start_index": 4183,
+      "title": "syracuse.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEhAXYKLFKCQj3cVejplNqD8AKqwhw4u23EBG4JI2HaHECwQWtwvLQ6fww6lMF5618Zk_sFMT9IYudFOx2oa3dD8REPUgmWbkcMA7TXqia3bpagWCQzcdm_P6draDqh_dXyIDwkc-CXbAxhQg=="
+    },
+    {
+      "end_index": 5019,
+      "start_index": 4320,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTaB67A07oiW9yC5JtEYvSYMsDFIlMyYNgcYsNSSdnreJuaWpGvQYp8UdPbLPMae5TcBaoskY78Tc6_dsFxzgz-rSZEQA2ef_6SbT51QCaFGpRBEhMuRXsnk8kuHI3_6q9knXnal3oOEoa_l-J-p4U83pliFVBbA=="
+    },
+    {
+      "end_index": 5706,
+      "start_index": 5019,
+      "title": "venturebeat.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmgrdJ0uwi1VpqzcrjEjVGcgDczDdZUMXZoFxfSFXM7WQZk6vDAtXEJ8fIWaR1mP2K36P3lnrOa4IOaHCPUZ644lGLhgujbh1fNhUHCdRtaoXLPcxi4-oTLAQGGdmCGOa9oQQNBGcmqnJH8J5n7SsFLH5MeZ35VhhkasA3uo587AoBovMIgr3X9iTR7m4clffadtohWnqP5orpxpL9XwMFoLltQhYNvAFfkZVu5ihcmPoYps32XSAtiPTlX98H3Q=="
+    },
+    {
+      "end_index": 6238,
+      "start_index": 6219,
+      "title": "research.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOBsg5MGCFrJEIuoNyNRhZUvnJCzYRSG2Y_X61RlWsXTjqQ947ZGd9CoAAmBZAPH2aPuWuGpjhAsW69RPuyiLjY9SD2_IO5NL89w_VOHQIMmXY_911AOKgpUISQavYMCQy15FibH3txMTBxZ3qOctIQBWYFIKZe47SV8stLChXxr_Jl8TDduZyew=="
+    },
+    {
+      "end_index": 6238,
+      "start_index": 6219,
+      "title": "google.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRfbKjw-gC_ldz44vxtrBhx92Wha2VLRIBjnWSX3fIUrULh9ZrcmH7CsVFYTKep76pFuGVgmoLPDUH6b1CAR9r3_ttg1fS9z-po1rephKjmyMS4vfHdCw-rA4kXRuKPP5yUiSkWeqxv0rhgewkftuWvqlBEgxpbsabCT8Vi7luVlTg7lFm6_K8Ob20u3liiHqM2mId5mXZPVBYkrgX3hY="
+    },
+    {
+      "end_index": 6853,
+      "start_index": 6238,
+      "title": "syracuse.edu",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEhAXYKLFKCQj3cVejplNqD8AKqwhw4u23EBG4JI2HaHECwQWtwvLQ6fww6lMF5618Zk_sFMT9IYudFOx2oa3dD8REPUgmWbkcMA7TXqia3bpagWCQzcdm_P6draDqh_dXyIDwkc-CXbAxhQg=="
+    },
+    {
+      "end_index": 7439,
+      "start_index": 7170,
+      "title": "meta.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGI5dmYsxyZCTeRkXl3jmMIiJYEWismH98sXaT46jzB84xAhWCQ_fmSiXXfJkeNdw73JG11kNQLqzXAUUYPOZfu8TubWc0TpY5n8Z1obj4_AoY6hQXXmsbcfoe4teSkmsmWBDYoyxfyukboqxG2"
+    },
+    {
+      "end_index": 7646,
+      "start_index": 7440,
+      "title": "vertu.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRXNX91yN-f9lDvx1yL9z3eXSLxtxaMv6tYG_jWvE365mcYbESekONWFXrwP0bmuueA4PkJz0D3b5hKh7G9cqCAC1pEckb3R-_fXq-2yye1iLZQ3C0VmeJQSoiyhuHS7DOqcruw8LJxuklY2Ga-8XPTotxwRzER6Nrta5-lUpJSJ9pIg0huro0V5G_8ujPNzk1"
+    },
+    {
+      "end_index": 7805,
+      "start_index": 7804,
+      "title": "carnegieendowment.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9bZaQi7bbe2FDm8jkFCfgCDY-99vtVl_WnxtVHpPVHx52bPqQIZnHN-obLhZDqyZoQrqLdqe4T9LM5VkWupKkh2FhK9xq2BaGs1GZVXfwf5GVsjYLd9nblabsVyZqMgT1YMf0CaWDusWazzptuqRROz5iAdx1oN77AscnLSIF84_eebYfLNs="
+    },
+    {
+      "end_index": 8013,
+      "start_index": 7806,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHL0g8zitCE84WqwlVY7d3OYfmvrPtjq9R8ZLV8O0NgvsXUd6ZxJ3Wzl7eOKIcUDd838dJd_mNXBKnu3ggZRSfV8wV5c7wkwRj3W4ZHKWaa5j0Kae8Zo954lPEw2O-Fk-IlitNGMw=="
+    },
+    {
+      "end_index": 8800,
+      "start_index": 8013,
+      "title": "meta.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGI5dmYsxyZCTeRkXl3jmMIiJYEWismH98sXaT46jzB84xAhWCQ_fmSiXXfJkeNdw73JG11kNQLqzXAUUYPOZfu8TubWc0TpY5n8Z1obj4_AoY6hQXXmsbcfoe4teSkmsmWBDYoyxfyukboqxG2"
+    },
+    {
+      "end_index": 9285,
+      "start_index": 8800,
+      "title": "allenai.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFjWopZ8M-u9ed7Z3tmH9YrvF-AEictUK-VdFOZ_T72Qel_gW0-tzq4RiZub4Z5x8h1yayOWIkUn2ZAnlzv7h3KeTsJOAcS46V62ovFPJsR49x2LuCCT_Qig=="
+    },
+    {
+      "end_index": 9835,
+      "start_index": 9285,
+      "title": "vertu.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRXNX91yN-f9lDvx1yL9z3eXSLxtxaMv6tYG_jWvE365mcYbESekONWFXrwP0bmuueA4PkJz0D3b5hKh7G9cqCAC1pEckb3R-_fXq-2yye1iLZQ3C0VmeJQSoiyhuHS7DOqcruw8LJxuklY2Ga-8XPTotxwRzER6Nrta5-lUpJSJ9pIg0huro0V5G_8ujPNzk1"
+    },
+    {
+      "end_index": 10394,
+      "start_index": 9835,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHL0g8zitCE84WqwlVY7d3OYfmvrPtjq9R8ZLV8O0NgvsXUd6ZxJ3Wzl7eOKIcUDd838dJd_mNXBKnu3ggZRSfV8wV5c7wkwRj3W4ZHKWaa5j0Kae8Zo954lPEw2O-Fk-IlitNGMw=="
+    },
+    {
+      "end_index": 10986,
+      "start_index": 10764,
+      "title": "cncf.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQDviw5CkvEkrijghnBMEVWJFXIl6qWT-G7BloQY6cAVpEBjG3lFL6YdcoHwz8KYI-Tkf8dikRMpgrTrG60vozC8geQkE1bywgcmlJ1U972F1Xm6yqmJVbMnRwff6h9g5pMIDOV3cy1bBAgk0Opberw86h3rToCghZcXoVL4lO8dVDPq50Fzc="
+    },
+    {
+      "end_index": 10986,
+      "start_index": 10764,
+      "title": "edgeaihub.co.uk",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZL6DoA3SGr8Gixv7fNT9S69aLX1vTTXBNuZLTSe8lTNipoSvrYfqC8fup-bG4PDKLhuvPTasf1BpxL3vJqX_Aw3Ms4r0kLEdCeLmrc_U8VGsF-10pBeIuIKrfaxY_rdVM8g1r6cv5AVqbslAkp7vzujuFaElI2Sg="
+    },
+    {
+      "end_index": 11170,
+      "start_index": 10987,
+      "title": "wevolver.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErnZAyPS1sSP9859fi7bOBGultRYDxIgTrD9QWwNGj0K8gvoiT5LfjlLqQJLqe63PQRphf_NqQBo-Ab2NbKmENQbOg32spek6QfXNNWD7iWfhdvk0izSQKnzdQNr6MOmqr3wI7UhtFKhGXexcbMRJ_2oKkURY3l0Q14LUsjueoTvlhMdC4nlNrvCCsnlg="
+    },
+    {
+      "end_index": 11338,
+      "start_index": 11171,
+      "title": "wevolver.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErnZAyPS1sSP9859fi7bOBGultRYDxIgTrD9QWwNGj0K8gvoiT5LfjlLqQJLqe63PQRphf_NqQBo-Ab2NbKmENQbOg32spek6QfXNNWD7iWfhdvk0izSQKnzdQNr6MOmqr3wI7UhtFKhGXexcbMRJ_2oKkURY3l0Q14LUsjueoTvlhMdC4nlNrvCCsnlg="
+    },
+    {
+      "end_index": 11338,
+      "start_index": 11171,
+      "title": "edgeaihub.co.uk",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZL6DoA3SGr8Gixv7fNT9S69aLX1vTTXBNuZLTSe8lTNipoSvrYfqC8fup-bG4PDKLhuvPTasf1BpxL3vJqX_Aw3Ms4r0kLEdCeLmrc_U8VGsF-10pBeIuIKrfaxY_rdVM8g1r6cv5AVqbslAkp7vzujuFaElI2Sg="
+    },
+    {
+      "end_index": 11338,
+      "start_index": 11171,
+      "title": "dateurope.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOCWSjrC4EFNlOKjCG_Ju_psMHfhSc3F7mgrmEfqgkZiDm_JBKXBTC9H62pYt-cSRw6obrlh469oHW05LYm0FSg9gSNelyWOAx9dbOlj75n12T8_XwZrhCPX0RnMmkftljxjRoKTSsHdkn0gVtsO6DxRIh8VNS0DXvJFkkrBb4ZCeobhWgZQ=="
+    },
+    {
+      "end_index": 11536,
+      "start_index": 11339,
+      "title": "wevolver.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErnZAyPS1sSP9859fi7bOBGultRYDxIgTrD9QWwNGj0K8gvoiT5LfjlLqQJLqe63PQRphf_NqQBo-Ab2NbKmENQbOg32spek6QfXNNWD7iWfhdvk0izSQKnzdQNr6MOmqr3wI7UhtFKhGXexcbMRJ_2oKkURY3l0Q14LUsjueoTvlhMdC4nlNrvCCsnlg="
+    },
+    {
+      "end_index": 12192,
+      "start_index": 11536,
+      "title": "techinsights.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQ940hwPEn3L4ueD0jtSE7sidOWvW02DD0SXGWhvWN1-olutaHlmY0eJ1KUgIf2XrnMX4cf6vkURXI8QTu4QK9SoM_C7Eua4RQPIY_mCpsdRe_inVUga8dwY0EY6mAjkHMqKsHNeebFQF4HEVqQ9zSuVrVy7O-ieoPjjAS6aF1"
+    },
+    {
+      "end_index": 12750,
+      "start_index": 12192,
+      "title": "cncf.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEQDviw5CkvEkrijghnBMEVWJFXIl6qWT-G7BloQY6cAVpEBjG3lFL6YdcoHwz8KYI-Tkf8dikRMpgrTrG60vozC8geQkE1bywgcmlJ1U972F1Xm6yqmJVbMnRwff6h9g5pMIDOV3cy1bBAgk0Opberw86h3rToCghZcXoVL4lO8dVDPq50Fzc="
+    },
+    {
+      "end_index": 13257,
+      "start_index": 12750,
+      "title": "wevolver.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErnZAyPS1sSP9859fi7bOBGultRYDxIgTrD9QWwNGj0K8gvoiT5LfjlLqQJLqe63PQRphf_NqQBo-Ab2NbKmENQbOg32spek6QfXNNWD7iWfhdvk0izSQKnzdQNr6MOmqr3wI7UhtFKhGXexcbMRJ_2oKkURY3l0Q14LUsjueoTvlhMdC4nlNrvCCsnlg="
+    },
+    {
+      "end_index": 13780,
+      "start_index": 13257,
+      "title": "dateurope.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOCWSjrC4EFNlOKjCG_Ju_psMHfhSc3F7mgrmEfqgkZiDm_JBKXBTC9H62pYt-cSRw6obrlh469oHW05LYm0FSg9gSNelyWOAx9dbOlj75n12T8_XwZrhCPX0RnMmkftljxjRoKTSsHdkn0gVtsO6DxRIh8VNS0DXvJFkkrBb4ZCeobhWgZQ=="
+    },
+    {
+      "end_index": 14387,
+      "start_index": 14177,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRVqwI8kMcYQizb8OQYbwmKbUX8LNXrp6ha7djQjD-HwCT0XNxUtZwkvXXfgGz2kielCTvW2fdUbxLWpTZWFM64d8G92j3WbYoxWoCMmXIjLcPA6hmu2PJQTAFz7__A_FzkbnqMKeP-Tcf4wmaGYCAJg=="
+    },
+    {
+      "end_index": 14387,
+      "start_index": 14177,
+      "title": "akivna.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGo5hwKFZzNvE7_e-0IkSeki5VzzQVEm-wJx-8ZiVr6fak6oj4VEXF0kN-SZUGgB6cNvcFhLJpfUpwfPzEEDHbEF6Xoi-HW3jzictIjaiTyG_R7_T_x1mIQVYpg7ep8iL62dpPsyocCqEd9SY8OgIiZoy0-XIdIfq8saer0tuPm_x7-G4PLB3vzOUSuMtFgClRQtw=="
+    },
+    {
+      "end_index": 14387,
+      "start_index": 14177,
+      "title": "acceldata.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlhtMVlfNtHgCxU3laim3dDairuwkAEe-p2xR_2aIhU-bohkdlC7dmmjQ4tKvIDsngTB1SLrPWwGtQjChhEnEDlZM86_saSxVJ-Z84gY_u-SUfjxy6V10iymCOzM4ES_Jy0kuLVJ2pLmARVwUYajgw_VBmn9GW8DZ9WLqNNb0aQn-doE0_cebQexniYRKPSUhnQbsyblKjuFCLsRJXroSCqVyntbyB8LLaKV1w_deffAesE7XaFIJ8"
+    },
+    {
+      "end_index": 14513,
+      "start_index": 14388,
+      "title": "dqlabs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHcthuhwSd-Rh_MpA0ZnR1u7E87BOL4XPNfLEkbtkKo36a3uQ29DWr_uIhW1cL_3joAdTzv-ZbnltX5M9pia5xDFPaglc1U9MOvqUHeNJCgQqQlLH-6eU6YeR7SYmHNi5dG3O0zDn-_8vSX649"
+    },
+    {
+      "end_index": 14736,
+      "start_index": 14514,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRVqwI8kMcYQizb8OQYbwmKbUX8LNXrp6ha7djQjD-HwCT0XNxUtZwkvXXfgGz2kielCTvW2fdUbxLWpTZWFM64d8G92j3WbYoxWoCMmXIjLcPA6hmu2PJQTAFz7__A_FzkbnqMKeP-Tcf4wmaGYCAJg=="
+    },
+    {
+      "end_index": 14877,
+      "start_index": 14737,
+      "title": "liliendahl.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKhDkubWv-kak8HQnk6Pn_mBQmOIOlONbedj_daRe7gElWcScFbua5v-fgXb9rAdPf6M08MuqRU5FdLBcL9SJvwqUJ-TnN7CZsua4iTDnlqGnEUMoGCBZbbxMmrDd9TXRjeNyO2StC6TgyDMFbuCKw-0SZi2QnSVIs3wKX9AHEHm3c0AjIaJCH3VDr_umtoqda0qQ="
+    },
+    {
+      "end_index": 14877,
+      "start_index": 14737,
+      "title": "datafold.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEB3Efvb_i5V-SFyrDkoY_HUDfwdKUIryqytpF8rBYTEfNINbenravb-cKI7mHhGwyfogN8sFoH5-3nmoK1QUaC9uyQMwW7T4_H4ySWay38CBBuKYckm_JQfBm8CIbfcZSMZhz3kHWCp8BuyMA34NZNjBy-qqv4TS0b2lSgkDQ="
+    },
+    {
+      "end_index": 14877,
+      "start_index": 14737,
+      "title": "dqlabs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHcthuhwSd-Rh_MpA0ZnR1u7E87BOL4XPNfLEkbtkKo36a3uQ29DWr_uIhW1cL_3joAdTzv-ZbnltX5M9pia5xDFPaglc1U9MOvqUHeNJCgQqQlLH-6eU6YeR7SYmHNi5dG3O0zDn-_8vSX649"
+    },
+    {
+      "end_index": 15535,
+      "start_index": 14877,
+      "title": "ibm.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRVqwI8kMcYQizb8OQYbwmKbUX8LNXrp6ha7djQjD-HwCT0XNxUtZwkvXXfgGz2kielCTvW2fdUbxLWpTZWFM64d8G92j3WbYoxWoCMmXIjLcPA6hmu2PJQTAFz7__A_FzkbnqMKeP-Tcf4wmaGYCAJg=="
+    },
+    {
+      "end_index": 16163,
+      "start_index": 15535,
+      "title": "akivna.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGo5hwKFZzNvE7_e-0IkSeki5VzzQVEm-wJx-8ZiVr6fak6oj4VEXF0kN-SZUGgB6cNvcFhLJpfUpwfPzEEDHbEF6Xoi-HW3jzictIjaiTyG_R7_T_x1mIQVYpg7ep8iL62dpPsyocCqEd9SY8OgIiZoy0-XIdIfq8saer0tuPm_x7-G4PLB3vzOUSuMtFgClRQtw=="
+    },
+    {
+      "end_index": 16712,
+      "start_index": 16163,
+      "title": "acceldata.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlhtMVlfNtHgCxU3laim3dDairuwkAEe-p2xR_2aIhU-bohkdlC7dmmjQ4tKvIDsngTB1SLrPWwGtQjChhEnEDlZM86_saSxVJ-Z84gY_u-SUfjxy6V10iymCOzM4ES_Jy0kuLVJ2pLmARVwUYajgw_VBmn9GW8DZ9WLqNNb0aQn-doE0_cebQexniYRKPSUhnQbsyblKjuFCLsRJXroSCqVyntbyB8LLaKV1w_deffAesE7XaFIJ8"
+    },
+    {
+      "end_index": 17282,
+      "start_index": 16712,
+      "title": "dqlabs.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHcthuhwSd-Rh_MpA0ZnR1u7E87BOL4XPNfLEkbtkKo36a3uQ29DWr_uIhW1cL_3joAdTzv-ZbnltX5M9pia5xDFPaglc1U9MOvqUHeNJCgQqQlLH-6eU6YeR7SYmHNi5dG3O0zDn-_8vSX649"
+    },
+    {
+      "end_index": 17890,
+      "start_index": 17664,
+      "title": "openlayer.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHaotFcrVhyG8Ne4NLqED7xbOarhGjNNIIgXWFqQx7ySCurqq_ufgDKYhcOspU80aEREkvZL-EFINjnOFNaJSUjD-9HljIZ0X_hHJCbsS56FczvAp12gR1GVZbxCbMsJNxy5wyAbsEI8ywl0wnkzWLjEb4K0k6"
+    },
+    {
+      "end_index": 17890,
+      "start_index": 17664,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJTq9kTcLXxN4fEz9EB7Ku16g6LUny1PARi_Yf3MRcb0zIVZChiylkhbe4jfqU6k7_HPyaS5Idti3TTBCj8NXw2PUXqr-KOD58xoeBd52vY5mLHd5Or0VenO7mk3MtSGB2GdGyTgPfflQth78YlvA6a5BdwloO2_TnKK0VOPQkZkfdO00fTxT2jrm_F-_4KKnQQLj8KPKIBgMRyHUYWMNAXtZkvTw="
+    },
+    {
+      "end_index": 17890,
+      "start_index": 17664,
+      "title": "evidentlyai.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGe5fQx5y-N-IkykjIuKsCh_Imqun5jqz1kjpE6JBVSmarhkGy3DmbH3kmEu1CCr26caEFnB3Rg-UZeeFOfLSeDcf6JdEb5BhTrWBNHu8y6k3kUOIN4LG3Gpcco8dKZ3CkZULJrjn7pJWhnEsKYK_nmLw=="
+    },
+    {
+      "end_index": 17890,
+      "start_index": 17664,
+      "title": "appintent.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEvwfIXkwnCxVCCLMLsttoU8UOfcudKXdPQ7oDoTDlresx3FjZFJIp4ydyqs_UXe2AMVMUZVUTPwG6bpyQ1ZO73G7S8FgduLldz-kG56dpZW7roDs5n3eBsQSJSlafEJEOa3HK2V1E3mdGKQc4FBnc"
+    },
+    {
+      "end_index": 17890,
+      "start_index": 17664,
+      "title": "logz.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfL2ion12sqQ0MHss-DfmxzYrofo8zHaGiTDnZVR8FdGHa5dCo4Qjg4Vo78btszjknnfdKWqp5kPKt076FjIZx_s_KvXt2u9aioWWa8hCFwfef_fxOBhbvpUJMVMSr3ez1AQ=="
+    },
+    {
+      "end_index": 18014,
+      "start_index": 17891,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJTq9kTcLXxN4fEz9EB7Ku16g6LUny1PARi_Yf3MRcb0zIVZChiylkhbe4jfqU6k7_HPyaS5Idti3TTBCj8NXw2PUXqr-KOD58xoeBd52vY5mLHd5Or0VenO7mk3MtSGB2GdGyTgPfflQth78YlvA6a5BdwloO2_TnKK0VOPQkZkfdO00fTxT2jrm_F-_4KKnQQLj8KPKIBgMRyHUYWMNAXtZkvTw="
+    },
+    {
+      "end_index": 18276,
+      "start_index": 18120,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJTq9kTcLXxN4fEz9EB7Ku16g6LUny1PARi_Yf3MRcb0zIVZChiylkhbe4jfqU6k7_HPyaS5Idti3TTBCj8NXw2PUXqr-KOD58xoeBd52vY5mLHd5Or0VenO7mk3MtSGB2GdGyTgPfflQth78YlvA6a5BdwloO2_TnKK0VOPQkZkfdO00fTxT2jrm_F-_4KKnQQLj8KPKIBgMRyHUYWMNAXtZkvTw="
+    },
+    {
+      "end_index": 18276,
+      "start_index": 18120,
+      "title": "evidentlyai.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGe5fQx5y-N-IkykjIuKsCh_Imqun5jqz1kjpE6JBVSmarhkGy3DmbH3kmEu1CCr26caEFnB3Rg-UZeeFOfLSeDcf6JdEb5BhTrWBNHu8y6k3kUOIN4LG3Gpcco8dKZ3CkZULJrjn7pJWhnEsKYK_nmLw=="
+    },
+    {
+      "end_index": 18276,
+      "start_index": 18120,
+      "title": "logz.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfL2ion12sqQ0MHss-DfmxzYrofo8zHaGiTDnZVR8FdGHa5dCo4Qjg4Vo78btszjknnfdKWqp5kPKt076FjIZx_s_KvXt2u9aioWWa8hCFwfef_fxOBhbvpUJMVMSr3ez1AQ=="
+    },
+    {
+      "end_index": 18522,
+      "start_index": 18277,
+      "title": "openlayer.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHaotFcrVhyG8Ne4NLqED7xbOarhGjNNIIgXWFqQx7ySCurqq_ufgDKYhcOspU80aEREkvZL-EFINjnOFNaJSUjD-9HljIZ0X_hHJCbsS56FczvAp12gR1GVZbxCbMsJNxy5wyAbsEI8ywl0wnkzWLjEb4K0k6"
+    },
+    {
+      "end_index": 18522,
+      "start_index": 18277,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJTq9kTcLXxN4fEz9EB7Ku16g6LUny1PARi_Yf3MRcb0zIVZChiylkhbe4jfqU6k7_HPyaS5Idti3TTBCj8NXw2PUXqr-KOD58xoeBd52vY5mLHd5Or0VenO7mk3MtSGB2GdGyTgPfflQth78YlvA6a5BdwloO2_TnKK0VOPQkZkfdO00fTxT2jrm_F-_4KKnQQLj8KPKIBgMRyHUYWMNAXtZkvTw="
+    },
+    {
+      "end_index": 18522,
+      "start_index": 18277,
+      "title": "appintent.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEvwfIXkwnCxVCCLMLsttoU8UOfcudKXdPQ7oDoTDlresx3FjZFJIp4ydyqs_UXe2AMVMUZVUTPwG6bpyQ1ZO73G7S8FgduLldz-kG56dpZW7roDs5n3eBsQSJSlafEJEOa3HK2V1E3mdGKQc4FBnc"
+    },
+    {
+      "end_index": 18522,
+      "start_index": 18277,
+      "title": "logz.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfL2ion12sqQ0MHss-DfmxzYrofo8zHaGiTDnZVR8FdGHa5dCo4Qjg4Vo78btszjknnfdKWqp5kPKt076FjIZx_s_KvXt2u9aioWWa8hCFwfef_fxOBhbvpUJMVMSr3ez1AQ=="
+    },
+    {
+      "end_index": 19207,
+      "start_index": 18522,
+      "title": "openlayer.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHHaotFcrVhyG8Ne4NLqED7xbOarhGjNNIIgXWFqQx7ySCurqq_ufgDKYhcOspU80aEREkvZL-EFINjnOFNaJSUjD-9HljIZ0X_hHJCbsS56FczvAp12gR1GVZbxCbMsJNxy5wyAbsEI8ywl0wnkzWLjEb4K0k6"
+    },
+    {
+      "end_index": 19772,
+      "start_index": 19207,
+      "title": "appintent.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEvwfIXkwnCxVCCLMLsttoU8UOfcudKXdPQ7oDoTDlresx3FjZFJIp4ydyqs_UXe2AMVMUZVUTPwG6bpyQ1ZO73G7S8FgduLldz-kG56dpZW7roDs5n3eBsQSJSlafEJEOa3HK2V1E3mdGKQc4FBnc"
+    },
+    {
+      "end_index": 20391,
+      "start_index": 19772,
+      "title": "medium.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJTq9kTcLXxN4fEz9EB7Ku16g6LUny1PARi_Yf3MRcb0zIVZChiylkhbe4jfqU6k7_HPyaS5Idti3TTBCj8NXw2PUXqr-KOD58xoeBd52vY5mLHd5Or0VenO7mk3MtSGB2GdGyTgPfflQth78YlvA6a5BdwloO2_TnKK0VOPQkZkfdO00fTxT2jrm_F-_4KKnQQLj8KPKIBgMRyHUYWMNAXtZkvTw="
+    },
+    {
+      "end_index": 20895,
+      "start_index": 20490,
+      "title": "logz.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfL2ion12sqQ0MHss-DfmxzYrofo8zHaGiTDnZVR8FdGHa5dCo4Qjg4Vo78btszjknnfdKWqp5kPKt076FjIZx_s_KvXt2u9aioWWa8hCFwfef_fxOBhbvpUJMVMSr3ez1AQ=="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-11T09:47:25Z",
+    "dry_run": true,
+    "image_urn": null,
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": "render_insight_card() got an unexpected keyword argument 'variant'",
+    "status": "skipped",
+    "topic": "AlphaFold 3 and AI-driven breakthroughs in molecular biology and drug design"
+  },
+  "reason": "render_insight_card() got an unexpected keyword argument 'variant'",
+  "status": "skipped",
+  "topic": "AlphaFold 3 and AI-driven breakthroughs in molecular biology and drug design",
+  "trend": {
+    "category": "AI releases",
+    "evidence_score": 1.0,
+    "novelty_score": 1.0,
+    "practical_value_score": 1.0,
+    "recency_score": 1.0,
+    "relevance_score": 1.0,
+    "sources": [
+      {
+        "claim_supported": "The announcement of AlphaFold 3, its capabilities in predicting molecular structures and interactions, its accuracy improvements, and its potential impact on drug discovery and biological understanding.",
+        "published_at": "2024-05-08",
+        "publisher": "Google DeepMind",
+        "quality_score": 1.0,
+        "source_type": "primary",
+        "title": "AlphaFold 3 predicts the structure and interactions of all of life's molecules - Google Blog",
+        "url": "https://blog.google/technology/ai/alphafold-3-ai-model-protein-dna-rna-ligand-structure/"
+      },
+      {
+        "claim_supported": "Details on AlphaFold 3's capabilities in rational drug design, including predicting protein-ligand and other biomolecular interactions, and its potential to accelerate drug development.",
+        "published_at": "2024-05-08",
+        "publisher": "Isomorphic Labs",
+        "quality_score": 1.0,
+        "source_type": "primary",
+        "title": "Rational drug design with AlphaFold 3 - Isomorphic Labs",
+        "url": "https://isomorphiclabs.com/research/rational-drug-design-with-alphafold-3"
+      },
+      {
+        "claim_supported": "Confirmation of AlphaFold 3's significant impact on drug design and therapeutics through accurate prediction of molecular interactions and its revolutionary potential.",
+        "published_at": "2024-07-02",
+        "publisher": "PMC (PubMed Central) / Cureus",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "Review of AlphaFold 3: Transformative Advances in Drug Design and Therapeutics - PMC",
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11200088/"
+      },
+      {
+        "claim_supported": "Reports on the release of AlphaFold 3, its expanded capabilities beyond protein folding to various molecules, and the launch of a user-friendly web server.",
+        "published_at": "2024-05-20",
+        "publisher": "ACS Publications (American Chemical Society)",
+        "quality_score": 0.9,
+        "source_type": "independent",
+        "title": "AlphaFold 3 to offer structure prediction via web browser - ACS Publications",
+        "url": "https://pubs.acs.org/doi/10.1021/cen-09920a-scicon3"
+      }
+    ],
+    "summary": "Google DeepMind and Isomorphic Labs have released AlphaFold 3, a revolutionary AI model that predicts the structure and interactions of all life's molecules, including proteins, DNA, RNA, and ligands, with unprecedented accuracy. This advancement shows at least a 50% improvement over existing methods for interactions between proteins and other molecule types. The model is poised to significantly accelerate drug discovery and enhance fundamental understanding of biological processes. A free AlphaFold Server is available for academic research, and Isomorphic Labs is actively collaborating with pharmaceutical companies to apply AlphaFold 3 to real-world drug design challenges.",
+    "topic": "AlphaFold 3 and AI-driven breakthroughs in molecular biology and drug design"
+  }
+}
