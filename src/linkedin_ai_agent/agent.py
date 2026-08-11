@@ -36,368 +36,180 @@ FEATURED_DASHBOARD_IMAGE = "featured_retail_revenue_leakage_review.png"
 PORTFOLIO_LINK = "https://almond-owolabi-portfolio-s3pd81.v2.appdeploy.ai/"
 
 
+GITHUB_REPO_LINK = "https://github.com/alumond/linkedin-AI-Agent"
+
+
 FALLBACK_TOPIC_LIBRARY = [
     {
-        "topic": "Revenue growth is useless if profit, retention, and returns are moving in the wrong direction.",
-        "summary": "Build dashboards that expose growth quality, not just volume.",
-        "category": "analytics",
-        "visual_style": "diagram:decision_grid",
-        "visual_prompt": "Use a decision flow map to test if growth, margin, retention, and returns agree before declaring success.",
-        "hashtags": [
-            "#DataAnalytics",
-            "#KPIReporting",
-            "#GrowthLeadership",
-            "#Retention",
-            "#Profitability",
-            "#DecisionScience",
-        ],
-    },
-    {
-        "topic": "A dashboard is not a chart collection. It is a decision system.",
-        "summary": "Treat visuals as an executive decision layer, not a portfolio wallpaper.",
-        "category": "dashboard design",
+        "topic": "Your spreadsheet is not messy. Your business process is messy.",
+        "summary": "Messy data usually points to unclear ownership, inconsistent definitions, or a broken handoff.",
+        "category": "data cleaning",
         "visual_style": "insight_card:editorial",
-        "visual_prompt": "Show a clear decision hierarchy: signal, context, action, owner.",
-        "hashtags": [
-            "#DashboardDesign",
-            "#DataViz",
-            "#DecisionSupport",
-            "#BusinessIntelligence",
-            "#Analytics",
-            "#DataStrategy",
-        ],
+        "visual_prompt": "Show messy inputs becoming clear business ownership, not a decorative spreadsheet image.",
+        "hashtags": ["#DataCleaning", "#DataAnalytics", "#BusinessProcess", "#Analytics", "#DataQuality", "#BusinessIntelligence"],
     },
     {
-        "topic": "What I learned building a retail revenue leakage dashboard from 2,160 synthetic rows.",
-        "summary": "One portfolio artifact can validate analytics reasoning end-to-end.",
-        "category": "analytics",
-        "visual_style": "diagram:clarity_tier",
-        "visual_prompt": "Lean into process flow: data generation, KPI model, leakage detection, and decision outputs.",
-        "hashtags": [
-            "#AnalyticsPortfolio",
-            "#Python",
-            "#RetailAnalytics",
-            "#CommandCenter",
-            "#DataForBusiness",
-            "#KPIReporting",
-        ],
+        "topic": "The fastest analyst is not the one who knows every tool. It is the one who asks better questions.",
+        "summary": "Strong analysis starts with the business question before SQL, Python, Excel, or Power BI enters the room.",
+        "category": "analytics mindset",
+        "visual_style": "diagram:decision_grid",
+        "visual_prompt": "Create a question-first decision map for analysts and business teams.",
+        "hashtags": ["#DataAnalytics", "#AnalyticsMindset", "#BusinessIntelligence", "#DataSkills", "#DecisionMaking", "#CareerGrowth"],
     },
     {
-        "topic": "Retention as the real revenue lever.",
-        "summary": "The mistake many analysts make: showing KPIs without showing what management should do next.",
-        "category": "KPI reporting",
-        "visual_style": "diagram:risk_loop",
-        "visual_prompt": "Lay out a clear loop that ties retention movement to revenue confidence.",
-        "hashtags": [
-            "#CustomerRetention",
-            "#GrowthAnalytics",
-            "#KPIReporting",
-            "#BusinessGrowth",
-            "#DataStorytelling",
-            "#AnalyticsMindset",
-        ],
-    },
-    {
-        "topic": "Why repeat customers are often a better business signal than new customer volume.",
-        "summary": "The real growth question is customer quality versus customer count.",
-        "category": "business intelligence",
+        "topic": "Revenue dashboards should start with customer behavior, not total sales.",
+        "summary": "Sales volume looks impressive until retention, repeat purchases, and refunds tell a different story.",
+        "category": "growth analytics",
         "visual_style": "insight_card:stacked_grid",
-        "visual_prompt": "Compare acquisition and repeat cohorts side-by-side and force a decision.",
-        "hashtags": [
-            "#BusinessIntelligence",
-            "#CustomerAnalytics",
-            "#GrowthModel",
-            "#RetentionStrategy",
-            "#DataLeadership",
-            "#MEEnergy",
-        ],
+        "visual_prompt": "Compare sales, retention, refunds, and repeat purchase signals in a business-friendly card.",
+        "hashtags": ["#GrowthAnalytics", "#CustomerAnalytics", "#Revenue", "#Retention", "#DataAnalytics", "#BusinessGrowth"],
     },
     {
-        "topic": "How returns and fulfillment delays quietly destroy revenue growth.",
-        "summary": "Operational leak points often hide in support and fulfillment.",
-        "category": "analytics",
-        "visual_style": "diagram:snapshot_ready",
-        "visual_prompt": "Map the end-to-end leak path and highlight the management intervention points.",
-        "hashtags": [
-            "#OperationalEfficiency",
-            "#DataAnalytics",
-            "#CustomerSatisfaction",
-            "#Fulfillment",
-            "#ReturnsManagement",
-            "#RevenueLeakage",
-        ],
-    },
-    {
-        "topic": "A strong GitHub project should show business judgment, not only polished code.",
-        "summary": "Proof of work is stronger when it shows business outcomes and decision logic.",
-        "category": "portfolio strategy",
+        "topic": "If your KPI has no owner, it is just a number with a nice font.",
+        "summary": "A metric becomes useful when someone owns the threshold, action, and follow-up.",
+        "category": "KPI reporting",
         "visual_style": "insight_card:focus_strip",
-        "visual_prompt": "Use a portfolio credibility card that ties code, process, and board-level implications together.",
-        "hashtags": [
-            "#Portfolio",
-            "#GitHub",
-            "#DataPortfolio",
-            "#DataLeadership",
-            "#Freelance",
-            "#BusinessResults",
-        ],
+        "visual_prompt": "Show KPI ownership as signal, threshold, owner, action, and review.",
+        "hashtags": ["#KPIReporting", "#BusinessIntelligence", "#DecisionSupport", "#Analytics", "#ManagementReporting", "#DataLeadership"],
     },
     {
-        "topic": "If your dashboard has no business question, it is decoration.",
-        "summary": "A dashboard with no action is just a chart gallery.",
-        "category": "analytics",
-        "visual_style": "diagram:tradeoff_matrix",
-        "visual_prompt": "Use an urgent decision card format with 'What changed', 'Why it matters', and 'What we do now'.",
-        "hashtags": [
-            "#DecisionSupport",
-            "#DataViz",
-            "#BI",
-            "#ExecutiveDashboard",
-            "#DataLeadership",
-            "#ImpactAnalytics",
-        ],
+        "topic": "Data cleaning is where business truth usually shows up.",
+        "summary": "Duplicates, missing fields, and inconsistent labels often reveal the real operational problem.",
+        "category": "data cleaning",
+        "visual_style": "diagram:decision_grid",
+        "visual_prompt": "Turn cleaning issues into business signals: duplicates, gaps, definitions, owners, next action.",
+        "hashtags": ["#DataCleaning", "#DataQuality", "#DataAnalytics", "#Operations", "#BusinessIntelligence", "#AnalyticsPortfolio"],
     },
     {
-        "topic": "The difference between a beginner dashboard and an executive dashboard.",
-        "summary": "Density, hierarchy, and decision clarity are what separate amateurs from decision support.",
-        "category": "dashboard design",
-        "visual_style": "diagram:tradeoff_matrix",
-        "visual_prompt": "Contrast two states: noisy visuals versus a single decision channel and action map.",
-        "hashtags": [
-            "#ExecutiveDashboard",
-            "#ManagementReporting",
-            "#DataVisual",
-            "#PowerBI",
-            "#Analytics",
-            "#DecisionMaking",
-        ],
-    },
-    {
-        "topic": "How Monitoring and Evaluation taught me to prioritize retention and service quality.",
-        "summary": "M&E discipline improves every business dashboard.",
-        "category": "impact analytics",
-        "visual_style": "insight_card:grid_strategic",
-        "visual_prompt": "Structure a practical M&E lens with indicator, quality check, and intervention trigger.",
-        "hashtags": [
-            "#MonitoringEvaluation",
-            "#ImpactAnalytics",
-            "#ServiceQuality",
-            "#DataGovernance",
-            "#GrowthAnalytics",
-            "#DecisionSupport",
-        ],
-    },
-    {
-        "topic": "What to automate first in reporting: cleaning, governance, or storytelling.",
-        "summary": "Most teams fail fast because they automate the wrong link in the data chain.",
-        "category": "analytics operations",
-        "visual_style": "diagram:clarity_tier",
-        "visual_prompt": "Show a realistic reporting stack and mark the highest-impact automation unlock.",
-        "hashtags": [
-            "#Reporting",
-            "#DataOps",
-            "#WorkflowAutomation",
-            "#DataQuality",
-            "#BI",
-            "#Productivity",
-        ],
-    },
-    {
-        "topic": "Why your weekly metric review should start with questions, not numbers.",
-        "summary": "Metrics are only useful when they force a manager decision within 24 hours.",
+        "topic": "A small dataset with a clear business question beats a huge dataset with no decision.",
+        "summary": "The size of the dataset matters less than the decision it can support.",
         "category": "decision support",
         "visual_style": "insight_card:editorial",
-        "visual_prompt": "Frame each metric with the exact question it answers in leadership meetings.",
-        "hashtags": [
-            "#Management",
-            "#KPIs",
-            "#DataInAction",
-            "#Leadership",
-            "#BusinessAnalytics",
-            "#DecisionMaking",
-        ],
+        "visual_prompt": "Contrast small focused data with large unfocused data through a decision lens.",
+        "hashtags": ["#DecisionSupport", "#DataAnalytics", "#BusinessAnalytics", "#DataStrategy", "#AnalyticsMindset", "#DataForBusiness"],
     },
     {
-        "topic": "Portfolio-proof work beats resume-padding for getting data clients.",
-        "summary": "Clients trust concrete outcomes more than a long self-description.",
-        "category": "personal branding",
+        "topic": "The best Power BI dashboard is the one that makes the next meeting shorter.",
+        "summary": "A dashboard should reduce argument, not add more tabs for people to debate.",
+        "category": "dashboard design",
+        "visual_style": "insight_card:grid_strategic",
+        "visual_prompt": "Show a meeting-shortening dashboard structure: signal, cause, owner, action.",
+        "hashtags": ["#PowerBI", "#DashboardDesign", "#BusinessIntelligence", "#DataViz", "#DecisionMaking", "#KPIReporting"],
+    },
+    {
+        "topic": "Founders do not need more charts. They need fewer blind spots.",
+        "summary": "Business dashboards should expose risk, leakage, churn, cash pressure, and execution gaps.",
+        "category": "business intelligence",
         "visual_style": "diagram:decision_grid",
-        "visual_prompt": "Create a trust pyramid: problem, method, result, client impact.",
-        "hashtags": [
-            "#Freelance",
-            "#Career",
-            "#DataCareer",
-            "#Portfolio",
-            "#ClientAcquisition",
-            "#Brand",
-        ],
+        "visual_prompt": "Map founder blind spots into data checks: cash, churn, sales quality, delivery, support.",
+        "hashtags": ["#BusinessIntelligence", "#Founder", "#GrowthAnalytics", "#DataForBusiness", "#Startup", "#Analytics"],
     },
     {
-        "topic": "When your reporting speed increases but decision speed slows, you have a process gap.",
-        "summary": "Fast visuals are useless if no one knows what action they require.",
-        "category": "analytics",
-        "visual_style": "insight_card:stacked_grid",
-        "visual_prompt": "Show a response-time gap: publish cadence versus decision turnaround cadence.",
-        "hashtags": [
-            "#DecisionSpeed",
-            "#DataOps",
-            "#AnalyticsManagement",
-            "#BusinessIntelligence",
-            "#KPIReporting",
-            "#Growth",
-        ],
-    },
-    {
-        "topic": "Data stories stop being useful when they avoid trade-offs.",
-        "summary": "Every metric has a trade-off; the board wants to know which one to accept.",
-        "category": "storytelling",
-        "visual_style": "diagram:risk_loop",
-        "visual_prompt": "Build a trade-off matrix for growth, margin, retention, and risk.",
-        "hashtags": [
-            "#DataStorytelling",
-            "#Tradeoffs",
-            "#ProductDecision",
-            "#Analytics",
-            "#KPITradeoff",
-            "#Execution",
-        ],
-    },
-    {
-        "topic": "How to prove dashboard value with one weekly executive question.",
-        "summary": "A dashboard is validated by the decision it changes.",
-        "category": "analytics",
-        "visual_style": "diagram:decision_grid",
-        "visual_prompt": "Use a loop where the question, decision, action, and proof path are visible.",
-        "hashtags": [
-            "#ExecutiveReporting",
-            "#BusinessIntelligence",
-            "#KPIs",
-            "#DataLeadership",
-            "#ImpactTracking",
-            "#DecisionSupport",
-        ],
-    },
-    {
-        "topic": "Decision fatigue in data meetings is a UX and process design failure.",
-        "summary": "The board needs fewer ambiguous numbers and one clear call.",
-        "category": "analytics operations",
+        "topic": "A data analyst should explain the cost of waiting, not only the size of the problem.",
+        "summary": "Analysis becomes commercial when it shows what delay will cost the team.",
+        "category": "business analytics",
         "visual_style": "insight_card:focus_strip",
-        "visual_prompt": "Show one dominant insight with a strict call-to-action row.",
-        "hashtags": [
-            "#DecisionMaking",
-            "#MeetingOptimization",
-            "#DataLeadership",
-            "#Management",
-            "#DashboardDesign",
-            "#KPIReporting",
-        ],
+        "visual_prompt": "Show problem size versus cost of waiting and the recommended next action.",
+        "hashtags": ["#BusinessAnalytics", "#DecisionSupport", "#DataAnalytics", "#Growth", "#Operations", "#Leadership"],
     },
     {
-        "topic": "Why your 'engagement' metrics are not a business KPI.",
-        "summary": "If growth has no commercial signal attached, it is vanity.",
-        "category": "growth strategy",
-        "visual_style": "diagram:risk_loop",
-        "visual_prompt": "Contrast audience attention with business outcome and call out the gap.",
-        "hashtags": [
-            "#GrowthAnalytics",
-            "#BusinessKPI",
-            "#DataStrategy",
-            "#PerformanceManagement",
-            "#Analytics",
-            "#DecisionSupport",
-        ],
+        "topic": "Remote data talent wins when the work is easy to inspect.",
+        "summary": "A strong portfolio makes the thinking, files, assumptions, and outputs visible.",
+        "category": "remote data careers",
+        "visual_style": "insight_card:editorial",
+        "visual_prompt": "Show portfolio proof as problem, dataset, method, output, business interpretation.",
+        "hashtags": ["#RemoteWork", "#DataCareer", "#Freelance", "#AnalyticsPortfolio", "#GitHub", "#DataAnalytics"],
     },
     {
-        "topic": "Retention cliffs usually appear after 'good' quarter-end growth.",
-        "summary": "Watch reactivation, repeat ratio, and support burden together before celebration.",
+        "topic": "The underrated skill in analytics is knowing what not to measure.",
+        "summary": "Every extra metric competes for attention, and attention is expensive in business meetings.",
+        "category": "analytics strategy",
+        "visual_style": "diagram:decision_grid",
+        "visual_prompt": "Create a metric pruning framework: keep, combine, investigate, remove.",
+        "hashtags": ["#AnalyticsStrategy", "#KPIReporting", "#DataLeadership", "#BusinessIntelligence", "#DecisionMaking", "#DataAnalytics"],
+    },
+    {
+        "topic": "Customer retention is a better growth story than vanity acquisition numbers.",
+        "summary": "New users are attractive, but repeat behavior is where business quality starts showing.",
         "category": "customer analytics",
         "visual_style": "insight_card:stacked_grid",
-        "visual_prompt": "Make retention lag visible next to growth and margin movement.",
-        "hashtags": [
-            "#CustomerRetention",
-            "#KPIReporting",
-            "#GrowthStrategy",
-            "#Profitability",
-            "#DataForBusiness",
-            "#Analytics",
-        ],
+        "visual_prompt": "Compare acquisition, repeat behavior, support pressure, and profit quality.",
+        "hashtags": ["#CustomerRetention", "#GrowthAnalytics", "#CustomerAnalytics", "#BusinessGrowth", "#DataAnalytics", "#Retention"],
     },
     {
-        "topic": "Portfolio work is marketing, not decoration: proof through process + outputs.",
-        "summary": "Clients remember artifacts that can be audited, not slogans.",
-        "category": "personal branding",
-        "visual_style": "insight_card:editorial",
-        "visual_prompt": "Show a clear artifact chain: dataset -> model -> decisions -> business test.",
-        "hashtags": [
-            "#DataPortfolio",
-            "#Freelance",
-            "#GitHub",
-            "#CareerGrowth",
-            "#BusinessResults",
-            "#BrandBuilding",
-        ],
-    },
-    {
-        "topic": "Data teams lose value when they optimize for shiny dashboards over executive certainty.",
-        "summary": "Shiny is nice; certainty drives decisions and budgets.",
-        "category": "analytics leadership",
-        "visual_style": "diagram:clarity_tier",
-        "visual_prompt": "Build a clarity ladder: signal, confidence, actionability, and owner.",
-        "hashtags": [
-            "#AnalyticsLeadership",
-            "#DecisionSupport",
-            "#ExecutiveReporting",
-            "#DataMaturity",
-            "#BusinessIntelligence",
-            "#Impact",
-        ],
-    },
-    {
-        "topic": "How to turn a reporting audit into a revenue call.",
-        "summary": "Treat every report as a sales-enablement artifact.",
-        "category": "data operations",
-        "visual_style": "diagram:tradeoff_matrix",
-        "visual_prompt": "Map speed, accuracy, cost, and reliability trade-offs with ownership.",
-        "hashtags": [
-            "#DataOperations",
-            "#RevenueEnablement",
-            "#BusinessAnalytics",
-            "#DecisionMaking",
-            "#KPIReporting",
-            "#DataLeadership",
-        ],
-    },
-    {
-        "topic": "The first week of any analytics project should be a governance baseline.",
-        "summary": "Without data contracts and issue logs, your model is noise.",
-        "category": "analytics setup",
+        "topic": "The real flex is turning a raw CSV into a decision someone can act on.",
+        "summary": "Tools matter, but the business interpretation is what makes analysis valuable.",
+        "category": "analytics portfolio",
         "visual_style": "insight_card:grid_strategic",
-        "visual_prompt": "Show governance gates: source contract, QA, anomaly watch, escalation.",
-        "hashtags": [
-            "#DataQuality",
-            "#MLOps",
-            "#AnalyticsOperations",
-            "#Governance",
-            "#DecisionReadiness",
-            "#BI",
-        ],
+        "visual_prompt": "Show the journey from raw CSV to cleaned data, KPI, insight, recommendation, and action.",
+        "hashtags": ["#AnalyticsPortfolio", "#DataAnalytics", "#Python", "#Excel", "#BusinessIntelligence", "#DataForBusiness"],
     },
     {
-        "topic": "If your dashboard is hard to screenshot, it is hard to trust.",
-        "summary": "The best dashboards are built for boardroom consumption.",
-        "category": "dashboard design",
-        "visual_style": "diagram:snapshot_ready",
-        "visual_prompt": "Optimize visual hierarchy for single-screen storytelling and decision clarity.",
-        "hashtags": [
-            "#DashboardDesign",
-            "#ExecutiveDashboard",
-            "#DataVisualization",
-            "#DecisionSupport",
-            "#BusinessIntelligence",
-            "#DataAnalytics",
-        ],
+        "topic": "Data storytelling is not making charts emotional. It is making decisions obvious.",
+        "summary": "A good data story removes confusion about what changed, why it matters, and what to do next.",
+        "category": "data storytelling",
+        "visual_style": "insight_card:editorial",
+        "visual_prompt": "Show data storytelling as change, meaning, risk, and next action.",
+        "hashtags": ["#DataStorytelling", "#DataViz", "#BusinessIntelligence", "#DecisionSupport", "#Analytics", "#Communication"],
+    },
+    {
+        "topic": "When teams argue about numbers, the problem is usually definitions.",
+        "summary": "Before building another dashboard, fix how the team defines customer, churn, revenue, and active use.",
+        "category": "data quality",
+        "visual_style": "insight_card:focus_strip",
+        "visual_prompt": "Show conflicting metric definitions becoming one trusted reporting language.",
+        "hashtags": ["#DataQuality", "#Metrics", "#BusinessIntelligence", "#DataGovernance", "#Analytics", "#KPIReporting"],
+    },
+    {
+        "topic": "AI will not save a reporting process that nobody owns.",
+        "summary": "Automation helps only when definitions, review points, and decision owners are already clear.",
+        "category": "AI for analytics",
+        "visual_style": "diagram:decision_grid",
+        "visual_prompt": "Show AI-assisted reporting with human ownership, review checks, and decision accountability.",
+        "hashtags": ["#AIForAnalytics", "#ReportingAutomation", "#DataOps", "#BusinessIntelligence", "#DataGovernance", "#Analytics"],
+    },
+    {
+        "topic": "Speed versus accuracy is the analytics trade-off nobody wants to admit.",
+        "summary": "Some decisions need a fast directional answer, while others need audited precision.",
+        "category": "analytics tradeoffs",
+        "visual_style": "diagram:tradeoff_matrix",
+        "visual_prompt": "Build a speed versus accuracy matrix for analytics decisions.",
+        "hashtags": ["#Analytics", "#Tradeoffs", "#DecisionMaking", "#DataQuality", "#BusinessIntelligence", "#Execution"],
+    },
+    {
+        "topic": "Automating bad reporting just makes bad decisions arrive faster.",
+        "summary": "Before automation, teams need definitions, data checks, exception rules, and owners.",
+        "category": "reporting governance",
+        "visual_style": "diagram:clarity_tier",
+        "visual_prompt": "Show reporting automation gates: definition, quality check, owner, escalation, review.",
+        "hashtags": ["#ReportingAutomation", "#DataGovernance", "#DataQuality", "#DataOps", "#Analytics", "#BusinessIntelligence"],
+    },
+    {
+        "topic": "Data governance starts when two teams define the same metric differently.",
+        "summary": "Governance is not paperwork. It is the operating system for trusted decisions.",
+        "category": "data governance",
+        "visual_style": "diagram:clarity_tier",
+        "visual_prompt": "Show metric conflict becoming governed definitions, ownership, and escalation.",
+        "hashtags": ["#DataGovernance", "#DataQuality", "#BusinessIntelligence", "#KPIReporting", "#Analytics", "#Management"],
+    },
+    {
+        "topic": "Not every metric deserves a dashboard.",
+        "summary": "If nobody will act when a metric changes, it belongs in an audit log, not an executive view.",
+        "category": "analytics tradeoffs",
+        "visual_style": "diagram:tradeoff_matrix",
+        "visual_prompt": "Show metric triage: dashboard, deep dive, audit log, remove.",
+        "hashtags": ["#DashboardDesign", "#KPIReporting", "#AnalyticsStrategy", "#DecisionSupport", "#BusinessIntelligence", "#DataLeadership"],
+    },
+    {
+        "topic": "Every dashboard should have an escalation rule.",
+        "summary": "A red KPI is not useful unless the team knows who acts and how fast.",
+        "category": "analytics governance",
+        "visual_style": "diagram:risk_loop",
+        "visual_prompt": "Show a dashboard escalation loop: threshold, alert, owner, action, review.",
+        "hashtags": ["#DataGovernance", "#KPIReporting", "#RiskManagement", "#DecisionSupport", "#Analytics", "#Operations"],
     },
 ]
+
 
 
 class LinkedInAIAgent:
@@ -482,7 +294,7 @@ class LinkedInAIAgent:
                     return "tradeoff"
                 if any(token in style for token in ("clarity_tier", "risk_loop", "snapshot_ready")):
                     return "governance"
-        if any(token in text for token in ("trade-off", "tradeoff", "trade off")):
+        if any(token in text for token in ("trade-off", "tradeoff", "tradeoffs", "trade off", "versus")):
             return "tradeoff"
         if any(token in text for token in ("governance", "controls", "audit", "risk", "compliance", "policy", "quality", "issue log", "data governance")):
             return "governance"
@@ -513,28 +325,22 @@ class LinkedInAIAgent:
     def _fallback_trend_candidates(self, required_bucket: str | None = None) -> list[TrendCandidate]:
         sources = [
             EvidenceSource(
+                title="Almond Owolabi Portfolio",
+                url=PORTFOLIO_LINK,
+                source_type="primary",
+                publisher="Portfolio",
+            ),
+            EvidenceSource(
+                title="LinkedIn AI Agent Repository",
+                url=GITHUB_REPO_LINK,
+                source_type="independent",
+                publisher="GitHub",
+            ),
+            EvidenceSource(
                 title="Retail Revenue Command Center",
                 url=FEATURED_DASHBOARD_LINK,
-                source_type="primary",
-                publisher="GitHub",
-            ),
-            EvidenceSource(
-                title="Synthetic retail dataset",
-                url=FEATURED_DASHBOARD_DATA_LINK,
                 source_type="independent",
                 publisher="GitHub",
-            ),
-            EvidenceSource(
-                title="Project source code",
-                url=FEATURED_DASHBOARD_SCRIPT_LINK,
-                source_type="independent",
-                publisher="GitHub",
-            ),
-            EvidenceSource(
-                title="Portfolio site",
-                url=PORTFOLIO_LINK,
-                source_type="independent",
-                publisher="Portfolio",
             ),
         ]
         candidates: list[TrendCandidate] = []
@@ -604,69 +410,132 @@ class LinkedInAIAgent:
         profile = self._fallback_visual_profile(candidate)
         bucket = self._candidate_bucket(candidate, profile["visual_style"])
         if bucket in {"tradeoff", "governance"}:
-            body = f"""The hard part of analytics is not building the dashboard. It is naming the trade-off clearly.
+            body = f"""Some analytics problems are not technical. They are judgment problems.
 
 {candidate.topic}
 
 {candidate.summary}
 
-A useful report should force three questions before anyone celebrates a KPI:
-1) What improved?
-2) What got worse while it improved?
-3) Who owns the next action?
+This is the part of data work people avoid because it is uncomfortable. A chart can show movement, but it cannot choose the trade-off for the team. Someone still has to decide whether speed matters more than accuracy, whether growth matters more than margin, whether automation is safe enough, or whether a metric is trusted enough to guide action.
 
-I use that standard in my portfolio work. The retail command center links 2,160 synthetic operations rows across revenue, margin, retention, returns, fulfillment delay, and stockout risk. The point is not to make charts look busy. The point is to make a manager see where growth is leaking.
+That is where a serious analyst becomes valuable.
 
-My read:
-If a metric has no owner, no threshold, and no correction path, it is not decision support. It is noise with better formatting.
+A weak report says:
+The number went up.
 
-Project context:
-{FEATURED_DASHBOARD_LINK}
+A better report says:
+The number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.
+
+The second version is harder to write because it forces accountability. It asks who owns the metric, what threshold matters, what action should happen next, and what risk the business is accepting if nothing changes.
+
+This is also why governance is not just paperwork. In practical analytics, governance is the difference between a dashboard people admire and a report people trust. If two teams define the same KPI differently, the issue is not a visualization issue. It is a decision risk.
+
+For freelancers, remote workers, and digital talent, this is a major positioning point. Do not sell yourself as someone who can only build reports. That is too small. Sell the ability to make messy decisions clearer with data.
+
+The work is not only:
+clean the data.
+build the dashboard.
+send the report.
+
+The real work is:
+define the metric.
+explain the trade-off.
+show the risk.
+name the owner.
+recommend the next action.
+
+That is the difference between being seen as a tool user and being trusted as a business partner.
+
+My blunt take:
+If a metric has no owner, no threshold, no review rhythm, and no consequence, it should not sit proudly on an executive dashboard. It should be fixed, parked, or removed.
+
+Otherwise, the team is not managing performance. It is decorating uncertainty.
 
 Discussion prompts:
-1) Which trade-off should analysts show more honestly in dashboards?
-2) What control would you add before trusting a weekly KPI pack?"""
+Q1: Which analytics trade-off do teams avoid talking about?
+Q2: What control would make a weekly report easier to trust?"""
         else:
-            body = f"""A good analytics post should make one business decision easier.
+            body = f"""Data work should not stop at \"I found an insight.\"
 
 {candidate.topic}
 
 {candidate.summary}
 
-This is the lane I care about: data work that helps teams decide where revenue is healthy, where retention is weakening, where operations are leaking value, and what action should happen next.
+The real value is helping a business decide what to do next. That can mean cleaning a messy file, defining the right KPI, finding a growth leak, explaining customer behavior, or turning a confusing report into one clear management action.
 
-In my retail command center project, I used 2,160 synthetic operations rows to connect revenue, profit, repeat customers, returns, fulfillment delay, and stockout risk. That is the difference between a dashboard that looks active and a dashboard that changes a meeting.
+This is where a lot of analysts play too small. They show charts, but they do not force a decision. They list tools, but they do not show judgment. They talk about data, but they do not connect it to revenue, retention, cost, speed, quality, or risk.
 
-For clients and hiring teams, tools are not the proof. The proof is whether the analyst can turn messy inputs into a clear business judgment, show the limits, and recommend the next move.
+A business does not care that the table was cleaned in Python if the output still does not answer a commercial question.
 
-Project context:
-{FEATURED_DASHBOARD_LINK}
+It does not care that the dashboard has nice colors if the leadership team still leaves the meeting asking what changed.
+
+It does not care that the model is complex if nobody can explain what action should happen when the result moves.
+
+That is why good data work needs a sharper standard.
+
+Before touching the tool, ask:
+What decision is this supposed to improve?
+Who will use the answer?
+What metric will prove the answer mattered?
+What action should happen if the number moves?
+What should be ignored because it creates noise?
+
+This is the kind of thinking that makes data useful for business growth. Growth is not only more sales. It can be better retention, fewer refunds, faster fulfillment, cleaner customer segments, stronger pricing decisions, better campaign focus, or less reporting waste.
+
+The analyst who can explain that clearly will stand out more than the analyst who only says "I know Excel, SQL, Python, and Power BI."
+
+Tools are expected now.
+
+Judgment is the differentiator.
+
+If you are building a data career, working remotely, freelancing, or trying to attract better clients, stop presenting yourself as a chart maker. That positioning is weak. Present yourself as someone who can take messy data, find the business signal, explain the trade-off, and help the team move.
+
+That is a stronger brand.
+
+That is also a stronger service.
+
+My practical rule:
+Every analysis should end with one of three things:
+keep doing this.
+stop doing this.
+change this now.
+
+If it ends with "interesting insight", it probably was not sharp enough.
 
 Discussion prompts:
-1) Which metric pair would make your current dashboard harder to ignore?
-2) What would you remove from a report if the goal was faster action?"""
+Q1: What data problem do you see businesses underestimating right now?
+Q2: Which metric would you trust more: growth, retention, margin, or speed?"""
 
         return DraftPost(
             topic=candidate.topic,
             category=candidate.category,
             body=body,
             hashtags=profile["hashtags"],
-            primary_source_url=FEATURED_DASHBOARD_LINK,
-            supporting_source_urls=[FEATURED_DASHBOARD_DATA_LINK, FEATURED_DASHBOARD_SCRIPT_LINK, PORTFOLIO_LINK],
+            primary_source_url="",
+            supporting_source_urls=[],
             claims=[
-                "The flagship repository includes a 2,160-row synthetic retail dataset and portfolio-facing dashboard artifacts.",
-                "The project links revenue, margin, retention, returns, fulfillment delay, and stockout indicators in one decision-ready stack.",
-                "The objective is to drive business decisions, not visual decoration.",
+                "Curated weekday opinion post for LinkedIn engagement.",
+                "The post is positioned around practical data analysis, business intelligence, and decision support.",
+                "The post intentionally avoids forced external links unless the selected topic is specifically portfolio-focused.",
+                "The content is designed to invite discussion from clients, recruiters, founders, and analytics teams.",
             ],
-            visual_style=profile["visual_style"],
-            visual_prompt=profile["visual_prompt"],
-            alt_text="Premium insight card comparing growth, margin, retention, and operations health as linked business decisions.",
+            visual_style="illustration" if self.config.allow_ai_illustrations else profile["visual_style"],
+            visual_prompt=(
+                "Create a realistic editorial LinkedIn image, not an infographic. Show a real business data work moment: "
+                "a professional analyst or small team reviewing data on a laptop in a modern workspace, with subtle charts "
+                "on a screen in the background. Use natural light, credible business styling, premium photography feel, "
+                "no visible words, no flowcharts, no icons, no robot imagery, no text overlay."
+            ),
+            alt_text="Realistic editorial image of a data professional reviewing business analytics in a modern workspace.",
         )
 
     def _render_visual(self, draft: DraftPost) -> VisualAsset:
         asset_path = self._visual_path(draft)
         style, variant = self._visual_base_and_variant(draft.visual_style)
-        if style == "diagram":
+        if style == "illustration" and self.config.allow_ai_illustrations:
+            gemini = self.gemini or GeminiClient()
+            gemini.generate_illustration(self.config, draft, asset_path)
+        elif style == "diagram":
             self._render_with_optional_variant(render_diagram, draft, asset_path, variant)
         elif style == "insight_card":
             self._render_with_optional_variant(render_insight_card, draft, asset_path, variant)

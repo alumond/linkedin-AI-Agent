@@ -44,8 +44,9 @@ Discussion prompts:
 
 def test_dry_run_does_not_publish(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 700
-    cfg.max_post_chars = 1300
+    cfg.min_post_chars = 2400
+    cfg.max_post_chars = 2950
+    cfg.allow_ai_illustrations = False
     agent = LinkedInAIAgent(cfg, gemini=FakeGemini())
     result = agent.run(dry_run=True)
     assert result.status == "dry_run_ok"

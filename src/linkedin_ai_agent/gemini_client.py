@@ -131,8 +131,8 @@ Rules:
 - Include one short, light analogy or framing that makes the point memorable without sounding gimmicky.
 - Add a small comment-starter section at the end of the body using this exact label and two prompts:
   Discussion prompts:
-  1) ...
-  2) ...
+  Q1: ...
+  Q2: ...
 - The prompts should be concise, opinionated, and designed to produce replies.
 - Do not claim personal hands-on testing.
 - Do not fabricate quotes or statistics.
@@ -195,7 +195,7 @@ Requirements:
 - Keep the body between {config.min_post_chars} and {config.max_post_chars} characters.
 - Aim for {target_min}-{target_max} body characters.
 - Retain an attention-first opening line, a practical implication, conversational closing question, and 6 to 10 topic-relevant hashtags.
-- Keep the required "Discussion prompts:" section in the body with exactly two short prompts.
+- Keep the required "Discussion prompts:" section in the body with exactly two short prompts marked Q1 and Q2.
 - Do not use em dashes, emojis, hype, clickbait, or generic AI phrasing.
 - Return only the complete revised JSON object using exactly the same fields as the current draft.
 """
@@ -208,11 +208,13 @@ Requirements:
     def generate_illustration(self, config: AgentConfig, draft: DraftPost, output_path: Path) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         prompt = (
-            f"Create a square 1:1 polished educational infographic for LinkedIn, similar to a premium explainer poster. "
-            f"Use a bold dark header, clear title area, icon-led example tiles, concise concept panels, and a bottom key takeaway. "
-            f"Make it dense, useful, and professionally designed, not sparse or skeletal. Keep text short and legible. "
-            f"Topic: {draft.topic}. Direction: {draft.visual_prompt}. "
-            f"Use a polished professional visual style with colors {', '.join(config.brand_colors)}."
+            "Create a square 1:1 realistic editorial image for a LinkedIn post. "
+            "It should feel like premium business photography, not an infographic, not a flowchart, not a poster, and not a text card. "
+            "Show a credible real-life data work moment: a data analyst, freelancer, founder, or small business team reviewing analytics on a laptop or monitor in a modern workspace. "
+            "Use natural light, human presence, realistic desk details, subtle dashboard screens in the background, and a polished commercial editorial mood. "
+            "Do not include readable words, labels, captions, logos, icons, arrows, diagrams, robot faces, circuit boards, or text overlays. "
+            f"Topic mood: {draft.topic}. Direction: {draft.visual_prompt}. "
+            f"Use colors that quietly align with {', '.join(config.brand_colors)} without making the image look like a template."
         )
         response = self._generate_content(
             config.image_model,

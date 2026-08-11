@@ -26,8 +26,8 @@ excluded_subjects:
 - adult or hateful content
 voice: sharp, human, commercially aware, practical, and built to position Almond as a data analyst for business growth and decision support
 post_length:
-  min_chars: 700
-  max_chars: 1300
+  min_chars: 2400
+  max_chars: 2950
 brand:
   name: Data & AI Brief
   colors:
@@ -84,8 +84,8 @@ models:
   text: gemini-2.5-flash
   image: gemini-3.1-flash-image
 visuals:
-  allow_ai_illustrations: false
-  direction: polished educational infographic cards with bold headers, icons, example tiles, concise model or concept panels, and a clear takeaway
+  allow_ai_illustrations: true
+  direction: realistic editorial LinkedIn images with real-life business/data scenes, people, laptops, workspaces, dashboards in the background, and no flowchart-style layouts
   avoid:
   - neon-by-default
   - glowing brains and circuit-board cliches

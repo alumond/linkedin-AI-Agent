@@ -80,6 +80,7 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     warnings: list[str] = []
     body = draft.body.strip()
     lowered = body.lower()
+    is_curated_weekday = any("curated weekday opinion post" in claim.lower() for claim in draft.claims)
     words = re.findall(r"\b[\w']+\b", body)
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n", body) if part.strip()]
     first_line = next((line.strip() for line in body.splitlines() if line.strip()), "")
@@ -91,9 +92,9 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         reasons.append("Post needs at least five short paragraphs or blocks: hook, context, analysis, project/source, and prompts.")
     if first_line.lower().rstrip(".") == draft.topic.strip().lower().rstrip("."):
         reasons.append("Post opens with the topic as a standalone heading; use a human hook before the topic.")
-    if not draft.primary_source_url:
+    if not draft.primary_source_url and not is_curated_weekday:
         reasons.append("Primary source link is missing.")
-    if not draft.supporting_source_urls:
+    if not draft.supporting_source_urls and not is_curated_weekday:
         reasons.append("Supporting source link is missing.")
     if len(draft.hashtags) < 1:
         reasons.append("At least one hashtag is required.")
@@ -123,9 +124,9 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         reasons.append("Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts.")
     else:
         prompts = body.split("Discussion prompts:", 1)[1]
-        numbered_prompts = re.findall(r"(?m)^\s*\d+\)", prompts)
-        if len(numbered_prompts) < 2:
-            reasons.append("Discussion prompts block must contain at least two numbered prompts.")
+        prompt_markers = re.findall(r"(?m)^\s*(?:\d+\)|Q\d+:)", prompts)
+        if len(prompt_markers) < 2:
+            reasons.append("Discussion prompts block must contain at least two prompts marked as Q1/Q2 or numbered prompts.")
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 
