@@ -1,0 +1,221 @@
+{
+  "draft": {
+    "alt_text": "Diagram of an advanced Agentic RAG architecture, showing complex query processing through reasoning engines, planning stages, and integration with enterprise tools and data sources, emphasizing evaluation for factual accuracy.",
+    "body": "Enterprise Retrieval-Augmented Generation (RAG) systems are evolving significantly, shifting from basic information lookup to more sophisticated architectures like Agentic RAG. This advanced approach uses multi-step reasoning, strategic planning, and specific tool integration to tackle complex queries across diverse internal data sources (as discussed by Redis and Google's Gemini Enterprise Agent Platform). The goal is clear: ensure factual grounding, minimize AI hallucinations, and provide dependable responses.\n\nTo validate this progress, new evaluation frameworks and benchmarks are critical. For instance, EnterpriseRAG-Bench and EKRAG are emerging to assess retrieval quality and factual accuracy within enterprise knowledge contexts (see sources from ACL Anthology and EnterpriseRAG-Bench paper). Practices such as hybrid retrieval, which combines semantic and keyword search, are becoming standard. Modular RAG designs are also key for improved performance and adaptability (IBM and Azure highlight these techniques). These advancements directly address the pressing need for production-ready, scalable, and auditable AI solutions in organizations.\n\nHow are these more intelligent RAG architectures shaping your approach to enterprise AI implementation?",
+    "category": "Practical tools, Business implications",
+    "claims": [
+      "Enterprise Retrieval-Augmented Generation (RAG) systems are evolving beyond basic retrieval to sophisticated architectures like Agentic RAG.",
+      "Agentic RAG systems employ multi-step reasoning, planning, and tool use to tackle complex queries across diverse enterprise data sources.",
+      "New evaluation frameworks and benchmarks, such as EnterpriseRAG-Bench and EKRAG, are emphasized to ensure factual grounding, minimize hallucinations, and enhance retrieval quality.",
+      "The adoption of hybrid retrieval (combining semantic and keyword search) and modular RAG designs are becoming standard for improved performance and customizability.",
+      "These advancements address the critical need for production-ready, scalable, and auditable AI solutions within organizations."
+    ],
+    "hashtags": [
+      "#DataAI",
+      "#EnterpriseTech",
+      "#RAG"
+    ],
+    "primary_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAZYCxEfMjeQqeQryuwl2R7-Pr4JMbG4RYTri8rMu502_sQwz9emzuTsgBs2pFSIIqlyZPReb2nI8Cv7gYLm42gF7S4lQWJmFcGlREnE9ZBt_35X0yC3-MsrDcIK-_vT_f8csEuYHaR1eXg_nvVYOYj5o8swXMnxOZmgfcuUUqi-2gEjO8_hoT4zAhWPNujhjnJ198YhnL8GN5Y79cokBw8zgUitk=",
+    "supporting_source_urls": [
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEN87YAtSUb9ch87QILnQBlrPiTU6DZQljva4pTteH-4Nu2JSnEnmnjGXKCYRpIjlTaNgtT4OTZI7QopLf1nMKPGnnofyVd4GCoes7RN4RDlbTKRO7sHi8eRoU=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8YRdAdUBCfKB8AZOpdnWrR-XAmCrSK9g1fhP9vVvR1ulgFjmo1_z-5ZIq9ri5lKyB5dj6D_Fcj1m7mrNGJ5O0aQZy4EIpSwLkBWT1p0TSMDrqduxK8xqDsjkvVaebKaE2yICL58z7kw=",
+      "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYgtWUssDf9M3XBCG2hPSgpAEPsW8ftDqRwpSuFQGQRuiWF4EmW5pKoYuOalJhUT-5oePqlfJogLWUt3DxZU0zOgbzgd4dCA-09ULRYJ44wTZDICrVmlgAr_mgCZSuc9RnMnms24xRGimBNFI2WXonIjHnFho0a3BP7LK-pWO3nuldxiqQ3xjR2Cnssvhyl5k="
+    ],
+    "topic": "Advancements in Retrieval-Augmented Generation (RAG) Architectures for Enterprise Applications",
+    "visual_prompt": "A detailed architectural diagram showing components of an Agentic RAG system, illustrating multi-step reasoning, planning modules, and various tools interacting with diverse enterprise data sources. Highlight the flow from complex query to grounded response with evaluation metrics visible.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "flotorch.ai",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAZYCxEfMjeQqeQryuwl2R7-Pr4JMbG4RYTri8rMu502_sQwz9emzuTsgBs2pFSIIqlyZPReb2nI8Cv7gYLm42gF7S4lQWJmFcGlREnE9ZBt_35X0yC3-MsrDcIK-_vT_f8csEuYHaR1eXg_nvVYOYj5o8swXMnxOZmgfcuUUqi-2gEjO8_hoT4zAhWPNujhjnJ198YhnL8GN5Y79cokBw8zgUitk="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "arxiv.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEN87YAtSUb9ch87QILnQBlrPiTU6DZQljva4pTteH-4Nu2JSnEnmniGXKCYRpIjlTaNgtT4OTZI7QopLf1nMKfGnnofyVd4GCoes7RN4RDlbTKRO7sHi8eRoU="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYgtWUssDf9M3XBCG2hPSgpAEPsW8ftDqRwpSuFQGQRuiWF4EmW5pKoYuOalJhUT-5oePqlfJogLWUt3DxZU0zOgbzgd4dCA-09ULRYJ44wTZDICrVmlgAr_mgCZSuc9RnMnms24xRGimBNFI2WXonIjHnFho0a3BP7LK-pWO3nuldxiqQ3xjR2Cnssvhyl5k="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "redis.io",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5xucNpJahoX_c7Eq5UugAYHn_syl2mj73tOHoifGwaiVpLstSevb2oKGytqpz9L-RIVmDNrpUhYhAxS8D4qGdA-n9pJ1GAp0K1XvDl9r-MsU2zPABmq5Sq108VNmyiqnAowEpGoPSlqPwzo1SAZ1FeFUqefKC-LLqxJyQT9HeV0EUAf0UT394TXxROnnKFMXPEgMk7wrgUIlJ"
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "reddit.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8bhVrvwy6m6YxX-_FdkKeJdib_exUT34b__0CpZBuC8q74i8mMzFGIIXiqyKJZXZKs6L7aO2oenmb5ooN7hlT7-eBGB4E04FmXu-bpYAn5ATEHqd9pMl_xCLCUFl5m7odNtu_HXlqIWBuOVHCOhNKnylOjDUsTMdr33jGY11VoRU3ZdY4P7dyWU8Gj3vMbqYGPmgaNGKNJFTzdKA="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "labelyourdata.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4u2wdkyxmMrTG7FGdLkB2f372i98ZOM7UVfB97XkPS9okZxCS_sJj_Jmbko0fXdZDv4OhHsC6oikNUbqqgSxZIlFyxigaQ05KykrkTPtwEUMMIeR4fEqC7cz_QpglrtJf5WErRArsdc24ki5XFMK6jgMwfPjXm2dFNBQ="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "youtube.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5pPx7fOWyfsuccWCkYeoJkZTbCGp4RPQwFZ0AVDrzboDSuz7aFw0DNCSuuIp_JRxC41_aCwlZZjyGmG2yQuYmkOkMizUtLlPUHLeYF7S5YLxqPO_9Y6XUtiDG-q5PaJgTNncArA=="
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "aclanthology.org",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1WV7gHY-OJktL9bt9--DwCNK29iCMBw44AiaJ797dfRnkmijVsl3FzF0CRzv3lQ5juBzw1uXSTLFJ3WpNQ66Bi0tuo-rkXtSdTwNY0joU8RfuaWgpjAWdL9zpfoky5OJYO8DntZgp1Eb_"
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "microsoft.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG51SNaCBwoILR4lPrpbdw-l_qAZml2S7LSJohXrDCzB1TM_MvdxMBN4Rd1Hym04SUSGXr1tuI1B6b3uS1DsUO0MSzJsrxR5CmrTIrSSJDLiP6lk7iSIZd77s1ybmx_zo8Anq63kBsl8iTA-CBLGNNNXddMaQE5vhKNrmUqkF71pQ1DGrgx2QH4Z6s9lFEcmNne"
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "research.google",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQyH5vzzDXJLx8PogoUUts9FbOQHUFgWaZvi7vH_Dy2kN_Px2WU0ByEK5LP5rZCfzCvFoWEYs7pBeUYz6iXlMOzKwrmtbXvAFw6BNVS_djSOLieOe1yrwOll2PT0vaDDAmJ0TbJ30XKSGC8iv2gvFEp8vIry1makdDEDBH_kOlouPRHryMvnff8E9aR7EuObXzvVzJ910_aX_GlNyVVBAoEneFVrftmHvE"
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "techment.com",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9vEoBfpkpdxQp4fqFFibShJP-XUynksdVjehtu7ntNvvUp3PWNuS3y7YdXn8J_pFu-__c4kIWdFBiwdREJz2o0cRo6pPk0dNUh_hlZpjLzXGR2G1RH2XR71oZm9gHS1CW4ssWSr24dc7hWcclWI8lfhUrkzzACYLIDkqFcvmKyzhIbqHB"
+    },
+    {
+      "end_index": 1016,
+      "start_index": 742,
+      "title": "onyx.app",
+      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEt2dgeR2DH7ReCBKDh49GHLvZupo7GS6ONUjxhHRU0ZbwAHqOE9W-8aKj1734x40K0LDiJ8EFYI_h4CYLLtW6K8N8n-5rcXcwejyCN_uOq5jK8oqfcYTYQK3Dm5uI7MiBE-05yHZgKgff0hKjUH6OAzQ=="
+    }
+  ],
+  "publish": {
+    "created_at": "2026-08-11T09:52:46Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQGNIuU9_0ResQ",
+    "post_urn": "urn:li:share:7492880686446686208",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "Advancements in Retrieval-Augmented Generation (RAG) Architectures for Enterprise Applications"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": [
+        "Discussion prompts block is missing; add the required 'Discussion prompts:' section with two short prompts."
+      ]
+    },
+    "trend": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    }
+  },
+  "selected_topic": "Advancements in Retrieval-Augmented Generation (RAG) Architectures for Enterprise Applications",
+  "status": "published",
+  "trend": {
+    "category": "Practical tools, Business implications",
+    "evidence_score": 0.9,
+    "novelty_score": 0.8,
+    "practical_value_score": 0.9,
+    "recency_score": 0.9,
+    "relevance_score": 0.9,
+    "sources": [
+      {
+        "claim_supported": "Highlights the shift to evaluation-driven RAG, the importance of retrieval quality, chunking, re-ranking, and model routing in 2026 enterprise RAG systems.",
+        "published_at": null,
+        "publisher": "Google Cloud",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "The 2026 RAG Performance Landscape: What Every Enterprise Leader Needs to Know",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAZYCxEfMjeQqeQryuwl2R7-Pr4JMbG4RYTri8rMu502_sQwz9emzuTsgBs2pFSIIqlyZPReb2nI8Cv7gYLm42gF7S4lQWJmFcGlREnE9ZBt_35X0yC3-MsrDcIK-_vT_f8csEuYHaR1eXg_nvVYOYj5o8swXMnxOZmgfcuUUqi-2gEjO8_hoT4zAhWPNujhjnJ198YhnL8GN5Y79cokBw8zgUitk="
+      },
+      {
+        "claim_supported": "Introduces EnterpriseRAG-Bench, a dataset for benchmarking RAG systems on realistic company internal knowledge, emphasizing messy, cross-source data.",
+        "published_at": "2026-05-05",
+        "publisher": "arXiv.org",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "[2605.05253] EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEN87YAtSUb9ch87QILnQBlrPiTU6DZQljva4pTteH-4Nu2JSnEnmnjGXKCYRpIjlTaNgtT4OTZI7QopLf1nMKPGnnofyVd4GCoes7RN4RDlbTKRO7sHi8eRoU="
+      },
+      {
+        "claim_supported": "Explains the evolution from naive RAG to advanced RAG and modular RAG, highlighting their benefits for performance, cost, and efficiency in enterprise applications.",
+        "published_at": null,
+        "publisher": "IBM",
+        "quality_score": 0.8,
+        "source_type": "primary",
+        "title": "RAG Techniques - IBM",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8YRdAdUBCfKB8AZOpdnWrR-XAmCrSK9g1fhP9vVvR1ulgFjmo1_z-5ZIq9ri5lKyB5dj6D5_Fcj1m7mrNGJ5O0aQZy4EIpSwLkBWT1p0TSMDrqduxK8xqDsjkvVaebKaE2yICL58z7kw="
+      },
+      {
+        "claim_supported": "Describes Azure AI Search's support for RAG, including classic RAG and agentic retrieval, which uses LLMs for intelligent query planning and multi-source access.",
+        "published_at": "2026-08-04",
+        "publisher": "Microsoft Learn",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "RAG and Generative AI - Azure AI Search - Microsoft Learn",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYgtWUssDf9M3XBCG2hPSgpAEPsW8ftDqRwpSuFQGQRuiWF4EmW5pKoYuOalJhUT-5oePqlfJogLWUt3DxZU0zOgbzgd4dCA-09ULRYJ44wTZDICrVmlgAr_mgCZSuc9RnMnms24xRGimBNFI2WXonIjHnFho0a3BP7LK-pWO3nuldxiqQ3xjR2Cnssvhyl5k="
+      },
+      {
+        "claim_supported": "Introduces Google's Gemini Enterprise Agent Platform with agentic RAG, a multi-agent workflow for breaking down complex queries and iteratively searching for context.",
+        "published_at": "2026-06-05",
+        "publisher": "Google Cloud",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "Unlocking dependable responses with Gemini Enterprise Agent Platform's Agentic RAG",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQyH5vzzDXJLx8PogoUUtsN_FbOQHUFgWaZvi7vH_Dy2kN_Px2WU0ByEK5LP5rZCfzCvFoWEYs7pBeUYz6iXlMOzKwrmtbXvAFw6BNVS_djSOLieOe1yrwOll2PT0vaDDAmJ0TbJ30XKSGC8iv2gvFEp8vIry1makdDEDBH_kOlouPRHryMvnff8E9aR7EuObXzvVzJ910_aX_GlNyVVBAoEneFVrftnHvE="
+      },
+      {
+        "claim_supported": "Explains how Agentic RAG addresses the limitations of vanilla RAG by using LLMs as agents for iterative retrieval and adaptive problem-solving.",
+        "published_at": "2025-12-18",
+        "publisher": "Redis",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "Agentic RAG: How enterprises are surmounting the limits of traditional RAG - Redis",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5xucNpJahoX_c7Eq5UugAYHn_syl2mj73tOHoifGwaiVpLstSevb2oKGytqpz9L-RIVmDNrpUhYhAxS8D4qGdA-n9pJ1GAp0K1XvDl9r-MsU2zPABmq5Sq108VNmyiqnAowEpGoPSlqPwzo1SAZ1FeFUqefKC-LLqxJyQT9HeV0EUAf0UT394TXxROnnKFMXPEgMk7wrgUIlJ"
+      },
+      {
+        "claim_supported": "Discusses various RAG architectures shaping 2026, including Hybrid RAG, Graph RAG, and Agentic RAG, as strategic infrastructure for enterprise AI.",
+        "published_at": "2026-02-18",
+        "publisher": "Techment",
+        "quality_score": 0.8,
+        "source_type": "independent",
+        "title": "10 RAG Architectures in 2026: Enterprise Use Cases & Strategy - Techment",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9vEoBfpkpdxQp4fqFFibShJP-XUynksdVjehtu7ntNvvUp3PWNuS3y7YdXn8J_pFu-__c4kIWdFBiwdREJz2o0cRo6pPk0dNUh_hlZpjLzXGR2G1RH2XR71oZm9gHS1CW4ssWSr24dc7hWcclWI8lfhUrkzzACYLIDkqFcvmKyzhIbqHB"
+      },
+      {
+        "claim_supported": "Introduces the Enterprise-Knowledge RAG (EKRAG) dataset to benchmark RAG for enterprise knowledge question-answering across diverse corporate documents.",
+        "published_at": "2025-05",
+        "publisher": "ACL Anthology",
+        "quality_score": 0.9,
+        "source_type": "primary",
+        "title": "EKRAG: Benchmark RAG for Enterprise Knowledge Question Answering - ACL Anthology",
+        "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH1WV7gHY-OJktL9bt9--DwCNK29iCMBw44AiaJ797dfRnkmijVsl3FzF0CRzv3lQ5juBzw1uKSTLFJ3WpNQ66Bi0tuo-rkXtSdTwNY0joU8RfuaWgpjAWdL9zpfoky5OJYO8DntZgp1Eb_/"
+      }
+    ],
+    "summary": "Enterprise Retrieval-Augmented Generation (RAG) systems are rapidly evolving, moving beyond basic retrieval to sophisticated architectures like Agentic RAG. These advanced systems employ multi-step reasoning, planning, and tool use, enabling them to tackle complex queries across diverse enterprise data sources. A strong emphasis is placed on robust evaluation frameworks and new benchmarks, such as EnterpriseRAG-Bench and EKRAG, to ensure factual grounding, minimize hallucinations, and enhance retrieval quality. The adoption of hybrid retrieval (combining semantic and keyword search) and modular RAG designs are becoming standard for improved performance and customizability, addressing the critical need for production-ready, scalable, and auditable AI solutions within organizations.",
+    "topic": "Advancements in Retrieval-Augmented Generation (RAG) Architectures for Enterprise Applications"
+  },
+  "visual": {
+    "alt_text": "Diagram of an advanced Agentic RAG architecture, showing complex query processing through reasoning engines, planning stages, and integration with enterprise tools and data sources, emphasizing evaluation for factual accuracy.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQGNIuU9_0ResQ",
+    "mime_type": "image/png",
+    "path": "assets/20260811T095245Z-advancements-in-retrieval-augmented-generation--ra.png",
+    "width": 1200
+  }
+}
