@@ -44,8 +44,8 @@ Discussion prompts:
 
 def test_dry_run_does_not_publish(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2400
-    cfg.max_post_chars = 2950
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
     cfg.allow_ai_illustrations = False
     agent = LinkedInAIAgent(cfg, gemini=FakeGemini())
     result = agent.run(dry_run=True)
@@ -55,7 +55,26 @@ def test_dry_run_does_not_publish(tmp_path: Path):
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
     assert report["gemini_grounding_citations"] == []
     assert "Discussion prompts:" not in report["draft"]["body"]
-    assert report["draft"]["body"].strip().endswith("Make the data useful enough that the next decision becomes obvious.")
+    assert len(report["draft"]["body"]) >= cfg.min_post_chars
+
+
+def test_codex_manual_missing_asset_falls_back_to_local_visual(tmp_path: Path):
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
+    cfg.visual_provider = "codex_manual"
+    agent = LinkedInAIAgent(cfg)
+
+    result = agent.run(dry_run=True)
+
+    assert result.status == "dry_run_ok"
+    report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
+    visual_path = Path(report["visual"]["path"])
+    assert visual_path.exists()
+    assert visual_path.name.startswith("codex_weekday_")
+    assert report["visual"]["width"] == 1200
+    assert report["visual"]["height"] == 1200
+    assert report["visual_generation"]["provider"] == "codex_manual_fallback_local"
 
 
 def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):

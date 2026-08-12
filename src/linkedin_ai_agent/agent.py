@@ -583,7 +583,13 @@ Make the data useful enough that the next decision becomes obvious."""
                 return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
             if self.config.visual_provider == "codex_manual":
                 codex_asset = self._codex_manual_visual_path(draft)
-                visual = validate_visual(codex_asset, draft.alt_text)
+                visual_generation_provider = "codex_manual"
+                if codex_asset.exists():
+                    visual = validate_visual(codex_asset, draft.alt_text)
+                else:
+                    self._render_visual_to_path(draft, codex_asset)
+                    visual = validate_visual(codex_asset, draft.alt_text)
+                    visual_generation_provider = "codex_manual_fallback_local"
                 result = PublishResult(
                     status="dry_run_ok" if dry_run else "published",
                     dry_run=dry_run,
@@ -608,7 +614,7 @@ Make the data useful enough that the next decision becomes obvious."""
                         "draft": draft,
                         "visual": visual,
                         "visual_generation": {
-                            "provider": "codex_manual",
+                            "provider": visual_generation_provider,
                             "asset": str(codex_asset),
                             "prompt": draft.visual_prompt,
                             "alt_text": draft.alt_text,
@@ -916,6 +922,13 @@ Discussion prompts:
     def _codex_manual_visual_path(self, draft: DraftPost) -> Path:
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
         return self.config.assets_dir / f"codex_weekday_{slug}.png"
+
+    def _render_visual_to_path(self, draft: DraftPost, asset_path: Path) -> None:
+        style, variant = self._visual_base_and_variant(draft.visual_style)
+        if style == "diagram":
+            self._render_with_optional_variant(render_diagram, draft, asset_path, variant)
+            return
+        self._render_with_optional_variant(render_insight_card, draft, asset_path, variant)
 
 
 def token_metadata(expires_in: int) -> dict[str, str]:
