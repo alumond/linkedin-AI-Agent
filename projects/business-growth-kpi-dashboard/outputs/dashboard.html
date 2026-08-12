@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Growth KPI Dashboard</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5b6773;
+      --line: #d8dee4;
+      --paper: #f7f3ea;
+      --panel: #ffffff;
+      --green: #107c41;
+      --blue: #2563eb;
+      --amber: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, #f7f3ea 0%, #eef5f3 48%, #f9fafb 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 44px 22px 64px; }
+    header { display: grid; gap: 12px; margin-bottom: 28px; }
+    .eyebrow { color: var(--green); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 64px); line-height: 1; max-width: 850px; }
+    .lead { max-width: 760px; color: var(--muted); font-size: 18px; line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 30px 0; }
+    .card, .panel {
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 20px 45px rgba(23,32,42,.07);
+    }
+    .card { padding: 18px; }
+    .card p { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+    .card strong { display: block; font-size: 27px; line-height: 1.1; }
+    .card span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .panel { padding: 24px; margin-top: 18px; }
+    .panel h2 { margin: 0 0 14px; font-size: 22px; }
+    .charts { display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px; }
+    svg { width: 100%; height: auto; overflow: visible; }
+    .axis { stroke: #cbd5e1; stroke-width: 1; }
+    .line { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .revenue { stroke: var(--blue); }
+    .churn { stroke: var(--amber); }
+    .users { stroke: var(--green); }
+    ul { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 12px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    .tag { display: inline-block; margin: 0 8px 8px 0; padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); font-size: 13px; }
+    @media (max-width: 860px) {
+      .grid, .charts { grid-template-columns: 1fr; }
+      main { padding-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Portfolio Project | Business Growth Analytics</div>
+      <h1>Business Growth KPI Dashboard</h1>
+      <p class="lead">A decision-support dashboard for tracking acquisition, conversion, retention, revenue, reporting efficiency, and data quality. Built to show how raw KPI data can become a weekly management conversation.</p>
+    </header>
+
+    <section class="grid">
+      
+      <section class="card">
+        <p>Revenue</p>
+        <strong>$57,440</strong>
+        <span>8.0% month over month</span>
+      </section>
+    
+      
+      <section class="card">
+        <p>Paid customers</p>
+        <strong>718</strong>
+        <span>8.0% month over month</span>
+      </section>
+    
+      
+      <section class="card">
+        <p>Trial to paid</p>
+        <strong>5.3%</strong>
+        <span>latest month conversion</span>
+      </section>
+    
+      
+      <section class="card">
+        <p>Churn</p>
+        <strong>6.9%</strong>
+        <span>latest month retention risk</span>
+      </section>
+    
+    </section>
+
+    <section class="charts">
+      <article class="panel">
+        <h2>Revenue trend</h2>
+        <svg viewBox="0 0 720 210" role="img" aria-label="Revenue trend line chart">
+          <line class="axis" x1="0" y1="190" x2="720" y2="190"></line>
+          <polyline class="line revenue" points="0.0,180.0 42.4,175.0 84.7,168.1 127.1,162.0 169.4,157.3 211.8,148.7 254.1,143.6 296.5,134.6 338.8,126.0 381.2,115.6 423.5,103.0 465.9,88.9 508.2,77.4 550.6,67.3 592.9,52.2 635.3,34.9 677.6,19.1 720.0,0.0"></polyline>
+        </svg>
+      </article>
+      <article class="panel">
+        <h2>Operating signals</h2>
+        <span class="tag">Dashboard users: 52</span>
+        <span class="tag">Reporting hours: 15</span>
+        <span class="tag">Data issues: 5</span>
+        <svg viewBox="0 0 720 210" role="img" aria-label="Churn and dashboard adoption trend lines">
+          <line class="axis" x1="0" y1="190" x2="720" y2="190"></line>
+          <polyline class="line churn" points="0.0,180.0 42.4,25.7 84.7,23.9 127.1,25.4 169.4,15.9 211.8,14.3 254.1,1.9 296.5,25.9 338.8,29.6 381.2,25.4 423.5,17.1 465.9,6.3 508.2,9.7 550.6,0.0 592.9,14.4 635.3,13.0 677.6,0.9 720.0,1.1"></polyline>
+          <polyline class="line users" points="0.0,180.0 42.4,175.9 84.7,167.7 127.1,163.6 169.4,159.5 211.8,151.4 254.1,147.3 296.5,139.1 338.8,126.8 381.2,118.6 423.5,106.4 465.9,94.1 508.2,81.8 550.6,69.5 592.9,53.2 635.3,36.8 677.6,20.5 720.0,0.0"></polyline>
+        </svg>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Diagnosis</h2>
+      <ul><li>Revenue and paid customers are growing, but churn rose in the latest month.</li><li>Reporting hours fell as dashboard usage increased, suggesting better self-service visibility.</li><li>Data quality issues dropped across the period, which makes KPI review more reliable.</li></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Recommended management actions</h2>
+      <ul><li>Investigate churn drivers before scaling acquisition spend further.</li><li>Use the dashboard adoption trend as a case for retiring manual weekly reports.</li><li>Create an owner for each core KPI: acquisition, conversion, retention, revenue, and data quality.</li></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Last six months</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Revenue</th>
+            <th>Paid customers</th>
+            <th>Trial to paid</th>
+            <th>Churn</th>
+            <th>Reporting hours</th>
+            <th>Data issues</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>2026-01</td>
+          <td>$40,240</td>
+          <td>503</td>
+          <td>4.6%</td>
+          <td>6.6%</td>
+          <td>20</td>
+          <td>8</td>
+        </tr>
+        
+
+        <tr>
+          <td>2026-02</td>
+          <td>$42,480</td>
+          <td>531</td>
+          <td>4.4%</td>
+          <td>7.0%</td>
+          <td>19</td>
+          <td>8</td>
+        </tr>
+        
+
+        <tr>
+          <td>2026-03</td>
+          <td>$45,840</td>
+          <td>573</td>
+          <td>4.9%</td>
+          <td>6.4%</td>
+          <td>18</td>
+          <td>7</td>
+        </tr>
+        
+
+        <tr>
+          <td>2026-04</td>
+          <td>$49,680</td>
+          <td>621</td>
+          <td>5.1%</td>
+          <td>6.5%</td>
+          <td>17</td>
+          <td>6</td>
+        </tr>
+        
+
+        <tr>
+          <td>2026-05</td>
+          <td>$53,200</td>
+          <td>665</td>
+          <td>4.9%</td>
+          <td>6.9%</td>
+          <td>16</td>
+          <td>6</td>
+        </tr>
+        
+
+        <tr>
+          <td>2026-06</td>
+          <td>$57,440</td>
+          <td>718</td>
+          <td>5.3%</td>
+          <td>6.9%</td>
+          <td>15</td>
+          <td>5</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

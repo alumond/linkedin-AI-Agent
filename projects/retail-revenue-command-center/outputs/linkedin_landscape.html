@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkedIn Landscape - Retail Revenue Leakage Review</title>
+  <style>
+    :root {
+      --charcoal: #172126;
+      --charcoal-2: #202c32;
+      --paper: #edf3ef;
+      --panel: #ffffff;
+      --ink: #182027;
+      --muted: #6b7982;
+      --line: #d6dfda;
+      --green: #2f8f72;
+      --blue: #2c6f9f;
+      --amber: #c68a2f;
+      --red: #c9574b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #dfe8e3;
+      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      overflow: hidden;
+    }
+    .poster {
+      width: 1600px;
+      height: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid #c7d4cd;
+      box-shadow: 0 28px 90px rgba(23, 33, 38, .18);
+      transform-origin: top center;
+    }
+    .rail {
+      background: var(--charcoal);
+      color: #edf6f2;
+      padding: 28px 22px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--charcoal);
+      font-size: 14px;
+      font-weight: 950;
+    }
+    .rail-label {
+      display: block;
+      color: rgba(237,246,242,.54);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      margin-bottom: 10px;
+    }
+    .chip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 36px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 6px;
+      padding: 0 10px;
+      margin-bottom: 8px;
+      color: rgba(237,246,242,.88);
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+    }
+    .chip::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid rgba(255,255,255,.72);
+      border-bottom: 1px solid rgba(255,255,255,.72);
+      transform: rotate(45deg);
+      margin-bottom: 3px;
+    }
+    .question strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+    .question p, .dataset p {
+      margin: 0;
+      color: rgba(237,246,242,.62);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .dataset strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .canvas {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+      padding: 24px;
+      display: grid;
+      grid-template-rows: 118px 100px 320px 278px;
+      gap: 12px;
+      align-content: start;
+      background:
+        linear-gradient(135deg, rgba(220,238,232,.9), rgba(237,243,239,0) 43%),
+        var(--paper);
+    }
+    .top {
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 18px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      margin-bottom: 6px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 33px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .note {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 15px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .note strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .signal-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+      max-width: 820px;
+    }
+    .signal-strip span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 28px;
+      padding: 6px 10px;
+      border: 1px solid rgba(47,143,114,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.58);
+      color: var(--muted);
+      font-size: 11px;
+      box-shadow: 0 8px 18px rgba(32, 44, 50, .04);
+    }
+    .signal-strip strong {
+      color: var(--green);
+      font-weight: 950;
+      white-space: nowrap;
+    }
+    .metric-strip {
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .metric-tile {
+      position: relative;
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 13px 11px;
+      box-shadow: 0 10px 25px rgba(32, 44, 50, .06);
+    }
+    .metric-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      border-radius: 8px 0 0 8px;
+      background: var(--green);
+    }
+    .metric-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      padding-right: 54px;
+    }
+    .metric-tile strong {
+      display: block;
+      max-width: 100%;
+      font-size: 20px;
+      line-height: 1.02;
+      overflow-wrap: anywhere;
+    }
+    .metric-tile p {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .metric-tile small {
+      position: absolute;
+      left: 13px;
+      right: 13px;
+      bottom: 9px;
+      color: #8b9aa2;
+      font-size: 10.5px;
+    }
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+    .main-grid {
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.22fr .82fr;
+      gap: 12px;
+      align-items: stretch;
+      height: 100%;
+    }
+    .bottom-grid {
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .85fr .95fr 1.2fr;
+      gap: 12px;
+      align-items: stretch;
+      height: 100%;
+    }
+    .panel {
+      min-width: 0;
+      height: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(32, 44, 50, .055);
+    }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.12;
+    }
+    .panel-note {
+      color: #8d9aa4;
+      font-size: 11px;
+      text-align: right;
+      line-height: 1.18;
+    }
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .axis { stroke: #dbe3df; stroke-width: 1; }
+    .x-axis-label {
+      fill: #7b8a82;
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .area { fill: url(#revenueArea); }
+    .revenue-line, .profit-line {
+      fill: none;
+      stroke-width: 3.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .revenue-line { stroke: var(--green); }
+    .profit-line { stroke: var(--blue); }
+    .trend-svg {
+      height: 232px;
+    }
+    .ticks {
+      display: grid;
+      grid-template-columns: repeat(18, 1fr);
+      color: #95a29a;
+      font-size: 9.5px;
+      margin: 3px 18px 0;
+    }
+    .chart-legend {
+      display: flex;
+      gap: 12px;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .legend-key {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    .rank-row {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin: 6px 0;
+    }
+    .rank-number {
+      width: 23px;
+      height: 23px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: #edf3ef;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 950;
+    }
+    .rank-main { flex: 1; min-width: 0; }
+    .rank-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 9px;
+      margin-bottom: 4px;
+      font-size: 11px;
+    }
+    .rank-label span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .rank-meta {
+      display: flex;
+      gap: 8px;
+      color: #8d9aa4;
+      font-size: 9.5px;
+      margin-bottom: 4px;
+    }
+    .bar-track, .channel-track {
+      height: 6px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #edf2ef;
+    }
+    .bar-fill, .channel-track div {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+    }
+    .channel-row { margin: 10px 0; }
+    .channel-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 9px;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    .channel-label span {
+      color: var(--muted);
+      font-weight: 850;
+    }
+    .channel-row small {
+      display: block;
+      color: #8d9aa4;
+      margin-top: 5px;
+      font-size: 10px;
+    }
+    .customer-bars {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 7px;
+      min-height: 150px;
+    }
+    .customer-month {
+      flex: 1;
+      text-align: center;
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .stack {
+      height: 138px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      gap: 2px;
+      margin-bottom: 5px;
+    }
+    .stack span {
+      display: block;
+      border-radius: 4px 4px 0 0;
+    }
+    .stack .new { background: var(--blue); }
+    .stack .repeat { background: var(--green); }
+    .customer-month small {
+      color: var(--red);
+      display: block;
+      margin-top: 1px;
+    }
+    .quality-panel {
+      height: calc(100% - 30px);
+      display: grid;
+      grid-template-rows: 52px minmax(0, 1fr) 18px;
+      gap: 8px;
+    }
+    .quality-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .quality-summary div {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #f6faf7;
+      padding: 7px 8px;
+    }
+    .quality-summary span {
+      display: block;
+      color: var(--muted);
+      font-size: 9.5px;
+      font-weight: 850;
+      margin-bottom: 2px;
+    }
+    .quality-summary strong {
+      display: inline-block;
+      font-size: 17px;
+      line-height: 1;
+      margin-right: 5px;
+    }
+    .quality-summary small {
+      color: #8d9aa4;
+      font-size: 9px;
+      white-space: nowrap;
+    }
+    .quality-chart {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 7px;
+      align-items: end;
+    }
+    .quality-month {
+      min-width: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 9px;
+    }
+    .active-count {
+      display: block;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+    .quality-stack {
+      height: 112px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      gap: 2px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(47,143,114,.05), rgba(44,111,159,.05));
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .quality-stack span {
+      display: block;
+      border-radius: 4px 4px 0 0;
+    }
+    .quality-stack .repeat { background: var(--green); }
+    .quality-stack .new { background: var(--blue); }
+    .quality-month strong {
+      display: block;
+      color: var(--ink);
+      font-size: 10px;
+      line-height: 1;
+    }
+    .quality-month small {
+      display: block;
+      color: var(--red);
+      font-size: 8.5px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .quality-legend {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .quality-note {
+      margin-left: auto;
+      color: #8d9aa4;
+    }
+    .scatter .bubble-number {
+      fill: #fff;
+      font-size: 11px;
+      font-weight: 950;
+    }
+    .scatter .axis-tick {
+      fill: #8d9aa4;
+      font-size: 9px;
+      font-weight: 850;
+    }
+    .scatter-label {
+      fill: #8d9aa4;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .risk-legend {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 3px 8px;
+      margin-top: 3px;
+    }
+    .risk-key-row {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      gap: 5px;
+      align-items: center;
+      font-size: 9px;
+      color: var(--muted);
+    }
+    .risk-key-row span {
+      width: 15px;
+      height: 15px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: #edf3ef;
+      color: var(--green);
+      font-weight: 950;
+    }
+    .risk-key-row strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .risk-key-row em {
+      display: none;
+      grid-column: 2;
+      margin-top: -4px;
+      color: #8d9aa4;
+      font-style: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    @media (max-width: 1599px) {
+      .poster {
+        margin: 0;
+        transform-origin: top left;
+      }
+    }
+    @media (max-width: 1536px) {
+      .poster { transform: scale(.96); }
+    }
+    @media (max-width: 1440px) {
+      .poster { transform: scale(.9); }
+    }
+    @media (max-width: 1366px) {
+      .poster { transform: scale(.854); }
+    }
+    @media (max-width: 1280px) {
+      .poster { transform: scale(.8); }
+    }
+    @media (max-width: 1180px) {
+      .poster { transform: scale(.7375); }
+    }
+    @media (max-width: 1100px) {
+      .poster { transform: scale(.64); }
+    }
+    @media (max-width: 900px) {
+      .poster {
+        transform: scale(.56);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <aside class="rail">
+      <div class="brand"><span class="mark">KR</span><span>Kora Retail Group</span></div>
+      <section>
+        <span class="rail-label">Filters</span>
+        <div class="chip"><span>All regions</span></div>
+        <div class="chip"><span>Omnichannel</span></div>
+        <div class="chip"><span>Jan 2025-Jun 2026</span></div>
+        <div class="chip"><span>Executive view</span></div>
+      </section>
+      <section class="question">
+        <span class="rail-label">Management Question</span>
+        <strong>Where is growth leaking?</strong>
+        <p>Review revenue quality, retention, return pressure, fulfilment risk, and category margin before scaling acquisition spend.</p>
+      </section>
+      <section class="dataset">
+        <span class="rail-label">Data Model</span>
+        <strong>2,160 rows</strong>
+        <p>18 months across regions, channels, categories, campaigns, customers, support, returns, and fulfilment signals.</p>
+      </section>
+    </aside>
+
+    <section class="canvas">
+      <header class="top">
+        <div>
+          <div class="eyebrow">Closed Month Review | June 2026</div>
+          <h1>Revenue Leakage Review</h1>
+          <div class="signal-strip"><span><strong>Profit quality holding</strong> GP +8.3% vs revenue +8.8%</span>
+<span><strong>Returns contained</strong> return rate 5.1%</span>
+<span><strong>Retention base</strong> repeat share 60.2%</span></div>
+        </div>
+        <aside class="note">
+          <strong>Analyst note</strong>
+          Revenue is growing, but the decision is whether profit, repeat customers, returns, and fulfilment are improving together.
+        </aside>
+      </header>
+
+      <section class="metric-strip">
+      <article class="metric-tile">
+        <div>
+          <span>Revenue</span>
+          <strong>NGN 3.64B</strong>
+        </div>
+        <p class="positive">+8.8%</p>
+        <small>closed month</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Gross profit</span>
+          <strong>NGN 993.8M</strong>
+        </div>
+        <p class="positive">+8.3%</p>
+        <small>margin 27.3%</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Orders</span>
+          <strong>70.5K</strong>
+        </div>
+        <p class="positive">+7.4%</p>
+        <small>fulfilled orders</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Customers</span>
+          <strong>51.0K</strong>
+        </div>
+        <p class="positive">+7.6%</p>
+        <small>active customers</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Repeat rate</span>
+          <strong>60.2%</strong>
+        </div>
+        <p class="positive">+0.6%</p>
+        <small>returns 5.1%</small>
+      </article>
+    </section>
+
+      <section class="main-grid">
+        <article class="panel">
+          <div class="panel-head"><h2>Revenue and Profit Movement</h2><span class="panel-note">18 months | closed periods</span></div>
+          <svg class="trend-svg" viewBox="0 0 720 246" role="img" aria-label="Revenue and gross profit trend chart">
+            <defs>
+              <linearGradient id="revenueArea" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2f8f72" stop-opacity=".20"></stop>
+                <stop offset="100%" stop-color="#2f8f72" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <line class="axis" x1="42" y1="168" x2="698" y2="168"></line>
+            <line class="axis" x1="42" y1="120" x2="698" y2="120"></line>
+            <line class="axis" x1="42" y1="72" x2="698" y2="72"></line>
+            <line class="axis" x1="42" y1="216" x2="698" y2="216"></line>
+<line class="axis" x1="42.0" y1="216" x2="42.0" y2="221"></line>
+<text class="x-axis-label" x="42.0" y="238" text-anchor="start">Jan &#x27;25</text>
+<line class="axis" x1="157.8" y1="216" x2="157.8" y2="221"></line>
+<text class="x-axis-label" x="157.8" y="238" text-anchor="middle">Apr</text>
+<line class="axis" x1="273.5" y1="216" x2="273.5" y2="221"></line>
+<text class="x-axis-label" x="273.5" y="238" text-anchor="middle">Jul</text>
+<line class="axis" x1="389.3" y1="216" x2="389.3" y2="221"></line>
+<text class="x-axis-label" x="389.3" y="238" text-anchor="middle">Oct</text>
+<line class="axis" x1="505.1" y1="216" x2="505.1" y2="221"></line>
+<text class="x-axis-label" x="505.1" y="238" text-anchor="middle">Jan &#x27;26</text>
+<line class="axis" x1="620.8" y1="216" x2="620.8" y2="221"></line>
+<text class="x-axis-label" x="620.8" y="238" text-anchor="middle">Apr</text>
+<line class="axis" x1="698.0" y1="216" x2="698.0" y2="221"></line>
+<text class="x-axis-label" x="698.0" y="238" text-anchor="end">Jun &#x27;26</text>
+            <polygon class="area" points="42,216 42.0,216.0 80.6,202.9 119.2,174.3 157.8,182.6 196.4,175.2 234.9,152.3 273.5,168.8 312.1,164.8 350.7,140.1 389.3,152.1 427.9,44.1 466.5,24.0 505.1,109.9 543.6,94.1 582.2,56.1 620.8,75.1 659.4,69.8 698.0,41.0 698,216"></polygon>
+            <polyline class="revenue-line" points="42.0,216.0 80.6,202.9 119.2,174.3 157.8,182.6 196.4,175.2 234.9,152.3 273.5,168.8 312.1,164.8 350.7,140.1 389.3,152.1 427.9,44.1 466.5,24.0 505.1,109.9 543.6,94.1 582.2,56.1 620.8,75.1 659.4,69.8 698.0,41.0"></polyline>
+            <polyline class="profit-line" points="42.0,216.0 80.6,202.0 119.2,174.3 157.8,182.6 196.4,174.2 234.9,152.3 273.5,168.8 312.1,163.8 350.7,140.1 389.3,152.1 427.9,44.1 466.5,24.0 505.1,109.9 543.6,92.7 582.2,56.1 620.8,75.1 659.4,68.3 698.0,41.0"></polyline>
+            <circle cx="466.5" cy="24.0" r="5" fill="#fff" stroke="#c68a2f" stroke-width="3"></circle>
+            <text x="478.5" y="18.0" fill="#8a5b15" font-size="12" font-weight="800">Peak: 2025-12</text>
+            <circle cx="698.0" cy="41.0" r="6" fill="#fff" stroke="#2f8f72" stroke-width="3"></circle>
+            <text x="626.0" y="23.0" fill="#236b55" font-size="12" font-weight="800">Jun close</text>
+          </svg>
+          <div class="chart-legend">
+            <span><i class="legend-key" style="background:#2f8f72"></i>Revenue</span>
+            <span><i class="legend-key" style="background:#2c6f9f"></i>Gross profit</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><h2>Category Contribution</h2><span class="panel-note">revenue, margin, returns</span></div>
+          
+            <div class="rank-row">
+              <span class="rank-number">1</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Electronics</strong>
+                  <span>NGN 1.30B</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 23.4%</span>
+                  <span>Returns 7.2%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">2</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Business Supplies</strong>
+                  <span>NGN 661.7M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 27.3%</span>
+                  <span>Returns 3.5%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:50.8%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">3</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Home &amp; Living</strong>
+                  <span>NGN 629.8M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 30.4%</span>
+                  <span>Returns 4.5%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:48.4%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">4</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Fashion</strong>
+                  <span>NGN 471.8M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 33.1%</span>
+                  <span>Returns 9.7%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:36.2%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">5</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Grocery</strong>
+                  <span>NGN 312.7M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 18.1%</span>
+                  <span>Returns 2.2%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:24.0%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">6</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Beauty</strong>
+                  <span>NGN 265.9M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 38.7%</span>
+                  <span>Returns 2.8%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:20.4%"></div></div>
+              </div>
+            </div>
+            
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel">
+          <div class="panel-head"><h2>Channel Economics</h2><span class="panel-note">latest month</span></div>
+          
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Store</strong>
+                <span>NGN 1.14B</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:100.0%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 66.8%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Web</strong>
+                <span>NGN 1.02B</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:89.5%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 57.8%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Marketplace</strong>
+                <span>NGN 816.2M</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:71.9%"></div>
+              </div>
+              <small>Margin 26.7% | Repeat 51.7%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Partner</strong>
+                <span>NGN 676.7M</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:59.6%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 62.8%</small>
+            </div>
+            
+        </article>
+        <article class="panel">
+          <div class="panel-head"><h2>Customer Quality</h2><span class="panel-note">active base, repeat share, churn</span></div>
+          
+      <div class="quality-panel">
+        <div class="quality-summary">
+          <div>
+            <span>Repeat share</span>
+            <strong>60.2%</strong>
+            <small>+3.0pp vs Jan</small>
+          </div>
+          <div>
+            <span>Churn pressure</span>
+            <strong>3.8%</strong>
+            <small>-0.1pp vs Jan</small>
+          </div>
+        </div>
+        <div class="quality-chart">
+            <div class="quality-month">
+              <span class="active-count">41.9K</span>
+              <div class="quality-stack" title="2026-01 active customers">
+                <span class="repeat" style="height:52.6px"></span>
+                <span class="new" style="height:39.3px"></span>
+              </div>
+              <strong>Jan</strong>
+            </div>
+            
+            <div class="quality-month">
+              <span class="active-count">44.5K</span>
+              <div class="quality-stack" title="2026-02 active customers">
+                <span class="repeat" style="height:56.5px"></span>
+                <span class="new" style="height:41.2px"></span>
+              </div>
+              <strong>Feb</strong>
+            </div>
+            
+            <div class="quality-month">
+              <span class="active-count">49.5K</span>
+              <div class="quality-stack" title="2026-03 active customers">
+                <span class="repeat" style="height:63.5px"></span>
+                <span class="new" style="height:45.2px"></span>
+              </div>
+              <strong>Mar</strong>
+            </div>
+            
+            <div class="quality-month">
+              <span class="active-count">46.4K</span>
+              <div class="quality-stack" title="2026-04 active customers">
+                <span class="repeat" style="height:60.1px"></span>
+                <span class="new" style="height:41.7px"></span>
+              </div>
+              <strong>Apr</strong>
+            </div>
+            
+            <div class="quality-month">
+              <span class="active-count">47.4K</span>
+              <div class="quality-stack" title="2026-05 active customers">
+                <span class="repeat" style="height:62.1px"></span>
+                <span class="new" style="height:42.1px"></span>
+              </div>
+              <strong>May</strong>
+            </div>
+            
+            <div class="quality-month">
+              <span class="active-count">51.0K</span>
+              <div class="quality-stack" title="2026-06 active customers">
+                <span class="repeat" style="height:67.5px"></span>
+                <span class="new" style="height:44.5px"></span>
+              </div>
+              <strong>Jun</strong>
+            </div>
+            </div>
+        <div class="quality-legend">
+          <span><i class="legend-key" style="background:#2f8f72"></i>Repeat</span>
+          <span><i class="legend-key" style="background:#2c6f9f"></i>New</span>
+          <span class="quality-note">Height = active customers</span>
+        </div>
+      </div>
+    
+        </article>
+        <article class="panel">
+          <div class="panel-head"><h2>Return Pressure vs Margin</h2><span class="panel-note">bubble size = revenue</span></div>
+          <svg class="scatter" viewBox="0 0 650 240" role="img" aria-label="Margin and returns risk chart">
+            <line class="axis" x1="64" y1="196" x2="604" y2="196"></line>
+            <line class="axis" x1="64" y1="48" x2="64" y2="196"></line>
+            <line class="axis" x1="334" y1="48" x2="334" y2="196" stroke-dasharray="5 6"></line>
+            <line class="axis" x1="64" y1="122" x2="604" y2="122" stroke-dasharray="5 6"></line>
+            <text class="axis-tick" x="56" y="200" text-anchor="end">16%</text>
+            <text class="axis-tick" x="56" y="126" text-anchor="end">28%</text>
+            <text class="axis-tick" x="56" y="52" text-anchor="end">40%</text>
+            <text class="axis-tick" x="64" y="218" text-anchor="middle">2%</text>
+            <text class="axis-tick" x="334" y="218" text-anchor="middle">6%</text>
+            <text class="axis-tick" x="604" y="218" text-anchor="middle">10%</text>
+            
+            <g>
+              <circle cx="415.1" cy="150.1" r="23.0" fill="#ef6b5b" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="415.1" y="154.1" text-anchor="middle">1</text>
+            </g>
+            
+
+            <g>
+              <circle cx="163.5" cy="126.1" r="15.6" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="163.5" y="130.1" text-anchor="middle">2</text>
+            </g>
+            
+
+            <g>
+              <circle cx="233.0" cy="106.9" r="15.3" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="233.0" y="110.9" text-anchor="middle">3</text>
+            </g>
+            
+
+            <g>
+              <circle cx="586.8" cy="90.3" r="13.4" fill="#ef6b5b" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="586.8" y="94.3" text-anchor="middle">4</text>
+            </g>
+            
+
+            <g>
+              <circle cx="76.4" cy="182.8" r="11.6" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="76.4" y="186.8" text-anchor="middle">5</text>
+            </g>
+            
+
+            <g>
+              <circle cx="115.6" cy="55.8" r="11.1" fill="#2bb3a3" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="115.6" y="59.8" text-anchor="middle">6</text>
+            </g>
+            
+            <text class="scatter-label" x="64" y="236">Lower returns</text>
+            <text class="scatter-label" x="516" y="236">Higher returns</text>
+            <text class="scatter-label" x="68" y="36">Margin rate</text>
+          </svg>
+          <div class="risk-legend">
+            <div class="risk-key-row">
+              <span>1</span>
+              <strong>Electronics</strong>
+              <em>Watch</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>2</span>
+              <strong>Business Supplies</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>3</span>
+              <strong>Home &amp; Living</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>4</span>
+              <strong>Fashion</strong>
+              <em>Watch</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>5</span>
+              <strong>Grocery</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>6</span>
+              <strong>Beauty</strong>
+              <em>Healthy margin</em>
+            </div>
+            </div>
+        </article>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retail Revenue Leakage Review</title>
+  <style>
+    :root {
+      --charcoal: #172126;
+      --charcoal-2: #202c32;
+      --paper: #f1f4f2;
+      --panel: #ffffff;
+      --ink: #182027;
+      --muted: #697780;
+      --line: #d8e0dc;
+      --green: #2f8f72;
+      --blue: #2c6f9f;
+      --amber: #c68a2f;
+      --red: #c9574b;
+      --mint: #dceee8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+    }
+    main {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+    .workbook {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      min-height: calc(100vh - 36px);
+      border: 1px solid #ccd7d1;
+      background: var(--panel);
+      box-shadow: 0 22px 60px rgba(34, 47, 54, .12);
+    }
+    .rail {
+      background: var(--charcoal);
+      color: #eaf2ef;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      font-size: 18px;
+    }
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      background: #f7fbf9;
+      color: var(--charcoal);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .rail-section {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 18px;
+    }
+    .rail-label {
+      display: block;
+      color: rgba(234,242,239,.56);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .filter-chip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 6px;
+      padding: 10px 11px;
+      margin-bottom: 8px;
+      background: rgba(255,255,255,.04);
+      font-size: 13px;
+    }
+    .filter-chip::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid rgba(255,255,255,.76);
+      border-bottom: 1px solid rgba(255,255,255,.76);
+      transform: rotate(45deg);
+      margin-bottom: 4px;
+    }
+    .rail-metric strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .rail-metric span {
+      color: rgba(234,242,239,.62);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .report {
+      min-width: 0;
+      padding: 26px;
+      background:
+        linear-gradient(180deg, rgba(220,238,232,.75), rgba(241,244,242,0) 260px),
+        var(--paper);
+    }
+    .report-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+    .summary {
+      max-width: 690px;
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+    .source-card {
+      min-width: 250px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .source-card strong {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .metric-tile {
+      position: relative;
+      min-height: 116px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 10px 25px rgba(32, 44, 50, .06);
+    }
+    .metric-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      border-radius: 8px 0 0 8px;
+      background: var(--green);
+    }
+    .metric-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      margin-bottom: 8px;
+      padding-right: 58px;
+    }
+    .metric-tile strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.02;
+    }
+    .metric-tile p {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .metric-tile small {
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: 13px;
+      color: #8c9aa2;
+      font-size: 11px;
+    }
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .8fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .lower-grid {
+      display: grid;
+      grid-template-columns: .85fr 1fr 1.15fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: start;
+    }
+    .panel {
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 10px 25px rgba(32, 44, 50, .055);
+    }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+    .panel-note {
+      color: #8d9aa4;
+      font-size: 12px;
+      text-align: right;
+    }
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .axis { stroke: #dbe3df; stroke-width: 1; }
+    .area { fill: url(#revenueArea); }
+    .revenue-line, .profit-line {
+      fill: none;
+      stroke-width: 3.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .revenue-line { stroke: var(--green); }
+    .profit-line { stroke: var(--blue); }
+    .ticks {
+      display: grid;
+      grid-template-columns: repeat(18, 1fr);
+      color: #95a29a;
+      font-size: 10px;
+      margin: 6px 20px 0;
+    }
+    .chart-legend {
+      display: flex;
+      gap: 14px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .legend-key {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .rank-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+    }
+    .rank-number {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: #edf3ef;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .rank-main { flex: 1; min-width: 0; }
+    .rank-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+    .rank-label span {
+      color: var(--muted);
+      font-weight: 750;
+    }
+    .rank-meta {
+      display: flex;
+      gap: 10px;
+      color: #8d9aa4;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+    .bar-track, .channel-track {
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #edf2ef;
+    }
+    .bar-fill, .channel-track div {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+    }
+    .channel-row {
+      margin: 14px 0;
+    }
+    .channel-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+    .channel-label span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .channel-row small {
+      display: block;
+      color: #8d9aa4;
+      margin-top: 6px;
+      font-size: 11px;
+    }
+    .customer-bars {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 8px;
+      min-height: 180px;
+    }
+    .customer-month {
+      flex: 1;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .stack {
+      height: 142px;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      gap: 2px;
+      margin-bottom: 7px;
+    }
+    .stack span {
+      display: block;
+      border-radius: 4px 4px 0 0;
+    }
+    .stack .new { background: var(--blue); }
+    .stack .repeat { background: var(--green); }
+    .customer-month small {
+      color: var(--red);
+      display: block;
+      margin-top: 2px;
+    }
+    .scatter .bubble-number {
+      fill: #fff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .scatter .axis-tick {
+      fill: #8d9aa4;
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .scatter-label {
+      fill: #8d9aa4;
+      font-size: 11px;
+      font-weight: 750;
+    }
+    .risk-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px 12px;
+      margin-top: 8px;
+    }
+    .risk-key-row {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .risk-key-row span {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: #edf3ef;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .risk-key-row strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .risk-key-row em {
+      grid-column: 2;
+      margin-top: -4px;
+      color: #8d9aa4;
+      font-style: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 9px;
+    }
+    .region-cell {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 102px;
+      background: linear-gradient(180deg, rgba(47,143,114, calc(.05 + var(--heat) * .16)), #fff);
+    }
+    .region-cell div {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .region-cell strong {
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .region-cell p {
+      margin: 16px 0 7px;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .region-cell small {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 9px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .risk-pill {
+      display: inline-block;
+      min-width: 58px;
+      text-align: center;
+      padding: 4px 7px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 850;
+    }
+    .risk-pill.high { color: #8f2f28; background: #fae7e4; }
+    .risk-pill.medium { color: #8a5b15; background: #f7ecd8; }
+    .risk-pill.low { color: #236b55; background: #def1e9; }
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .insight {
+      background: var(--charcoal-2);
+      color: #edf6f2;
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .insight span {
+      display: block;
+      color: #9dd8c5;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 8px;
+    }
+    .insight p {
+      margin: 0;
+      color: rgba(237,246,242,.78);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    @media (max-width: 760px) {
+      .workbook { grid-template-columns: 1fr; }
+      .rail { display: block; }
+      .rail-section { margin-top: 16px; }
+      .metric-strip { grid-template-columns: repeat(2, 1fr); }
+      .canvas-grid, .lower-grid, .insights { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      main { padding: 0; }
+      .report { padding: 18px; }
+      .report-top { flex-direction: column; }
+      .metric-strip, .region-grid { grid-template-columns: 1fr; }
+      .source-card { min-width: 0; width: 100%; }
+      .ticks { display: none; }
+      .metric-tile strong { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="workbook">
+      <aside class="rail">
+        <div class="brand"><span class="mark">KR</span><span>Kora Retail Group</span></div>
+        <div class="rail-section">
+          <span class="rail-label">Report Filters</span>
+          <div class="filter-chip"><span>All regions</span></div>
+          <div class="filter-chip"><span>Omnichannel</span></div>
+          <div class="filter-chip"><span>Jan 2025-Jun 2026</span></div>
+          <div class="filter-chip"><span>Executive view</span></div>
+        </div>
+        <div class="rail-section rail-metric">
+          <span class="rail-label">Data Model</span>
+          <strong>2,160 rows</strong>
+          <span>Orders, customers, support, returns, fulfilment, category, channel, campaign, and region-level data.</span>
+        </div>
+        <div class="rail-section rail-metric">
+          <span class="rail-label">Current Question</span>
+          <strong>Where is growth leaking?</strong>
+          <span>Management view focused on revenue quality, customer retention, return pressure, and operational risk.</span>
+        </div>
+      </aside>
+
+      <section class="report">
+        <header class="report-top">
+          <div>
+            <div class="eyebrow">Closed Month Review | June 2026</div>
+            <h1>Revenue Leakage Review</h1>
+            <p class="summary">A retail performance dashboard built to separate healthy growth from hidden leakage across margin, returns, retention, fulfilment, and regional execution.</p>
+          </div>
+          <aside class="source-card">
+            <strong>Analyst note</strong>
+            Revenue is still expanding, but the review should focus on whether gross profit, repeat customers, and returns are moving in the same direction.
+          </aside>
+        </header>
+
+        <section class="metric-strip">
+      <article class="metric-tile">
+        <div>
+          <span>Revenue</span>
+          <strong>NGN 3.64B</strong>
+        </div>
+        <p class="positive">+8.8%</p>
+        <small>closed month</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Gross profit</span>
+          <strong>NGN 993.8M</strong>
+        </div>
+        <p class="positive">+8.3%</p>
+        <small>margin 27.3%</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Orders</span>
+          <strong>70.5K</strong>
+        </div>
+        <p class="positive">+7.4%</p>
+        <small>all fulfilled orders</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Customers</span>
+          <strong>51.0K</strong>
+        </div>
+        <p class="positive">+7.6%</p>
+        <small>active customers</small>
+      </article>
+    
+
+      <article class="metric-tile">
+        <div>
+          <span>Repeat rate</span>
+          <strong>60.2%</strong>
+        </div>
+        <p class="positive">+0.6%</p>
+        <small>return rate 5.1%</small>
+      </article>
+    </section>
+
+        <section class="canvas-grid">
+          <article class="panel">
+            <div class="panel-head"><h2>Revenue and Profit Movement</h2><span class="panel-note">18 months | closed periods</span></div>
+            <svg viewBox="0 0 760 250" role="img" aria-label="Revenue and gross profit trend chart">
+              <defs>
+                <linearGradient id="revenueArea" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#2f8f72" stop-opacity=".20"></stop>
+                  <stop offset="100%" stop-color="#2f8f72" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <line class="axis" x1="22" y1="228" x2="738" y2="228"></line>
+              <line class="axis" x1="22" y1="170" x2="738" y2="170"></line>
+              <line class="axis" x1="22" y1="112" x2="738" y2="112"></line>
+              <polygon class="area" points="22,188 22.0,188.0 64.1,176.6 106.2,152.0 148.4,159.1 190.5,152.7 232.6,132.9 274.7,147.2 316.8,143.8 358.9,122.4 401.1,132.8 443.2,39.4 485.3,22.0 527.4,96.3 569.5,82.6 611.6,49.7 653.8,66.2 695.9,61.6 738.0,36.7 738,188"></polygon>
+              <polyline class="revenue-line" points="22.0,188.0 64.1,176.6 106.2,152.0 148.4,159.1 190.5,152.7 232.6,132.9 274.7,147.2 316.8,143.8 358.9,122.4 401.1,132.8 443.2,39.4 485.3,22.0 527.4,96.3 569.5,82.6 611.6,49.7 653.8,66.2 695.9,61.6 738.0,36.7"></polyline>
+              <polyline class="profit-line" points="22.0,188.0 64.1,175.9 106.2,152.0 148.4,159.1 190.5,151.8 232.6,132.9 274.7,147.2 316.8,142.8 358.9,122.4 401.1,132.8 443.2,39.4 485.3,22.0 527.4,96.3 569.5,81.4 611.6,49.7 653.8,66.2 695.9,60.3 738.0,36.7"></polyline>
+              <circle cx="485.3" cy="22.0" r="5" fill="#fff" stroke="#c68a2f" stroke-width="3"></circle>
+              <text x="497.3" y="18.0" fill="#8a5b15" font-size="12" font-weight="800">Peak: 2025-12</text>
+              <circle cx="738.0" cy="36.7" r="6" fill="#fff" stroke="#2f8f72" stroke-width="3"></circle>
+              <text x="666.0" y="18.7" fill="#236b55" font-size="12" font-weight="800">Jun close</text>
+            </svg>
+            <div class="ticks"><span>01</span> <span>02</span> <span>03</span> <span>04</span> <span>05</span> <span>06</span> <span>07</span> <span>08</span> <span>09</span> <span>10</span> <span>11</span> <span>12</span> <span>01</span> <span>02</span> <span>03</span> <span>04</span> <span>05</span> <span>06</span></div>
+            <div class="chart-legend">
+              <span><i class="legend-key" style="background:#2f8f72"></i>Revenue</span>
+              <span><i class="legend-key" style="background:#2c6f9f"></i>Gross profit</span>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><h2>Category Contribution</h2><span class="panel-note">revenue, margin, returns</span></div>
+            
+            <div class="rank-row">
+              <span class="rank-number">1</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Electronics</strong>
+                  <span>NGN 1.30B</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 23.4%</span>
+                  <span>Returns 7.2%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:100.0%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">2</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Business Supplies</strong>
+                  <span>NGN 661.7M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 27.3%</span>
+                  <span>Returns 3.5%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:50.8%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">3</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Home &amp; Living</strong>
+                  <span>NGN 629.8M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 30.4%</span>
+                  <span>Returns 4.5%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:48.4%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">4</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Fashion</strong>
+                  <span>NGN 471.8M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 33.1%</span>
+                  <span>Returns 9.7%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:36.2%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">5</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Grocery</strong>
+                  <span>NGN 312.7M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 18.1%</span>
+                  <span>Returns 2.2%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:24.0%"></div></div>
+              </div>
+            </div>
+            
+
+            <div class="rank-row">
+              <span class="rank-number">6</span>
+              <div class="rank-main">
+                <div class="rank-label">
+                  <strong>Beauty</strong>
+                  <span>NGN 265.9M</span>
+                </div>
+                <div class="rank-meta">
+                  <span>Margin 38.7%</span>
+                  <span>Returns 2.8%</span>
+                </div>
+                <div class="bar-track"><div class="bar-fill" style="width:20.4%"></div></div>
+              </div>
+            </div>
+            
+          </article>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel">
+            <div class="panel-head"><h2>Channel Economics</h2><span class="panel-note">latest month</span></div>
+            
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Store</strong>
+                <span>NGN 1.14B</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:100.0%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 66.8%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Web</strong>
+                <span>NGN 1.02B</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:89.5%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 57.8%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Marketplace</strong>
+                <span>NGN 816.2M</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:71.9%"></div>
+              </div>
+              <small>Margin 26.7% | Repeat 51.7%</small>
+            </div>
+            
+
+            <div class="channel-row">
+              <div class="channel-label">
+                <strong>Partner</strong>
+                <span>NGN 676.7M</span>
+              </div>
+              <div class="channel-track">
+                <div style="width:59.6%"></div>
+              </div>
+              <small>Margin 27.5% | Repeat 62.8%</small>
+            </div>
+            
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><h2>Customer Mix</h2><span class="panel-note">new, repeat, churned</span></div>
+            <div class="customer-bars">
+            <div class="customer-month">
+              <div class="stack" title="2026-01">
+                <span class="repeat" style="height:68.1px"></span>
+                <span class="new" style="height:50.9px"></span>
+              </div>
+              <strong>01</strong>
+              <small>-1.6K</small>
+            </div>
+            
+
+            <div class="customer-month">
+              <div class="stack" title="2026-02">
+                <span class="repeat" style="height:73.1px"></span>
+                <span class="new" style="height:53.3px"></span>
+              </div>
+              <strong>02</strong>
+              <small>-1.7K</small>
+            </div>
+            
+
+            <div class="customer-month">
+              <div class="stack" title="2026-03">
+                <span class="repeat" style="height:82.2px"></span>
+                <span class="new" style="height:58.5px"></span>
+              </div>
+              <strong>03</strong>
+              <small>-1.9K</small>
+            </div>
+            
+
+            <div class="customer-month">
+              <div class="stack" title="2026-04">
+                <span class="repeat" style="height:77.8px"></span>
+                <span class="new" style="height:54.0px"></span>
+              </div>
+              <strong>04</strong>
+              <small>-1.8K</small>
+            </div>
+            
+
+            <div class="customer-month">
+              <div class="stack" title="2026-05">
+                <span class="repeat" style="height:80.4px"></span>
+                <span class="new" style="height:54.4px"></span>
+              </div>
+              <strong>05</strong>
+              <small>-1.8K</small>
+            </div>
+            
+
+            <div class="customer-month">
+              <div class="stack" title="2026-06">
+                <span class="repeat" style="height:87.3px"></span>
+                <span class="new" style="height:57.7px"></span>
+              </div>
+              <strong>06</strong>
+              <small>-1.9K</small>
+            </div>
+            </div>
+            <div class="chart-legend">
+              <span><i class="legend-key" style="background:#2c6f9f"></i>New</span>
+              <span><i class="legend-key" style="background:#2f8f72"></i>Repeat</span>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><h2>Return Pressure vs Margin</h2><span class="panel-note">bubble size = revenue</span></div>
+            <svg class="scatter" viewBox="0 0 650 240" role="img" aria-label="Margin and returns risk chart">
+              <line class="axis" x1="64" y1="196" x2="604" y2="196"></line>
+              <line class="axis" x1="64" y1="48" x2="64" y2="196"></line>
+              <line class="axis" x1="334" y1="48" x2="334" y2="196" stroke-dasharray="5 6"></line>
+              <line class="axis" x1="64" y1="122" x2="604" y2="122" stroke-dasharray="5 6"></line>
+              <text class="axis-tick" x="56" y="200" text-anchor="end">16%</text>
+              <text class="axis-tick" x="56" y="126" text-anchor="end">28%</text>
+              <text class="axis-tick" x="56" y="52" text-anchor="end">40%</text>
+              <text class="axis-tick" x="64" y="218" text-anchor="middle">2%</text>
+              <text class="axis-tick" x="334" y="218" text-anchor="middle">6%</text>
+              <text class="axis-tick" x="604" y="218" text-anchor="middle">10%</text>
+              
+            <g>
+              <circle cx="415.1" cy="150.1" r="23.0" fill="#ef6b5b" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="415.1" y="154.1" text-anchor="middle">1</text>
+            </g>
+            
+
+            <g>
+              <circle cx="163.5" cy="126.1" r="15.6" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="163.5" y="130.1" text-anchor="middle">2</text>
+            </g>
+            
+
+            <g>
+              <circle cx="233.0" cy="106.9" r="15.3" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="233.0" y="110.9" text-anchor="middle">3</text>
+            </g>
+            
+
+            <g>
+              <circle cx="586.8" cy="90.3" r="13.4" fill="#ef6b5b" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="586.8" y="94.3" text-anchor="middle">4</text>
+            </g>
+            
+
+            <g>
+              <circle cx="76.4" cy="182.8" r="11.6" fill="#f2b544" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="76.4" y="186.8" text-anchor="middle">5</text>
+            </g>
+            
+
+            <g>
+              <circle cx="115.6" cy="55.8" r="11.1" fill="#2bb3a3" fill-opacity="0.88"></circle>
+              <text class="bubble-number" x="115.6" y="59.8" text-anchor="middle">6</text>
+            </g>
+            
+              <text class="scatter-label" x="64" y="236">Lower returns</text>
+              <text class="scatter-label" x="516" y="236">Higher returns</text>
+              <text class="scatter-label" x="68" y="36">Margin rate</text>
+            </svg>
+            <div class="risk-legend">
+            <div class="risk-key-row">
+              <span>1</span>
+              <strong>Electronics</strong>
+              <em>Watch</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>2</span>
+              <strong>Business Supplies</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>3</span>
+              <strong>Home &amp; Living</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>4</span>
+              <strong>Fashion</strong>
+              <em>Watch</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>5</span>
+              <strong>Grocery</strong>
+              <em>Monitor</em>
+            </div>
+            
+
+            <div class="risk-key-row">
+              <span>6</span>
+              <strong>Beauty</strong>
+              <em>Healthy margin</em>
+            </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel" style="margin-top:14px">
+          <div class="panel-head"><h2>Regional Execution Heatmap</h2><span class="panel-note">revenue intensity, margin, fulfilment delay</span></div>
+          <div class="region-grid">
+            <div class="region-cell" style="--heat:1.00">
+              <div>
+                <strong>Lagos</strong>
+                <span>Healthy</span>
+              </div>
+              <p>NGN 1.09B</p>
+              <small>Margin 27.6% | Delay 16.0h</small>
+            </div>
+            
+
+            <div class="region-cell" style="--heat:0.76">
+              <div>
+                <strong>Abuja</strong>
+                <span>Healthy</span>
+              </div>
+              <p>NGN 830.2M</p>
+              <small>Margin 27.2% | Delay 16.7h</small>
+            </div>
+            
+
+            <div class="region-cell" style="--heat:0.61">
+              <div>
+                <strong>Port Harcourt</strong>
+                <span>Healthy</span>
+              </div>
+              <p>NGN 661.0M</p>
+              <small>Margin 27.2% | Delay 18.4h</small>
+            </div>
+            
+
+            <div class="region-cell" style="--heat:0.51">
+              <div>
+                <strong>Ibadan</strong>
+                <span>Healthy</span>
+              </div>
+              <p>NGN 553.3M</p>
+              <small>Margin 27.2% | Delay 17.3h</small>
+            </div>
+            
+
+            <div class="region-cell" style="--heat:0.46">
+              <div>
+                <strong>Kano</strong>
+                <span>Watch</span>
+              </div>
+              <p>NGN 507.1M</p>
+              <small>Margin 27.2% | Delay 19.7h</small>
+            </div>
+            </div>
+        </section>
+
+        <section class="panel" style="margin-top:14px">
+          <div class="panel-head"><h2>Category Risk Register</h2><span class="panel-note">management review table</span></div>
+          <table>
+            <thead>
+              <tr><th>Category</th><th>Revenue</th><th>Margin</th><th>Returns</th><th>Risk</th></tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Electronics</td>
+              <td>NGN 1.30B</td>
+              <td>23.4%</td>
+              <td>7.2%</td>
+              <td><span class="risk-pill high">High</span></td>
+            </tr>
+            
+
+            <tr>
+              <td>Business Supplies</td>
+              <td>NGN 661.7M</td>
+              <td>27.3%</td>
+              <td>3.5%</td>
+              <td><span class="risk-pill medium">Medium</span></td>
+            </tr>
+            
+
+            <tr>
+              <td>Home &amp; Living</td>
+              <td>NGN 629.8M</td>
+              <td>30.4%</td>
+              <td>4.5%</td>
+              <td><span class="risk-pill medium">Medium</span></td>
+            </tr>
+            
+
+            <tr>
+              <td>Fashion</td>
+              <td>NGN 471.8M</td>
+              <td>33.1%</td>
+              <td>9.7%</td>
+              <td><span class="risk-pill high">High</span></td>
+            </tr>
+            
+
+            <tr>
+              <td>Grocery</td>
+              <td>NGN 312.7M</td>
+              <td>18.1%</td>
+              <td>2.2%</td>
+              <td><span class="risk-pill medium">Medium</span></td>
+            </tr>
+            
+
+            <tr>
+              <td>Beauty</td>
+              <td>NGN 265.9M</td>
+              <td>38.7%</td>
+              <td>2.8%</td>
+              <td><span class="risk-pill low">Low</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="insights">
+        <article class="insight">
+          <span>Merchandising</span>
+          <p>Fashion return pressure is 9.7%. Review size, quality, and delivery promise issues before the next campaign.</p>
+        </article>
+        
+
+        <article class="insight">
+          <span>Operations</span>
+          <p>Kano fulfillment is averaging 19.7 hours. Escalate carrier mix and warehouse handoff timing this week.</p>
+        </article>
+        
+
+        <article class="insight">
+          <span>Growth</span>
+          <p>Repeat customers drive 60.2% of current customer activity. Acquisition spend should be judged against repeat purchase quality, not traffic alone.</p>
+        </article>
+        </section>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

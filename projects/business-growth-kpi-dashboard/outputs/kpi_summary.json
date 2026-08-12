@@ -1,0 +1,30 @@
+{
+  "period": "2025-01 to 2026-06",
+  "latest_month": "2026-06",
+  "headline_metrics": {
+    "revenue": "$57,440",
+    "revenue_growth_mom": "8.0%",
+    "paid_customers": 718,
+    "paid_customer_growth_mom": "8.0%",
+    "trial_to_paid_rate": "5.3%",
+    "churn_rate": "6.9%",
+    "reporting_hours": 15,
+    "data_quality_issues": 5
+  },
+  "diagnosis": [
+    "Revenue and paid customers are growing, but churn rose in the latest month.",
+    "Reporting hours fell as dashboard usage increased, suggesting better self-service visibility.",
+    "Data quality issues dropped across the period, which makes KPI review more reliable."
+  ],
+  "recommendations": [
+    "Investigate churn drivers before scaling acquisition spend further.",
+    "Use the dashboard adoption trend as a case for retiring manual weekly reports.",
+    "Create an owner for each core KPI: acquisition, conversion, retention, revenue, and data quality."
+  ],
+  "trend_checks": {
+    "revenue": "improving",
+    "paid_customers": "improving",
+    "reporting_hours": "declining",
+    "data_quality_issues": "declining"
+  }
+}

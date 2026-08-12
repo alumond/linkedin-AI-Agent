@@ -2,6 +2,10 @@ LinkedIn Agent
 
 This project researches current Data and AI trends with Gemini Google Search grounding, writes a sourced LinkedIn post, creates one square visual, and can publish to a personal LinkedIn profile.
 
+## Flagship Portfolio Project
+
+- [Retail Revenue & Operations Command Center](projects/retail-revenue-command-center): a premium Power BI-style flagship dashboard showing revenue quality, product performance, customer retention, margin risk, regional performance, and executive decision support.
+
 By default it uses `gemini-2.5-flash` for text/research and local card/diagram rendering for images. Google lists free-tier Search grounding for Gemini 2.5 Flash models, while Gemini 3.x Search grounding is tied to paid-tier search quotas.
 
 The image path is intentionally local by default:
