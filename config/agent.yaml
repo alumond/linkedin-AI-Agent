@@ -26,8 +26,8 @@ excluded_subjects:
 - adult or hateful content
 voice: sharp, human, commercially aware, practical, and built to position Almond as a data analyst for business growth and decision support
 post_length:
-  min_chars: 2400
-  max_chars: 2950
+  min_chars: 2000
+  max_chars: 3000
 brand:
   name: Data & AI Brief
   colors:

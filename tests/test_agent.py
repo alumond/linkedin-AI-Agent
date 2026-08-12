@@ -5,7 +5,9 @@ import pytest
 from PIL import Image
 
 from linkedin_ai_agent.agent import FEATURED_DASHBOARD_IMAGE, FEATURED_DASHBOARD_LINK, LinkedInAIAgent, dedupe_urls, normalize_alt_text
+from linkedin_ai_agent.config import load_config
 from linkedin_ai_agent.models import DraftPost, VisualAsset
+from linkedin_ai_agent.validators import validate_draft
 from tests.test_ranking import config, trend
 
 
@@ -75,6 +77,23 @@ def test_codex_manual_missing_asset_falls_back_to_local_visual(tmp_path: Path):
     assert report["visual"]["width"] == 1200
     assert report["visual"]["height"] == 1200
     assert report["visual_generation"]["provider"] == "codex_manual_fallback_local"
+
+
+def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path):
+    cfg = load_config("config/agent.yaml")
+    cfg.reports_dir = tmp_path / "reports"
+    cfg.assets_dir = tmp_path / "assets"
+    cfg.state_dir = tmp_path / "state"
+    agent = LinkedInAIAgent(cfg)
+
+    failures = []
+    for candidate in agent._fallback_trend_candidates():
+        draft = agent._fallback_draft(candidate)
+        report = validate_draft(draft, cfg)
+        if not report.passed:
+            failures.append((candidate.topic, report.reasons))
+
+    assert failures == []
 
 
 def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):

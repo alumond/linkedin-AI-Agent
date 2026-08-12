@@ -74,7 +74,7 @@ def _draw_diagram_layout(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[
 def _draw_focus_strip_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
     theme = _infographic_theme(draft)
     _draw_premium_header(draw, draft, art, theme)
-    _draw_premium_section_title(draw, "PRIMARY DECISION", 960, art)
+    _premium_section_title(draw, "PRIMARY DECISION", 960, art)
     _draw_decision_strip(draw, art, theme)
     _draw_premium_examples(draw, art, theme)
     _draw_premium_takeaway(draw, draft, art, theme)
@@ -104,7 +104,7 @@ def _draw_stacked_grid_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: di
 def _draw_editorial_card(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[str, str]) -> None:
     theme = _infographic_theme(draft)
     _draw_premium_header(draw, draft, art, theme)
-    _draw_premium_section_title(draw, "EDITORIAL NOTE", 980, art)
+    _premium_section_title(draw, "EDITORIAL NOTE", 980, art)
     _draw_premium_summary(draw, art, theme)
     _draw_section_grid(draw, draft, art, theme)
     _draw_premium_takeaway(draw, draft, art, theme)
