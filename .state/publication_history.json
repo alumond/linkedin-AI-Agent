@@ -106,5 +106,14 @@
     "primary_source_url": "",
     "report_path": "reports/20260812T095922Z-a-data-analyst-should-explain-the-cost-of-waiting--not-only-.json",
     "topic": "A data analyst should explain the cost of waiting, not only the size of the problem."
+  },
+  {
+    "category": "analytics mindset",
+    "created_at": "2026-08-12T10:23:28Z",
+    "image_urn": "urn:li:image:D4E10AQFT8Z6Pz0QmJw",
+    "post_urn": "urn:li:share:7493250802300612608",
+    "primary_source_url": "",
+    "report_path": "reports/20260812T102329Z-the-fastest-analyst-is-not-the-one-who-knows-every-tool--it-.json",
+    "topic": "The fastest analyst is not the one who knows every tool. It is the one who asks better questions."
   }
 ]
