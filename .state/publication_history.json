@@ -97,5 +97,14 @@
     "primary_source_url": "",
     "report_path": "reports/20260811T103313Z-data-cleaning-is-where-business-truth-usually-shows-up.json",
     "topic": "Data cleaning is where business truth usually shows up."
+  },
+  {
+    "category": "business analytics",
+    "created_at": "2026-08-12T09:59:21Z",
+    "image_urn": "urn:li:image:D4E10AQEejCF6yP5xRA",
+    "post_urn": "urn:li:share:7493244732500893696",
+    "primary_source_url": "",
+    "report_path": "reports/20260812T095922Z-a-data-analyst-should-explain-the-cost-of-waiting--not-only-.json",
+    "topic": "A data analyst should explain the cost of waiting, not only the size of the problem."
   }
 ]

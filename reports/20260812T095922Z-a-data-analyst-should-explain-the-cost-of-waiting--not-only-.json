@@ -1,0 +1,103 @@
+{
+  "draft": {
+    "alt_text": "Realistic editorial image of a data professional reviewing business analytics in a modern workspace.",
+    "body": "Data work should not stop at \"I found an insight.\"\n\nA data analyst should explain the cost of waiting, not only the size of the problem.\n\nAnalysis becomes commercial when it shows what delay will cost the team.\n\nWHY THIS MATTERS:\nThe real value is helping a business decide what to do next. That can mean cleaning a messy file, defining the right KPI, finding a growth leak, explaining customer behavior, or turning a confusing report into one clear management action.\n\nTHE COMMON MISTAKE:\nThis is where a lot of analysts play too small. They show charts, but they do not force a decision. They list tools, but they do not show judgment. They talk about data, but they do not connect it to revenue, retention, cost, speed, quality, or risk.\n\nA business does not care that the table was cleaned in Python if the output still does not answer a commercial question.\n\nIt does not care that the dashboard has nice colors if the leadership team still leaves the meeting asking what changed.\n\nIt does not care that the model is complex if nobody can explain what action should happen when the result moves.\n\nThat is why good data work needs a sharper standard.\n\nBefore touching the tool, ask:\n- What decision is this supposed to improve?\n- Who will use the answer?\n- What metric will prove the answer mattered?\n- What action should happen if the number moves?\n- What should be ignored because it creates noise?\n\nThis is the kind of thinking that makes data useful for business growth. Growth is not only more sales. It can be better retention, fewer refunds, faster fulfillment, cleaner customer segments, stronger pricing decisions, better campaign focus, or less reporting waste.\n\nThe analyst who can explain that clearly will stand out more than the analyst who only says \"I know Excel, SQL, Python, and Power BI.\"\n\nTools are expected now.\n\nJudgment is the differentiator.\n\nIf you are building a data career, working remotely, freelancing, or trying to attract better clients, stop presenting yourself as a chart maker. That positioning is weak. Present yourself as someone who can take messy data, find the business signal, explain the trade-off, and help the team move.\n\nThat is a stronger brand.\n\nThat is also a stronger service.\n\nMY PRACTICAL RULE:\nEvery analysis should end with one of three things:\n- keep doing this\n- stop doing this\n- change this now\n\nIf it ends with \"interesting insight\", it probably was not sharp enough.\n\nMake the data useful enough that the next decision becomes obvious.",
+    "category": "business analytics",
+    "claims": [
+      "Curated weekday opinion post for LinkedIn engagement.",
+      "The post is positioned around practical data analysis, business intelligence, and decision support.",
+      "The post intentionally avoids forced external links unless the selected topic is specifically portfolio-focused.",
+      "The content is designed to invite discussion from clients, recruiters, founders, and analytics teams."
+    ],
+    "hashtags": [
+      "#BusinessAnalytics",
+      "#DecisionSupport",
+      "#DataAnalytics",
+      "#Growth",
+      "#Operations",
+      "#Leadership"
+    ],
+    "primary_source_url": "",
+    "supporting_source_urls": [],
+    "topic": "A data analyst should explain the cost of waiting, not only the size of the problem.",
+    "visual_prompt": "Create a realistic editorial LinkedIn image for this context: A data analyst should explain the cost of waiting, not only the size of the problem. Analysis becomes commercial when it shows what delay will cost the team.. Do not make a generic stock photo. Show a real business data work moment that visually fits the specific topic. a professional analyst or small team reviewing data on a laptop in a modern workspace, with subtle charts on a screen in the background. Use natural light, credible business styling, premium photography feel, no visible words, no flowcharts, no icons, no robot imagery, no text overlay.",
+    "visual_style": "insight_card:focus_strip"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-12T09:59:21Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQEejCF6yP5xRA",
+    "post_urn": "urn:li:share:7493244732500893696",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "A data analyst should explain the cost of waiting, not only the size of the problem."
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": [
+        "Post appears to contain a quotation; verify it before live publishing."
+      ]
+    },
+    "trend": null
+  },
+  "selected_topic": "A data analyst should explain the cost of waiting, not only the size of the problem.",
+  "status": "published",
+  "trend": {
+    "category": "business analytics",
+    "evidence_score": 1.0,
+    "novelty_score": 0.95,
+    "practical_value_score": 0.99,
+    "recency_score": 1.0,
+    "relevance_score": 0.98,
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "Portfolio",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Almond Owolabi Portfolio",
+        "url": "https://almond-owolabi-portfolio-s3pd81.v2.appdeploy.ai/"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "LinkedIn AI Agent Repository",
+        "url": "https://github.com/alumond/linkedin-AI-Agent"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Retail Revenue Command Center",
+        "url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center"
+      }
+    ],
+    "summary": "Analysis becomes commercial when it shows what delay will cost the team.",
+    "topic": "A data analyst should explain the cost of waiting, not only the size of the problem."
+  },
+  "visual": {
+    "alt_text": "Realistic editorial image of a data professional reviewing business analytics in a modern workspace.",
+    "height": 1200,
+    "linkedin_image_urn": "urn:li:image:D4E10AQEejCF6yP5xRA",
+    "mime_type": "image/png",
+    "path": "assets/codex_weekday_a-data-analyst-should-explain-the-cost-of-waiting--not-only-the-size-o.png",
+    "width": 1200
+  },
+  "visual_generation": {
+    "alt_text": "Realistic editorial image of a data professional reviewing business analytics in a modern workspace.",
+    "asset": "assets/codex_weekday_a-data-analyst-should-explain-the-cost-of-waiting--not-only-the-size-o.png",
+    "prompt": "Create a realistic editorial LinkedIn image for this context: A data analyst should explain the cost of waiting, not only the size of the problem. Analysis becomes commercial when it shows what delay will cost the team.. Do not make a generic stock photo. Show a real business data work moment that visually fits the specific topic. a professional analyst or small team reviewing data on a laptop in a modern workspace, with subtle charts on a screen in the background. Use natural light, credible business styling, premium photography feel, no visible words, no flowcharts, no icons, no robot imagery, no text overlay.",
+    "provider": "codex_manual_fallback_local"
+  }
+}
