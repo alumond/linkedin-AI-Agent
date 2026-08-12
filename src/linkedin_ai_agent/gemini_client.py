@@ -207,12 +207,15 @@ Requirements:
     def generate_illustration(self, config: AgentConfig, draft: DraftPost, output_path: Path) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         prompt = (
-            "Create a square 1:1 realistic editorial image for a LinkedIn post. "
-            "It should feel like premium business photography, not an infographic, not a flowchart, not a poster, and not a text card. "
-            "Show a credible real-life data work moment: a data analyst, freelancer, founder, or small business team reviewing analytics on a laptop or monitor in a modern workspace. "
-            "Use natural light, human presence, realistic desk details, subtle dashboard screens in the background, and a polished commercial editorial mood. "
-            "Do not include readable words, labels, captions, logos, icons, arrows, diagrams, robot faces, circuit boards, or text overlays. "
-            f"Topic mood: {draft.topic}. Direction: {draft.visual_prompt}. "
+            "Create a square 1:1 premium editorial visual for a LinkedIn post. "
+            "The image must visualize the actual argument of the post, not a generic analyst, office, or person looking at a computer. "
+            "Use a custom business-data metaphor built from realistic 3D or photographic materials: decision paths, KPI signals, risk controls, evidence markers, thresholds, dashboards, clean data objects, and next-action cues. "
+            "Make it feel like an Apple-quality executive briefing visual or premium consulting thought-leadership asset. "
+            "It may include abstract workflows only when they are elegant, content-specific, and clearly tied to the post's argument. "
+            "Do not include readable words, labels, captions, logos, watermarks, robot faces, circuit-board cliches, generic office stock photography, or text overlays. "
+            f"Topic: {draft.topic}. "
+            f"Post body to interpret visually: {draft.body[:1200]} "
+            f"Visual direction: {draft.visual_prompt}. "
             f"Use colors that quietly align with {', '.join(config.brand_colors)} without making the image look like a template."
         )
         response = self._generate_content(

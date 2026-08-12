@@ -416,18 +416,17 @@ class LinkedInAIAgent:
 
 {candidate.summary}
 
-WHY THIS MATTERS:
+Why this matters
+
 This is the part of data work people avoid because it is uncomfortable. A chart can show movement, but it cannot choose the trade-off for the team. Someone still has to decide whether speed matters more than accuracy, whether growth matters more than margin, whether automation is safe enough, or whether a metric is trusted enough to guide action.
 
 That is where a serious analyst becomes valuable.
 
-WEAK REPORTING:
-A weak report says:
-The number went up.
+Where weak reporting fails
 
-BETTER REPORTING:
-A better report says:
-The number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.
+A weak report says: the number went up.
+
+A stronger report says: the number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.
 
 The second version is harder to write because it forces accountability. It asks who owns the metric, what threshold matters, what action should happen next, and what risk the business is accepting if nothing changes.
 
@@ -435,12 +434,14 @@ This is also why governance is not just paperwork. In practical analytics, gover
 
 For freelancers, remote workers, and digital talent, this is a major positioning point. Do not sell yourself as someone who can only build reports. That is too small. Sell the ability to make messy decisions clearer with data.
 
-The work is not only:
+The visible work is usually:
+
 - clean the data
 - build the dashboard
 - send the report
 
-The real work is:
+The valuable work is:
+
 - define the metric
 - explain the trade-off
 - show the risk
@@ -449,7 +450,8 @@ The real work is:
 
 That is the difference between being seen as a tool user and being trusted as a business partner.
 
-MY TAKE:
+My take
+
 If a metric has no owner, no threshold, no review rhythm, and no consequence, it should not sit proudly on an executive dashboard. It should be fixed, parked, or removed.
 
 Otherwise, the team is not managing performance. It is decorating uncertainty.
@@ -462,10 +464,12 @@ Better data work does not make the room louder. It makes the next move harder to
 
 {candidate.summary}
 
-WHY THIS MATTERS:
+Why this matters
+
 The real value is helping a business decide what to do next. That can mean cleaning a messy file, defining the right KPI, finding a growth leak, explaining customer behavior, or turning a confusing report into one clear management action.
 
-THE COMMON MISTAKE:
+The common mistake
+
 This is where a lot of analysts play too small. They show charts, but they do not force a decision. They list tools, but they do not show judgment. They talk about data, but they do not connect it to revenue, retention, cost, speed, quality, or risk.
 
 A business does not care that the table was cleaned in Python if the output still does not answer a commercial question.
@@ -477,6 +481,7 @@ It does not care that the model is complex if nobody can explain what action sho
 That is why good data work needs a sharper standard.
 
 Before touching the tool, ask:
+
 - What decision is this supposed to improve?
 - Who will use the answer?
 - What metric will prove the answer mattered?
@@ -497,8 +502,10 @@ That is a stronger brand.
 
 That is also a stronger service.
 
-MY PRACTICAL RULE:
+My practical rule
+
 Every analysis should end with one of three things:
+
 - keep doing this
 - stop doing this
 - change this now
@@ -522,13 +529,13 @@ Make the data useful enough that the next decision becomes obvious."""
             ],
             visual_style="illustration" if self.config.allow_ai_illustrations else profile["visual_style"],
             visual_prompt=(
-                f"Create a realistic editorial LinkedIn image for this context: {candidate.topic} {candidate.summary}. "
-                "Do not make a generic stock photo. Show a real business data work moment that visually fits the specific topic. "
-                "a professional analyst or small team reviewing data on a laptop in a modern workspace, with subtle charts "
-                "on a screen in the background. Use natural light, credible business styling, premium photography feel, "
-                "no visible words, no flowcharts, no icons, no robot imagery, no text overlay."
+                f"Create a premium content-led LinkedIn visual for this argument: {candidate.topic} {candidate.summary}. "
+                "The image should visualize the post's meaning through a custom business-data metaphor: decisions, KPI signals, "
+                "trade-offs, evidence, ownership, risk controls, thresholds, and next-action cues. "
+                "Do not show a generic person staring at a laptop. Do not make a text card, basic workflow diagram, or stock office photo. "
+                "Use a polished Codex-style editorial image with realistic 3D or photographic materials, no readable words, no logos, and no text overlay."
             ),
-            alt_text="Realistic editorial image of a data professional reviewing business analytics in a modern workspace.",
+            alt_text=f"Premium editorial visual metaphor for the data analytics argument: {candidate.topic}",
         )
 
     def _render_visual(self, draft: DraftPost) -> VisualAsset:
@@ -587,9 +594,20 @@ Make the data useful enough that the next decision becomes obvious."""
                 if codex_asset.exists():
                     visual = validate_visual(codex_asset, draft.alt_text)
                 else:
-                    self._render_visual_to_path(draft, codex_asset)
+                    library_asset = self._codex_generated_library_path(draft)
+                    if library_asset.exists():
+                        codex_asset = library_asset
+                        visual_generation_provider = "codex_generated_library"
+                    elif os.environ.get("GEMINI_API_KEY"):
+                        gemini = self.gemini or GeminiClient()
+                        gemini.generate_illustration(self.config, draft, codex_asset)
+                        visual_generation_provider = "codex_manual_fallback_gemini_editorial"
+                    else:
+                        raise RuntimeError(
+                            "A generated Codex image is required before posting or dry-running. "
+                            f"Missing topic image: {codex_asset}. Missing generated library image: {library_asset}."
+                        )
                     visual = validate_visual(codex_asset, draft.alt_text)
-                    visual_generation_provider = "codex_manual_fallback_local"
                 result = PublishResult(
                     status="dry_run_ok" if dry_run else "published",
                     dry_run=dry_run,
@@ -922,6 +940,24 @@ Discussion prompts:
     def _codex_manual_visual_path(self, draft: DraftPost) -> Path:
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
         return self.config.assets_dir / f"codex_weekday_{slug}.png"
+
+    def _codex_generated_library_path(self, draft: DraftPost) -> Path:
+        bucket = self._candidate_bucket(
+            TrendCandidate(
+                topic=draft.topic,
+                category=draft.category,
+                summary="",
+                recency_score=1,
+                relevance_score=1,
+                evidence_score=1,
+                practical_value_score=1,
+                novelty_score=1,
+                sources=[],
+            ),
+            draft.visual_style,
+        )
+        slug = bucket or "business-analytics"
+        return self.config.assets_dir / f"codex_generated_{slug}.png"
 
     def _render_visual_to_path(self, draft: DraftPost, asset_path: Path) -> None:
         style, variant = self._visual_base_and_variant(draft.visual_style)

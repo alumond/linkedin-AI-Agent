@@ -60,7 +60,7 @@ def test_dry_run_does_not_publish(tmp_path: Path):
     assert len(report["draft"]["body"]) >= cfg.min_post_chars
 
 
-def test_codex_manual_missing_asset_falls_back_to_local_visual(tmp_path: Path):
+def test_codex_manual_missing_generated_asset_skips_before_dry_run(tmp_path: Path):
     cfg = config(tmp_path)
     cfg.min_post_chars = 2000
     cfg.max_post_chars = 3000
@@ -69,14 +69,52 @@ def test_codex_manual_missing_asset_falls_back_to_local_visual(tmp_path: Path):
 
     result = agent.run(dry_run=True)
 
+    assert result.status == "skipped"
+    assert "A generated Codex image is required" in result.skipped_reason
+
+
+def test_codex_manual_missing_topic_asset_uses_generated_library_image(tmp_path: Path):
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
+    cfg.visual_provider = "codex_manual"
+    cfg.assets_dir.mkdir(parents=True)
+    Image.new("RGB", (1200, 1200), "white").save(cfg.assets_dir / "codex_generated_tradeoff.png")
+    agent = LinkedInAIAgent(cfg)
+
+    result = agent.run(dry_run=True)
+
     assert result.status == "dry_run_ok"
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
-    visual_path = Path(report["visual"]["path"])
-    assert visual_path.exists()
-    assert visual_path.name.startswith("codex_weekday_")
-    assert report["visual"]["width"] == 1200
-    assert report["visual"]["height"] == 1200
-    assert report["visual_generation"]["provider"] == "codex_manual_fallback_local"
+    assert report["visual"]["path"].endswith("codex_generated_tradeoff.png")
+    assert report["visual_generation"]["provider"] == "codex_generated_library"
+
+
+def test_live_codex_manual_missing_asset_generates_editorial_image_with_gemini(tmp_path: Path, monkeypatch):
+    class ImageGemini:
+        def generate_illustration(self, cfg, draft, output_path):
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            Image.new("RGB", (1200, 1200), "white").save(output_path)
+
+    class FakeLinkedIn:
+        def upload_image(self, visual):
+            return "urn:li:image:test"
+
+        def publish_post(self, draft, image_urn):
+            return "urn:li:share:test"
+
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
+    cfg.visual_provider = "codex_manual"
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    agent = LinkedInAIAgent(cfg, gemini=ImageGemini(), linkedin=FakeLinkedIn())
+
+    result = agent.run(dry_run=False)
+
+    assert result.status == "published"
+    report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
+    assert report["visual_generation"]["provider"] == "codex_manual_fallback_gemini_editorial"
 
 
 def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path):
@@ -94,6 +132,17 @@ def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path)
             failures.append((candidate.topic, report.reasons))
 
     assert failures == []
+
+
+def test_curated_fallback_copy_uses_linkedin_native_section_labels(tmp_path: Path):
+    cfg = config(tmp_path)
+    agent = LinkedInAIAgent(cfg)
+    draft = agent._fallback_draft(agent._fallback_trend_candidates()[0])
+
+    assert "WHY THIS MATTERS:" not in draft.body
+    assert "THE COMMON MISTAKE:" not in draft.body
+    assert "MY PRACTICAL RULE:" not in draft.body
+    assert "Why this matters\n\n" in draft.body
 
 
 def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):
