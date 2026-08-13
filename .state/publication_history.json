@@ -115,5 +115,14 @@
     "primary_source_url": "",
     "report_path": "reports/20260812T102329Z-the-fastest-analyst-is-not-the-one-who-knows-every-tool--it-.json",
     "topic": "The fastest analyst is not the one who knows every tool. It is the one who asks better questions."
+  },
+  {
+    "category": "analytics tradeoffs",
+    "created_at": "2026-08-13T09:32:48Z",
+    "image_urn": "urn:li:image:D4E10AQFA2QCkKXa2vQ",
+    "post_urn": "urn:li:share:7493600443466690560",
+    "primary_source_url": "",
+    "report_path": "reports/20260813T093250Z-not-every-metric-deserves-a-dashboard.json",
+    "topic": "Not every metric deserves a dashboard."
   }
 ]
