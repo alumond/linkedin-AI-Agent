@@ -124,5 +124,14 @@
     "primary_source_url": "",
     "report_path": "reports/20260813T093250Z-not-every-metric-deserves-a-dashboard.json",
     "topic": "Not every metric deserves a dashboard."
+  },
+  {
+    "category": "data governance",
+    "created_at": "2026-08-14T09:19:57Z",
+    "image_urn": "urn:li:image:D4E10AQFPIAQcYf_IaA",
+    "post_urn": "urn:li:share:7493959598329008130",
+    "primary_source_url": "",
+    "report_path": "reports/20260814T092000Z-data-governance-starts-when-two-teams-define-the-same-metric.json",
+    "topic": "Data governance starts when two teams define the same metric differently."
   }
 ]
