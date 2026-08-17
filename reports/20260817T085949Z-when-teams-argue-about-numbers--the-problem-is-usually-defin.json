@@ -1,0 +1,101 @@
+{
+  "draft": {
+    "alt_text": "Premium editorial visual metaphor for the data analytics argument: When teams argue about numbers, the problem is usually definitions.",
+    "body": "Some analytics problems are not technical. They are judgment problems.\n\nWhen teams argue about numbers, the problem is usually definitions.\n\nBefore building another dashboard, fix how the team defines customer, churn, revenue, and active use.\n\nWhy this matters\n\nThis is the part of data work people avoid because it is uncomfortable. A chart can show movement, but it cannot choose the trade-off for the team. Someone still has to decide whether speed matters more than accuracy, whether growth matters more than margin, whether automation is safe enough, or whether a metric is trusted enough to guide action.\n\nThat is where a serious analyst becomes valuable.\n\nWhere weak reporting fails\n\nA weak report says: the number went up.\n\nA stronger report says: the number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.\n\nThe second version is harder to write because it forces accountability. It asks who owns the metric, what threshold matters, what action should happen next, and what risk the business is accepting if nothing changes.\n\nThis is also why governance is not just paperwork. In practical analytics, governance is the difference between a dashboard people admire and a report people trust. If two teams define the same KPI differently, the issue is not a visualization issue. It is a decision risk.\n\nFor freelancers, remote workers, and digital talent, this is a major positioning point. Do not sell yourself as someone who can only build reports. That is too small. Sell the ability to make messy decisions clearer with data.\n\nThe visible work is usually:\n\n- clean the data\n- build the dashboard\n- send the report\n\nThe valuable work is:\n\n- define the metric\n- explain the trade-off\n- show the risk\n- name the owner\n- recommend the next action\n\nThat is the difference between being seen as a tool user and being trusted as a business partner.\n\nMy take\n\nIf a metric has no owner, no threshold, no review rhythm, and no consequence, it should not sit proudly on an executive dashboard. It should be fixed, parked, or removed.\n\nOtherwise, the team is not managing performance. It is decorating uncertainty.\n\nBetter data work does not make the room louder. It makes the next move harder to ignore.",
+    "category": "data quality",
+    "claims": [
+      "Curated weekday opinion post for LinkedIn engagement.",
+      "The post is positioned around practical data analysis, business intelligence, and decision support.",
+      "The post intentionally avoids forced external links unless the selected topic is specifically portfolio-focused.",
+      "The content is designed to invite discussion from clients, recruiters, founders, and analytics teams."
+    ],
+    "hashtags": [
+      "#DataQuality",
+      "#Metrics",
+      "#BusinessIntelligence",
+      "#DataGovernance",
+      "#Analytics",
+      "#KPIReporting"
+    ],
+    "primary_source_url": "",
+    "supporting_source_urls": [],
+    "topic": "When teams argue about numbers, the problem is usually definitions.",
+    "visual_prompt": "Create a premium content-led LinkedIn visual for this argument: When teams argue about numbers, the problem is usually definitions. Before building another dashboard, fix how the team defines customer, churn, revenue, and active use.. The image should visualize the post's meaning through a custom business-data metaphor: decisions, KPI signals, trade-offs, evidence, ownership, risk controls, thresholds, and next-action cues. Do not show a generic person staring at a laptop. Do not make a text card, basic workflow diagram, or stock office photo. Use a polished Codex-style editorial image with realistic 3D or photographic materials, no readable words, no logos, and no text overlay.",
+    "visual_style": "insight_card:focus_strip"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [],
+  "publish": {
+    "created_at": "2026-08-17T08:59:48Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4E10AQEwapvS9i6oRA",
+    "post_urn": "urn:li:share:7495041686109302785",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "When teams argue about numbers, the problem is usually definitions."
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": null
+  },
+  "selected_topic": "When teams argue about numbers, the problem is usually definitions.",
+  "status": "published",
+  "trend": {
+    "category": "data quality",
+    "evidence_score": 1.0,
+    "novelty_score": 0.95,
+    "practical_value_score": 0.99,
+    "recency_score": 1.0,
+    "relevance_score": 0.98,
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "Portfolio",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Almond Owolabi Portfolio",
+        "url": "https://almond-owolabi-portfolio-s3pd81.v2.appdeploy.ai/"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "LinkedIn AI Agent Repository",
+        "url": "https://github.com/alumond/linkedin-AI-Agent"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "GitHub",
+        "quality_score": 0.0,
+        "source_type": "independent",
+        "title": "Retail Revenue Command Center",
+        "url": "https://github.com/alumond/linkedin-AI-Agent/tree/main/projects/retail-revenue-command-center"
+      }
+    ],
+    "summary": "Before building another dashboard, fix how the team defines customer, churn, revenue, and active use.",
+    "topic": "When teams argue about numbers, the problem is usually definitions."
+  },
+  "visual": {
+    "alt_text": "Premium editorial visual metaphor for the data analytics argument: When teams argue about numbers, the problem is usually definitions.",
+    "height": 1254,
+    "linkedin_image_urn": "urn:li:image:D4E10AQEwapvS9i6oRA",
+    "mime_type": "image/png",
+    "path": "assets/codex_generated_governance.png",
+    "width": 1254
+  },
+  "visual_generation": {
+    "alt_text": "Premium editorial visual metaphor for the data analytics argument: When teams argue about numbers, the problem is usually definitions.",
+    "asset": "assets/codex_generated_governance.png",
+    "prompt": "Create a premium content-led LinkedIn visual for this argument: When teams argue about numbers, the problem is usually definitions. Before building another dashboard, fix how the team defines customer, churn, revenue, and active use.. The image should visualize the post's meaning through a custom business-data metaphor: decisions, KPI signals, trade-offs, evidence, ownership, risk controls, thresholds, and next-action cues. Do not show a generic person staring at a laptop. Do not make a text card, basic workflow diagram, or stock office photo. Use a polished Codex-style editorial image with realistic 3D or photographic materials, no readable words, no logos, and no text overlay.",
+    "provider": "codex_generated_library"
+  }
+}
