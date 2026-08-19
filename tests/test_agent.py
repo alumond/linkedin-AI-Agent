@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -70,10 +71,10 @@ def test_codex_manual_missing_generated_asset_skips_before_dry_run(tmp_path: Pat
     result = agent.run(dry_run=True)
 
     assert result.status == "skipped"
-    assert "A generated Codex image is required" in result.skipped_reason
+    assert "A Codex-generated topic-specific image is required" in result.skipped_reason
 
 
-def test_codex_manual_missing_topic_asset_uses_generated_library_image(tmp_path: Path):
+def test_codex_manual_missing_topic_asset_rejects_generated_library_image(tmp_path: Path):
     cfg = config(tmp_path)
     cfg.min_post_chars = 2000
     cfg.max_post_chars = 3000
@@ -84,18 +85,32 @@ def test_codex_manual_missing_topic_asset_uses_generated_library_image(tmp_path:
 
     result = agent.run(dry_run=True)
 
-    assert result.status == "dry_run_ok"
-    report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
-    assert report["visual"]["path"].endswith("codex_generated_tradeoff.png")
-    assert report["visual_generation"]["provider"] == "codex_generated_library"
+    assert result.status == "skipped"
+    assert "topic-specific image" in result.skipped_reason
 
 
-def test_live_codex_manual_missing_asset_generates_editorial_image_with_gemini(tmp_path: Path, monkeypatch):
-    class ImageGemini:
-        def generate_illustration(self, cfg, draft, output_path):
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            Image.new("RGB", (1200, 1200), "white").save(output_path)
+def test_live_codex_manual_missing_asset_does_not_publish_with_api_key(tmp_path: Path, monkeypatch):
+    class FakeLinkedIn:
+        def upload_image(self, visual):
+            raise AssertionError("missing Codex image must block upload")
 
+        def publish_post(self, draft, image_urn):
+            raise AssertionError("missing Codex image must block publish")
+
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
+    cfg.visual_provider = "codex_manual"
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
+    agent = LinkedInAIAgent(cfg, linkedin=FakeLinkedIn())
+
+    result = agent.run(dry_run=False)
+
+    assert result.status == "skipped"
+    assert "A Codex-generated topic-specific image is required" in result.skipped_reason
+
+
+def test_codex_manual_topic_asset_is_used_and_fingerprinted(tmp_path: Path):
     class FakeLinkedIn:
         def upload_image(self, visual):
             return "urn:li:image:test"
@@ -107,14 +122,53 @@ def test_live_codex_manual_missing_asset_generates_editorial_image_with_gemini(t
     cfg.min_post_chars = 2000
     cfg.max_post_chars = 3000
     cfg.visual_provider = "codex_manual"
-    monkeypatch.setenv("GEMINI_API_KEY", "test-key")
-    agent = LinkedInAIAgent(cfg, gemini=ImageGemini(), linkedin=FakeLinkedIn())
+    agent = LinkedInAIAgent(cfg, linkedin=FakeLinkedIn())
+    for candidate in agent._fallback_trend_candidates():
+        draft = agent._fallback_draft(candidate)
+        asset = agent._codex_manual_visual_path(draft)
+        asset.parent.mkdir(parents=True, exist_ok=True)
+        Image.new("RGB", (1200, 1200), "white").save(asset)
 
     result = agent.run(dry_run=False)
 
     assert result.status == "published"
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
-    assert report["visual_generation"]["provider"] == "codex_manual_fallback_gemini_editorial"
+    assert report["visual_generation"]["provider"] == "codex_manual_topic_asset"
+    history = json.loads((cfg.state_dir / "publication_history.json").read_text(encoding="utf-8"))
+    assert history[-1]["visual_path"] == report["visual_generation"]["asset"]
+    assert len(history[-1]["visual_sha256"]) == 64
+
+
+def test_recent_codex_manual_visual_reuse_is_blocked(tmp_path: Path):
+    cfg = config(tmp_path)
+    cfg.min_post_chars = 2000
+    cfg.max_post_chars = 3000
+    cfg.visual_provider = "codex_manual"
+    agent = LinkedInAIAgent(cfg)
+    cfg.state_dir.mkdir(parents=True, exist_ok=True)
+    cfg.state_dir.joinpath("weekday_rotation_state.json").write_text(
+        json.dumps(
+            {
+                "weekday_index": 1,
+                "weekday_last_active_day": datetime.now().date().isoformat(),
+                "weekday_special_day": 2,
+            }
+        ),
+        encoding="utf-8",
+    )
+    draft = agent._fallback_draft(agent._pick_fallback_candidate(agent._fallback_trend_candidates()))
+    asset = agent._codex_manual_visual_path(draft)
+    asset.parent.mkdir(parents=True, exist_ok=True)
+    Image.new("RGB", (1200, 1200), "white").save(asset)
+    cfg.state_dir.joinpath("publication_history.json").write_text(
+        json.dumps([{"created_at": "2026-08-12T00:00:00Z", "visual_path": str(asset)}]),
+        encoding="utf-8",
+    )
+
+    result = agent.run(dry_run=True)
+
+    assert result.status == "skipped"
+    assert "already used recently" in result.skipped_reason
 
 
 def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path):

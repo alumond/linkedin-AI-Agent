@@ -34,6 +34,23 @@ class PublicationHistory:
         normalized = " ".join(topic.lower().split())
         return normalized in {" ".join(item.split()) for item in self.recent_topics(lookback_days)}
 
+    def recent_visual_fingerprints(self, lookback_days: int) -> set[str]:
+        cutoff = datetime.now(timezone.utc) - timedelta(days=lookback_days)
+        fingerprints: set[str] = set()
+        for item in self.load():
+            created_at = str(item.get("created_at", ""))
+            try:
+                parsed = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if parsed < cutoff:
+                continue
+            for key in ("visual_sha256", "visual_path"):
+                value = item.get(key)
+                if value:
+                    fingerprints.add(str(value))
+        return fingerprints
+
     def append(self, record: dict[str, Any]) -> None:
         items = self.load()
         items.append(record)

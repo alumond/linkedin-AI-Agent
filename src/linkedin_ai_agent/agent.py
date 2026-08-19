@@ -590,24 +590,16 @@ Make the data useful enough that the next decision becomes obvious."""
                 return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
             if self.config.visual_provider == "codex_manual":
                 codex_asset = self._codex_manual_visual_path(draft)
-                visual_generation_provider = "codex_manual"
                 if codex_asset.exists():
+                    visual_generation_provider = "codex_manual_topic_asset"
                     visual = validate_visual(codex_asset, draft.alt_text)
                 else:
-                    library_asset = self._codex_generated_library_path(draft)
-                    if library_asset.exists():
-                        codex_asset = library_asset
-                        visual_generation_provider = "codex_generated_library"
-                    elif os.environ.get("GEMINI_API_KEY"):
-                        gemini = self.gemini or GeminiClient()
-                        gemini.generate_illustration(self.config, draft, codex_asset)
-                        visual_generation_provider = "codex_manual_fallback_gemini_editorial"
-                    else:
-                        raise RuntimeError(
-                            "A generated Codex image is required before posting or dry-running. "
-                            f"Missing topic image: {codex_asset}. Missing generated library image: {library_asset}."
-                        )
-                    visual = validate_visual(codex_asset, draft.alt_text)
+                    raise RuntimeError(
+                        "A Codex-generated topic-specific image is required before posting or dry-running. "
+                        f"Missing topic image: {codex_asset}."
+                    )
+                visual_sha256 = self._visual_sha256(codex_asset)
+                self._ensure_visual_not_reused(codex_asset, visual_sha256)
                 result = PublishResult(
                     status="dry_run_ok" if dry_run else "published",
                     dry_run=dry_run,
@@ -634,6 +626,7 @@ Make the data useful enough that the next decision becomes obvious."""
                         "visual_generation": {
                             "provider": visual_generation_provider,
                             "asset": str(codex_asset),
+                            "asset_sha256": visual_sha256,
                             "prompt": draft.visual_prompt,
                             "alt_text": draft.alt_text,
                         },
@@ -651,12 +644,18 @@ Make the data useful enough that the next decision becomes obvious."""
                             "category": draft.category,
                             "post_urn": result.post_urn,
                             "image_urn": result.image_urn,
+                            "visual_path": str(codex_asset),
+                            "visual_sha256": visual_sha256,
+                            "visual_provider": visual_generation_provider,
                             "primary_source_url": draft.primary_source_url,
                             "report_path": str(report_path),
                         }
                     )
                 return result
             visual = self._render_visual(draft)
+            visual_path = Path(visual.path)
+            visual_sha256 = self._visual_sha256(visual_path)
+            self._ensure_visual_not_reused(visual_path, visual_sha256)
             image_urn = None
             post_urn = None
             if not dry_run:
@@ -692,6 +691,9 @@ Make the data useful enough that the next decision becomes obvious."""
                         "category": draft.category,
                         "post_urn": post_urn,
                         "image_urn": image_urn,
+                        "visual_path": str(visual_path),
+                        "visual_sha256": visual_sha256,
+                        "visual_provider": self.config.visual_provider,
                         "primary_source_url": draft.primary_source_url,
                         "report_path": str(report_path),
                     }
@@ -758,6 +760,9 @@ Discussion prompts:
             return self._skip("; ".join(draft_report.reasons), draft=draft, citations=[])
         try:
             visual = validate_visual(self.config.assets_dir / FEATURED_DASHBOARD_IMAGE, draft.alt_text, allow_landscape=True)
+            visual_path = Path(visual.path)
+            visual_sha256 = self._visual_sha256(visual_path)
+            self._ensure_visual_not_reused(visual_path, visual_sha256)
             image_urn = None
             post_urn = None
             if not dry_run:
@@ -793,6 +798,9 @@ Discussion prompts:
                         "category": draft.category,
                         "post_urn": post_urn,
                         "image_urn": image_urn,
+                        "visual_path": str(visual_path),
+                        "visual_sha256": visual_sha256,
+                        "visual_provider": "featured_dashboard",
                         "primary_source_url": draft.primary_source_url,
                         "report_path": str(report_path),
                     }
@@ -832,9 +840,11 @@ Discussion prompts:
         if not draft_report.passed:
             raise RuntimeError("Staged post failed the writing gate: " + "; ".join(draft_report.reasons))
         checked_visual = validate_visual(Path(visual.path), visual.alt_text)
-        actual_hash = hashlib.sha256(Path(visual.path).read_bytes()).hexdigest()
+        visual_path = Path(visual.path)
+        actual_hash = self._visual_sha256(visual_path)
         if actual_hash != payload.get("image_sha256"):
             raise RuntimeError("The staged image changed after preview. Generate and review a new preview.")
+        self._ensure_visual_not_reused(visual_path, actual_hash)
 
         linkedin = self.linkedin or LinkedInClient.from_env(self.config)
         payload["status"] = "publishing"
@@ -876,6 +886,9 @@ Discussion prompts:
                 "category": draft.category,
                 "post_urn": post_urn,
                 "image_urn": image_urn,
+                "visual_path": str(visual_path),
+                "visual_sha256": actual_hash,
+                "visual_provider": "staged_preview",
                 "primary_source_url": draft.primary_source_url,
                 "report_path": str(report_path),
             }
@@ -941,23 +954,16 @@ Discussion prompts:
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
         return self.config.assets_dir / f"codex_weekday_{slug}.png"
 
-    def _codex_generated_library_path(self, draft: DraftPost) -> Path:
-        bucket = self._candidate_bucket(
-            TrendCandidate(
-                topic=draft.topic,
-                category=draft.category,
-                summary="",
-                recency_score=1,
-                relevance_score=1,
-                evidence_score=1,
-                practical_value_score=1,
-                novelty_score=1,
-                sources=[],
-            ),
-            draft.visual_style,
-        )
-        slug = bucket or "business-analytics"
-        return self.config.assets_dir / f"codex_generated_{slug}.png"
+    def _visual_sha256(self, asset_path: Path) -> str:
+        return hashlib.sha256(asset_path.read_bytes()).hexdigest()
+
+    def _ensure_visual_not_reused(self, asset_path: Path, visual_sha256: str) -> None:
+        fingerprints = self.history.recent_visual_fingerprints(self.config.duplicate_lookback_days)
+        if str(asset_path) in fingerprints or visual_sha256 in fingerprints:
+            raise RuntimeError(
+                "This generated image was already used recently. "
+                "Create a new topic-specific visual before posting."
+            )
 
     def _render_visual_to_path(self, draft: DraftPost, asset_path: Path) -> None:
         style, variant = self._visual_base_and_variant(draft.visual_style)
