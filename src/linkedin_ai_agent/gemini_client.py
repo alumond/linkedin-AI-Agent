@@ -207,12 +207,13 @@ Requirements:
     def generate_illustration(self, config: AgentConfig, draft: DraftPost, output_path: Path) -> Path:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         prompt = (
-            "Create a square 1:1 premium editorial visual for a LinkedIn post. "
-            "The image must visualize the actual argument of the post, not a generic analyst, office, or person looking at a computer. "
-            "Use a custom business-data metaphor built from realistic 3D or photographic materials: decision paths, KPI signals, risk controls, evidence markers, thresholds, dashboards, clean data objects, and next-action cues. "
-            "Make it feel like an Apple-quality executive briefing visual or premium consulting thought-leadership asset. "
-            "It may include abstract workflows only when they are elegant, content-specific, and clearly tied to the post's argument. "
-            "Do not include readable words, labels, captions, logos, watermarks, robot faces, circuit-board cliches, generic office stock photography, or text overlays. "
+            "Create a premium LinkedIn infographic for a data and analytics post. "
+            "The image must explain the actual argument of the post clearly to an average reader, not just symbolize it. "
+            "Use a clean light-background workflow/explainer style with a strong title, numbered cards or clearly separated sections, simple icons, arrows where movement matters, short readable captions, and a concise takeaway area. "
+            "Choose square or landscape format depending on what best fits the concept. "
+            "Make it feel like a polished executive briefing infographic: clear, calm, commercially aware, and easy to scan in seconds. "
+            "All text must be correctly spelled, large enough to read, and directly tied to the post. "
+            "Do not include logos, watermarks, generic office stock photography, unlabeled abstract metaphors, dark 3D scenes by default, robot faces, circuit-board cliches, or tiny unreadable UI text. "
             f"Topic: {draft.topic}. "
             f"Post body to interpret visually: {draft.body[:1200]} "
             f"Visual direction: {draft.visual_prompt}. "
@@ -222,7 +223,7 @@ Requirements:
             config.image_model,
             {
                 "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {"response_modalities": ["IMAGE"], "image_config": {"aspect_ratio": "1:1"}},
+                "generationConfig": {"response_modalities": ["IMAGE"]},
             },
         )
         output_path.write_bytes(image_bytes_from_generate_content(response))

@@ -529,13 +529,15 @@ Make the data useful enough that the next decision becomes obvious."""
             ],
             visual_style="illustration" if self.config.allow_ai_illustrations else profile["visual_style"],
             visual_prompt=(
-                f"Create a premium content-led LinkedIn visual for this argument: {candidate.topic} {candidate.summary}. "
-                "The image should visualize the post's meaning through a custom business-data metaphor: decisions, KPI signals, "
-                "trade-offs, evidence, ownership, risk controls, thresholds, and next-action cues. "
-                "Do not show a generic person staring at a laptop. Do not make a text card, basic workflow diagram, or stock office photo. "
-                "Use a polished Codex-style editorial image with realistic 3D or photographic materials, no readable words, no logos, and no text overlay."
+                f"Create a premium content-led LinkedIn infographic for this argument: {candidate.topic} {candidate.summary}. "
+                "Use the clean workflow/explainer style: light background, strong title, numbered cards or clearly separated sections, "
+                "simple icons, arrows only where movement matters, short readable captions, and a concise takeaway area. "
+                "The visual must explain the post idea clearly to an average reader in seconds. "
+                "Use square or landscape format depending on what best fits the concept. "
+                "Do not show a generic person staring at a laptop, stock office photo, abstract unlabeled metaphor, or text-only quote card. "
+                "All text must be correctly spelled, large enough to read, and directly tied to the post."
             ),
-            alt_text=f"Premium editorial visual metaphor for the data analytics argument: {candidate.topic}",
+            alt_text=f"Clear LinkedIn infographic explaining the data analytics argument: {candidate.topic}",
         )
 
     def _render_visual(self, draft: DraftPost) -> VisualAsset:

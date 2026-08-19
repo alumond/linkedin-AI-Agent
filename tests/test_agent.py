@@ -199,6 +199,18 @@ def test_curated_fallback_copy_uses_linkedin_native_section_labels(tmp_path: Pat
     assert "Why this matters\n\n" in draft.body
 
 
+def test_curated_fallback_visual_prompt_uses_readable_infographic_standard(tmp_path: Path):
+    cfg = config(tmp_path)
+    agent = LinkedInAIAgent(cfg)
+    draft = agent._fallback_draft(agent._fallback_trend_candidates()[0])
+
+    assert "LinkedIn infographic" in draft.visual_prompt
+    assert "short readable captions" in draft.visual_prompt
+    assert "Use square or landscape format" in draft.visual_prompt
+    assert "no readable words" not in draft.visual_prompt.lower()
+    assert "no text overlay" not in draft.visual_prompt.lower()
+
+
 def test_manual_generate_still_revises_invalid_gemini_draft(tmp_path: Path):
     class RevisingGemini(FakeGemini):
         def __init__(self):

@@ -86,13 +86,16 @@ models:
 visuals:
   allow_ai_illustrations: false
   provider: codex_manual
-  direction: realistic editorial LinkedIn images with real-life business/data scenes, people, laptops, workspaces, dashboards in the background, and no flowchart-style layouts
+  direction: clean light-background LinkedIn infographics with a strong title, numbered cards or clearly separated sections, arrows where movement matters, simple icons, short readable captions, and concise takeaway areas; use square or landscape depending on the post, but keep the image easy to understand in seconds
   avoid:
+  - dark 3D boardroom scenes by default
+  - unlabeled abstract metaphors
+  - unreadable tiny UI text
+  - misspelled generated text
   - neon-by-default
   - glowing brains and circuit-board cliches
   - robot faces and generic AI imagery
   - sparse skeleton diagrams
-  - abstract single-object scenes
   - text-only quote cards
   - synthetic photorealism
 linkedin:
