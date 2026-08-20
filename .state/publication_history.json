@@ -160,5 +160,17 @@
     "primary_source_url": "",
     "report_path": "reports/20260819T085333Z-remote-data-talent-wins-when-the-work-is-easy-to-inspect.json",
     "topic": "Remote data talent wins when the work is easy to inspect."
+  },
+  {
+    "category": "data storytelling",
+    "created_at": "2026-08-20T11:43:32Z",
+    "image_urn": "urn:li:image:D4E10AQHbWpXTqUjveg",
+    "post_urn": "urn:li:share:7496170054716338177",
+    "primary_source_url": "",
+    "report_path": "reports/20260820T114334Z-data-storytelling-is-not-making-charts-emotional--it-is-maki.json",
+    "topic": "Data storytelling is not making charts emotional. It is making decisions obvious.",
+    "visual_path": "assets/codex_weekday_data-storytelling-is-not-making-charts-emotional--it-is-making-decisio.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "0ba01fcf294b2c0b4326e78ea1b4f54862c7b3b71a42b661a7fb51966283da02"
   }
 ]
