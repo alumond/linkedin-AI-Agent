@@ -8,6 +8,7 @@ __pycache__/
 .pytest_cache/
 reports/*.json
 assets/*.png
+!assets/codex_weekday_*.png
 assets/*.jpg
 assets/*.jpeg
 .state/*.json

@@ -557,6 +557,40 @@ def _draw_wrapped_text(
         draw.text((x, y + index * line_height), line, font=font, fill=fill)
 
 
+def _wrap_to_width(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont, max_width: int) -> list[str]:
+    words = text.split()
+    lines: list[str] = []
+    current = ""
+    for word in words:
+        candidate = f"{current} {word}".strip()
+        left, _, right, _ = draw.textbbox((0, 0), candidate, font=font)
+        if current and right - left > max_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return lines
+
+
+def _limit_lines_with_ellipsis(
+    draw: ImageDraw.ImageDraw,
+    lines: list[str],
+    max_lines: int,
+    font: ImageFont.ImageFont,
+    max_width: int,
+) -> list[str]:
+    if len(lines) <= max_lines:
+        return lines
+    kept = lines[:max_lines]
+    kept[-1] = " ".join([kept[-1], *lines[max_lines:]]).strip()
+    while draw.textbbox((0, 0), kept[-1] + "...", font=font)[2] > max_width and " " in kept[-1]:
+        kept[-1] = kept[-1].rsplit(" ", 1)[0]
+    kept[-1] = kept[-1].rstrip(".") + "..."
+    return kept
+
+
 def _takeaway_text(draft: DraftPost, fallback: str) -> str:
     if draft.claims:
         return f"{draft.claims[0].rstrip('.')}. Validate the evidence, then choose the practical next step."
@@ -1161,17 +1195,26 @@ def _draw_editorial_copy(draw: ImageDraw.ImageDraw, draft: DraftPost, art: dict[
     y = _s(172)
     kicker = _short_category(draft.category).upper()
     kicker_font = _font(_s(40), bold=True)
-    title_font = _font(_s(100 if compact else 110), bold=True)
-    max_chars = 28 if compact else 18
-    max_lines = 2 if compact else 3
+    title_size = _s(96 if compact else 110)
+    min_title_size = _s(72 if compact else 86)
+    max_width = _s(1560)
+    max_lines = 3
 
     draw.rounded_rectangle((x, y, x + _s(620), y + _s(92)), radius=_s(46), fill=art["accent"])
     draw.text((x + _s(44), y + _s(22)), kicker[:28], font=kicker_font, fill=art["paper"])
     y += _s(168)
-    for line in _wrap(draft.topic, max_chars)[:max_lines]:
+    title_font = _font(title_size, bold=True)
+    title_lines = _wrap_to_width(draw, draft.topic, title_font, max_width)
+    while len(title_lines) > max_lines and title_size > min_title_size:
+        title_size -= _s(4)
+        title_font = _font(title_size, bold=True)
+        title_lines = _wrap_to_width(draw, draft.topic, title_font, max_width)
+    title_lines = _limit_lines_with_ellipsis(draw, title_lines, max_lines, title_font, max_width)
+    line_height = draw.textbbox((0, 0), "Ag", font=title_font)[3] + _s(28 if compact else 32)
+    for line in title_lines:
         draw.text((x, y), line, font=title_font, fill=art["ink"])
-        y += _s(124)
-    draw.line((x, y + _s(48), x + _s(490), y + _s(48)), fill=art["accent2"], width=_s(18))
+        y += line_height
+    draw.line((x, y + _s(36), x + _s(490), y + _s(36)), fill=art["accent2"], width=_s(18))
 
 
 def _draw_corner_mark(draw: ImageDraw.ImageDraw, art: dict[str, str]) -> None:
