@@ -184,5 +184,17 @@
     "visual_path": "assets/codex_weekday_your-spreadsheet-is-not-messy--your-business-process-is-messy.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "78f0eb4253c4d09439c974a73dc306f0f005a43f1e4fbf3aa14d2eab6ab4ce75"
+  },
+  {
+    "category": "analytics strategy",
+    "created_at": "2026-08-27T19:03:51Z",
+    "image_urn": "urn:li:image:D4E10AQGQYCTmQcwp9g",
+    "post_urn": "urn:li:share:7498817579919011840",
+    "primary_source_url": "",
+    "report_path": "reports/20260827T190353Z-the-underrated-skill-in-analytics-is-knowing-what-not-to-mea.json",
+    "topic": "The underrated skill in analytics is knowing what not to measure.",
+    "visual_path": "assets/codex_weekday_the-underrated-skill-in-analytics-is-knowing-what-not-to-measure.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "6b9eee41834394e94eed37746b557d71ea6be1267eb0176f465e1befc174e743"
   }
 ]
