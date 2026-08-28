@@ -196,5 +196,17 @@
     "visual_path": "assets/codex_weekday_the-underrated-skill-in-analytics-is-knowing-what-not-to-measure.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "6b9eee41834394e94eed37746b557d71ea6be1267eb0176f465e1befc174e743"
+  },
+  {
+    "category": "growth analytics",
+    "created_at": "2026-08-28T20:11:39Z",
+    "image_urn": "urn:li:image:D4E10AQFmNzjTUt4-Yg",
+    "post_urn": "urn:li:share:7499197028686544896",
+    "primary_source_url": "",
+    "report_path": "reports/20260828T201140Z-revenue-dashboards-should-start-with-customer-behavior--not-.json",
+    "topic": "Revenue dashboards should start with customer behavior, not total sales.",
+    "visual_path": "assets/codex_weekday_revenue-dashboards-should-start-with-customer-behavior--not-total-sale.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "00244d4b565f2583dc9156efba5af19b8056aa076a74ed7301e88e451a9e3a86"
   }
 ]
