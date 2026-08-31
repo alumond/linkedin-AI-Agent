@@ -208,5 +208,17 @@
     "visual_path": "assets/codex_weekday_revenue-dashboards-should-start-with-customer-behavior--not-total-sale.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "00244d4b565f2583dc9156efba5af19b8056aa076a74ed7301e88e451a9e3a86"
+  },
+  {
+    "category": "analytics tradeoffs",
+    "created_at": "2026-08-31T16:08:54Z",
+    "image_urn": "urn:li:image:D4E10AQFS3t7AgZ_NkQ",
+    "post_urn": "urn:li:share:7500223105030594561",
+    "primary_source_url": "",
+    "report_path": "reports/20260831T160856Z-speed-versus-accuracy-is-the-analytics-trade-off-nobody-want.json",
+    "topic": "Speed versus accuracy is the analytics trade-off nobody wants to admit.",
+    "visual_path": "assets/codex_weekday_speed-versus-accuracy-is-the-analytics-trade-off-nobody-wants-to-admit.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "4474911c4f5218ce30d049cb71891072a6114a2f92e63ccea9ce6c60563457e5"
   }
 ]
