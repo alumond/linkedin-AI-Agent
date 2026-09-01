@@ -220,5 +220,17 @@
     "visual_path": "assets/codex_weekday_speed-versus-accuracy-is-the-analytics-trade-off-nobody-wants-to-admit.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "4474911c4f5218ce30d049cb71891072a6114a2f92e63ccea9ce6c60563457e5"
+  },
+  {
+    "category": "business intelligence",
+    "created_at": "2026-09-01T13:29:14Z",
+    "image_urn": "urn:li:image:D4E10AQEJ6r_-xAs31Q",
+    "post_urn": "urn:li:share:7500545310398513153",
+    "primary_source_url": "",
+    "report_path": "reports/20260901T132916Z-founders-do-not-need-more-charts--they-need-fewer-blind-spot.json",
+    "topic": "Founders do not need more charts. They need fewer blind spots.",
+    "visual_path": "assets/codex_weekday_founders-do-not-need-more-charts--they-need-fewer-blind-spots.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "89a32b01058595b6ff8be086d3ab89a1d5a2d473b35d63a1b7c94f7411ed95dd"
   }
 ]
