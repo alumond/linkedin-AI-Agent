@@ -232,5 +232,17 @@
     "visual_path": "assets/codex_weekday_founders-do-not-need-more-charts--they-need-fewer-blind-spots.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "89a32b01058595b6ff8be086d3ab89a1d5a2d473b35d63a1b7c94f7411ed95dd"
+  },
+  {
+    "category": "customer analytics",
+    "created_at": "2026-09-02T12:46:00Z",
+    "image_urn": "urn:li:image:D4E10AQFvM3BJAQHWgw",
+    "post_urn": "urn:li:share:7500896818239668224",
+    "primary_source_url": "",
+    "report_path": "reports/20260902T124602Z-customer-retention-is-a-better-growth-story-than-vanity-acqu.json",
+    "topic": "Customer retention is a better growth story than vanity acquisition numbers.",
+    "visual_path": "assets/codex_weekday_customer-retention-is-a-better-growth-story-than-vanity-acquisition-nu.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "6d3a73beba4e0784e862ca69f9ff62bc556d8cfa2fd10f192f733728bfae3795"
   }
 ]
