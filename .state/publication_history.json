@@ -244,5 +244,17 @@
     "visual_path": "assets/codex_weekday_customer-retention-is-a-better-growth-story-than-vanity-acquisition-nu.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "6d3a73beba4e0784e862ca69f9ff62bc556d8cfa2fd10f192f733728bfae3795"
+  },
+  {
+    "category": "AI for analytics",
+    "created_at": "2026-09-03T12:48:46Z",
+    "image_urn": "urn:li:image:D4E10AQHh4XEf_FbfZw",
+    "post_urn": "urn:li:share:7501259902309294080",
+    "primary_source_url": "",
+    "report_path": "reports/20260903T124848Z-ai-will-not-save-a-reporting-process-that-nobody-owns.json",
+    "topic": "AI will not save a reporting process that nobody owns.",
+    "visual_path": "assets/codex_weekday_ai-will-not-save-a-reporting-process-that-nobody-owns.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "aec876ba2c4668608fabb58d340452c5bee15e286abd8218ea763c013a7ec366"
   }
 ]
