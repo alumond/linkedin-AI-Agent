@@ -256,5 +256,17 @@
     "visual_path": "assets/codex_weekday_ai-will-not-save-a-reporting-process-that-nobody-owns.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "aec876ba2c4668608fabb58d340452c5bee15e286abd8218ea763c013a7ec366"
+  },
+  {
+    "category": "analytics portfolio",
+    "created_at": "2026-09-04T12:43:00Z",
+    "image_urn": "urn:li:image:D4E10AQH92gntGRbClA",
+    "post_urn": "urn:li:share:7501620837343494144",
+    "primary_source_url": "",
+    "report_path": "reports/20260904T124302Z-the-real-flex-is-turning-a-raw-csv-into-a-decision-someone-c.json",
+    "topic": "The real flex is turning a raw CSV into a decision someone can act on.",
+    "visual_path": "assets/codex_weekday_the-real-flex-is-turning-a-raw-csv-into-a-decision-someone-can-act-on.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "8a9319a48a1c3d90c5bcd793a7b34fbabb7b2b3c5b0921a935651c5a5e0a0cbe"
   }
 ]
