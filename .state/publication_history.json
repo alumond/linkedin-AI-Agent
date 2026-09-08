@@ -280,5 +280,17 @@
     "visual_path": "assets/codex_weekday_the-best-power-bi-dashboard-is-the-one-that-makes-the-next-meeting-sho.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "bb2aa162b40752400ff9573ffcce199c938116cee78c81b4428782643491aae5"
+  },
+  {
+    "category": "decision support",
+    "created_at": "2026-09-08T12:51:48Z",
+    "image_urn": "urn:li:image:D4E10AQGLxLhYJN0Mzw",
+    "post_urn": "urn:li:share:7503072602748252160",
+    "primary_source_url": "",
+    "report_path": "reports/20260908T125149Z-a-small-dataset-with-a-clear-business-question-beats-a-huge-.json",
+    "topic": "A small dataset with a clear business question beats a huge dataset with no decision.",
+    "visual_path": "assets/codex_weekday_a-small-dataset-with-a-clear-business-question-beats-a-huge-dataset-wi.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "9eb0b869e4b2cde8a3d93d895a62417d68707ae8f542229ee1ef388b7b71a0a7"
   }
 ]
