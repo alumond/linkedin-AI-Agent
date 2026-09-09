@@ -292,5 +292,17 @@
     "visual_path": "assets/codex_weekday_a-small-dataset-with-a-clear-business-question-beats-a-huge-dataset-wi.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "9eb0b869e4b2cde8a3d93d895a62417d68707ae8f542229ee1ef388b7b71a0a7"
+  },
+  {
+    "category": "analytics governance",
+    "created_at": "2026-09-09T12:57:29Z",
+    "image_urn": "urn:li:image:D4E10AQGiyJwZQ2F0Tg",
+    "post_urn": "urn:li:share:7503436423480406016",
+    "primary_source_url": "",
+    "report_path": "reports/20260909T125731Z-every-dashboard-should-have-an-escalation-rule.json",
+    "topic": "Every dashboard should have an escalation rule.",
+    "visual_path": "assets/codex_weekday_every-dashboard-should-have-an-escalation-rule.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "939fd91584432012c5e1c55abc760bedee0630e6b33e7b3e2f2ac838930e2577"
   }
 ]
