@@ -304,5 +304,17 @@
     "visual_path": "assets/codex_weekday_every-dashboard-should-have-an-escalation-rule.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "939fd91584432012c5e1c55abc760bedee0630e6b33e7b3e2f2ac838930e2577"
+  },
+  {
+    "category": "reporting governance",
+    "created_at": "2026-09-10T12:54:31Z",
+    "image_urn": "urn:li:image:D4E10AQGdQxZXpiS-OA",
+    "post_urn": "urn:li:share:7503798064235626497",
+    "primary_source_url": "",
+    "report_path": "reports/20260910T125433Z-automating-bad-reporting-just-makes-bad-decisions-arrive-fas.json",
+    "topic": "Automating bad reporting just makes bad decisions arrive faster.",
+    "visual_path": "assets/codex_weekday_automating-bad-reporting-just-makes-bad-decisions-arrive-faster.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "efe009fd4f0a81a87da4ac7bc6bef5e96beebbf86504fd938667e0efbc4d38ad"
   }
 ]
