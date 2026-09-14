@@ -316,5 +316,17 @@
     "visual_path": "assets/codex_weekday_automating-bad-reporting-just-makes-bad-decisions-arrive-faster.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "efe009fd4f0a81a87da4ac7bc6bef5e96beebbf86504fd938667e0efbc4d38ad"
+  },
+  {
+    "category": "analytics tradeoffs",
+    "created_at": "2026-09-14T15:00:09Z",
+    "image_urn": "urn:li:image:D4D10AQGVz_CY7MhpPg",
+    "post_urn": "urn:li:share:7505279232370196480",
+    "primary_source_url": "",
+    "report_path": "reports/20260914T150011Z-not-every-metric-deserves-a-dashboard.json",
+    "topic": "Not every metric deserves a dashboard.",
+    "visual_path": "assets/codex_weekday_not-every-metric-deserves-a-dashboard.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "83bc20267da3256d62981564f0860f3187145405d7cb2e444aa3684df237d2b5"
   }
 ]
