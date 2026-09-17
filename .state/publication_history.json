@@ -328,5 +328,17 @@
     "visual_path": "assets/codex_weekday_not-every-metric-deserves-a-dashboard.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "83bc20267da3256d62981564f0860f3187145405d7cb2e444aa3684df237d2b5"
+  },
+  {
+    "category": "data governance",
+    "created_at": "2026-09-17T13:25:53Z",
+    "image_urn": "urn:li:image:D4E10AQH-719OCYq4Hw",
+    "post_urn": "urn:li:share:7506342675562897409",
+    "primary_source_url": "",
+    "report_path": "reports/20260917T132556Z-data-governance-starts-when-two-teams-define-the-same-metric.json",
+    "topic": "Data governance starts when two teams define the same metric differently.",
+    "visual_path": "assets/codex_weekday_data-governance-starts-when-two-teams-define-the-same-metric-different.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "548a9736c2a7afaa46298284cb913d4c0fee88d63c353317e8b566147234271f"
   }
 ]
