@@ -340,5 +340,17 @@
     "visual_path": "assets/codex_weekday_data-governance-starts-when-two-teams-define-the-same-metric-different.png",
     "visual_provider": "codex_manual_topic_asset",
     "visual_sha256": "548a9736c2a7afaa46298284cb913d4c0fee88d63c353317e8b566147234271f"
+  },
+  {
+    "category": "data cleaning",
+    "created_at": "2026-09-25T13:45:06Z",
+    "image_urn": "urn:li:image:D4D10AQGGVcSYqOtcIQ",
+    "post_urn": "urn:li:share:7509246609822679041",
+    "primary_source_url": "",
+    "report_path": "reports/20260925T134508Z-data-cleaning-is-where-business-truth-usually-shows-up.json",
+    "topic": "Data cleaning is where business truth usually shows up.",
+    "visual_path": "assets/codex_weekday_data-cleaning-is-where-business-truth-usually-shows-up.png",
+    "visual_provider": "codex_manual_topic_asset",
+    "visual_sha256": "1c7850ac0eaf1feda5ac8f988e12bac28f574b49854c4e5ab084ea88a29f6d47"
   }
 ]
