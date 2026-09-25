@@ -142,3 +142,12 @@ def test_complete_post_length_includes_link_and_hashtags(tmp_path):
     assert len(draft.body) <= 3000
     assert len(post_commentary(draft)) > 3000
     assert any('Complete LinkedIn post exceeds' in r for r in validate_draft(draft, agent.config).reasons)
+
+
+def test_popup_timeout_does_not_open_browser(monkeypatch):
+    from types import SimpleNamespace
+    from linkedin_ai_agent.review_server import show_approval_popup
+    command = Mock(return_value=SimpleNamespace(returncode=0, stdout='button returned:Review post, gave up:true'))
+    monkeypatch.setattr('linkedin_ai_agent.review_server.subprocess.run', command)
+    assert show_approval_popup(8765)
+    assert command.call_count == 1

@@ -260,7 +260,7 @@ def show_approval_popup(port):
               'with title "LinkedIn Studio — approval needed" buttons {"Later", "Review post"} '
               'default button "Review post" giving up after 120')
     result = subprocess.run(['/usr/bin/osascript', '-e', script], capture_output=True, text=True, timeout=130)
-    if result.returncode == 0 and 'button returned:Review post' in result.stdout:
+    if result.returncode == 0 and 'gave up:true' not in result.stdout and 'button returned:Review post' in result.stdout:
         subprocess.run(['/usr/bin/open', f'http://127.0.0.1:{port}'], check=False)
     return result.returncode == 0
 
