@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import datetime, timezone
 
 from linkedin_ai_agent.config import AgentConfig
 from linkedin_ai_agent.history import PublicationHistory
@@ -63,6 +64,6 @@ def test_has_required_sources_accepts_primary_and_independent(tmp_path):
 def test_rank_candidates_filters_low_score_and_duplicates(tmp_path):
     cfg = config(tmp_path)
     history = PublicationHistory(cfg.state_dir)
-    history.append({"created_at": "2026-07-31T08:00:00Z", "topic": "Already Covered"})
+    history.append({"created_at": datetime.now(timezone.utc).isoformat(), "topic": "Already Covered"})
     ranked = rank_candidates([trend("Already Covered"), trend("Fresh Topic"), trend("Weak", 0.1)], cfg, history)
     assert [item.topic for item in ranked] == ["Fresh Topic"]

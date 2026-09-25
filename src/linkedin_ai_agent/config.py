@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +37,15 @@ class AgentConfig:
     reports_dir: Path
     assets_dir: Path
     state_dir: Path
+    content_mode: str = "curated"
+    require_post_approval: bool = False
+    github_owner: str = "alumond"
+    portfolio_repositories: list[str] = field(default_factory=list)
+    portfolio_excluded_terms: list[str] = field(default_factory=lambda: ["stanforte", "stanforteedge", "HR dashboard", "HR analytics", "human resources dashboard"])
+    visual_direction: str = "Polished editorial graphics and clear data visuals with short readable captions."
+    visual_avoid: list[str] = field(default_factory=lambda: [
+        "sketches", "model drawings", "generic AI artwork", "internal drafting notes",
+    ])
 
 
 def load_config(path: str | Path) -> AgentConfig:
@@ -77,6 +86,13 @@ def load_config(path: str | Path) -> AgentConfig:
         reports_dir=Path(dirs.get("reports", "reports")),
         assets_dir=Path(dirs.get("assets", "assets")),
         state_dir=Path(dirs.get("state", ".state")),
+        content_mode=str(data.get("content_mode", "researched")),
+        require_post_approval=bool(data.get("require_post_approval", True)),
+        github_owner=str(data.get("github_owner", "alumond")),
+        portfolio_repositories=list(data.get("portfolio_repositories", [])),
+        portfolio_excluded_terms=list(data.get("portfolio_excluded_terms", ["stanforte", "stanforteedge", "HR dashboard", "HR analytics", "human resources dashboard"])),
+        visual_direction=str(visuals.get("direction", "Polished editorial graphics and clear data visuals with short readable captions.")),
+        visual_avoid=list(visuals.get("avoid", ["sketches", "model drawings", "generic AI artwork", "internal drafting notes"])),
     )
 
 

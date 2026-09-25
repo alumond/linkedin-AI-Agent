@@ -27,6 +27,8 @@ class TrendCandidate:
     practical_value_score: float
     novelty_score: float
     sources: list[EvidenceSource] = field(default_factory=list)
+    content_key: str = ""
+    source_snapshot: str = ""
 
     @property
     def total_score(self) -> float:
@@ -79,6 +81,7 @@ class PublishResult:
     post_urn: str | None = None
     image_urn: str | None = None
     skipped_reason: str | None = None
+    pending_reason: str | None = None
     report_path: str | None = None
     created_at: str = field(default_factory=lambda: datetime.utcnow().isoformat(timespec="seconds") + "Z")
 
@@ -116,6 +119,8 @@ def trend_from_dict(data: dict[str, Any]) -> TrendCandidate:
         practical_value_score=float(data.get("practical_value_score", 0.0)),
         novelty_score=float(data.get("novelty_score", 0.0)),
         sources=[source_from_dict(item) for item in data.get("sources", [])],
+        content_key=str(data.get("content_key", "")),
+        source_snapshot=str(data.get("source_snapshot", "")),
     )
 
 

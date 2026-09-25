@@ -1,11 +1,12 @@
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
 from PIL import Image
 
-from linkedin_ai_agent.agent import FEATURED_DASHBOARD_IMAGE, FEATURED_DASHBOARD_LINK, LinkedInAIAgent, dedupe_urls, normalize_alt_text
+from linkedin_ai_agent.agent import FEATURED_DASHBOARD_IMAGE, FEATURED_DASHBOARD_LINK, LinkedInAIAgent, dedupe_urls, normalize_alt_text, normalize_draft
+from linkedin_ai_agent.codex_visuals import draft_sha256
 from linkedin_ai_agent.config import load_config
 from linkedin_ai_agent.models import DraftPost, VisualAsset
 from linkedin_ai_agent.validators import validate_draft
@@ -45,6 +46,18 @@ Discussion prompts:
         )
 
 
+def record_test_review(agent, draft, asset):
+    normalize_draft(draft)
+    record = {
+        "provider": "codex_imagegen", "review_status": "passed",
+        "topic": draft.topic, "draft_sha256": draft_sha256(draft),
+        "asset_sha256": agent._visual_sha256(asset),
+        "prompt": "Test fixture only", "review_notes": "Test fixture only",
+        "reviewed_at": datetime.now().isoformat(), "alt_text": draft.alt_text,
+    }
+    asset.with_suffix(".json").write_text(json.dumps(record))
+
+
 def test_dry_run_does_not_publish(tmp_path: Path):
     cfg = config(tmp_path)
     cfg.min_post_chars = 2000
@@ -70,8 +83,8 @@ def test_codex_manual_missing_generated_asset_skips_before_dry_run(tmp_path: Pat
 
     result = agent.run(dry_run=True)
 
-    assert result.status == "skipped"
-    assert "A Codex-generated topic-specific image is required" in result.skipped_reason
+    assert result.status == "pending_image"
+    assert "A Codex-generated topic-specific image is required" in result.pending_reason
 
 
 def test_codex_manual_missing_topic_asset_rejects_generated_library_image(tmp_path: Path):
@@ -85,8 +98,8 @@ def test_codex_manual_missing_topic_asset_rejects_generated_library_image(tmp_pa
 
     result = agent.run(dry_run=True)
 
-    assert result.status == "skipped"
-    assert "topic-specific image" in result.skipped_reason
+    assert result.status == "pending_image"
+    assert "topic-specific image" in result.pending_reason
 
 
 def test_live_codex_manual_missing_asset_does_not_publish_with_api_key(tmp_path: Path, monkeypatch):
@@ -106,8 +119,8 @@ def test_live_codex_manual_missing_asset_does_not_publish_with_api_key(tmp_path:
 
     result = agent.run(dry_run=False)
 
-    assert result.status == "skipped"
-    assert "A Codex-generated topic-specific image is required" in result.skipped_reason
+    assert result.status == "pending_image"
+    assert "A Codex-generated topic-specific image is required" in result.pending_reason
 
 
 def test_codex_manual_topic_asset_is_used_and_fingerprinted(tmp_path: Path):
@@ -128,12 +141,13 @@ def test_codex_manual_topic_asset_is_used_and_fingerprinted(tmp_path: Path):
         asset = agent._codex_manual_visual_path(draft)
         asset.parent.mkdir(parents=True, exist_ok=True)
         Image.new("RGB", (1200, 1200), "white").save(asset)
+        record_test_review(agent, draft, asset)
 
     result = agent.run(dry_run=False)
 
     assert result.status == "published"
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
-    assert report["visual_generation"]["provider"] == "codex_manual_topic_asset"
+    assert report["visual_generation"]["provider"] == "codex_imagegen"
     history = json.loads((cfg.state_dir / "publication_history.json").read_text(encoding="utf-8"))
     assert history[-1]["visual_path"] == report["visual_generation"]["asset"]
     assert len(history[-1]["visual_sha256"]) == 64
@@ -160,15 +174,16 @@ def test_recent_codex_manual_visual_reuse_is_blocked(tmp_path: Path):
     asset = agent._codex_manual_visual_path(draft)
     asset.parent.mkdir(parents=True, exist_ok=True)
     Image.new("RGB", (1200, 1200), "white").save(asset)
+    record_test_review(agent, draft, asset)
     cfg.state_dir.joinpath("publication_history.json").write_text(
-        json.dumps([{"created_at": "2026-08-12T00:00:00Z", "visual_path": str(asset)}]),
+        json.dumps([{"created_at": datetime.now().isoformat() + "Z", "visual_path": str(asset)}]),
         encoding="utf-8",
     )
 
     result = agent.run(dry_run=True)
 
-    assert result.status == "skipped"
-    assert "already used recently" in result.skipped_reason
+    assert result.status == "pending_image"
+    assert "already used recently" in result.pending_reason
 
 
 def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path):
@@ -347,3 +362,159 @@ def test_featured_dashboard_dry_run_uses_fixed_post_without_gemini(tmp_path: Pat
     assert FEATURED_DASHBOARD_LINK in body
     assert report["visual"]["width"] == 1600
     assert report["visual"]["height"] == 900
+
+
+@pytest.mark.parametrize('change', ['missing_review', 'wrong_provider', 'changed_image', 'changed_post', 'failed_review'])
+def test_codex_gate_rejects_unreviewed_or_mismatched_assets(tmp_path, change):
+    cfg = config(tmp_path)
+    cfg.visual_provider = 'codex_manual'
+    agent = LinkedInAIAgent(cfg)
+    draft = FakeGemini().generate_post(cfg, trend('Fresh Gemini Trend'))
+    asset = agent._codex_manual_visual_path(draft)
+    asset.parent.mkdir(parents=True, exist_ok=True)
+    Image.new('RGB', (1200, 1200), 'white').save(asset)
+    record_test_review(agent, draft, asset)
+    record_path = asset.with_suffix('.json')
+    record = json.loads(record_path.read_text())
+    if change == 'missing_review':
+        record_path.unlink()
+    elif change == 'changed_image':
+        Image.new('RGB', (1200, 1200), 'blue').save(asset)
+    elif change == 'changed_post':
+        draft.body += '\nA different recommendation.'
+    else:
+        record['provider' if change == 'wrong_provider' else 'review_status'] = 'local' if change == 'wrong_provider' else 'failed'
+        record_path.write_text(json.dumps(record))
+    with pytest.raises(RuntimeError):
+        agent._render_visual(draft)
+    assert list((cfg.assets_dir / 'briefs').glob('*.json'))
+
+
+def test_generate_obeys_codex_provider_without_local_fallback(tmp_path, monkeypatch):
+    cfg = config(tmp_path)
+    cfg.visual_provider = 'codex_manual'
+    cfg.min_post_chars, cfg.max_post_chars = 700, 1300
+    agent = LinkedInAIAgent(cfg, gemini=FakeGemini())
+    def forbidden(*args, **kwargs):
+        raise AssertionError('Local rendering must never be used in Codex mode')
+    monkeypatch.setattr('linkedin_ai_agent.agent.render_insight_card', forbidden)
+    with pytest.raises(RuntimeError, match='Codex-generated'):
+        agent.generate(trend('Fresh Gemini Trend'))
+    draft = agent.generate_draft(trend('Fresh Gemini Trend'))
+    asset = agent._codex_manual_visual_path(draft)
+    Image.new('RGB', (1600, 900), 'white').save(asset)
+    record_test_review(agent, draft, asset)
+    generated, visual = agent.generate(trend('Fresh Gemini Trend'))
+    assert visual.path == str(asset)
+    assert (visual.width, visual.height) == (1600, 900)
+    agent.stage_preview(generated, visual, [])
+    asset.with_suffix('.json').unlink()
+    with pytest.raises(RuntimeError, match='review record'):
+        agent.publish_staged()
+
+
+def test_staging_cannot_bypass_codex_gate(tmp_path):
+    cfg = config(tmp_path)
+    cfg.visual_provider = 'codex_manual'
+    agent = LinkedInAIAgent(cfg)
+    draft = FakeGemini().generate_post(cfg, trend('Fresh Gemini Trend'))
+    asset = tmp_path / 'local.png'
+    Image.new('RGB', (1200, 1200), 'white').save(asset)
+    with pytest.raises(RuntimeError, match='reviewed Codex asset'):
+        agent.stage_preview(draft, VisualAsset(str(asset), 'image/png', 1200, 1200, 'Local'), [])
+    assert not (cfg.state_dir / 'pending_post.json').exists()
+
+
+def test_pending_image_keeps_same_post_until_image_arrives(tmp_path, monkeypatch):
+    class Publisher:
+        def __init__(self):
+            self.bodies = []
+        def upload_image(self, visual):
+            return 'urn:li:image:test'
+        def publish_post(self, draft, image_urn):
+            self.bodies.append(draft.body)
+            return 'urn:li:share:test'
+    cfg = config(tmp_path)
+    cfg.visual_provider = 'codex_manual'
+    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    publisher = Publisher()
+    agent = LinkedInAIAgent(cfg, linkedin=publisher)
+    first = agent.run(dry_run=False)
+    assert first.status == 'pending_image'
+    pending_path = cfg.state_dir / 'pending_image_post.json'
+    pending = json.loads(pending_path.read_text())
+    def forbidden(*args, **kwargs):
+        raise AssertionError('A pending post must not be replaced by another topic')
+    monkeypatch.setattr(agent, '_pick_fallback_candidate', forbidden)
+    assert agent.run(dry_run=False).status == 'pending_image'
+    from linkedin_ai_agent.models import draft_from_dict
+    draft = draft_from_dict(pending['draft'])
+    asset = agent._codex_manual_visual_path(draft)
+    Image.new('RGB', (1200, 1200), 'white').save(asset)
+    record_test_review(agent, draft, asset)
+    assert agent.run(dry_run=True).status == 'dry_run_ok'
+    assert pending_path.exists()
+    assert publisher.bodies == []
+    assert agent.run(dry_run=False).status == 'published'
+    assert publisher.bodies == [draft.body]
+    assert not pending_path.exists()
+
+
+def test_dry_run_missing_image_does_not_queue_live_post(tmp_path):
+    cfg = config(tmp_path)
+    cfg.visual_provider = 'codex_manual'
+    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    assert LinkedInAIAgent(cfg).run(dry_run=True).status == 'pending_image'
+    assert not (cfg.state_dir / 'pending_image_post.json').exists()
+
+
+def test_replacement_at_same_path_can_use_a_fresh_image(tmp_path):
+    cfg = config(tmp_path)
+    agent = LinkedInAIAgent(cfg)
+    asset = tmp_path / 'replacement.png'
+    Image.new('RGB', (1200, 1200), 'white').save(asset)
+    old_hash = agent._visual_sha256(asset)
+    agent.history.append({'created_at': datetime.now().isoformat() + 'Z',
+                          'visual_path': str(asset), 'visual_sha256': old_hash})
+    with pytest.raises(RuntimeError, match='already used'):
+        agent._ensure_visual_not_reused(asset, old_hash)
+    Image.new('RGB', (1200, 1200), 'blue').save(asset)
+    agent._ensure_visual_not_reused(asset, agent._visual_sha256(asset))
+
+
+def test_exhausted_library_never_returns_published_topics(tmp_path):
+    agent = LinkedInAIAgent(config(tmp_path))
+    for candidate in agent._fallback_trend_candidates():
+        agent.history.append({"created_at": datetime.now(timezone.utc).isoformat(), "topic": candidate.topic})
+    assert agent._fallback_trend_candidates() == []
+    result = agent.run(dry_run=False)
+    assert result.status == "skipped"
+    assert "No curated weekday topic" in result.skipped_reason
+
+
+def test_recycled_body_is_blocked_before_image_or_upload(tmp_path, monkeypatch):
+    cfg = config(tmp_path)
+    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    agent = LinkedInAIAgent(cfg)
+    candidates = agent._fallback_trend_candidates()
+    candidate = next(c for c in candidates if c.category == 'data cleaning')
+    draft = agent._fallback_draft(candidate)
+    agent.history.append({"created_at": datetime.now(timezone.utc).isoformat(),
+                          "topic": "A different headline", "body": draft.body})
+    monkeypatch.setattr(agent, '_pick_fallback_candidate', lambda candidates: candidate)
+    def forbidden(*args, **kwargs):
+        raise AssertionError('Recycled text must be stopped before visual generation')
+    monkeypatch.setattr(agent, '_render_visual', forbidden)
+    result = agent.run(dry_run=False)
+    assert result.status == 'skipped'
+    assert 'repeats substantial wording' in result.skipped_reason
+
+
+def test_configured_image_preferences_reach_draft(tmp_path):
+    cfg = load_config('config/agent.yaml')
+    cfg.state_dir = tmp_path / 'state'
+    agent = LinkedInAIAgent(cfg)
+    draft = agent._fallback_draft(agent._fallback_trend_candidates()[0])
+    assert cfg.visual_direction in draft.visual_prompt
+    assert 'sketches and hand-drawn illustrations' in draft.visual_prompt
+    assert 'model drawings and wireframes' in draft.visual_prompt

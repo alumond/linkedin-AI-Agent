@@ -11,5 +11,8 @@ assets/*.png
 !assets/codex_weekday_*.png
 assets/*.jpg
 assets/*.jpeg
+assets/briefs/
 .state/*.json
 !.state/.gitkeep
+
+.review_cache/

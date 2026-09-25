@@ -1,89 +1,69 @@
-LinkedIn Agent
+# LinkedIn Studio
 
-This project researches current Data and AI trends with Gemini Google Search grounding, writes a sourced LinkedIn post, requires a topic-specific Codex-generated visual, and can publish to a personal LinkedIn profile.
+A local review desk for Almond's LinkedIn publisher. Posts alternate between inspected public GitHub builds and freshly researched data, AI, analytics and business developments, with a fresh Codex-generated image and **your approval before every publication**.
 
-## Flagship Portfolio Project
+## Review on this device
 
-- [Retail Revenue & Operations Command Center](projects/retail-revenue-command-center): a premium Power BI-style flagship dashboard showing revenue quality, product performance, customer retention, margin risk, regional performance, and executive decision support.
-
-By default it uses `gemini-2.5-flash` for text/research and Codex-prepared image assets for LinkedIn visuals. Google lists free-tier Search grounding for Gemini 2.5 Flash models, while Gemini 3.x Search grounding is tied to paid-tier search quotas.
-
-The image path is intentionally Codex-managed by default:
-
-```yaml
-visuals:
-  allow_ai_illustrations: false
-  provider: codex_manual
-```
-
-That means Gemini writes and verifies the post, while Codex prepares a unique image for the selected content before the agent posts. If the matching `assets/codex_weekday_<topic>.png` image is missing or was recently reused, the agent skips instead of publishing.
-
-## Setup
-
-1. Install dependencies:
+Double-click `Start LinkedIn Studio.command`, or run:
 
 ```bash
-python3 -m pip install -e ".[dev]"
+PYTHONPATH=.vendor:src python3 -m linkedin_ai_agent.review_server
 ```
 
-2. In your LinkedIn Developer app, add this authorized redirect URL exactly for local OAuth:
+Open **http://127.0.0.1:8765**. The server binds only to this device. It uses your existing GitHub CLI sign-in; LinkedIn and Gemini credentials stay in GitHub Actions secrets.
 
-```text
-http://127.0.0.1:8080/callback
-```
+The desk shows the exact pending post, its image, source links, checks and recent publication history. **Approve for schedule** approves only that version of the text and image. Any change requires approval again. **Request changes** revokes approval and starts draft revision; Codex then needs to generate/review the revised image. Approval never publishes immediately.
 
-If LinkedIn rejects a local HTTP redirect URL, use the Postman callback instead: `https://oauth.pstmn.io/v1/callback`.
+Approved posts publish at **09:17 Africa/Lagos, weekdays**, through GitHub Actions. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task. Without approval, the ready post remains available for review.
 
-3. Set local environment variables:
+A desktop popup appears when both the draft and image are ready. **Review post** opens the desk; **Later** dismisses it. A new version triggers a new popup, with at most one reminder per version per day. The local service must be running for popups.
+
+## Content and originality
+
+- Alternate portfolio stories with evidence-backed developments across the configured editorial topics. If one source route fails, try the other without recycling old content.
+- Discover public, non-fork projects under `alumond`, prioritizing the configured personal builds and rotating projects before revisiting them.
+- Read repository documentation, selected code and recent commits. Write about actual features, design choices, problems solved and honest limitations. Do not invent deployments, users, results or experiments.
+- Exclude **Stanforteedge and HR dashboards/HR analytics**, including matching repository descriptions, filenames and source content.
+- Compare topics and substantial body overlap against **all available publication history**, including legacy reports. No 45-day expiry and no exhausted-library fallback.
+- Reject identical image bytes and very similar visual fingerprints. Codex also compares earlier artwork for repeated composition and checks readability, relevance and factual claims.
+- No sketches, model drawings, wireframes, generic AI artwork, cropped titles or internal drafting notes. Codex generates the image; Gemini supplies text only.
+
+Historical checks cover the publisher's recorded posts, not an exhaustive export of every post ever made manually on LinkedIn. Human review remains the final check for those earlier posts and visual taste.
+
+## Pipeline
+
+**Verified sources → exact draft → Codex image → visual review → your approval → scheduled publication.**
+
+`automation-state` stores the pending draft, publication history, approval, review feedback and publication journal. Main stores the code and reviewed image assets. The queue preserves a draft while its image or approval is pending. The publisher has a daily publication limit and does not automatically retry an uncertain LinkedIn create-post request.
+
+Prepare a draft without publishing:
 
 ```bash
-export GEMINI_API_KEY="..."
-export LINKEDIN_CLIENT_ID="..."
-export LINKEDIN_CLIENT_SECRET="..."
-export LINKEDIN_ACCESS_TOKEN="..."
+gh workflow run weekday-linkedin-post.yml -f mode=prepare -f dry_run=true
 ```
 
-4. After OAuth, run `python -m linkedin_ai_agent.cli whoami` and copy `owner_urn` into `config/agent.yaml` under `linkedin.owner_urn`.
-
-## Commands
+Verify the exact pending draft/image without publishing:
 
 ```bash
-python -m linkedin_ai_agent.cli auth-local
-python -m linkedin_ai_agent.cli auth --redirect-uri "https://oauth.pstmn.io/v1/callback"
-python -m linkedin_ai_agent.cli whoami
-python -m linkedin_ai_agent.cli preflight
-python -m linkedin_ai_agent.cli research
-python -m linkedin_ai_agent.cli generate
-python -m linkedin_ai_agent.cli preview
-python -m linkedin_ai_agent.cli publish-preview --confirm
-python -m linkedin_ai_agent.cli run --dry-run
-python -m linkedin_ai_agent.cli run
-python -m linkedin_ai_agent.cli token-status
+gh workflow run weekday-linkedin-post.yml -f mode=publish -f dry_run=true
 ```
 
-`preview` generates and stages the exact text and image for review. `publish-preview --confirm` publishes only that staged version; it does not regenerate the content. `run --dry-run` completes research, writing, validation, and image generation without contacting LinkedIn publishing endpoints. `run` is intended for unattended automation and publishes immediately after its gates pass.
+A successful dry run is **not approval**. Legacy direct-publication commands cannot bypass the configured review requirement.
 
-## GitHub Actions
+## Codex image task
 
-The workflow runs at `08:17 UTC` Monday-Friday, which is `09:17 Africa/Lagos`. Store these repository secrets before enabling live scheduled posting:
+The task prompt is ready in [docs/codex-image-task.md](docs/codex-image-task.md). **Task activation is still required in Codex.** This repository cannot invoke the conversation's imagegen tool from GitHub Actions. `pending_image` does not mean image generation has started.
 
-- `GEMINI_API_KEY`
-- `LINKEDIN_CLIENT_ID`
-- `LINKEDIN_CLIENT_SECRET`
-- `LINKEDIN_ACCESS_TOKEN`
+A generated PNG must have a sibling JSON with: `provider: "codex_imagegen"`, `review_status: "passed"`, `topic`, `draft_sha256`, `asset_sha256`, the actual generation `prompt`, `reviewed_at`, meaningful `review_notes`, and accurate `alt_text`. Use `codex_visuals.draft_sha256` for the exact draft fingerprint and SHA-256 for the image bytes. Create the record only after inspecting the image. It documents a visual review; it does not itself detect image quality.
 
-Set repository variable `LINKEDIN_TOKEN_EXPIRES_AT` to the token expiry timestamp, for example `2026-09-25T09:00:00Z`, unless `.state/linkedin_token_metadata.json` already exists on the `automation-state` branch.
+## Setup and maintenance
 
-The workflow writes reports and non-secret publication history to an `automation-state` branch. It opens an issue when token metadata says the LinkedIn token expires within seven days.
+Install with `python3 -m pip install -e ".[dev]"` and authenticate `gh` for `alumond/linkedin-AI-Agent`. This device also has a bundled CLI in `.tools/gh_2.94.0_macOS_arm64/bin/gh`, used automatically if `gh` is not on PATH.
 
-## Safety Gates
+GitHub Actions secrets: `GEMINI_API_KEY`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `LINKEDIN_ACCESS_TOKEN`. Store token expiry in `LINKEDIN_TOKEN_EXPIRES_AT` or `.state/linkedin_token_metadata.json` on `automation-state`. Renewal reminders use the existing GitHub issue workflow.
 
-Publishing is skipped when sources are missing, topic confidence is low, the topic was recently covered, the post contains hype or unsafe content markers, image validation fails, upload fails, or the LinkedIn token is expired.
+To renew LinkedIn access, configure the developer app callback `http://127.0.0.1:8080/callback`, run `python -m linkedin_ai_agent.cli auth-local`, and update the repository token secret and expiry. Never commit tokens or expose them in reports.
 
-References used for the implementation:
+Run checks with `PYTHONPATH=.vendor:src python3 -m pytest -q` on this device, or `pytest -q` after installing the development dependencies. Run `python -m linkedin_ai_agent.cli show-config` to inspect non-secret settings.
 
-- [Gemini Search grounding](https://ai.google.dev/gemini-api/docs/google-search)
-- [Gemini image generation](https://ai.google.dev/gemini-api/docs/image-generation)
-- [LinkedIn Posts API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/posts-api?view=li-lms-2026-04)
-- [LinkedIn Images API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/images-api?view=li-lms-2026-05)
-- [LinkedIn OAuth flow](https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow)
+[Retail Revenue & Operations Command Center](projects/retail-revenue-command-center) remains a standalone portfolio project.

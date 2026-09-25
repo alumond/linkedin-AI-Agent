@@ -1,4 +1,22 @@
 audience: 'Recruiters, founders, operators, remote teams, analytics managers, and business leaders who need data talent that can turn dashboards, KPIs, and messy data into decisions'
+content_mode: mixed
+require_post_approval: true
+github_owner: alumond
+portfolio_excluded_terms:
+- stanforte
+- stanforteedge
+- HR dashboard
+- HR analytics
+- human resources dashboard
+portfolio_repositories:
+- Monitoring-and-Evaluation-Agent
+- Health-Access-for-PWDs
+- Data-Analysis-Dashboard
+- Job-Agent
+- loan-Prediction-App
+- Indicators
+- Almond-Projects
+- Activity-1
 editorial_topics:
 - analytics
 - growth analytics
@@ -79,15 +97,20 @@ thresholds:
   min_sources: 2
   min_primary_sources: 1
   min_independent_sources: 1
-  duplicate_lookback_days: 45
+  duplicate_lookback_days: 0 # Zero means all available publication history, with no expiry.
 models:
   text: gemini-2.5-flash
   image: gemini-3.1-flash-image
 visuals:
   allow_ai_illustrations: false
   provider: codex_manual
-  direction: clean light-background LinkedIn infographics with a strong title, numbered cards or clearly separated sections, arrows where movement matters, simple icons, short readable captions, and concise takeaway areas; use square or landscape depending on the post, but keep the image easy to understand in seconds
+  direction: polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post; use real portfolio screenshots where relevant and label illustrative data explicitly; every image must be visually inspected at phone size
   avoid:
+  - sketches and hand-drawn illustrations
+  - model drawings and wireframes
+  - generic AI artwork and decorative stick figures
+  - internal drafting notes or placeholder text in artwork
+  - truncated headlines and unlabeled decorative charts
   - dark 3D boardroom scenes by default
   - unlabeled abstract metaphors
   - unreadable tiny UI text

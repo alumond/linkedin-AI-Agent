@@ -91,6 +91,7 @@ class LinkedInClient:
             headers=self.headers(),
             json=payload,
             expected=(201,),
+            attempts=1,
         )
         post_urn = response.headers.get("x-restli-id") or response.headers.get("X-RestLi-Id")
         if not post_urn:
@@ -152,17 +153,18 @@ def linkedin_token_expires_at(token_response: dict[str, Any]) -> str:
     return (datetime.now(timezone.utc) + timedelta(seconds=expires_in)).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
-def _request_with_retries(method: str, url: str, expected: tuple[int, ...] = (200, 201, 202), **kwargs: Any) -> requests.Response:
+def _request_with_retries(method: str, url: str, expected: tuple[int, ...] = (200, 201, 202), attempts: int = 4, **kwargs: Any) -> requests.Response:
     retryable = {408, 429, 500, 502, 503, 504}
     last: requests.Response | None = None
-    for attempt in range(4):
+    for attempt in range(attempts):
         response = requests.request(method, url, timeout=60, **kwargs)
         if response.status_code in expected:
             return response
         last = response
         if response.status_code not in retryable:
             break
-        time.sleep(2**attempt)
+        if attempt + 1 < attempts:
+            time.sleep(2**attempt)
     assert last is not None
     last.raise_for_status()
     return last

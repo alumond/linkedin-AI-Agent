@@ -30,6 +30,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("research")
     sub.add_parser("generate")
     sub.add_parser("preview")
+    sub.add_parser("prepare-post")
+    prepare_visual = sub.add_parser("prepare-visual")
+    prepare_visual.add_argument("--topic", help="Exact curated topic; defaults to the next scheduled topic")
     publish_preview = sub.add_parser("publish-preview")
     publish_preview.add_argument("--confirm", action="store_true")
 
@@ -48,6 +51,23 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     config = load_config(args.config)
     agent = LinkedInAIAgent(config)
+
+    if args.command == "prepare-post":
+        try:
+            brief = agent.prepare_post()
+            print(json.dumps({"status": "draft_prepared", "brief": str(brief)}))
+            return 0
+        except Exception as exc:
+            print(json.dumps({"status": "failed", "reason": str(exc)}))
+            return 2
+
+    if args.command == "prepare-visual":
+        try:
+            print(agent.prepare_visual(args.topic))
+        except RuntimeError as exc:
+            print(json.dumps({"status": "skipped", "reason": str(exc)}))
+            return 2
+        return 0
 
     if args.command == "auth":
         if not args.code:
@@ -139,7 +159,7 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         result = agent.run(dry_run=args.dry_run)
         print(json.dumps(to_dict(result), indent=2))
-        return 0 if result.status != "skipped" else 2
+        return 0 if result.status in {"published", "dry_run_ok", "already_published", "awaiting_approval"} else 2
 
     if args.command == "featured-dashboard":
         token = agent.token_status()

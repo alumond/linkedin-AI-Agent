@@ -5,13 +5,15 @@ import inspect
 import json
 import os
 import random
+from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 from .config import AgentConfig
+from .codex_visuals import draft_sha256, reviewed_visual, write_visual_brief, visual_signature
 from .gemini_client import GeminiClient
-from .history import PublicationHistory
+from .history import PublicationHistory, atomic_json
 from .linkedin_client import LinkedInClient
 from .models import (
     DraftPost,
@@ -21,10 +23,12 @@ from .models import (
     VisualAsset,
     draft_from_dict,
     to_dict,
+    trend_from_dict,
     visual_from_dict,
 )
 from .ranking import candidate_rejection_reasons, rank_candidates
 from .reports import write_report
+from .portfolio import GitHubProjects, excluded_material
 from .validators import validate_draft, validate_trend, validate_visual
 from .visuals import render_diagram, render_insight_card
 
@@ -220,7 +224,7 @@ class LinkedInAIAgent:
         linkedin: LinkedInClient | None = None,
     ) -> None:
         self.config = config
-        self.history = PublicationHistory(config.state_dir)
+        self.history = PublicationHistory(config.state_dir, config.reports_dir)
         self.gemini = gemini
         self.linkedin = linkedin
 
@@ -364,7 +368,7 @@ class LinkedInAIAgent:
             if filtered:
                 candidates = filtered
         deduped = [candidate for candidate in candidates if not self.history.is_duplicate(candidate.topic, self.config.duplicate_lookback_days)]
-        return deduped if deduped else candidates
+        return deduped
 
     def _fallback_visual_profile(self, candidate: TrendCandidate) -> dict[str, Any]:
         for entry in FALLBACK_TOPIC_LIBRARY:
@@ -530,8 +534,8 @@ Make the data useful enough that the next decision becomes obvious."""
             visual_style="illustration" if self.config.allow_ai_illustrations else profile["visual_style"],
             visual_prompt=(
                 f"Create a premium content-led LinkedIn infographic for this argument: {candidate.topic} {candidate.summary}. "
-                "Use the clean workflow/explainer style: light background, strong title, numbered cards or clearly separated sections, "
-                "simple icons, arrows only where movement matters, short readable captions, and a concise takeaway area. "
+                f"Visual direction: {self.config.visual_direction} "
+                f"Avoid: {', '.join(self.config.visual_avoid)}. "
                 "The visual must explain the post idea clearly to an average reader in seconds. "
                 "Use square or landscape format depending on what best fits the concept. "
                 "Do not show a generic person staring at a laptop, stock office photo, abstract unlabeled metaphor, or text-only quote card. "
@@ -541,6 +545,11 @@ Make the data useful enough that the next decision becomes obvious."""
         )
 
     def _render_visual(self, draft: DraftPost) -> VisualAsset:
+        if self.config.visual_provider == "codex_manual":
+            path = self._codex_manual_visual_path(draft)
+            visual = reviewed_visual(draft, path)
+            self._ensure_visual_not_reused(path, self._visual_sha256(path))
+            return visual
         asset_path = self._visual_path(draft)
         style, variant = self._visual_base_and_variant(draft.visual_style)
         if style == "illustration" and self.config.allow_ai_illustrations:
@@ -562,147 +571,287 @@ Make the data useful enough that the next decision becomes obvious."""
             return
         renderer(draft, self.config, asset_path)
 
-    def generate(self, candidate: TrendCandidate) -> tuple[DraftPost, VisualAsset]:
+    def generate_draft(self, candidate: TrendCandidate) -> DraftPost:
         gemini = self.gemini or GeminiClient()
         draft = gemini.generate_post(self.config, candidate)
-        normalize_draft(draft)
-        draft_report = validate_draft(draft, self.config)
-        if not draft_report.passed:
-            draft = gemini.revise_post(self.config, candidate, draft, draft_report.reasons)
+        for attempt in range(3):
             normalize_draft(draft)
-            draft_report = validate_draft(draft, self.config)
-            if not draft_report.passed:
-                raise ValueError("Draft revision failed validation: " + "; ".join(draft_report.reasons))
-        visual = self._render_visual(draft)
-        return draft, visual
+            draft.visual_prompt += (
+                f"\nRequired visual direction: {self.config.visual_direction} "
+                f"Avoid: {', '.join(self.config.visual_avoid)}."
+            ) if self.config.visual_direction not in draft.visual_prompt else ""
+            reasons = validate_draft(draft, self.config).reasons
+            try:
+                self._ensure_original_draft(draft)
+            except RuntimeError as exc:
+                reasons.append(str(exc))
+            if not reasons:
+                return draft
+            if attempt < 2:
+                draft = gemini.revise_post(self.config, candidate, draft, reasons)
+        raise ValueError("Draft revision failed validation: " + "; ".join(reasons))
+
+    def generate(self, candidate: TrendCandidate) -> tuple[DraftPost, VisualAsset]:
+        draft = self.generate_draft(candidate)
+        return draft, self._render_visual(draft)
+
+    def _select_draft(self) -> tuple[TrendCandidate, DraftPost, list[dict[str, Any]]]:
+        if self.config.content_mode == "mixed":
+            history = self.history.load()
+            previous = history[-1] if history else {}
+            first = "researched" if previous.get("category") == "portfolio" else "portfolio"
+            failures = []
+            for mode in (first, "portfolio" if first == "researched" else "researched"):
+                try:
+                    return LinkedInAIAgent(replace(self.config, content_mode=mode), self.gemini, self.linkedin)._select_draft()
+                except Exception as exc:
+                    failures.append(f"{mode}: {exc}")
+            raise RuntimeError("No fresh source-backed draft passed validation. " + "; ".join(failures))
+        if self.config.content_mode == "portfolio":
+            history = self.history.load()
+            projects = GitHubProjects(self.config.github_owner, self.config.portfolio_excluded_terms).collect(self.config.portfolio_repositories, history)
+            gemini = self.gemini or GeminiClient()
+            failures = []
+            # A rejected idea moves to a fresh angle; it does not recycle old copy.
+            visited = set()
+            for batch in range(4):
+                candidates = gemini.portfolio_candidates(self.config, projects, history)
+                for candidate in candidates:
+                    if self.history.is_duplicate(candidate.topic, self.config.duplicate_lookback_days):
+                        continue
+                    try:
+                        draft = self.generate_draft(candidate)
+                        allowed = {source.url for source in candidate.sources}
+                        if draft.primary_source_url != candidate.sources[0].url:
+                            raise ValueError("Portfolio draft must link the exact project repository.")
+                        if not draft.supporting_source_urls or any(url not in allowed for url in draft.supporting_source_urls):
+                            raise ValueError("Portfolio draft must cite inspected project files.")
+                        return candidate, draft, [{"title": source.title, "url": source.url} for source in candidate.sources]
+                    except (ValueError, RuntimeError) as exc:
+                        failures.append(str(exc))
+                # Try the next projects when every angle in this batch fails.
+                visited.update(project['name'] for project in projects)
+                remaining = [name for name in self.config.portfolio_repositories if name not in visited]
+                if batch < 3:
+                    projects = GitHubProjects(self.config.github_owner, self.config.portfolio_excluded_terms).collect(remaining, history, exclude=visited)
+                else:
+                    break
+            raise RuntimeError("Fresh project angles did not pass validation. " + "; ".join(failures[-3:]))
+        weekday, special = self._weekday_rotation_state()
+        bucket = self._required_bucket(weekday, special)
+        if self.config.content_mode == "researched":
+            candidates, citations = self.research()
+            if not citations:
+                raise RuntimeError("Research returned no search grounding. Fresh verified sources are required.")
+            # Preserve the occasional governance/trade-off emphasis without
+            # recycling an exhausted topical bucket.
+            candidates.sort(key=lambda item: self._candidate_bucket(item) != bucket if bucket else False)
+            failures = []
+            for candidate in candidates[:3]:
+                try:
+                    draft = self.generate_draft(candidate)
+                    source_urls = {source.url for source in candidate.sources}
+                    if not draft.primary_source_url or draft.primary_source_url not in source_urls:
+                        raise ValueError("Draft primary source does not match the researched evidence.")
+                    if any(url not in source_urls for url in draft.supporting_source_urls):
+                        raise ValueError("Draft adds an unresearched supporting source.")
+                    if any("curated weekday opinion post" in claim.lower() for claim in draft.claims):
+                        raise ValueError("Researched posts cannot bypass the evidence gate as curated copy.")
+                    return candidate, draft, citations
+                except (ValueError, RuntimeError) as exc:
+                    failures.append(str(exc))
+            raise RuntimeError("No original researched draft passed review. " + "; ".join(failures))
+        if self.config.content_mode != "curated":
+            raise RuntimeError(f"Unknown content mode: {self.config.content_mode}")
+        candidates = self._fallback_trend_candidates(bucket)
+        if not candidates:
+            raise RuntimeError("No curated weekday topic is available after duplicate checks.")
+        candidate = self._pick_fallback_candidate(candidates)
+        draft = self._fallback_draft(candidate)
+        normalize_draft(draft)
+        self._ensure_original_draft(draft)
+        return candidate, draft, []
+
+    def _pending_draft(self, persist: bool) -> dict[str, Any]:
+        path = self.config.state_dir / "pending_image_post.json"
+        if path.exists():
+            pending = json.loads(path.read_text(encoding="utf-8"))
+            draft = draft_from_dict(pending["draft"])
+            replacement_reason = None
+            try:
+                self._ensure_original_draft(draft)
+            except RuntimeError as exc:
+                if str(exc).startswith(("Draft references excluded organisation", "Topic was covered", "Post repeats substantial")):
+                    replacement_reason = str(exc)
+                else:
+                    raise
+            if pending.get("created_at"):
+                created = datetime.fromisoformat(pending["created_at"].replace("Z", "+00:00"))
+                if datetime.now(timezone.utc) - created > timedelta(days=7):
+                    replacement_reason = "Refresh sources and prepare a new draft after seven days."
+            if not replacement_reason:
+                return pending
+            if persist:
+                atomic_json(self.config.state_dir / "replaced_pending_post.json", {**pending, "replacement_reason": replacement_reason})
+        candidate, draft, citations = self._select_draft()
+        brief = write_visual_brief(draft, self._codex_manual_visual_path(draft))
+        pending = {"status": "pending_image", "candidate": to_dict(candidate),
+                   "draft": to_dict(draft), "citations": citations, "brief": str(brief),
+                   "created_at": datetime.now(timezone.utc).isoformat()}
+        if persist:
+            atomic_json(path, pending)
+            (self.config.state_dir / "approved_post.json").unlink(missing_ok=True)
+        return pending
+
+    def prepare_post(self) -> Path:
+        """Prepare and persist an exact fresh draft, with no LinkedIn calls."""
+        self._recover_publication()
+        pending = self._pending_draft(persist=True)
+        draft = draft_from_dict(pending["draft"])
+        feedback_path = self.config.state_dir / "review_feedback.json"
+        if feedback_path.exists():
+            feedback = json.loads(feedback_path.read_text())
+            if feedback.get("draft_sha256") == draft_sha256(draft) and feedback.get("note"):
+                gemini = self.gemini or GeminiClient()
+                candidate = trend_from_dict(pending["candidate"])
+                revised = gemini.revise_post(self.config, candidate, draft,
+                    ["Owner's required revision: " + feedback["note"],
+                     "Revise the visual prompt too if the owner requested image changes. Preserve verified sources."])
+                normalize_draft(revised)
+                reasons = validate_draft(revised, self.config).reasons
+                self._ensure_original_draft(revised)
+                allowed = {source.url for source in candidate.sources}
+                if revised.primary_source_url != draft.primary_source_url or any(url not in allowed for url in revised.supporting_source_urls):
+                    reasons.append("Revision changed the verified source links.")
+                revised.visual_prompt += f"\nRequired visual direction: {self.config.visual_direction}. Avoid: {', '.join(self.config.visual_avoid)}."
+                if reasons:
+                    raise ValueError("Revision needs correction: " + "; ".join(reasons))
+                if draft_sha256(revised) == draft_sha256(draft):
+                    raise ValueError("Requested revision did not change the draft or image brief.")
+                pending.update(draft=to_dict(revised), status="pending_image", owner_feedback=feedback,
+                               created_at=datetime.now(timezone.utc).isoformat())
+                atomic_json(self.config.state_dir / "pending_image_post.json", pending)
+                draft = revised
+        return write_visual_brief(draft, self._codex_manual_visual_path(draft))
+
+    def _approval_reason(self, draft: DraftPost, asset_sha256: str) -> str | None:
+        """Approval belongs to exact post and image bytes, never a topic alone."""
+        if not self.config.require_post_approval:
+            return None
+        path = self.config.state_dir / "approved_post.json"
+        approval = json.loads(path.read_text()) if path.exists() else {}
+        if (approval.get("draft_sha256") != draft_sha256(draft)
+                or approval.get("asset_sha256") != asset_sha256
+                or approval.get("approved_by") != "owner_local_review"
+                or not approval.get("approved_at")):
+            return "Review the exact post and image in your local dashboard and approve them before publication."
+        feedback_path = self.config.state_dir / "review_feedback.json"
+        if feedback_path.exists():
+            feedback = json.loads(feedback_path.read_text())
+            if (feedback.get("draft_sha256") == draft_sha256(draft)
+                    and feedback.get("requested_at", "") >= approval["approved_at"]):
+                return "Changes were requested after approval. Review the revised post and image."
+        return None
+
+    def _require_approval(self, draft: DraftPost, asset_sha256: str) -> None:
+        reason = self._approval_reason(draft, asset_sha256)
+        if reason:
+            raise RuntimeError(reason)
+
+    def _recover_publication(self) -> None:
+        path = self.config.state_dir / "publication_attempt.json"
+        if not path.exists():
+            return
+        journal = json.loads(path.read_text(encoding="utf-8"))
+        if journal.get("status") == "publishing":
+            raise RuntimeError("Previous LinkedIn publication has an uncertain outcome. Check LinkedIn before retrying; automatic reposting is blocked.")
+        if journal.get("status") == "published":
+            record = journal["record"]
+            if not any(item.get("post_urn") == record["post_urn"] for item in self.history.load()):
+                self.history.append(record)
+            pending_path = self.config.state_dir / "pending_image_post.json"
+            if pending_path.exists():
+                pending = json.loads(pending_path.read_text())
+                if pending.get("draft", {}).get("topic") == record.get("topic"):
+                    pending_path.unlink()
+                    (self.config.state_dir / "approved_post.json").unlink(missing_ok=True)
 
     def run(self, dry_run: bool) -> PublishResult:
-        weekday_index, special_weekday = self._weekday_rotation_state()
-        required_bucket = self._required_bucket(weekday_index, special_weekday)
-        fallback_list = self._fallback_trend_candidates(required_bucket)
-        if not fallback_list:
-            return self._skip("No curated weekday topic is available after duplicate checks.", citations=[])
-        candidate = self._pick_fallback_candidate(fallback_list)
-        draft: DraftPost | None = None
+        candidate = draft = None
+        citations = []
         try:
-            draft = self._fallback_draft(candidate)
-            normalize_draft(draft)
+            self._recover_publication()
+            today = self.history.published_today(self.config.timezone)
+            if today and not dry_run:
+                return PublishResult(status="already_published", dry_run=False,
+                                     topic=today["topic"], post_urn=today["post_urn"])
+            pending = self._pending_draft(persist=not dry_run)
+            candidate = trend_from_dict(pending["candidate"])
+            draft = draft_from_dict(pending["draft"])
+            citations = pending.get("citations", [])
+            self._ensure_original_draft(draft)
             draft_report = validate_draft(draft, self.config)
             if not draft_report.passed:
-                return self._skip("; ".join(draft_report.reasons), candidate=candidate, citations=[], draft=draft)
-            if self.config.visual_provider == "codex_manual":
-                codex_asset = self._codex_manual_visual_path(draft)
-                if codex_asset.exists():
-                    visual_generation_provider = "codex_manual_topic_asset"
-                    visual = validate_visual(codex_asset, draft.alt_text)
-                else:
-                    raise RuntimeError(
-                        "A Codex-generated topic-specific image is required before posting or dry-running. "
-                        f"Missing topic image: {codex_asset}."
-                    )
-                visual_sha256 = self._visual_sha256(codex_asset)
-                self._ensure_visual_not_reused(codex_asset, visual_sha256)
-                result = PublishResult(
-                    status="dry_run_ok" if dry_run else "published",
-                    dry_run=dry_run,
-                    topic=draft.topic,
-                    post_urn=None,
-                    image_urn=None,
-                )
+                raise ValueError("; ".join(draft_report.reasons))
+            try:
+                visual = self._render_visual(draft)
+                visual_path = Path(visual.path)
+                visual_sha256 = self._visual_sha256(visual_path)
+                self._ensure_visual_not_reused(visual_path, visual_sha256)
+            except (RuntimeError, ValueError, OSError) as exc:
+                if self.config.visual_provider != "codex_manual":
+                    raise
+                result = PublishResult(status="pending_image", dry_run=dry_run,
+                                       topic=draft.topic, pending_reason=str(exc))
+                pending.update(reason=str(exc), updated_at=result.created_at)
                 if not dry_run:
-                    linkedin = self.linkedin or LinkedInClient.from_env(self.config)
-                    image_urn = linkedin.upload_image(visual)
-                    visual.linkedin_image_urn = image_urn
-                    post_urn = linkedin.publish_post(draft, image_urn)
-                    result.post_urn = post_urn
-                    result.image_urn = image_urn
-                report_path = write_report(
-                    self.config.reports_dir,
-                    {
-                        "status": result.status,
-                        "dry_run": dry_run,
-                        "selected_topic": candidate.topic,
-                        "trend": candidate,
-                        "draft": draft,
-                        "visual": visual,
-                        "visual_generation": {
-                            "provider": visual_generation_provider,
-                            "asset": str(codex_asset),
-                            "asset_sha256": visual_sha256,
-                            "prompt": draft.visual_prompt,
-                            "alt_text": draft.alt_text,
-                        },
-                        "gemini_grounding_citations": [],
-                        "safety": {"trend": None, "draft": draft_report},
-                        "publish": result,
-                    },
-                )
-                result.report_path = str(report_path)
-                if not dry_run:
-                    self.history.append(
-                        {
-                            "created_at": result.created_at,
-                            "topic": draft.topic,
-                            "category": draft.category,
-                            "post_urn": result.post_urn,
-                            "image_urn": result.image_urn,
-                            "visual_path": str(codex_asset),
-                            "visual_sha256": visual_sha256,
-                            "visual_provider": visual_generation_provider,
-                            "primary_source_url": draft.primary_source_url,
-                            "report_path": str(report_path),
-                        }
-                    )
+                    atomic_json(self.config.state_dir / "pending_image_post.json", pending)
+                result.report_path = str(write_report(self.config.reports_dir, {
+                    **pending, "topic": draft.topic, "dry_run": dry_run, "publish": result,
+                }))
                 return result
-            visual = self._render_visual(draft)
-            visual_path = Path(visual.path)
-            visual_sha256 = self._visual_sha256(visual_path)
-            self._ensure_visual_not_reused(visual_path, visual_sha256)
-            image_urn = None
-            post_urn = None
+            provider = "codex_imagegen" if self.config.visual_provider == "codex_manual" else self.config.visual_provider
+            approval_reason = self._approval_reason(draft, visual_sha256)
+            if approval_reason and not dry_run:
+                return PublishResult(status="awaiting_approval", dry_run=False,
+                                     topic=draft.topic, pending_reason=approval_reason)
+            result = PublishResult(status="dry_run_ok" if dry_run else "published", dry_run=dry_run, topic=draft.topic)
+            record = {"created_at": result.created_at, "topic": draft.topic, "body": draft.body,
+                      "content_key": candidate.content_key,
+                      "category": draft.category, "visual_path": str(visual_path),
+                      "visual_sha256": visual_sha256, "visual_provider": provider,
+                      "visual_signature": visual_signature(visual_path),
+                      "primary_source_url": draft.primary_source_url}
             if not dry_run:
                 linkedin = self.linkedin or LinkedInClient.from_env(self.config)
-                image_urn = linkedin.upload_image(visual)
-                visual.linkedin_image_urn = image_urn
-                post_urn = linkedin.publish_post(draft, image_urn)
-            result = PublishResult(
-                status="dry_run_ok" if dry_run else "published",
-                dry_run=dry_run,
-                topic=draft.topic,
-                post_urn=post_urn,
-                image_urn=image_urn,
-            )
-            payload = {
-                "status": result.status,
-                "dry_run": dry_run,
-                "selected_topic": candidate.topic,
-                "trend": candidate,
-                "draft": draft,
-                "visual": visual,
-                "gemini_grounding_citations": [],
-                "safety": {"trend": None, "draft": draft_report},
-                "publish": result,
-            }
-            report_path = write_report(self.config.reports_dir, payload)
+                result.image_urn = linkedin.upload_image(visual)
+                visual.linkedin_image_urn = result.image_urn
+                journal_path = self.config.state_dir / "publication_attempt.json"
+                atomic_json(journal_path, {"status": "publishing", "topic": draft.topic,
+                                          "started_at": result.created_at, "image_urn": result.image_urn})
+                result.post_urn = linkedin.publish_post(draft, result.image_urn)
+                record.update(post_urn=result.post_urn, image_urn=result.image_urn)
+                atomic_json(journal_path, {"status": "published", "record": record})
+                self.history.append(record)
+                (self.config.state_dir / "pending_image_post.json").unlink(missing_ok=True)
+                (self.config.state_dir / "approved_post.json").unlink(missing_ok=True)
+            review = (json.loads(visual_path.with_suffix(".json").read_text(encoding="utf-8"))
+                      if provider == "codex_imagegen" else None)
+            report_path = write_report(self.config.reports_dir, {
+                "status": result.status, "dry_run": dry_run, "selected_topic": candidate.topic,
+                "trend": candidate, "draft": draft, "visual": visual,
+                "visual_generation": {"provider": provider, "asset": str(visual_path),
+                                      "asset_sha256": visual_sha256, "review": review, "alt_text": visual.alt_text},
+                "gemini_grounding_citations": citations,
+                "safety": {"trend": None, "draft": draft_report}, "publish": result,
+                "owner_approval": {"required": self.config.require_post_approval, "reason": approval_reason},
+            })
             result.report_path = str(report_path)
-            if not dry_run:
-                self.history.append(
-                    {
-                        "created_at": result.created_at,
-                        "topic": draft.topic,
-                        "category": draft.category,
-                        "post_urn": post_urn,
-                        "image_urn": image_urn,
-                        "visual_path": str(visual_path),
-                        "visual_sha256": visual_sha256,
-                        "visual_provider": self.config.visual_provider,
-                        "primary_source_url": draft.primary_source_url,
-                        "report_path": str(report_path),
-                    }
-                )
             return result
         except Exception as exc:
-            return self._skip(str(exc), candidate=candidate, draft=draft, citations=[])
+            result = self._skip(str(exc), candidate=candidate, draft=draft, citations=citations)
+            result.dry_run = dry_run
+            return result
 
     def featured_dashboard_draft(self) -> DraftPost:
         body = f"""I built a retail revenue dashboard to answer a question leaders actually care about:
@@ -756,6 +905,9 @@ Discussion prompts:
         )
 
     def publish_featured_dashboard(self, dry_run: bool) -> PublishResult:
+        if self.config.require_post_approval and not dry_run:
+            return PublishResult(status="awaiting_approval", dry_run=False,
+                                 pending_reason="Use the local review dashboard and scheduled publisher for approved posts.")
         draft = self.featured_dashboard_draft()
         draft_report = validate_draft(draft, self.config)
         if not draft_report.passed:
@@ -814,6 +966,8 @@ Discussion prompts:
     def stage_preview(self, draft: DraftPost, visual: VisualAsset, citations: list[dict[str, Any]]) -> Path:
         """Save the exact reviewed text and image so live publishing cannot regenerate them."""
         image_path = Path(visual.path)
+        if self.config.visual_provider == "codex_manual":
+            self._check_staged_codex_visual(draft, image_path)
         payload = {
             "status": "pending",
             "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
@@ -829,6 +983,8 @@ Discussion prompts:
 
     def publish_staged(self) -> PublishResult:
         """Publish only the immutable preview currently staged for human approval."""
+        if self.config.require_post_approval:
+            raise RuntimeError("Use the local review dashboard and scheduled publisher for approved posts.")
         path = self.config.state_dir / "pending_post.json"
         if not path.exists():
             raise RuntimeError("No staged preview exists. Run the preview command first.")
@@ -837,11 +993,15 @@ Discussion prompts:
             raise RuntimeError(f"The staged preview is {payload.get('status', 'invalid')} and cannot be published again.")
 
         draft = draft_from_dict(payload.get("draft", {}))
+        self._ensure_original_draft(draft)
         visual = visual_from_dict(payload.get("visual", {}))
         draft_report = validate_draft(draft, self.config)
         if not draft_report.passed:
             raise RuntimeError("Staged post failed the writing gate: " + "; ".join(draft_report.reasons))
-        checked_visual = validate_visual(Path(visual.path), visual.alt_text)
+        if self.config.visual_provider == "codex_manual":
+            checked_visual = self._check_staged_codex_visual(draft, Path(visual.path))
+        else:
+            checked_visual = validate_visual(Path(visual.path), visual.alt_text)
         visual_path = Path(visual.path)
         actual_hash = self._visual_sha256(visual_path)
         if actual_hash != payload.get("image_sha256"):
@@ -885,6 +1045,7 @@ Discussion prompts:
             {
                 "created_at": result.created_at,
                 "topic": draft.topic,
+                "body": draft.body,
                 "category": draft.category,
                 "post_urn": post_urn,
                 "image_urn": image_urn,
@@ -956,6 +1117,40 @@ Discussion prompts:
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
         return self.config.assets_dir / f"codex_weekday_{slug}.png"
 
+    def _check_staged_codex_visual(self, draft: DraftPost, image_path: Path) -> VisualAsset:
+        expected = self._codex_manual_visual_path(draft)
+        if image_path.resolve() != expected.resolve():
+            raise RuntimeError("Staged image is not the reviewed Codex asset for this topic.")
+        return reviewed_visual(draft, expected)
+
+    def prepare_visual(self, topic: str | None = None) -> Path:
+        """Write an exact draft handoff without generating or publishing an image."""
+        pending_path = self.config.state_dir / "pending_image_post.json"
+        if pending_path.exists() and not topic:
+            pending = json.loads(pending_path.read_text(encoding="utf-8"))
+            draft = draft_from_dict(pending["draft"])
+            self._ensure_original_draft(draft)
+            return write_visual_brief(draft, self._codex_manual_visual_path(draft))
+        if topic:
+            candidates = [c for c in self._fallback_trend_candidates() if c.topic == topic]
+            if not candidates:
+                raise RuntimeError("No eligible curated topic is available for this visual brief.")
+            draft = self._fallback_draft(candidates[0])
+            normalize_draft(draft)
+        else:
+            _, draft, _ = self._select_draft()
+        self._ensure_original_draft(draft)
+        return write_visual_brief(draft, self._codex_manual_visual_path(draft))
+
+    def _ensure_original_draft(self, draft: DraftPost) -> None:
+        if excluded_material(" ".join([draft.topic, draft.body, draft.visual_prompt, draft.alt_text]), self.config.portfolio_excluded_terms):
+            raise RuntimeError("Draft references excluded organisation work. Select a different personal project.")
+        if self.history.is_duplicate(draft.topic, self.config.duplicate_lookback_days):
+            raise RuntimeError("Topic was covered recently. Prepare an original post before publishing.")
+        similar_topic = self.history.similar_body_topic(draft.body, self.config.duplicate_lookback_days)
+        if similar_topic:
+            raise RuntimeError(f"Post repeats substantial wording from '{similar_topic}'. Write a fresh draft before publishing.")
+
     def _visual_sha256(self, asset_path: Path) -> str:
         return hashlib.sha256(asset_path.read_bytes()).hexdigest()
 
@@ -966,6 +1161,11 @@ Discussion prompts:
                 "This generated image was already used recently. "
                 "Create a new topic-specific visual before posting."
             )
+        signature = int(visual_signature(asset_path), 16)
+        for item in self.history.load():
+            previous = item.get("visual_signature")
+            if previous and bin(signature ^ int(previous, 16)).count("1") <= 12:
+                raise RuntimeError("This image is visually too similar to a published image. Create a substantially different visual.")
 
     def _render_visual_to_path(self, draft: DraftPost, asset_path: Path) -> None:
         style, variant = self._visual_base_and_variant(draft.visual_style)
