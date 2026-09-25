@@ -117,13 +117,19 @@ def test_mixed_mode_alternates_and_can_use_fresh_research(tmp_path, monkeypatch)
     assert result[2]
 
 
-def test_large_github_image_download_uses_raw_bytes(tmp_path, monkeypatch):
+def test_large_github_image_download_verifies_blob_and_caches(tmp_path, monkeypatch):
+    import base64, hashlib
     from types import SimpleNamespace
     store = ReviewStore(tmp_path)
-    replies = iter([SimpleNamespace(returncode=0, stdout=json.dumps({'encoding':'none','content':'','sha':'blob'})),
-                    SimpleNamespace(returncode=0, stdout=b'large-png-data')])
-    monkeypatch.setattr('linkedin_ai_agent.review_server.subprocess.run', lambda *a, **k: next(replies))
-    assert store.read_file('assets/image.png', 'main') == (b'large-png-data','blob')
+    data = b'large-png-data'
+    sha = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
+    reply = SimpleNamespace(returncode=0, stdout=json.dumps({'encoding':'none','content':'','sha':sha}))
+    monkeypatch.setattr('linkedin_ai_agent.review_server.subprocess.run', lambda *a, **k: reply)
+    download = Mock(return_value={'content':base64.b64encode(data).decode()})
+    monkeypatch.setattr(store, 'command', download)
+    assert store.read_file('assets/image.png', 'main') == (data,sha)
+    assert store.read_file('assets/image.png', 'main') == (data,sha)
+    assert download.call_count == 1
 
 
 def test_complete_post_length_includes_link_and_hashtags(tmp_path):

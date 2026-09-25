@@ -51,12 +51,19 @@ class ReviewStore:
             raise RuntimeError('Unable to read the current GitHub state. Nothing has been approved or published.')
         envelope = json.loads(result.stdout)
         if envelope.get('encoding') == 'none':
-            raw = subprocess.run([self.gh, 'api', f'repos/{REPO}/contents/{quote(path, safe="/")}?ref={branch}',
-                                  '-H', 'Accept: application/vnd.github.raw+json'],
-                                 capture_output=True, timeout=60, cwd=self.root)
-            if raw.returncode:
-                raise RuntimeError('Unable to download the full-resolution image from GitHub.')
-            return raw.stdout, envelope['sha']
+            # GitHub Contents omits large files. The blob endpoint transports
+            # PNG bytes as base64 JSON, avoiding CLI binary decoding failures.
+            blob_cache = self.cache / 'blobs' / envelope['sha']
+            if blob_cache.exists():
+                return blob_cache.read_bytes(), envelope['sha']
+            blob = self.command(['api', f'repos/{REPO}/git/blobs/{envelope["sha"]}'])
+            data = base64.b64decode(blob['content'])
+            actual = hashlib.sha1(f'blob {len(data)}\0'.encode() + data).hexdigest()
+            if actual != envelope['sha']:
+                raise RuntimeError('Image download did not match its GitHub fingerprint.')
+            blob_cache.parent.mkdir(exist_ok=True)
+            blob_cache.write_bytes(data)
+            return data, envelope['sha']
         return base64.b64decode(envelope['content']), envelope['sha']
 
     def json_file(self, path, branch='automation-state', optional=False):
