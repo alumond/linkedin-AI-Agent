@@ -73,4 +73,7 @@ def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
     actual_hash = hashlib.sha256(asset_path.read_bytes()).hexdigest()
     if record.get("asset_sha256") != actual_hash:
         raise RuntimeError("Codex image changed after visual review. Generate or review the replacement before posting.")
+    with Image.open(asset_path) as image:
+        if "A" in image.getbands() and image.getchannel("A").getextrema()[0] < 255:
+            raise RuntimeError("LinkedIn artwork needs a fully opaque background. Regenerate the image before review.")
     return validate_visual(asset_path, record.get("alt_text", ""), allow_landscape=True)

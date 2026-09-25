@@ -17,7 +17,8 @@ from urllib.parse import quote, urlparse
 from .agent import LinkedInAIAgent
 from .codex_visuals import draft_sha256, reviewed_visual
 from .config import load_config
-from .models import draft_from_dict
+from .models import draft_from_dict, post_commentary
+from .validators import validate_draft
 
 ROOT = Path(__file__).resolve().parents[2]
 REPO = 'alumond/linkedin-AI-Agent'
@@ -49,6 +50,13 @@ class ReviewStore:
                 return None, None
             raise RuntimeError('Unable to read the current GitHub state. Nothing has been approved or published.')
         envelope = json.loads(result.stdout)
+        if envelope.get('encoding') == 'none':
+            raw = subprocess.run([self.gh, 'api', f'repos/{REPO}/contents/{quote(path, safe="/")}?ref={branch}',
+                                  '-H', 'Accept: application/vnd.github.raw+json'],
+                                 capture_output=True, timeout=60, cwd=self.root)
+            if raw.returncode:
+                raise RuntimeError('Unable to download the full-resolution image from GitHub.')
+            return raw.stdout, envelope['sha']
         return base64.b64decode(envelope['content']), envelope['sha']
 
     def json_file(self, path, branch='automation-state', optional=False):
@@ -61,7 +69,7 @@ class ReviewStore:
         pending, _ = self.json_file('.state/pending_image_post.json', optional=True)
         approval, _ = self.json_file('.state/approved_post.json', optional=True)
         feedback, _ = self.json_file('.state/review_feedback.json', optional=True)
-        state = {'token': self.token, 'history_count': len(history), 'history': history[-8:][::-1],
+        state = {'token': self.token, 'history_count': len(history), 'history': sorted(history, key=lambda h: h.get('created_at', ''), reverse=True)[:8],
                  'pending': pending, 'approval': approval, 'feedback': feedback,
                  'schedule': 'Weekdays · 09:17 Lagos', 'require_approval': getattr(cfg, 'require_post_approval', False),
                  'image_ready': False, 'checks': [], 'image_url': None}
@@ -70,6 +78,7 @@ class ReviewStore:
             return state
         draft = draft_from_dict(pending['draft'])
         state['draft_sha256'] = draft_sha256(draft)
+        state['commentary'] = post_commentary(draft)
         cfg.state_dir = self.cache / 'state'
         cfg.assets_dir = self.cache / 'assets'
         cfg.reports_dir = self.cache / 'reports'
@@ -86,6 +95,9 @@ class ReviewStore:
         agent = LinkedInAIAgent(cfg)
         try:
             agent._ensure_original_draft(draft)
+            validation = validate_draft(draft, cfg)
+            if not validation.passed:
+                raise ValueError('; '.join(validation.reasons))
             state['checks'].append({'ok': True, 'label': 'Original copy and organisation exclusions checked'})
         except Exception as exc:
             state['checks'].append({'ok': False, 'label': str(exc)})

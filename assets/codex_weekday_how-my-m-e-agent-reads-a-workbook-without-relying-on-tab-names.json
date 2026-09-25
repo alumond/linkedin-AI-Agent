@@ -1,0 +1,17 @@
+{
+  "provider": "codex_imagegen",
+  "review_status": "passed",
+  "topic": "How my M&E agent reads a workbook without relying on tab names",
+  "draft_sha256": "f764d414229f2cf90c95eb2b24e8fe02d0477b4fb1f5050f3511056fa511e2f2",
+  "asset_sha256": "1e70ef59cd013c31fae6c9d08d7eb353423f62e7b85cee2f0eb8c87785170f67",
+  "prompt": "Make one precise correction to this finished opaque square data graphic: REMOVE the small author name/byline from the bottom-right corner completely, replacing it with the same continuous warm ivory background. Do not add any replacement name, logo, initials, text or watermark there. Keep ALL other words, letters, headline, subtitle, header labels, three data rows, classification labels, footer \"Header rules. Visible limits.\", layout, typography and colors exactly as they are. Preserve the completely opaque full-canvas ivory background. No transparency. Correct nothing else.",
+  "original_brief": "Create a polished square editorial data graphic titled \"Read the columns.\" with the subtitle \"How my M&E agent classifies a sheet\". Show three crisp rows of illustrative headers and their actual classification: \"Indicator / Target / Actual\" maps to \"KPI TRACKER\"; \"Risk / Likelihood / Impact\" maps to \"RISK REGISTER\"; \"Unmatched headers\" maps to \"UNKNOWN\". Use generous typography, precise aligned table rows, an ink navy and warm cream palette with restrained citrus accents. Label the examples \"Illustrative headers\". Footer: \"Header rules. Visible limits.\" No sketches, model drawings, wireframes, fake screenshots, generic people, invented statistics, decorative charts, stock icons, repeated legacy flowchart composition or internal instructions.",
+  "generation_attempts": 3,
+  "corrections": [
+    "Rejected initial transparent background with ragged edges and poor contrast.",
+    "Rejected misspelled byline in second version; removed the byline through Codex image editing."
+  ],
+  "reviewed_at": "2026-09-25T20:57:21.632807+00:00",
+  "review_notes": "Inspected the final generated square artwork: fully opaque ivory background, complete headline, correctly spelled readable table labels, explicit illustrative headers and unknown outcome. The two sample header groups match app/classification.py. No invented statistics, false screenshot, sketches, people or internal notes. Final author byline is absent. Compared perceptual fingerprints against 16 historical image versions whose stored hashes matched the available assets; no near-match. Owner approval remains required.",
+  "alt_text": "Illustrative column headers classify as a KPI tracker or risk register; unmatched headers return unknown. An editorial graphic about the M&E agent\u2019s explicit header rules."
+}

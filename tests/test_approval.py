@@ -115,3 +115,24 @@ def test_mixed_mode_alternates_and_can_use_fresh_research(tmp_path, monkeypatch)
     result = actual(agent)
     assert calls == ['researched']
     assert result[2]
+
+
+def test_large_github_image_download_uses_raw_bytes(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    store = ReviewStore(tmp_path)
+    replies = iter([SimpleNamespace(returncode=0, stdout=json.dumps({'encoding':'none','content':'','sha':'blob'})),
+                    SimpleNamespace(returncode=0, stdout=b'large-png-data')])
+    monkeypatch.setattr('linkedin_ai_agent.review_server.subprocess.run', lambda *a, **k: next(replies))
+    assert store.read_file('assets/image.png', 'main') == (b'large-png-data','blob')
+
+
+def test_complete_post_length_includes_link_and_hashtags(tmp_path):
+    from linkedin_ai_agent.validators import validate_draft
+    from linkedin_ai_agent.models import post_commentary
+    agent, draft = setup_agent(tmp_path)
+    draft.body += ' Useful detail.' * 200
+    draft.body = draft.body[:2980]
+    agent.config.max_post_chars = 3000
+    assert len(draft.body) <= 3000
+    assert len(post_commentary(draft)) > 3000
+    assert any('Complete LinkedIn post exceeds' in r for r in validate_draft(draft, agent.config).reasons)

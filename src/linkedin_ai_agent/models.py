@@ -148,3 +148,13 @@ def visual_from_dict(data: dict[str, Any]) -> VisualAsset:
         alt_text=str(data.get("alt_text", "")),
         linkedin_image_urn=data.get("linkedin_image_urn"),
     )
+
+
+def post_commentary(draft: DraftPost) -> str:
+    """The exact text submitted to LinkedIn, shared by review and validation."""
+    text = draft.body.strip()
+    if draft.primary_source_url and draft.primary_source_url not in text:
+        text += f"\n\nSource: {draft.primary_source_url}"
+    if draft.hashtags:
+        text += "\n\n" + " ".join(draft.hashtags)
+    return text

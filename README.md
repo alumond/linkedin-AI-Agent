@@ -16,7 +16,7 @@ The desk shows the exact pending post, its image, source links, checks and recen
 
 Approved posts publish at **09:17 Africa/Lagos, weekdays**, through GitHub Actions. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task. Without approval, the ready post remains available for review.
 
-A desktop popup appears when both the draft and image are ready. **Review post** opens the desk; **Later** dismisses it. A new version triggers a new popup, with at most one reminder per version per day. The local service must be running for popups.
+A desktop popup appears when both the draft and image are ready. **Review post** opens the desk; **Later** dismisses it. A new version triggers a new popup, with at most one reminder per version per day. The local service starts at login and runs from `~/Library/Application Support/Almond LinkedIn Studio`. It must be running for popups. After updating the project, run `python3 scripts/install_review_service.py` to update this installed copy. To stop it, run `launchctl bootout gui/$(id -u)/com.almond.linkedin-review`; remove `~/Library/LaunchAgents/com.almond.linkedin-review.plist` to disable login startup.
 
 ## Content and originality
 

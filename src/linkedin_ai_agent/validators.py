@@ -7,7 +7,7 @@ from PIL import Image
 
 from .config import AgentConfig
 from .history import PublicationHistory
-from .models import DraftPost, SafetyReport, TrendCandidate, VisualAsset
+from .models import DraftPost, SafetyReport, TrendCandidate, VisualAsset, post_commentary
 from .ranking import has_required_sources
 
 
@@ -86,6 +86,10 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     first_line = next((line.strip() for line in body.splitlines() if line.strip()), "")
     if not (config.min_post_chars <= len(body) <= config.max_post_chars):
         reasons.append(f"Post length {len(body)} is outside {config.min_post_chars}-{config.max_post_chars} chars.")
+    if len(post_commentary(draft)) > 3000:
+        reasons.append("Complete LinkedIn post exceeds 3,000 characters including source link and hashtags. Shorten the body.")
+    if draft.category == "portfolio" and "production-ready" in lowered:
+        reasons.append("Remove the production-ready claim; repository documentation alone does not establish readiness.")
     if len(words) < 115:
         reasons.append("Post body is too thin; it must contain enough context to avoid a title-only LinkedIn post.")
     if len(paragraphs) < 5:

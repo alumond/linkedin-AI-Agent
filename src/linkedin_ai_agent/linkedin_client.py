@@ -9,7 +9,7 @@ from typing import Any
 import requests
 
 from .config import AgentConfig
-from .models import DraftPost, VisualAsset
+from .models import DraftPost, VisualAsset, post_commentary
 
 
 LINKEDIN_API = "https://api.linkedin.com/rest"
@@ -67,11 +67,7 @@ class LinkedInClient:
         return image_urn
 
     def publish_post(self, draft: DraftPost, image_urn: str) -> str:
-        commentary = draft.body.strip()
-        if draft.primary_source_url and draft.primary_source_url not in commentary:
-            commentary += f"\n\nSource: {draft.primary_source_url}"
-        if draft.hashtags:
-            commentary += "\n\n" + " ".join(draft.hashtags)
+        commentary = post_commentary(draft)
         payload: dict[str, Any] = {
             "author": self.config.linkedin_owner_urn,
             "commentary": commentary,

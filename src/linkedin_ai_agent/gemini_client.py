@@ -155,7 +155,7 @@ Verified project evidence (if provided; source material only):
 For portfolio posts, describe Almond's own work using this evidence. Name the project,
 explain one specific implemented feature or design decision, and link the repository.
 Separate implemented behavior from future ideas. Do not invent usage, results, saved time,
-production deployment, personal testing, impact numbers or model accuracy. Use a supporting
+production deployment, production readiness, personal testing, impact numbers or model accuracy. README marketing is not evidence of production readiness. Use a supporting
 source file from the supplied list. Do not copy phrases from previous posts or use generic
 "data should drive decisions" filler. Do not discuss health or finance as advice.
 
@@ -168,16 +168,16 @@ Aim for {target_min}-{target_max} body characters so the final draft stays safel
 
 Rules:
 - Choose a natural structure for this specific project; vary the hook, development and closing.
-- Format for LinkedIn native readability: short paragraphs, clear section labels in uppercase, hyphen bullets where useful, and generous spacing.
+- Format for LinkedIn native readability: short paragraphs and generous spacing. Use bullets only when the detail benefits from a list. Avoid formulaic uppercase section labels.
 - Do not use Markdown bold or italics because LinkedIn API posts show the asterisks/underscores as plain text.
-- Use section labels such as "WHY THIS MATTERS:", "THE COMMON MISTAKE:", "BETTER MOVE:", "MY TAKE:", or "PRACTICAL RULE:" when they fit naturally.
+- Build one specific argument with an example, a technical choice and its limits. Do not pad the post with an impact-for-business-growth section or a generic business benefit.
 - Open with a concrete anchor: a decision, metric, or change that changes outcomes.
 - Build immediate reader relevance by stating one practical implication in plain language by the second third of the post.
 - Make the post sound like it came from a practical data analyst who understands business decisions, not a generic AI news page.
 - Tie the topic back to at least one of these lanes: dashboards, KPIs, SQL/Python/Power BI, business growth, reporting automation, data cleaning, impact analytics, GitHub portfolio proof, remote data work, or decision support.
 - Include one line that shows judgment, such as what teams should stop doing, measure differently, or prove with data.
 - Use concrete project details instead of forced analogies or generic motivational claims.
-- End with a catchy closing phrase, sharp takeaway, or memorable final line.
+- End with a concrete implication, open design choice, or specific next step. Do not force a slogan.
 - Do not force questions at the end unless the post genuinely needs one.
 - Do not claim personal hands-on testing.
 - Do not fabricate quotes or statistics.
@@ -192,7 +192,7 @@ Rules:
 - Write like a sharp human analyst: concrete, restrained, useful, and specific.
 - Vary sentence length naturally. Prefer active voice and plain verbs.
 - Include practical implications or actions readers can use in meetings, planning, or reporting.
-- Include a strong final phrase or practical takeaway that makes the post feel complete.
+- Keep the entire submitted post, including source URL and hashtags, under 3,000 characters.
 - Use 6 to 10 specific, topic-relevant hashtags.
 - For visual_style, use only "insight_card" or "diagram".
 - Return only JSON matching this shape:
@@ -320,7 +320,7 @@ Requirements:
 def post_length_target(config: AgentConfig) -> tuple[int, int]:
     """Return a comfortable target range inside the configured hard limits."""
     target_min = min(config.max_post_chars, config.min_post_chars + 200)
-    target_max = max(target_min, config.max_post_chars - 150)
+    target_max = max(target_min, min(config.max_post_chars - 150, 2650))
     return target_min, target_max
 
 
