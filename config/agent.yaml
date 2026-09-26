@@ -27,6 +27,9 @@ editorial_topics:
 - decision support
 - data cleaning
 - reporting automation
+- workflow explainers
+- data and reporting workflows
+- AI-assisted workflows and human review
 - AI for analytics
 - impact analytics
 - remote data careers
@@ -104,7 +107,16 @@ models:
 visuals:
   allow_ai_illustrations: false
   provider: codex_manual
-  direction: polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post; use real portfolio screenshots where relevant and label illustrative data explicitly; every image must be visually inspected at phone size
+  direction: >-
+    Polished editorial graphics and clear data visuals with a strong complete title,
+    generous spacing, short readable captions, and a concrete connection to the post.
+    For workflow posts, visualize the actual workflow discussed in the post: inputs,
+    ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs.
+    Use a process map for sequential steps, a decision flow for branching logic, or
+    swimlanes when ownership across people and tools matters. Show only steps and
+    connections supported by the post and its evidence; label proposed workflows as
+    proposed. Use real portfolio screenshots where relevant and label illustrative
+    data explicitly. Every image must be visually inspected at phone size.
   avoid:
   - sketches and hand-drawn illustrations
   - model drawings and wireframes

@@ -42,6 +42,11 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
             "record beside the image only after those checks pass. Never use a template "
             "renderer or rename an old image to satisfy this requirement. Compare against "
             "previous artwork: do not repeat its composition with a changed headline or color. "
+            "For workflow posts, depict the workflow discussed in the draft, not the process "
+            "of creating a LinkedIn post. Check the input, stage order, arrow directions, "
+            "decisions, people/tool handoffs, supported revision paths and output against "
+            "the text and evidence. Use a process map, decision flow or swimlanes as needed; "
+            "do not invent stages or connections, and label proposed workflows as proposed. "
             "No sketches, model drawings, wireframes, stock people, or generic AI artwork."
         ),
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

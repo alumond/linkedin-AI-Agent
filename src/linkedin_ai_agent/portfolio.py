@@ -10,7 +10,7 @@ from urllib.parse import quote
 import requests
 
 
-ANGLES = ("problem", "user-experience", "implementation", "data-quality",
+ANGLES = ("problem", "user-experience", "implementation", "workflow", "data-quality",
           "validation", "design-decision", "limitation", "next-improvement")
 
 
