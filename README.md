@@ -4,7 +4,11 @@ A local review desk for Almond's LinkedIn publisher. Posts alternate between ins
 
 ## Review on this device
 
-Double-click `Start LinkedIn Studio.command`, or run:
+Open **LinkedIn Studio** from your Mac's Applications folder or press **⌘ Space** and search for its name. The app lives at `~/Applications/LinkedIn Studio.app`; keep its icon in the Dock for quick access. It opens the review desk in its own window and starts the installed local service if needed. Closing the app does not stop approval popups or the scheduled publisher.
+
+To build or update the app and its local service, run `python3 scripts/install_macos_app.py` (requires Apple's Command Line Tools). The installer uses the existing GitHub sign-in and creates no new credentials.
+
+You can also double-click `Start LinkedIn Studio.command`, or run:
 
 ```bash
 PYTHONPATH=.vendor:src python3 -m linkedin_ai_agent.review_server
@@ -52,7 +56,7 @@ A successful dry run is **not approval**. Legacy direct-publication commands can
 
 ## Codex image task
 
-The task prompt is ready in [docs/codex-image-task.md](docs/codex-image-task.md). **Task activation is still required in Codex.** This repository cannot invoke the conversation's imagegen tool from GitHub Actions. `pending_image` does not mean image generation has started.
+The **LinkedIn Codex images** task is active in Codex for **08:00 Africa/Lagos, Monday–Friday**, attached to the LinkedIn Studio task. Its workflow is recorded in [docs/codex-image-task.md](docs/codex-image-task.md). Keep this Mac awake and Codex running for local preparation. The owner approved recurring draft preparation and image/review-file pushes; publishing still requires a separate approval in the review desk. The first scheduled execution has not yet been verified. This repository cannot invoke the conversation's imagegen tool from GitHub Actions. `pending_image` does not mean image generation has started.
 
 A generated PNG must have a sibling JSON with: `provider: "codex_imagegen"`, `review_status: "passed"`, `topic`, `draft_sha256`, `asset_sha256`, the actual generation `prompt`, `reviewed_at`, meaningful `review_notes`, and accurate `alt_text`. Use `codex_visuals.draft_sha256` for the exact draft fingerprint and SHA-256 for the image bytes. Create the record only after inspecting the image. It documents a visual review; it does not itself detect image quality.
 
