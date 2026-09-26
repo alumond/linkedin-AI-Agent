@@ -1,0 +1,11 @@
+{
+  "expires_at": "2026-11-25T10:40:01Z",
+  "verified_at": "2026-09-26T10:40:02Z",
+  "scopes": [
+    "openid",
+    "profile",
+    "w_member_social"
+  ],
+  "owner_urn": "urn:li:person:0GDezBSPGQ",
+  "status": "verified"
+}
