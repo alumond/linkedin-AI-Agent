@@ -62,7 +62,13 @@ Install with `python3 -m pip install -e ".[dev]"` and authenticate `gh` for `alu
 
 GitHub Actions secrets: `GEMINI_API_KEY`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `LINKEDIN_ACCESS_TOKEN`. Store token expiry in `LINKEDIN_TOKEN_EXPIRES_AT` or `.state/linkedin_token_metadata.json` on `automation-state`. Renewal reminders use the existing GitHub issue workflow.
 
-To renew LinkedIn access, configure the developer app callback `http://127.0.0.1:8080/callback`, run `python -m linkedin_ai_agent.cli auth-local`, and update the repository token secret and expiry. Never commit tokens or expose them in reports.
+To renew LinkedIn access, keep the developer app callback `http://127.0.0.1:8080/callback` registered, then run:
+
+```bash
+PYTHONPATH=.vendor:src python3 -m linkedin_ai_agent.token_renewal --client-id YOUR_EXISTING_CLIENT_ID
+```
+
+Open `http://127.0.0.1:8080`, enter the app's existing client secret, and follow **Authorize on LinkedIn**. The helper checks the account, existing permissions and expiry before updating `LINKEDIN_ACCESS_TOKEN`, `LINKEDIN_TOKEN_EXPIRES_AT` and the non-secret metadata on `automation-state`. Credentials stay in memory and go directly to the existing GitHub secret; they are never printed or written locally. If saving fails, use **Retry save** while the helper is running. It closes after success or 30 minutes. Renewal does not publish a post. Never commit tokens or expose them in reports.
 
 Run checks with `PYTHONPATH=.vendor:src python3 -m pytest -q` on this device, or `pytest -q` after installing the development dependencies. Run `python -m linkedin_ai_agent.cli show-config` to inspect non-secret settings.
 
