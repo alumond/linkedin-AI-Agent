@@ -1,0 +1,17 @@
+{
+  "record": {
+    "body": "A tab called \"Tracker\" tells a reporting tool very little. Its columns tell a more useful story.\n\nThat distinction is built into my M&E Intelligence Engine. The project connects to Google Sheets and prepares monitoring and evaluation analysis across workbook tabs. Before any KPI calculations or narrative reporting, it has to work out what kind of sheet it is reading.\n\nI made that step inspectable: a small Python classifier matches combinations of column headers.\n\nFor a KPI tracker, it looks for an indicator column, a baseline or target column, and an actual, achievement, progress or trend column. A risk register needs risk, likelihood or probability, and impact, score or mitigation. A schedule needs an activity or task, its status, and a start, end, dependency or completion field.\n\nThe tab's title does not decide the type. The classifier normalizes capitalization and spacing first, then applies those rules. You can open app/classification.py and see the exact conditions behind each label.\n\nThat matters when someone renames a tab but keeps its columns. The sheet can still match the same rule. It also makes the logic easier to question: if a sheet is classified incorrectly, the matching conditions are there to inspect.\n\nThere are limits. This is keyword matching, so an unfamiliar abbreviation can fail to match. Broad terms can overlap. The rules run in order, so an earlier match wins. And when none of the conditions match, the function returns \"unknown\".\n\nI would review those unknown sheets before expanding the vocabulary. Adding more aliases without checking the workbook could make the classifier more permissive while making its decisions harder to trust.\n\nThere is a second distinction I want to keep visible: recognizing a KPI sheet says nothing about whether its targets are sensible or its actual values are correct. Classification gives the rest of the pipeline a starting point. Data-quality checks and analytical judgment still have work to do.\n\nThe repository also separates deterministic analytics from the AI-generated narrative. That gives me concrete pieces to inspect before asking a model to explain the findings.\n\nFor this build, a useful next improvement is a set of deliberately ambiguous header examples: sheets that look like two types, use unexpected abbreviations, or match no rule. Those cases would tell me more about the classifier's limits than another polished report would.",
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Monitoring-and-Evaluation-Agent::design-decision::dynamic-google-sheet-classification",
+    "created_at": "2026-09-28T16:44:49Z",
+    "image_urn": "urn:li:image:D4D10AQEYy3Uf6Oyqhg",
+    "post_urn": "urn:li:share:7510379004890386432",
+    "primary_source_url": "https://github.com/alumond/Monitoring-and-Evaluation-Agent",
+    "topic": "How my M&E agent reads a workbook without relying on tab names",
+    "visual_path": "assets/codex_weekday_how-my-m-e-agent-reads-a-workbook-without-relying-on-tab-names.png",
+    "visual_provider": "codex_imagegen",
+    "visual_sha256": "1e70ef59cd013c31fae6c9d08d7eb353423f62e7b85cee2f0eb8c87785170f67",
+    "visual_signature": "a002c30394c494e4baecaa64ccf0c92ac928916a912acad4767c884295219500"
+  },
+  "status": "published"
+}
