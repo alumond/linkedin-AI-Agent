@@ -1,5 +1,5 @@
 {
   "draft_sha256": "3e2cebd3cba6befe9773e60336af9229d4f10a497e6265487cd7872176484912",
   "note": "The core of this flexibility lies in the `buildRecords` function within `src/main.js`. Instead of processing large external survey files directly, I designed a `profile` object in JavaScript. This object defines distributions for states, ages, disabilities, and other key variables. The `buildRecords` function then uses weighted expansion to generate a respondent-level dataset from this profile.\n\n\nthis doesnt speak data analysis",
-  "requested_at": "2026-09-29T21:03:39.598837+00:00"
+  "requested_at": "2026-09-29T21:05:40.681436+00:00"
 }
