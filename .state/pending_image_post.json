@@ -1,5 +1,5 @@
 {
-  "brief": "assets/briefs/codex_weekday_making-healthcare-access-barriers-easier-to-examine.json",
+  "brief": "assets/briefs/project_screenshot_making-healthcare-access-barriers-easier-to-examine.json",
   "candidate": {
     "category": "portfolio",
     "content_key": "https://github.com/alumond/Health-Access-for-PWDs::user-experience::healthcare-access-barrier-review",
@@ -70,7 +70,7 @@
   ],
   "created_at": "2026-09-29T21:38:14.040111+00:00",
   "draft": {
-    "alt_text": "Infographic showing three healthcare access barriers: communication, physical access and cost of care. Compare by state, disability group and facility level. Portfolio demonstration using simulated data.",
+    "alt_text": "Original Health Access for Persons with Disabilities dashboard screenshot showing state, disability and facility filters, service-access indicators, and partial state and facility charts. Portfolio demonstration using simulated data.",
     "body": "A healthcare access report needs to show the barriers people face when they try to get care.\n\nI built Health-Access-for-PWDs to bring communication support, physical access and affordability into one dashboard. A reader can examine each barrier, compare groups and see how the indicators stand against the targets used in the project.\n\nThis is a portfolio demonstration using simulated data. The figures illustrate the analysis; they are not findings from a new survey or estimates for Nigeria.\n\nThe dashboard lets you filter by state, disability group and facility level. You can narrow the view to a particular group and check the barriers shown for that selection. The number of records and the average service-quality rating update with it.\n\nFor communication support, the indicators cover interpreter availability and accessible information. Physical access includes facilities such as accessible toilets. Financial difficulty appears separately, so cost remains visible alongside the other barriers to care.\n\nI put each headline indicator's current value beside its target. That gives a program manager a clear starting point for a review: the size of the gap, the group being considered and the service issue that needs attention.\n\nI also kept the number of records visible. A percentage can look convincing on its own. Seeing how many people it represents helps a reader judge how much weight to give it and whether more information is needed.\n\nFor me, the useful part of this dashboard is being able to move from an overview to a specific issue. A team could use that structure to examine communication support in one group, discuss physical access in another, and explain the evidence behind a proposed priority.\n\nUsing real survey data would require checking how responses were collected, who was included and whether the comparisons are fair. The demonstration shows how I would organise the review; it does not establish which communities should receive funding.\n\nBefore recommending an action, I would check the underlying responses and discuss the apparent gap with the people affected.",
     "category": "portfolio",
     "claims": [
@@ -94,8 +94,8 @@
       "https://github.com/alumond/Health-Access-for-PWDs/blob/main/index.html"
     ],
     "topic": "Making healthcare access barriers easier to examine",
-    "visual_prompt": "Use case: infographic-diagram. Create a polished square LinkedIn editorial infographic, at least 1024 by 1024 pixels, fully opaque. It supports a plain-language portfolio post about examining healthcare access barriers for persons with disabilities. Premium, very legible at phone size, cream-white background, dark charcoal typography, generous white space, crisp geometric editorial design. Large complete title exactly: \"See the barriers to healthcare\". Beneath it, three equal vertical colour fields with bold meaningful pictograms: a pair of speech bubbles for communication, an accessible ramp / entryway for physical access, and a simple Naira currency symbol for cost. Use muted teal, soft blue, and burnt orange as accents; no dark background. Text in the three panels exactly: \"Communication\" / \"Interpreters and accessible information\"; \"Physical access\" / \"Accessible toilets and facilities\"; \"Cost of care\" / \"Financial difficulty\". At the bottom, a spacious horizontal band reads exactly \"Compare by state, disability group and facility level\". A clearly readable footer says exactly \"Portfolio demonstration \u00b7 Simulated data\". Conceptual explainer only: no statistics, invented scores, bar charts, heatmaps or fake dashboard screenshots. No code, workflow arrows, numbered stages, stock people, decorative stick figures, sketches, hand-drawn marks, photorealistic imagery, logos, watermarks or small illegible text. Do not imply these are measured findings. Use editorial composition and pictograms that explain these specific barriers, with substantial visual presence rather than a text-only quote card.",
-    "visual_style": "insight_card"
+    "visual_prompt": "Use the original dashboard screenshot at https://github.com/alumond/Health-Access-for-PWDs/blob/main/assets/dashboard-screenshot.png unchanged. Preserve its interface, labels, figures and aspect ratio. This is a portfolio demonstration with simulated data, as disclosed in the post. Do not generate an infographic or recreate the interface.",
+    "visual_style": "project_screenshot"
   },
   "status": "pending_image",
   "owner_feedback": {
@@ -103,5 +103,7 @@
     "note": "The core of this flexibility lies in the `buildRecords` function within `src/main.js`. Instead of processing large external survey files directly, I designed a `profile` object in JavaScript. This object defines distributions for states, ages, disabilities, and other key variables. The `buildRecords` function then uses weighted expansion to generate a respondent-level dataset from this profile\n\nThis doesnt seem like what a lay man  will understand",
     "requested_at": "2026-09-29T21:19:18.633724+00:00",
     "status": "revised"
-  }
+  },
+  "updated_at": "2026-09-29T21:49:20.932116+00:00",
+  "image_change_reason": "Owner requested the actual dashboard screenshot instead of a generated infographic."
 }
