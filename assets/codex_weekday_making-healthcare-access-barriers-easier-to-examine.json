@@ -1,0 +1,16 @@
+{
+  "provider": "codex_imagegen",
+  "review_status": "passed",
+  "topic": "Making healthcare access barriers easier to examine",
+  "draft_sha256": "d5d35a4378870410e2b842d0ce3c928dbfd0cb2859521631e9308821a5b560dc",
+  "asset_sha256": "a8ca686089bbeea3c8fbc2181580025fe9c2a1042ba10557da3b75769fb90a46",
+  "prompt": "Use case: infographic-diagram. Create a polished square LinkedIn editorial infographic, at least 1024 by 1024 pixels, fully opaque. It supports a plain-language portfolio post about examining healthcare access barriers for persons with disabilities. Premium, very legible at phone size, cream-white background, dark charcoal typography, generous white space, crisp geometric editorial design. Large complete title exactly: \"See the barriers to healthcare\". Beneath it, three equal vertical colour fields with bold meaningful pictograms: a pair of speech bubbles for communication, an accessible ramp / entryway for physical access, and a simple Naira currency symbol for cost. Use muted teal, soft blue, and burnt orange as accents; no dark background. Text in the three panels exactly: \"Communication\" / \"Interpreters and accessible information\"; \"Physical access\" / \"Accessible toilets and facilities\"; \"Cost of care\" / \"Financial difficulty\". At the bottom, a spacious horizontal band reads exactly \"Compare by state, disability group and facility level\". A clearly readable footer says exactly \"Portfolio demonstration \u00b7 Simulated data\". Conceptual explainer only: no statistics, invented scores, bar charts, heatmaps or fake dashboard screenshots. No code, workflow arrows, numbered stages, stock people, decorative stick figures, sketches, hand-drawn marks, photorealistic imagery, logos, watermarks or small illegible text. Do not imply these are measured findings. Use editorial composition and pictograms that explain these specific barriers, with substantial visual presence rather than a text-only quote card.",
+  "reviewed_at": "2026-09-29T21:38:13.961556+00:00",
+  "review_notes": [
+    "Inspected the generated square image: complete title, correctly spelled labels, three large readable pictograms and clear spacing.",
+    "Communication, physical access and cost align with the rewritten post and saved repository evidence. No statistics or unsupported findings appear.",
+    "The footer explicitly identifies this as a portfolio demonstration with simulated data.",
+    "Composition is a light three-column conceptual comparison, distinct from the recent dark numbered Job-Agent workflow. Perceptual and exact-image reuse checks passed."
+  ],
+  "alt_text": "Infographic showing three healthcare access barriers: communication, physical access and cost of care. Compare by state, disability group and facility level. Portfolio demonstration using simulated data."
+}
