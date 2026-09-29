@@ -124,11 +124,16 @@ class ReviewStore:
                 state['image_url'] = '/api/image?v=' + state['asset_sha256']
                 state['review'] = review
                 self.last_image = asset
-                state['checks'].append({'ok': True, 'label': 'Codex image reviewed and reuse checks passed'})
+                label = ('Project screenshot source verified and reuse checks passed'
+                         if review.get('provider') == 'project_screenshot'
+                         else 'Codex image reviewed and reuse checks passed')
+                state['checks'].append({'ok': True, 'label': label})
             except Exception as exc:
                 state['checks'].append({'ok': False, 'label': str(exc)})
         else:
-            state['checks'].append({'ok': False, 'label': 'Waiting for the Codex image and its review'})
+            label = ('Waiting for the project screenshot and its review'
+                     if draft.visual_style == 'project_screenshot' else 'Waiting for the Codex image and its review')
+            state['checks'].append({'ok': False, 'label': label})
         state['approved'] = bool(approval and approval.get('draft_sha256') == state['draft_sha256']
                                  and approval.get('asset_sha256') == state.get('asset_sha256')
                                  and not agent._approval_reason(draft, state.get('asset_sha256', '')))

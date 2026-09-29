@@ -810,7 +810,9 @@ Make the data useful enough that the next decision becomes obvious."""
                     **pending, "topic": draft.topic, "dry_run": dry_run, "publish": result,
                 }))
                 return result
-            provider = "codex_imagegen" if self.config.visual_provider == "codex_manual" else self.config.visual_provider
+            review = (json.loads(visual_path.with_suffix(".json").read_text(encoding="utf-8"))
+                      if self.config.visual_provider == "codex_manual" else None)
+            provider = review["provider"] if review else self.config.visual_provider
             approval_reason = self._approval_reason(draft, visual_sha256)
             if approval_reason and not dry_run:
                 return PublishResult(status="awaiting_approval", dry_run=False,
@@ -835,8 +837,6 @@ Make the data useful enough that the next decision becomes obvious."""
                 self.history.append(record)
                 (self.config.state_dir / "pending_image_post.json").unlink(missing_ok=True)
                 (self.config.state_dir / "approved_post.json").unlink(missing_ok=True)
-            review = (json.loads(visual_path.with_suffix(".json").read_text(encoding="utf-8"))
-                      if provider == "codex_imagegen" else None)
             report_path = write_report(self.config.reports_dir, {
                 "status": result.status, "dry_run": dry_run, "selected_topic": candidate.topic,
                 "trend": candidate, "draft": draft, "visual": visual,
@@ -1115,7 +1115,8 @@ Discussion prompts:
 
     def _codex_manual_visual_path(self, draft: DraftPost) -> Path:
         slug = "".join(ch.lower() if ch.isalnum() else "-" for ch in draft.topic).strip("-")[:70] or "weekday"
-        return self.config.assets_dir / f"codex_weekday_{slug}.png"
+        prefix = "project_screenshot" if draft.visual_style == "project_screenshot" else "codex_weekday"
+        return self.config.assets_dir / f"{prefix}_{slug}.png"
 
     def _check_staged_codex_visual(self, draft: DraftPost, image_path: Path) -> VisualAsset:
         expected = self._codex_manual_visual_path(draft)

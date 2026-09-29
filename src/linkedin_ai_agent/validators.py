@@ -130,11 +130,15 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 
-def validate_visual(path: Path, alt_text: str, allow_landscape: bool = False) -> VisualAsset:
+def validate_visual(path: Path, alt_text: str, allow_landscape: bool = False,
+                    allow_screenshot: bool = False) -> VisualAsset:
     with Image.open(path) as image:
         width, height = image.size
         mime = Image.MIME.get(image.format, "application/octet-stream")
-    if width == height:
+    if allow_screenshot:
+        if width < 900 or height < 675 or not 0.5 <= width / height <= 2:
+            raise ValueError(f"Screenshot must be a readable viewport at least 900x675 pixels with an aspect ratio between 1:2 and 2:1. Got {width}x{height}.")
+    elif width == height:
         if width < 900:
             raise ValueError(f"Image is too small for LinkedIn. Got {width}px.")
     elif allow_landscape and abs((width / height) - (16 / 9)) <= 0.03:

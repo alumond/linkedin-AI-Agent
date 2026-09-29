@@ -214,9 +214,9 @@ Rules:
 - Include practical implications or actions readers can use in meetings, planning, or reporting.
 - Keep the entire submitted post, including source URL and hashtags, under 3,000 characters.
 - Use 6 to 10 specific, topic-relevant hashtags.
-- For visual_style, use only "insight_card" or "diagram".
+- For portfolio posts about a dashboard or app interface, set visual_style to "project_screenshot" and describe the actual screen to capture. Use the authentic project screenshot; never generate a substitute dashboard or infographic. For other posts, use "insight_card" or "diagram".
 - For a workflow post, make the workflow the substance of the post: explain its input, ordered stages, a meaningful decision or handoff, output, and a limitation. Include failure or revision paths only when the evidence supports them. Clearly distinguish implemented behavior from a proposed process; do not invent tools, integrations, automation or results.
-- For workflow posts, set visual_style to "diagram" and make visual_prompt describe the exact workflow in the post, with short stage labels and explicit arrow directions. Choose a process map, decision flow or swimlanes to suit the content. Identify the relevant people/tools only when supported. Match every branch and output to the text; do not substitute a generic diagram or the LinkedIn publishing workflow. The image should explain the process at phone size, not repeat the full post.
+- For workflow posts that do not showcase a dashboard or app, set visual_style to "diagram" and make visual_prompt describe the exact workflow in the post, with short stage labels and explicit arrow directions. Choose a process map, decision flow or swimlanes to suit the content. Identify the relevant people/tools only when supported. Match every branch and output to the text; do not substitute a generic diagram or the LinkedIn publishing workflow. The image should explain the process at phone size, not repeat the full post.
 - Return only JSON matching this shape:
 {{
   "topic": "...",
@@ -226,7 +226,7 @@ Rules:
   "primary_source_url": "https://...",
   "supporting_source_urls": ["https://..."],
   "claims": ["..."],
-  "visual_style": "insight_card|diagram",
+  "visual_style": "project_screenshot|insight_card|diagram",
   "visual_prompt": "...",
   "alt_text": "..."
 }}

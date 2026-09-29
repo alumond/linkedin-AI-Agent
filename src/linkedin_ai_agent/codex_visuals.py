@@ -8,6 +8,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from urllib.parse import urlparse
 from PIL import Image
 
 from .models import DraftPost, VisualAsset, to_dict
@@ -36,6 +37,13 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
         "draft_sha256": draft_sha256(draft),
         "asset": str(asset_path),
         "instructions": (
+            "Use an authentic, unchanged screenshot from this project's repository. "
+            "Do not generate or redraw the dashboard. Inspect the screenshot against "
+            "the exact post, verify the source and original bytes, and save a "
+            "project_screenshot review record with source_repository, source_url, "
+            "source_blob_sha, source_sha256 and capture_method=repository_asset. "
+            "Preserve source data labels and disclose simulated data in the post."
+        ) if draft.visual_style == "project_screenshot" else (
             "Generate with Codex imagegen, then visually inspect against this exact post. "
             "Check readable text, correct spelling, meaningful diagrams, topic alignment, "
             "no invented statistics and no internal drafting notes. Save a .json review "
@@ -56,6 +64,8 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
 def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
     brief = write_visual_brief(draft, asset_path)
     if not asset_path.exists():
+        if draft.visual_style == "project_screenshot":
+            raise RuntimeError(f"A reviewed project screenshot is required. Missing: {asset_path}. Brief: {brief}.")
         raise RuntimeError(
             "A Codex-generated topic-specific image is required before posting or dry-running. "
             f"Missing topic image: {asset_path}. Prepare it from {brief}."
@@ -66,19 +76,38 @@ def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
     except (OSError, ValueError) as exc:
         raise RuntimeError(f"Codex image review record is missing or invalid: {record_path}. Brief: {brief}.") from exc
     if not isinstance(record, dict) or (
-        record.get("provider") != "codex_imagegen"
+        record.get("provider") not in {"codex_imagegen", "project_screenshot"}
         or record.get("review_status") != "passed"
-        or not record.get("prompt")
         or not record.get("review_notes")
         or not record.get("reviewed_at")
     ):
+        raise RuntimeError("Image must have a supported provider and completed visual review record.")
+    screenshot = record["provider"] == "project_screenshot"
+    if screenshot != (draft.visual_style == "project_screenshot"):
+        raise RuntimeError("Image provider does not match the requested visual style.")
+    if not screenshot and not record.get("prompt"):
         raise RuntimeError("Codex image must have a completed imagegen provenance and visual review record.")
     if record.get("topic") != draft.topic or record.get("draft_sha256") != draft_sha256(draft):
         raise RuntimeError(f"Codex image was not reviewed against this exact post. Prepare it from {brief}.")
     actual_hash = hashlib.sha256(asset_path.read_bytes()).hexdigest()
     if record.get("asset_sha256") != actual_hash:
         raise RuntimeError("Codex image changed after visual review. Generate or review the replacement before posting.")
+    if screenshot:
+        repository = record.get("source_repository", "")
+        source = record.get("source_url", "")
+        parsed = urlparse(repository)
+        if (draft.category != "portfolio" or repository != draft.primary_source_url.rstrip("/")
+                or parsed.scheme != "https" or parsed.netloc != "github.com"
+                or len(parsed.path.strip("/").split("/")) != 2
+                or not source.startswith(repository + "/blob/")
+                or record.get("capture_method") != "repository_asset"):
+            raise RuntimeError("Project screenshot needs a verified source from the post's GitHub repository.")
+        data = asset_path.read_bytes()
+        blob_sha = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
+        if record.get("source_sha256") != actual_hash or record.get("source_blob_sha") != blob_sha:
+            raise RuntimeError("Project screenshot must match the unchanged original source bytes.")
     with Image.open(asset_path) as image:
         if "A" in image.getbands() and image.getchannel("A").getextrema()[0] < 255:
             raise RuntimeError("LinkedIn artwork needs a fully opaque background. Regenerate the image before review.")
-    return validate_visual(asset_path, record.get("alt_text", ""), allow_landscape=True)
+    return validate_visual(asset_path, record.get("alt_text", ""), allow_landscape=True,
+                           allow_screenshot=screenshot)

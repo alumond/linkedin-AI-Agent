@@ -4,6 +4,8 @@ The local Codex task **LinkedIn Codex images** (`linkedin-codex-images`) was act
 
 ## Task prompt
 
+For dashboard and app portfolio posts, the owner's requested visual is an authentic screenshot of that project. This takes precedence over the image-generation steps below: select `project_screenshot`, use the original repository asset without altering it, inspect it, and record its source URL, repository, Git blob SHA and SHA-256 in the review record described in README.md. Never substitute a generated infographic or fake interface. Use imagegen for other post types. Apply the no-ai-slop skill to the complete post before preparing its image, and keep the language useful to a general reader.
+
 Work in `/Users/admin/Downloads/LinkedinAgent` on Almond's LinkedIn Studio. Read README.md, config/agent.yaml and src/linkedin_ai_agent/codex_visuals.py. Use the imagegen skill and built-in Codex image generation, never Gemini images or Python-rendered image substitutes. Preserve unrelated local work. Do not approve posts on the owner's behalf or dispatch a live publication.
 
 1. Use `gh` or `.tools/gh_2.94.0_macOS_arm64/bin/gh` for `alumond/linkedin-AI-Agent`. Check that no weekday publisher run is active. Dispatch `weekday-linkedin-post.yml` with `mode=prepare` and `dry_run=true`; wait for completion and inspect the actual result. This alternates fresh public GitHub evidence with grounded data, AI, analytics and industry research, or preserves the exact pending draft. It also processes an owner's requested revision. A failed idea should lead to another verified project/feature, never recycled copy. Stanforteedge and all HR dashboard/HR analytics material are excluded organisation work.

@@ -1,0 +1,21 @@
+{
+  "source_url": "https://github.com/alumond/Health-Access-for-PWDs/blob/main/assets/dashboard-screenshot.png",
+  "source_repository": "https://github.com/alumond/Health-Access-for-PWDs",
+  "source_blob_sha": "b93acb7641a6195a7e29071fcfbee863495073ce",
+  "source_sha256": "e7faa55e2f7ae3132ec922bf298154150a112b1a3e9d9613cdba4b6eccd4f0b1",
+  "provider": "project_screenshot",
+  "capture_method": "repository_asset",
+  "review_status": "passed",
+  "topic": "Making healthcare access barriers easier to examine",
+  "draft_sha256": "25c0f12c2e4b6502558a66377665606474aab27b179ff731bf6a5212c63a4c04",
+  "asset_sha256": "e7faa55e2f7ae3132ec922bf298154150a112b1a3e9d9613cdba4b6eccd4f0b1",
+  "reviewed_at": "2026-09-29T21:49:20.904616+00:00",
+  "review_notes": [
+    "Visually inspected the original 1440x1100 repository screenshot. Verified its bytes against the current source repository asset and Git blob.",
+    "The original viewport shows the complete headline, filters and four indicator cards. State and facility charts continue below the captured viewport; this is not a full-page capture.",
+    "No interface elements, numerical values or labels were generated or edited. The post identifies the data as simulated.",
+    "The screenshot matches the dashboard discussed in the unchanged post body. Exact-image and perceptual reuse checks passed."
+  ],
+  "alt_text": "Original Health Access for Persons with Disabilities dashboard screenshot showing state, disability and facility filters, service-access indicators, and partial state and facility charts. Portfolio demonstration using simulated data.",
+  "data_context": "Simulated portfolio demonstration"
+}
