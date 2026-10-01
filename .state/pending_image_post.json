@@ -1,0 +1,91 @@
+{
+  "brief": "assets/briefs/project_screenshot_how-a-user-s-financial-details-become-a-loan-decision.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/loan-Prediction-App::workflow::user-guided-loan-approval-prediction",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"loan-Prediction-App\", \"url\": \"https://github.com/alumond/loan-Prediction-App\", \"description\": \"Loan Approval Prediction App built with Streamlit and a Machine Learning pipeline. The app takes user financial and demographic inputs and predicts loan approval probability using a trained scikit-learn model.\", \"files\": [{\"url\": \"https://github.com/alumond/loan-Prediction-App/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# loan-Prediction-App\\nLoan Approval Prediction App built with Streamlit and a Machine Learning pipeline. The app takes user financial and demographic inputs and predicts loan approval probability using a trained scikit-learn model.\\n\"}, {\"url\": \"https://github.com/alumond/loan-Prediction-App/blob/main/app.py\", \"path\": \"app.py\", \"text\": \"import streamlit as st\\nimport pandas as pd\\nimport joblib\\n\\npipeline = joblib.load(\\\"loan_pipeline.pkl\\\")\\n\\nst.title(\\\"Loan Approval Prediction (Professional ML App)\\\")\\n\\nGender = st.selectbox(\\\"Gender\\\", [\\\"Male\\\", \\\"Female\\\"])\\nMarried = st.selectbox(\\\"Married\\\", [\\\"Yes\\\", \\\"No\\\"])\\nDependents = st.selectbox(\\\"Dependents\\\", [\\\"0\\\", \\\"1\\\", \\\"2\\\", \\\"3+\\\"])\\nEducation = st.selectbox(\\\"Education\\\", [\\\"Graduate\\\", \\\"Not Graduate\\\"])\\nSelf_Employed = st.selectbox(\\\"Self Employed\\\", [\\\"Yes\\\", \\\"No\\\"])\\nApplicantIncome = st.number_input(\\\"Applicant Income\\\", min_value=0)\\nCoapplicantIncome = st.number_input(\\\"Coapplicant Income\\\", min_value=0)\\nLoanAmount = st.number_input(\\\"Loan Amount\\\", min_value=0.0)\\nLoan_Amount_Term = st.number_input(\\\"Loan Term\\\", min_value=0.0)\\nCredit_History = st.selectbox(\\\"Credit History\\\", [0.0, 1.0])\\nProperty_Area = st.selectbox(\\\"Property Area\\\", [\\\"Urban\\\", \\\"Semiurban\\\", \\\"Rural\\\"])\\n\\nif st.button(\\\"Predict\\\"):\\n    input_data = pd.DataFrame([{\\n        \\\"Gender\\\": Gender,\\n        \\\"Married\\\": Married,\\n        \\\"Dependents\\\": Dependents,\\n        \\\"Education\\\": Education,\\n        \\\"Self_Employed\\\": Self_Employed,\\n        \\\"ApplicantIncome\\\": ApplicantIncome,\\n        \\\"CoapplicantIncome\\\": CoapplicantIncome,\\n        \\\"LoanAmount\\\": LoanAmount,\\n        \\\"Loan_Amount_Term\\\": Loan_Amount_Term,\\n        \\\"Credit_History\\\": Credit_History,\\n        \\\"Property_Area\\\": Property_Area\\n    }])\\n\\n    prediction = pipeline.predict(input_data)[0]\\n    probability = pipeline.predict_proba(input_data)[0][1]\\n\\n    if prediction == 1:\\n        st.success(f\\\"Loan Approved \\u2705 (Confidence: {probability:.2f})\\\")\\n    else:\\n        st.error(f\\\"Loan Not Approved \\u274c (Confidence: {probability:.2f})\\\")\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/loan-Prediction-App/commit/2dcfda3663ea663c078902fa1c757ce104a65b2e\", \"message\": \"Added Dev Container Folder\", \"date\": \"2026-04-14T14:27:51Z\"}, {\"url\": \"https://github.com/alumond/loan-Prediction-App/commit/c0974828fdd431fd8b7959e204af84b7e23bf8fb\", \"message\": \"fix requirements for streamlit cloud compatibility\", \"date\": \"2026-04-14T14:27:22Z\"}, {\"url\": \"https://github.com/alumond/loan-Prediction-App/commit/ea97d71a2f6a72094ce992ac43d3bc27ab62b6f8\", \"message\": \"fix dependencies for deployment\", \"date\": \"2026-04-14T14:24:01Z\"}], \"updated_at\": \"2026-04-14T14:27:51Z\"}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "loan-Prediction-App",
+        "url": "https://github.com/alumond/loan-Prediction-App"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/loan-Prediction-App/blob/main/README.md"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "app.py",
+        "url": "https://github.com/alumond/loan-Prediction-App/blob/main/app.py"
+      }
+    ],
+    "summary": "Imagine a loan officer needing to quickly assess an application. This app streamlines that process. A user enters their personal and financial information, like income, marital status, and credit history, through a series of clear input fields. These details are then instantly processed by a trained model. The application immediately displays whether the loan is approved or not, alongside a confidence level, making the decision process transparent and swift for the reviewer. This takes a series of manual checks and consolidates them into a single, guided interaction.",
+    "topic": "How a user's financial details become a loan decision"
+  },
+  "citations": [
+    {
+      "title": "loan-Prediction-App",
+      "url": "https://github.com/alumond/loan-Prediction-App"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/loan-Prediction-App/blob/main/README.md"
+    },
+    {
+      "title": "app.py",
+      "url": "https://github.com/alumond/loan-Prediction-App/blob/main/app.py"
+    }
+  ],
+  "created_at": "2026-10-01T19:33:51.519659+00:00",
+  "draft": {
+    "alt_text": "Screenshot of the Loan Approval Prediction App. It shows input fields for various financial and demographic details, a 'Predict' button, and a green success message indicating 'Loan Approved' with a confidence score, demonstrating a data-driven loan decision.",
+    "body": "Making quick, yet responsible, loan decisions is critical for financial institutions and lending operations. My recent portfolio project, the Loan Approval Prediction App, transforms how a user's financial details inform a loan decision, illustrating a practical approach to data-driven business growth.\n\nLoan officers often face the challenge of assessing applications rapidly, moving beyond stacks of paperwork or disjointed systems. My Loan Approval Prediction App addresses this by providing a clear, guided interface. Users enter personal and financial information through a series of input fields. This includes details like income, marital status, number of dependents, educational background, employment status, desired loan amount, and credit history. The application is designed to collect these specific data points, allowing for a comprehensive profile for decision-making.\n\nOnce this information is entered, the application instantly processes it using a trained analytical model. This model, integrated into the app, immediately determines whether the loan is approved or not. It also displays a confidence level for that decision, offering clear insight for the reviewer. This approach replaces a series of manual, often inconsistent checks with a single, data-backed interaction.\n\nFor any business involved in rapid assessment and approval processes, this approach means moving from subjective, time-consuming reviews to decisions that are both quicker and more consistent. It\u2019s a direct application of business intelligence to improve operational efficiency and decision support. By automating the initial assessment, resources can be redirected to more complex cases or strategic growth initiatives. Teams looking to scale their decision-making processes should focus on embedding predictive analytics directly into their daily workflows, rather than relying solely on post-hoc reporting. This shifts from merely understanding past performance to proactively shaping future outcomes.\n\nThis project demonstrates how a data analyst can translate advanced data processing and analytical models into tangible, user-friendly tools. It clearly shows my approach to solving business problems using data to improve key performance indicators and support overall growth.\n\nThis application serves as a clear demonstration of predictive analytics within a controlled environment, simulating a critical business decision process. It is a portfolio piece designed to illustrate the potential for data-driven applications, not a production system handling live financial transactions. You can explore the project details and its structure in my GitHub repository.",
+    "category": "portfolio",
+    "claims": [
+      "The project, \"Loan Approval Prediction App\", processes user financial and demographic inputs through a Streamlit interface.",
+      "It predicts loan approval probability using a trained scikit-learn machine learning model.",
+      "The application immediately displays whether the loan is approved or not, alongside a confidence level.",
+      "It simplifies a series of manual checks into a single, guided interaction for loan decision support."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#DecisionSupport",
+      "#MachineLearning",
+      "#DataForGrowth",
+      "#PortfolioProject",
+      "#Analytics",
+      "#LoanPrediction",
+      "#Streamlit",
+      "#KPI"
+    ],
+    "primary_source_url": "https://github.com/alumond/loan-Prediction-App",
+    "supporting_source_urls": [
+      "https://github.com/alumond/loan-Prediction-App/blob/main/README.md",
+      "https://github.com/alumond/loan-Prediction-App/blob/main/app.py"
+    ],
+    "topic": "How a user's financial details become a loan decision",
+    "visual_prompt": "Screenshot of the Streamlit Loan Approval Prediction App interface. The app title 'Loan Approval Prediction (Professional ML App)' is visible. Input fields are present for Gender, Married, Dependents, Education, Self Employed, Applicant Income, Coapplicant Income, Loan Amount, Loan Term, Credit History, and Property Area. A 'Predict' button is at the bottom, and below it, a green success message 'Loan Approved \u2705 (Confidence: X.XX)' is displayed, demonstrating an approved loan result.\nRequired visual direction: Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, synthetic photorealism.",
+    "visual_style": "project_screenshot"
+  },
+  "status": "pending_image"
+}
