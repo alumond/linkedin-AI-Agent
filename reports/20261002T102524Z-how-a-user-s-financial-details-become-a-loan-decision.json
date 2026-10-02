@@ -1,13 +1,84 @@
 {
-  "brief": "assets/briefs/project_screenshot_how-a-user-s-financial-details-become-a-loan-decision.json",
-  "candidate": {
+  "draft": {
+    "alt_text": "Loan Studio\u2019s dark workspace with sample loan inputs, recent scenarios and a result of 94% estimated approval probability. The inputs are invented examples; the output is a model prediction, not a lender approval.",
+    "body": "I\u2019ve rebuilt my loan prediction app with a dark workspace, a clearer result panel and a way to revisit earlier scenarios.\n\nThe part I wanted to make easier was comparison. Enter a few example details, see the model\u2019s estimate, then change one input and run it again. You can go back to a recent scenario without filling in the whole form.\n\nThe form is now split into three sections: the loan, income and household, and applicant profile. \u201cLoad sample\u201d gives you somewhere to start. \u201cNew scenario\u201d clears the form when you want to try your own made-up example.\n\nThe screenshot shows one of those examples. The model returns a 94% estimated probability of approval for the details entered. That percentage describes the model\u2019s output for this example. It does not tell us the model is 94% accurate, and no lender has approved an application.\n\nThe original model is unchanged. Comparison checks returned the same predictions and probabilities after the update. The results card gives the percentage a clear label and shows a few of the submitted inputs, so you can see which example produced it.\n\nOne detail matters when comparing runs: changing a field does not change the previous result. You need to select \u201cRun scenario\u201d again. Otherwise, it would be easy to read an old result as though it belonged to the numbers now in the form.\n\nUp to six recent scenarios remain available during the session. They are not saved to a database, and the app does not submit loan applications. Use invented details when trying it.\n\nThis is still a portfolio demonstration. I haven\u2019t established that the model is accurate, fair or suitable for real lending. The original project also does not document its currency and amount units, so the values appear without currency symbols.\n\nI want someone exploring the app to be able to follow each result back to the details they entered. The sample, submitted-input summary and recent scenarios give them a way to do that while trying different combinations.\n\nTry Loan Studio with the sample details: https://loan-prediction-app-55ycwzbcqsxtfryemepphw.streamlit.app/",
+    "category": "portfolio",
+    "claims": [
+      "The redesigned interface groups the eleven original inputs and provides sample loading and up to six recent scenarios per session.",
+      "The original fitted model is preserved; export validation matched predictions and probabilities for 11,474 examples and numeric boundary cases.",
+      "The displayed sample produces a 94% estimated approval probability, not a verified lender approval or model accuracy score.",
+      "The app does not submit applications or persist scenarios to a database."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#MachineLearning",
+      "#DataVisualization",
+      "#DecisionSupport",
+      "#PortfolioProject",
+      "#Streamlit"
+    ],
+    "primary_source_url": "https://github.com/alumond/loan-Prediction-App",
+    "supporting_source_urls": [
+      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/README.md",
+      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/app.py",
+      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/portable_forest.py"
+    ],
+    "topic": "How a user's financial details become a loan decision",
+    "visual_prompt": "Use the authentic, unchanged screenshot of the working dark Loan Studio app. Show the sample inputs and the actual 94% estimated approval probability, with the result labels and portfolio-demo context visible. No generated interface or added text.",
+    "visual_style": "project_screenshot"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "title": "Loan Studio project",
+      "url": "https://github.com/alumond/loan-Prediction-App"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/README.md"
+    },
+    {
+      "title": "app.py",
+      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/app.py"
+    },
+    {
+      "title": "portable_forest.py",
+      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/portable_forest.py"
+    }
+  ],
+  "owner_approval": {
+    "reason": null,
+    "required": true
+  },
+  "publish": {
+    "created_at": "2026-10-02T10:25:22Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4D10AQFgxJPIMoZ4vA",
+    "pending_reason": null,
+    "post_urn": "urn:li:share:7511733059944308737",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "How a user's financial details become a loan decision"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": []
+    },
+    "trend": null
+  },
+  "selected_topic": "How a user's financial details become a loan decision",
+  "status": "published",
+  "trend": {
     "category": "portfolio",
     "content_key": "https://github.com/alumond/loan-Prediction-App::workflow::user-guided-loan-approval-prediction",
-    "evidence_score": 1,
-    "novelty_score": 1,
-    "practical_value_score": 1,
-    "recency_score": 1,
-    "relevance_score": 1,
+    "evidence_score": 1.0,
+    "novelty_score": 1.0,
+    "practical_value_score": 1.0,
+    "recency_score": 1.0,
+    "relevance_score": 1.0,
     "source_snapshot": "{\"name\": \"Loan Studio\", \"url\": \"https://github.com/alumond/loan-Prediction-App\", \"commit\": \"2f70eba60e86cc3da10e2a88c7fc45fe51401581\", \"files\": [{\"path\": \"README.md\", \"url\": \"https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/README.md\", \"text\": \"# Loan Studio\\n\\nA dark scenario workspace for the existing [loan prediction project](https://github.com/alumond/loan-Prediction-App). Enter invented details, run the saved model and compare recent results.\\n\\nThe interface includes a sample scenario, grouped inputs, a results panel and up to six recent scenarios per session. Selecting a recent scenario restores its inputs and result. Changing the form does not change the previous result until you run it again.\\n\\n## Run locally\\n\\nUse Python 3.11 or later with the pinned Streamlit version. The model evaluator has been checked on Python 3.11 and 3.14.\\n\\n```sh\\npython3 -m venv .venv\\nsource .venv/bin/activate\\npython -m pip install -r requirements.txt\\nstreamlit run app.py\\n```\\n\\n## Checks\\n\\n```sh\\npython -m unittest discover -s tests -v\\n```\\n\\nThe checks cover the unchanged model, approval and decline examples, probability labels, input validation, resetting the form and restoring recent scenarios. The responsive interface was also checked in a separate browser at desktop and phone widths.\\n\\n## Model limits\\n\\nThe model file is unchanged from the original repository. Its fitted trees and category mappings are also exported to `loan_forest.json.gz`, which the app evaluates without loading a version-specific scikit-learn pickle. No training or fitting is performed during export. The displayed percentage is its approval estimate, not a measure of accuracy or a lender's decision. The repository does not document currency, amount units or the credit-history code's criteria, so the interface avoids inventing those definitions.\\n\\nUse made-up details. The app does not submit loan applications or save scenarios to a database. This interface does not establish the model's accuracy, fairness or suitability for lending.\\n\\n## Streamlit deployment\\n\\nDeploy `app.py` from the `main` branch using `requirements.txt`. The exported evaluator supports the existing Python 3.14 deployment, so the app does not need to be deleted or recreated to change Python.\\n\\nThe app's public address is [loan-prediction-app-55ycwzbcqsxtfryemepphw.streamlit.app](https://loan-prediction-app-55ycwzbcqsxtfryemepphw.streamlit.app/).\\n\\n## Reproduce the model export\\n\\nIn a separate Python 3.11 environment, install `requirements-export.txt`, then run `python tools/export_model.py` and `python tools/validate_export.py`. Validation compares both classes and exact probabilities against the original pipeline for 5,000 varied examples and values at and around the forest's numeric split boundaries.\\n\"}, {\"path\": \"app.py\", \"url\": \"https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/app.py\", \"text\": \"from datetime import datetime\\nfrom html import escape\\nfrom pathlib import Path\\nimport streamlit as st\\nfrom loan_model import EXAMPLE, FEATURES, load_model, predict_scenario, validate_scenario\\n\\nst.set_page_config(page_title='Loan Studio \\u00b7 Scenario workspace', page_icon='\\u25c8', layout='wide')\\nICONS = {\\n    'mark': '<path d=\\\"M5 4h7v7h7v9H5V4Z\\\"/><path d=\\\"M12 4v7h7M9 16h6\\\"/>',\\n    'grid': '<rect x=\\\"4\\\" y=\\\"4\\\" width=\\\"6\\\" height=\\\"6\\\" rx=\\\"1.5\\\"/><rect x=\\\"14\\\" y=\\\"4\\\" width=\\\"6\\\" height=\\\"6\\\" rx=\\\"1.5\\\"/><rect x=\\\"4\\\" y=\\\"14\\\" width=\\\"6\\\" height=\\\"6\\\" rx=\\\"1.5\\\"/><rect x=\\\"14\\\" y=\\\"14\\\" width=\\\"6\\\" height=\\\"6\\\" rx=\\\"1.5\\\"/>',\\n    'wallet': '<rect x=\\\"3\\\" y=\\\"6\\\" width=\\\"18\\\" height=\\\"14\\\" rx=\\\"3\\\"/><path d=\\\"M17 11h4v5h-4a2.5 2.5 0 0 1 0-5ZM6 6V4h12\\\"/>',\\n    'person': '<circle cx=\\\"12\\\" cy=\\\"7\\\" r=\\\"3\\\"/><path d=\\\"M5 21v-2a7 7 0 0 1 14 0v2\\\"/>',\\n    'spark': '<path d=\\\"m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z\\\"/>',\\n    'info': '<circle cx=\\\"12\\\" cy=\\\"12\\\" r=\\\"9\\\"/><path d=\\\"M12 11v6m0-10v.5\\\"/>',\\n}\\n\\n\\ndef icon(name, size=20):\\n    return f'<svg width=\\\"{size}\\\" height=\\\"{size}\\\" viewBox=\\\"0 0 24 24\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"1.5\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" aria-hidden=\\\"true\\\">{ICONS[name]}</svg>'\\n\\n\\ndef html(markup):\\n    st.markdown(markup, unsafe_allow_html=True)\\n\\n\\nhtml('<style>' + Path(__file__).with_name('ui.css').read_text() + '</style>')\\n\\n\\ndef set_inputs(values):\\n    for field in FEATURES:\\n        st.session_state['input_' + field] = values.get(field)\\n    st.session_state.result = None\\n    st.session_state.form_error = None\\n\\n\\ndef load_example():\\n    set_inputs(EXAMPLE)\\n    st.session_state.input_mode = 'Sample scenario'\\n\\n\\ndef new_scenario():\\n    set_inputs({})\\n    st.session_state.input_mode = 'New scenario'\\n\\n\\ndef load_history(index):\\n    item = st.session_state.history[index]\\n    set_inputs(item['inputs'])\\n    st.session_state.result = item\\n    st.session_state.input_mode = f\\\"Scenario {item['number']:02d}\\\"\\n\\n\\nif 'history' not in st.session_state:\\n    st.session_state.history = []\\n    st.session_state.run_number = 0\\n    load_example()\\n\\n\\n@st.cache_resource\\ndef cached_model():\\n    return load_model()\\n\\n\\nwith st.sidebar:\\n    html(f'<div class=\\\"brand\\\"><div class=\\\"brand-icon\\\">{icon(\\\"mark\\\",22)}</div><div><div class=\\\"brand-name\\\">Loan Studio</div><div class=\\\"brand-sub\\\">A scenario workspace</div></div></div>')\\n    st.button('New scenario', icon=':material/add:', key='new_scenario', width='stretch', on_click=new_scenario)\\n    html(f'<div class=\\\"side-label\\\">Workspace</div><div class=\\\"side-active\\\">{icon(\\\"grid\\\",17)}<span>Loan explorer</span></div><div class=\\\"side-description\\\">A place to explore how a model responds to different inputs.</div><div class=\\\"side-label\\\">Recent scenarios</div>')\\n    if not st.session_state.history:\\n        html('<div class=\\\"session-empty\\\">Your scenario results will<br>appear here as you explore.</div>')\\n    for index, item in enumerate(st.session_state.history):\\n        st.button(f\\\"Scenario {item['number']:02d} \\u00b7 {item['approval_probability']:.0%}\\\", icon=':material/history:', key=f\\\"history_{item['number']}\\\", type='tertiary', width='stretch', on_click=load_history, args=(index,))\\n    html('<div class=\\\"side-bottom\\\"><div class=\\\"creator\\\"><div class=\\\"avatar\\\">AO</div><div>Almond Owolabi<br><small>Data analyst & builder</small></div></div><a class=\\\"project-link\\\" href=\\\"https://github.com/alumond/loan-Prediction-App\\\" target=\\\"_blank\\\" rel=\\\"noopener noreferrer\\\">View the project \\u2197</a></div>')\\n\\nhtml(f'<div class=\\\"topline\\\"><div class=\\\"breadcrumb\\\">{icon(\\\"grid\\\",15)}<span>Workspace</span><span style=\\\"color:#4a535d\\\">/</span><strong>Loan explorer</strong></div><div class=\\\"demo-pill\\\"><span class=\\\"dot\\\"></span>Portfolio demo</div></div><div class=\\\"hero\\\"><div class=\\\"eyebrow\\\">Your scenario workspace</div><h1 class=\\\"page-title\\\">Explore a loan scenario.</h1><p class=\\\"page-subtitle\\\">Adjust the details and see what the model predicts.<br>Start with the sample below, or build a scenario of your own.</p></div>')\\n\\nleft, right = st.container(key='workspace').columns([1.85, 1], gap='large')\\nwith left:\\n    title_col, example_col = st.columns([2.1, 1], vertical_alignment='center')\\n    with title_col:\\n        html(f'<div class=\\\"workspace-top\\\"><h2>Scenario details</h2><span class=\\\"sample-tag\\\">{escape(st.session_state.input_mode)}</span></div>')\\n    with example_col:\\n        st.button('Load sample', icon=':material/refresh:', key='load_example', on_click=load_example, width='stretch')\\n\\n    def section(name, glyph, number, first=False):\\n        html(f'<div class=\\\"section-heading {\\\"first\\\" if first else \\\"\\\"}\\\"><span class=\\\"section-icon\\\">{icon(glyph,15)}</span><span class=\\\"section-title\\\">{name}</span><span class=\\\"section-number\\\">{number}</span></div>')\\n\\n    with st.form('scenario_form', enter_to_submit=False):\\n        section('The loan', 'mark', '01', first=True)\\n        a, b, c = st.columns(3)\\n        with a:\\n            amount = st.number_input('Loan amount', min_value=0.0, step=10.0, format='%.0f', key='input_LoanAmount', help=\\\"Keep the original dataset's amount scale. Its currency and units are not documented in this project.\\\", placeholder='e.g. 120')\\n        with b:\\n            term = st.number_input('Loan term', min_value=0.0, step=12.0, format='%.0f', key='input_Loan_Amount_Term', help=\\\"Uses the original model's term values. The example uses 360.\\\", placeholder='e.g. 360')\\n        with c:\\n            area = st.selectbox('Property area', ['Urban', 'Semiurban', 'Rural'], index=None, key='input_Property_Area', placeholder='Select an area')\\n        html('<div class=\\\"divider\\\"></div>')\\n        section('Income & household', 'wallet', '02')\\n        a, b, c = st.columns(3)\\n        with a:\\n            income = st.number_input('Applicant income', min_value=0, step=500, key='input_ApplicantIncome', placeholder='e.g. 5000')\\n        with b:\\n            co_income = st.number_input('Co-applicant income', min_value=0, step=500, key='input_CoapplicantIncome', placeholder='e.g. 1500')\\n        with c:\\n            dependents = st.selectbox('Dependents', ['0', '1', '2', '3+'], index=None, key='input_Dependents', placeholder='Select dependents')\\n        html('<div class=\\\"divider\\\"></div>')\\n        section('Applicant profile', 'person', '03')\\n        a, b, c = st.columns(3)\\n        with a:\\n            gender = st.selectbox('Gender', ['Male', 'Female'], index=None, key='input_Gender', placeholder='Select gender')\\n        with b:\\n            married = st.selectbox('Married', ['Yes', 'No'], index=None, key='input_Married', placeholder='Select an option')\\n        with c:\\n            education = st.selectbox('Education', ['Graduate', 'Not Graduate'], index=None, key='input_Education', placeholder='Select education')\\n        a, b = st.columns(2)\\n        with a:\\n            employed = st.selectbox('Self-employed', ['Yes', 'No'], index=None, key='input_Self_Employed', placeholder='Select an option')\\n        with b:\\n            credit = st.selectbox('Credit-history code', [1.0, 0.0], index=None, format_func=lambda value: str(int(value)), key='input_Credit_History', help='The model expects a 0 or 1 credit-history code. The project does not document its criteria; use sample values for this demo.', placeholder='Select a code')\\n        submitted = st.form_submit_button('Run scenario', type='primary', icon=':material/arrow_forward:', width='stretch')\\n        html('<div class=\\\"form-footnote\\\">Use made-up details to explore the model.</div>')\\n\\n    if submitted:\\n        values = dict(Gender=gender, Married=married, Dependents=dependents, Education=education, Self_Employed=employed, ApplicantIncome=income, CoapplicantIncome=co_income, LoanAmount=amount, Loan_Amount_Term=term, Credit_History=credit, Property_Area=area)\\n        error = validate_scenario(values)\\n        st.session_state.form_error = error\\n        if error:\\n            st.session_state.result = None\\n        else:\\n            try:\\n                prediction = predict_scenario(cached_model(), values)\\n                st.session_state.run_number += 1\\n                item = {**prediction, 'inputs': values, 'number': st.session_state.run_number, 'time': datetime.now().strftime('%H:%M')}\\n                st.session_state.result = item\\n                st.session_state.input_mode = f\\\"Scenario {item['number']:02d}\\\"\\n                st.session_state.history = [item, *st.session_state.history][:6]\\n            except Exception:\\n                st.session_state.result = None\\n                st.session_state.form_error = 'The model could not load or run. Please try again after the app environment has been checked.'\\n            else:\\n                st.rerun()\\n    if st.session_state.form_error:\\n        st.error(st.session_state.form_error, icon=':material/info:')\\n\\nwith right:\\n    with st.container(key='result_column'):\\n        html('<div class=\\\"result-spacer\\\"></div>')\\n        result = st.session_state.result\\n        if result:\\n            percent = result['approval_probability'] * 100\\n            outcome = 'Approval predicted' if result['approved'] else 'Decline predicted'\\n            inputs = result['inputs']\\n            html(f'''<div class=\\\"result-card\\\"><div class=\\\"result-header\\\"><span>Your result</span><span class=\\\"result-badge\\\">Scenario {result['number']:02d}</span></div><div class=\\\"result-outcome\\\">{outcome}</div><div class=\\\"probability\\\">{percent:.0f}<small>%</small></div><div class=\\\"probability-label\\\">Estimated approval probability</div><div class=\\\"probability-track\\\" role=\\\"meter\\\" aria-label=\\\"Estimated approval probability\\\" aria-valuemin=\\\"0\\\" aria-valuemax=\\\"100\\\" aria-valuenow=\\\"{percent:.1f}\\\"><div class=\\\"probability-fill\\\" style=\\\"width:{percent:.4f}%\\\"></div></div><div class=\\\"track-labels\\\"><span>0%</span><span>100%</span></div><div class=\\\"snapshot\\\"><div class=\\\"snapshot-row\\\"><span>Applicant income</span><strong>{inputs['ApplicantIncome']:,.0f}</strong></div><div class=\\\"snapshot-row\\\"><span>Loan amount</span><strong>{inputs['LoanAmount']:,.0f}</strong></div><div class=\\\"snapshot-row\\\"><span>Property area</span><strong>{escape(inputs['Property_Area'])}</strong></div></div><p class=\\\"result-note\\\">Last submitted scenario. Run again after changing any details.<br>A lender has not reviewed or approved an application.</p></div>''')\\n        else:\\n            illustration = '<svg width=\\\"162\\\" height=\\\"110\\\" viewBox=\\\"0 0 162 110\\\" fill=\\\"none\\\" aria-hidden=\\\"true\\\"><rect x=\\\"22\\\" y=\\\"22\\\" width=\\\"86\\\" height=\\\"68\\\" rx=\\\"10\\\" fill=\\\"#293632\\\" stroke=\\\"#496055\\\"/><rect x=\\\"45\\\" y=\\\"10\\\" width=\\\"91\\\" height=\\\"74\\\" rx=\\\"10\\\" fill=\\\"#28322e\\\" stroke=\\\"#779183\\\"/><path d=\\\"M59 26h25M59 35h43\\\" stroke=\\\"#8fa898\\\" stroke-width=\\\"2\\\" stroke-linecap=\\\"round\\\"/><rect x=\\\"59\\\" y=\\\"57\\\" width=\\\"9\\\" height=\\\"13\\\" rx=\\\"2\\\" fill=\\\"#536f5f\\\"/><rect x=\\\"75\\\" y=\\\"48\\\" width=\\\"9\\\" height=\\\"22\\\" rx=\\\"2\\\" fill=\\\"#799984\\\"/><rect x=\\\"91\\\" y=\\\"39\\\" width=\\\"9\\\" height=\\\"31\\\" rx=\\\"2\\\" fill=\\\"#b5d6c1\\\"/><circle cx=\\\"125\\\" cy=\\\"79\\\" r=\\\"19\\\" fill=\\\"#c3e5d2\\\"/><path d=\\\"M116 79h18m-6-6 6 6-6 6\\\" stroke=\\\"#243c2d\\\" stroke-width=\\\"1.8\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\"/></svg>'\\n            html(f'<div class=\\\"result-card\\\"><div class=\\\"result-header\\\"><span>Your result</span>{icon(\\\"spark\\\",18)}</div><div class=\\\"empty-visual\\\">{illustration}</div><div class=\\\"empty-title\\\">Ready when you are.</div><p class=\\\"empty-text\\\">Run a scenario to see the predicted outcome and estimated approval probability.</p><div class=\\\"mini-steps\\\"><span>Add details</span>\\u2192<span>Run scenario</span>\\u2192<span>Review</span></div></div>')\\n        html(f'<div class=\\\"guide-card\\\"><div class=\\\"guide-heading\\\">{icon(\\\"info\\\",15)}<span>Reading the result</span></div><p class=\\\"guide-copy\\\">The percentage is the model\\u2019s approval estimate. It does not measure how accurate the model is.</p><div class=\\\"guide-rule\\\"></div><p class=\\\"guide-copy\\\">Change one input at a time to compare scenarios. Recent results stay in this browser session.</p></div>')\\n\\nhtml(f'<div class=\\\"bottom-note\\\">{icon(\\\"info\\\",14)}<span>A portfolio demonstration using an existing prediction model. No loan application is submitted.<br>Currency and amount units are not documented, so values are shown without currency symbols.</span></div>')\\nwith st.expander('About this demo'):\\n    st.write('The original model uses the eleven fields shown above, including demographic information. This interface does not establish its accuracy, fairness or suitability for real lending decisions. Use invented examples.')\\n    st.write('Changing the form does not replace an earlier result until you select Run scenario. Up to six results are held in the current session; they are not saved to a database.')\\n\"}, {\"path\": \"portable_forest.py\", \"url\": \"https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/portable_forest.py\", \"text\": \"\\\"\\\"\\\"Evaluate the original fitted trees using a version-independent data format.\\\"\\\"\\\"\\nimport gzip\\nimport hashlib\\nimport json\\nfrom pathlib import Path\\nimport struct\\n\\n\\nclass PortableForest:\\n    def __init__(self, root: Path):\\n        self.data = json.loads(gzip.decompress((root / 'loan_forest.json.gz').read_bytes()))\\n        if self.data['format'] != 'loan-studio-forest-v1':\\n            raise ValueError('Unsupported model export')\\n        if self.data['source_sha256'] != hashlib.sha256((root / 'loan_pipeline.pkl').read_bytes()).hexdigest():\\n            raise ValueError('Model export does not match the original model')\\n        self.classes_ = self.data['classes']\\n\\n    def predict_proba(self, rows):\\n        results = []\\n        for row in rows:\\n            features = [float(row[field['name']] == value)\\n                        for field in self.data['categories'] for value in field['values']]\\n            # scikit-learn converts forest inputs to float32 before tree traversal.\\n            features.extend(struct.unpack('f', struct.pack('f', float(row[name])))[0]\\n                            for name in self.data['numeric_fields'])\\n            totals = [0.0] * len(self.classes_)\\n            for tree in self.data['trees']:\\n                node = 0\\n                while tree['left'][node] != -1:\\n                    node = (tree['left'][node] if features[tree['feature'][node]] <= tree['threshold'][node]\\n                            else tree['right'][node])\\n                for index, probability in enumerate(tree['probabilities'][node]):\\n                    totals[index] += probability\\n            results.append([value / len(self.data['trees']) for value in totals])\\n        return results\\n\\n    def predict(self, rows):\\n        return [self.classes_[max(range(len(values)), key=values.__getitem__)]\\n                for values in self.predict_proba(rows)]\\n\"}]}",
     "sources": [
       {
@@ -41,52 +112,43 @@
     "summary": "Loan Studio is a portfolio demonstration for comparing model predictions with invented inputs. Its redesigned interface includes grouped fields, a labelled estimate, and session history.",
     "topic": "How a user's financial details become a loan decision"
   },
-  "citations": [
-    {
-      "title": "Loan Studio project",
-      "url": "https://github.com/alumond/loan-Prediction-App"
-    },
-    {
-      "title": "README.md",
-      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/README.md"
-    },
-    {
-      "title": "app.py",
-      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/app.py"
-    },
-    {
-      "title": "portable_forest.py",
-      "url": "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/portable_forest.py"
-    }
-  ],
-  "created_at": "2026-10-01T19:33:51.519659+00:00",
-  "draft": {
+  "visual": {
     "alt_text": "Loan Studio\u2019s dark workspace with sample loan inputs, recent scenarios and a result of 94% estimated approval probability. The inputs are invented examples; the output is a model prediction, not a lender approval.",
-    "body": "I\u2019ve rebuilt my loan prediction app with a dark workspace, a clearer result panel and a way to revisit earlier scenarios.\n\nThe part I wanted to make easier was comparison. Enter a few example details, see the model\u2019s estimate, then change one input and run it again. You can go back to a recent scenario without filling in the whole form.\n\nThe form is now split into three sections: the loan, income and household, and applicant profile. \u201cLoad sample\u201d gives you somewhere to start. \u201cNew scenario\u201d clears the form when you want to try your own made-up example.\n\nThe screenshot shows one of those examples. The model returns a 94% estimated probability of approval for the details entered. That percentage describes the model\u2019s output for this example. It does not tell us the model is 94% accurate, and no lender has approved an application.\n\nThe original model is unchanged. Comparison checks returned the same predictions and probabilities after the update. The results card gives the percentage a clear label and shows a few of the submitted inputs, so you can see which example produced it.\n\nOne detail matters when comparing runs: changing a field does not change the previous result. You need to select \u201cRun scenario\u201d again. Otherwise, it would be easy to read an old result as though it belonged to the numbers now in the form.\n\nUp to six recent scenarios remain available during the session. They are not saved to a database, and the app does not submit loan applications. Use invented details when trying it.\n\nThis is still a portfolio demonstration. I haven\u2019t established that the model is accurate, fair or suitable for real lending. The original project also does not document its currency and amount units, so the values appear without currency symbols.\n\nI want someone exploring the app to be able to follow each result back to the details they entered. The sample, submitted-input summary and recent scenarios give them a way to do that while trying different combinations.\n\nTry Loan Studio with the sample details: https://loan-prediction-app-55ycwzbcqsxtfryemepphw.streamlit.app/",
-    "category": "portfolio",
-    "claims": [
-      "The redesigned interface groups the eleven original inputs and provides sample loading and up to six recent scenarios per session.",
-      "The original fitted model is preserved; export validation matched predictions and probabilities for 11,474 examples and numeric boundary cases.",
-      "The displayed sample produces a 94% estimated approval probability, not a verified lender approval or model accuracy score.",
-      "The app does not submit applications or persist scenarios to a database."
-    ],
-    "hashtags": [
-      "#DataAnalytics",
-      "#MachineLearning",
-      "#DataVisualization",
-      "#DecisionSupport",
-      "#PortfolioProject",
-      "#Streamlit"
-    ],
-    "primary_source_url": "https://github.com/alumond/loan-Prediction-App",
-    "supporting_source_urls": [
-      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/README.md",
-      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/app.py",
-      "https://github.com/alumond/loan-Prediction-App/blob/2f70eba60e86cc3da10e2a88c7fc45fe51401581/portable_forest.py"
-    ],
-    "topic": "How a user's financial details become a loan decision",
-    "visual_prompt": "Use the authentic, unchanged screenshot of the working dark Loan Studio app. Show the sample inputs and the actual 94% estimated approval probability, with the result labels and portfolio-demo context visible. No generated interface or added text.",
-    "visual_style": "project_screenshot"
+    "height": 1120,
+    "linkedin_image_urn": "urn:li:image:D4D10AQFgxJPIMoZ4vA",
+    "mime_type": "image/png",
+    "path": "assets/project_screenshot_how-a-user-s-financial-details-become-a-loan-decision.png",
+    "width": 1600
   },
-  "status": "pending_image"
+  "visual_generation": {
+    "alt_text": "Loan Studio\u2019s dark workspace with sample loan inputs, recent scenarios and a result of 94% estimated approval probability. The inputs are invented examples; the output is a model prediction, not a lender approval.",
+    "asset": "assets/project_screenshot_how-a-user-s-financial-details-become-a-loan-decision.png",
+    "asset_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
+    "provider": "project_screenshot",
+    "review": {
+      "alt_text": "Loan Studio\u2019s dark workspace with sample loan inputs, recent scenarios and a result of 94% estimated approval probability. The inputs are invented examples; the output is a model prediction, not a lender approval.",
+      "asset_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
+      "capture_method": "running_app",
+      "capture_url": "http://127.0.0.1:8513/",
+      "captured_at": "2026-10-02T09:44:35.523866+00:00",
+      "draft_sha256": "18fd3b20e66014d09f38cfb25ca7cfc4fae7bb68a7905d779c4c0478c8d4c9fe",
+      "provider": "project_screenshot",
+      "review_notes": [
+        "Inspected the actual 1600x1120 screenshot of the running dark Loan Studio app. All eleven inputs, sidebar history, Run scenario control and 94% estimate are visible.",
+        "The sample contains invented inputs. The 94% output is the model approval estimate, not an accuracy metric or a real lender decision. The caption explains this.",
+        "Captured from a separate empty browser against the clean, committed source on Python 3.14 and Streamlit 1.52.2. Original screenshot bytes are unchanged; no generated interface, cropping or text overlays were used.",
+        "The original fitted model file is unchanged. Its portable evaluator matched exact predictions and probabilities in 11,474 comparisons, including numeric split boundaries.",
+        "App tests passed on Python 3.11 and 3.14. Browser checks confirmed the real model output, all fields, mobile navigation and no horizontal overflow.",
+        "The old exact-image approval was revoked at the owner\u2019s request. This replacement requires fresh owner approval before publication."
+      ],
+      "review_status": "passed",
+      "reviewed_at": "2026-10-02T09:45:41.882277+00:00",
+      "source_commit_sha": "2f70eba60e86cc3da10e2a88c7fc45fe51401581",
+      "source_repository": "https://github.com/alumond/loan-Prediction-App",
+      "source_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
+      "source_url": "https://github.com/alumond/loan-Prediction-App/commit/2f70eba60e86cc3da10e2a88c7fc45fe51401581",
+      "source_worktree_clean": true,
+      "topic": "How a user's financial details become a loan decision"
+    }
+  }
 }

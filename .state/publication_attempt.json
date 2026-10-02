@@ -1,17 +1,17 @@
 {
   "record": {
-    "body": "When we discuss AI in analytics, the conversation often centers on its ability to process data faster or automate routine reports. While efficiency gains are valuable, the critical question for business growth is whether AI truly improves decision quality, accelerates revenue, or boosts customer lifetime value.\n\nMany organizations celebrate AI for automating analytical tasks, but the real prize isn't just speed. It's the clarity and conviction AI-driven insights bring to strategic decisions. As ThoughtSpot highlights, measuring AI's success through financial outcomes like increased sales growth or improved customer retention is crucial. We must move beyond technical metrics and track how AI influences core business objectives.\n\nMy focus in impact analytics is to bridge this gap. It involves designing KPI reporting and dashboards that explicitly quantify AI's contribution to measurable business outcomes. For example, instead of just tracking model accuracy, we should be measuring how AI-assisted forecasts lead to a verifiable increase in pipeline velocity or more effective marketing spend.\n\nAccording to Acora, measuring the business impact of AI means tracking strategic agility and financial outcomes. This challenges us to stop chasing marginal efficiency improvements if we aren't simultaneously building frameworks to track AI's direct influence on revenue streams or customer satisfaction.\n\nThe value of AI isn't simply in automation; it\u2019s in its capacity for continuous learning that refines our understanding and leads to better choices, as TechTarget points out. This means our dashboards need to evolve, showing not just what AI is doing, but what new decisions it enabled and what business results followed.\n\nFrankly, if an AI initiative isn't explicitly tied to improving strategic decision-making or measurable financial outcomes, it risks becoming an expensive automation tool rather than a driver of business growth. The next step for analytics teams is to refine our KPIs to reflect this reality, designing reports that connect AI's output directly to the bottom line.",
-    "category": "impact analytics",
-    "content_key": "",
-    "created_at": "2026-10-01T15:26:15Z",
-    "image_urn": "urn:li:image:D5610AQGhAlU5zT1Feg",
-    "post_urn": "urn:li:share:7511446393950007297",
-    "primary_source_url": "https://www.thoughtspot.com/blog/ai-metrics-business-value",
-    "topic": "Measuring the 'Impact' of AI in Analytics: Beyond Efficiency Gains to Decision Quality",
-    "visual_path": "assets/codex_weekday_measuring-the--impact--of-ai-in-analytics--beyond-efficiency-gains-to-.png",
-    "visual_provider": "codex_imagegen",
-    "visual_sha256": "755fdc9c3b8550fb5dba8ed0f53495fd8ce4ce71a76936b6afcc8392916efc90",
-    "visual_signature": "41089ed2b654e25c7339d31a461e67568358c69ce69ac696c92c4951655108a6"
+    "body": "I\u2019ve rebuilt my loan prediction app with a dark workspace, a clearer result panel and a way to revisit earlier scenarios.\n\nThe part I wanted to make easier was comparison. Enter a few example details, see the model\u2019s estimate, then change one input and run it again. You can go back to a recent scenario without filling in the whole form.\n\nThe form is now split into three sections: the loan, income and household, and applicant profile. \u201cLoad sample\u201d gives you somewhere to start. \u201cNew scenario\u201d clears the form when you want to try your own made-up example.\n\nThe screenshot shows one of those examples. The model returns a 94% estimated probability of approval for the details entered. That percentage describes the model\u2019s output for this example. It does not tell us the model is 94% accurate, and no lender has approved an application.\n\nThe original model is unchanged. Comparison checks returned the same predictions and probabilities after the update. The results card gives the percentage a clear label and shows a few of the submitted inputs, so you can see which example produced it.\n\nOne detail matters when comparing runs: changing a field does not change the previous result. You need to select \u201cRun scenario\u201d again. Otherwise, it would be easy to read an old result as though it belonged to the numbers now in the form.\n\nUp to six recent scenarios remain available during the session. They are not saved to a database, and the app does not submit loan applications. Use invented details when trying it.\n\nThis is still a portfolio demonstration. I haven\u2019t established that the model is accurate, fair or suitable for real lending. The original project also does not document its currency and amount units, so the values appear without currency symbols.\n\nI want someone exploring the app to be able to follow each result back to the details they entered. The sample, submitted-input summary and recent scenarios give them a way to do that while trying different combinations.\n\nTry Loan Studio with the sample details: https://loan-prediction-app-55ycwzbcqsxtfryemepphw.streamlit.app/",
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/loan-Prediction-App::workflow::user-guided-loan-approval-prediction",
+    "created_at": "2026-10-02T10:25:22Z",
+    "image_urn": "urn:li:image:D4D10AQFgxJPIMoZ4vA",
+    "post_urn": "urn:li:share:7511733059944308737",
+    "primary_source_url": "https://github.com/alumond/loan-Prediction-App",
+    "topic": "How a user's financial details become a loan decision",
+    "visual_path": "assets/project_screenshot_how-a-user-s-financial-details-become-a-loan-decision.png",
+    "visual_provider": "project_screenshot",
+    "visual_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
+    "visual_signature": "040144014f024b004c314a674a6fcd6f4a270e6d08e308a7066701870cc70c13"
   },
   "status": "published"
 }
