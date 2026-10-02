@@ -135,6 +135,8 @@ def validate_visual(path: Path, alt_text: str, allow_landscape: bool = False,
     with Image.open(path) as image:
         width, height = image.size
         mime = Image.MIME.get(image.format, "application/octet-stream")
+    if width * height >= 36_152_320:
+        raise ValueError(f"LinkedIn images must contain fewer than 36,152,320 pixels. Recapture or regenerate at a supported native size. Got {width}x{height}.")
     if allow_screenshot:
         if width < 900 or height < 675 or not 0.5 <= width / height <= 2:
             raise ValueError(f"Screenshot must be a readable viewport at least 900x675 pixels with an aspect ratio between 1:2 and 2:1. Got {width}x{height}.")

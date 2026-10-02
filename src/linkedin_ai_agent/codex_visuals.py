@@ -37,6 +37,12 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
         "draft": to_dict(draft),
         "draft_sha256": draft_sha256(draft),
         "asset": str(asset_path),
+        "image_quality": {
+            "screenshots": "Capture directly at 3x device pixel density: a 1600x1120 viewport produces a 4800x3360 PNG. Wait for fonts, charts and results to finish rendering. Prefer a fresh capture over a small repository preview.",
+            "generated_artwork": "Use the highest native resolution and quality available from imagegen. Keep the original lossless PNG. Never enlarge a smaller image to claim higher quality.",
+            "review": "Inspect at full resolution for sharp text and edges, and at phone size for readable key labels. Regenerate or recapture blurred images. Record the actual pixel dimensions and capture scale in the review record.",
+            "upload": "Send the reviewed original bytes without resizing or lossy recompression. Preserve the aspect ratio. LinkedIn accepts fewer than 36,152,320 pixels; recapture within that limit if needed.",
+        },
         "instructions": (
             "Use an authentic, unchanged screenshot from this project's repository "
             "or capture its unmodified app running from a verified source commit. "

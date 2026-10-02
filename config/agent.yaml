@@ -108,6 +108,10 @@ visuals:
   allow_ai_illustrations: false
   provider: codex_manual
   direction: >-
+    Preserve the highest native image quality. Capture app screens at 3x pixel
+    density, normally 4800x3360 lossless PNG. Use imagegen at its highest available
+    native quality. Never upscale small images or use lossy recompression. Check
+    sharp edges and text at full size and readable key labels at phone size.
     Polished editorial graphics and clear data visuals with a strong complete title,
     generous spacing, short readable captions, and a concrete connection to the post.
     For workflow posts, visualize the actual workflow discussed in the post: inputs,

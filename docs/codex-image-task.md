@@ -2,6 +2,14 @@
 
 The local Codex task **LinkedIn Codex images** (`linkedin-codex-images`) was activated on **26 September 2026** for **08:00 Africa/Lagos, Monday–Friday**. It continues in the LinkedIn Studio task. The owner explicitly approved recurring draft preparation, Codex image generation/review and pushes of only each image and its review record. Keep the device awake and Codex running for generation. Publication starts immediately after the owner's approval in the local dashboard or Mac app, including approvals after noon. Weekday backup checks run at 07:17 and 11:17 Lagos. The first scheduled execution has not yet been verified.
 
+## Image quality
+
+Capture app screenshots directly at 3x device pixel density, normally a 1600x1120 CSS viewport producing a 4800x3360 PNG. Wait for fonts, charts and sample results to finish rendering. Prefer a fresh capture to a small repository preview. Keep the interface and source labels unchanged; never stretch or upscale an existing screenshot.
+
+For generated artwork, request the highest native resolution and quality available and preserve the original lossless PNG. Inspect sharpness at full resolution and the main labels at phone size. Recapture or regenerate blurred or unreadable images. Record actual dimensions and capture scale in the review record. Resolution alone does not make tiny labels readable.
+
+Upload the reviewed source bytes without resizing or lossy recompression. Preserve aspect ratio and keep below LinkedIn's limit of 36,152,320 total pixels. The uploader already sends the original bytes; LinkedIn controls subsequent feed processing. See [LinkedIn Images API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/images-api).
+
 ## Task prompt
 
 For dashboard and app portfolio posts, the owner's requested visual is an authentic screenshot of that project. This takes precedence over the image-generation steps below: select `project_screenshot`, use the original repository asset without altering it, inspect it, and record its source URL, repository, Git blob SHA and SHA-256 in the review record described in README.md. Never substitute a generated infographic or fake interface. If no image exists in the repository, capture the unmodified running app and record `capture_method: "running_app"`, the exact source commit and its GitHub URL, clean source status, capture URL, capture time and unchanged screenshot hash. Follow the running-app review record in README.md. Use imagegen for other post types. Apply the no-ai-slop skill to the complete post before preparing its image, and keep the language useful to a general reader.
