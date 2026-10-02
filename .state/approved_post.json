@@ -1,5 +1,7 @@
 {
-  "status": "image_replacement_requested",
-  "requested_at": "2026-10-02T09:25:01.104642+00:00",
-  "reason": "Owner requested the redesigned Loan Studio screenshot. The updated image and post require fresh approval."
+  "draft_sha256": "18fd3b20e66014d09f38cfb25ca7cfc4fae7bb68a7905d779c4c0478c8d4c9fe",
+  "asset_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
+  "approved_at": "2026-10-02T10:24:56.399380+00:00",
+  "approved_by": "owner_local_review",
+  "publication_status": "queued"
 }
