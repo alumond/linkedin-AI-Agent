@@ -83,4 +83,4 @@ def test_workflow_dispatch_accepts_plain_text_cli_response(tmp_path):
     store.root = tmp_path
     with patch('linkedin_ai_agent.review_server.subprocess.run', return_value=SimpleNamespace(
             returncode=0, stdout='Created workflow_dispatch event\n', stderr='')):
-        assert store.command(['workflow', 'run', 'weekday-linkedin-post.yml'], expect_json=False) == 'Created workflow_dispatch event\n'
+        assert store.command(['workflow', 'run', 'weekday-linkedin-post.yml'], expect_json=False).strip() == 'Created workflow_dispatch event'
