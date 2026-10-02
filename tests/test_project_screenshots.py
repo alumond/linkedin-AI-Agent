@@ -102,3 +102,49 @@ def test_previous_image_approval_does_not_approve_screenshot(tmp_path):
         'approved_at': '2026-09-29T21:00:00Z', 'approved_by': 'owner_local_review',
     })
     assert agent._approval_reason(draft, review['asset_sha256'])
+
+
+def running_app_fixture(tmp_path):
+    agent, draft, asset, review = screenshot_fixture(tmp_path)
+    commit = 'a' * 40
+    review.update({
+        'capture_method': 'running_app',
+        'source_commit_sha': commit,
+        'source_url': draft.primary_source_url + '/commit/' + commit,
+        'source_worktree_clean': True,
+        'capture_url': 'http://127.0.0.1:8511/',
+        'captured_at': '2026-10-02T05:00:00Z',
+    })
+    del review['source_blob_sha']
+    asset.with_suffix('.json').write_text(json.dumps(review))
+    return agent, draft, asset, review
+
+
+def test_running_app_screenshot_keeps_original_bytes_and_needs_owner_approval(tmp_path):
+    agent, draft, asset, review = running_app_fixture(tmp_path)
+    before = asset.read_bytes()
+    visual = reviewed_visual(draft, asset)
+    assert (visual.width, visual.height) == (1440, 1100)
+    assert asset.read_bytes() == before
+    assert agent._approval_reason(draft, review['asset_sha256'])
+
+
+@pytest.mark.parametrize('field,value', [
+    ('source_commit_sha', 'main'),
+    ('source_url', 'https://github.com/other/project/commit/' + 'a' * 40),
+    ('source_worktree_clean', False),
+    ('source_worktree_clean', 'true'),
+    ('captured_at', ''),
+    ('capture_url', ''),
+    ('capture_url', 'file:///tmp/mockup.html'),
+    ('capture_url', 'http://example.com/'),
+    ('capture_url', 'https://secret@example.com/'),
+    ('source_sha256', 'wrong'),
+    ('draft_sha256', 'wrong'),
+])
+def test_running_app_capture_rejects_incomplete_or_changed_provenance(tmp_path, field, value):
+    _, draft, asset, review = running_app_fixture(tmp_path)
+    review[field] = value
+    asset.with_suffix('.json').write_text(json.dumps(review))
+    with pytest.raises(RuntimeError):
+        reviewed_visual(draft, asset)

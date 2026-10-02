@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 from PIL import Image
@@ -37,11 +38,14 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
         "draft_sha256": draft_sha256(draft),
         "asset": str(asset_path),
         "instructions": (
-            "Use an authentic, unchanged screenshot from this project's repository. "
+            "Use an authentic, unchanged screenshot from this project's repository "
+            "or capture its unmodified app running from a verified source commit. "
             "Do not generate or redraw the dashboard. Inspect the screenshot against "
             "the exact post, verify the source and original bytes, and save a "
             "project_screenshot review record with source_repository, source_url, "
-            "source_blob_sha, source_sha256 and capture_method=repository_asset. "
+            "source_sha256 and capture_method. For repository_asset include source_blob_sha. "
+            "For running_app include source_commit_sha, source_worktree_clean=true, "
+            "source_url pointing to that repository's commit, capture_url and captured_at. "
             "Preserve source data labels and disclose simulated data in the post."
         ) if draft.visual_style == "project_screenshot" else (
             "Generate with Codex imagegen, then visually inspect against this exact post. "
@@ -98,14 +102,28 @@ def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
         parsed = urlparse(repository)
         if (draft.category != "portfolio" or repository != draft.primary_source_url.rstrip("/")
                 or parsed.scheme != "https" or parsed.netloc != "github.com"
-                or len(parsed.path.strip("/").split("/")) != 2
-                or not source.startswith(repository + "/blob/")
-                or record.get("capture_method") != "repository_asset"):
+                or len(parsed.path.strip("/").split("/")) != 2):
             raise RuntimeError("Project screenshot needs a verified source from the post's GitHub repository.")
-        data = asset_path.read_bytes()
-        blob_sha = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
-        if record.get("source_sha256") != actual_hash or record.get("source_blob_sha") != blob_sha:
+        if record.get("source_sha256") != actual_hash:
             raise RuntimeError("Project screenshot must match the unchanged original source bytes.")
+        if record.get("capture_method") == "repository_asset":
+            data = asset_path.read_bytes()
+            blob_sha = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
+            if not source.startswith(repository + "/blob/") or record.get("source_blob_sha") != blob_sha:
+                raise RuntimeError("Project screenshot needs the original repository asset and its Git blob hash.")
+        elif record.get("capture_method") == "running_app":
+            commit = record.get("source_commit_sha", "")
+            capture = urlparse(record.get("capture_url", ""))
+            if (not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit)
+                    or source != repository + "/commit/" + commit
+                    or record.get("source_worktree_clean") is not True
+                    or not record.get("captured_at")
+                    or not capture.hostname or capture.username or capture.password
+                    or not (capture.scheme == "https" or (
+                        capture.scheme == "http" and capture.hostname in {"localhost", "127.0.0.1", "::1"}))):
+                raise RuntimeError("Running app screenshot needs a verified, unchanged source commit and capture details.")
+        else:
+            raise RuntimeError("Project screenshot needs a supported capture method.")
     with Image.open(asset_path) as image:
         if "A" in image.getbands() and image.getchannel("A").getextrema()[0] < 255:
             raise RuntimeError("LinkedIn artwork needs a fully opaque background. Regenerate the image before review.")
