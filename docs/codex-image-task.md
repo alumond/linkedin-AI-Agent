@@ -1,6 +1,6 @@
 # Codex image task
 
-The local Codex task **LinkedIn Codex images** (`linkedin-codex-images`) was activated on **26 September 2026** for **08:00 Africa/Lagos, Monday–Friday**. It continues in the LinkedIn Studio task. The owner explicitly approved recurring draft preparation, Codex image generation/review and pushes of only each image and its review record. Keep the device awake and Codex running for generation. Publication is separately scheduled for 09:17 and always requires the owner's approval in the local dashboard or Mac app. The first scheduled execution has not yet been verified.
+The local Codex task **LinkedIn Codex images** (`linkedin-codex-images`) was activated on **26 September 2026** for **08:00 Africa/Lagos, Monday–Friday**. It continues in the LinkedIn Studio task. The owner explicitly approved recurring draft preparation, Codex image generation/review and pushes of only each image and its review record. Keep the device awake and Codex running for generation. Publication starts immediately after the owner's approval in the local dashboard or Mac app, including approvals after noon. Weekday backup checks run at 07:17 and 11:17 Lagos. The first scheduled execution has not yet been verified.
 
 ## Task prompt
 
@@ -19,4 +19,4 @@ Work in `/Users/admin/Downloads/LinkedinAgent` on Almond's LinkedIn Studio. Read
 
 ## Activation check
 
-The automation tool confirmed status `ACTIVE`. Activation and a successful scheduled execution are separate checks: do not claim a scheduled run succeeded until its actual result is verified. A missed approval or unavailable image leaves the post available for the next schedule; it does not authorize publishing a substitute.
+The automation tool confirmed status `ACTIVE`. Activation and a successful scheduled execution are separate checks: do not claim a scheduled run succeeded until its actual result is verified. A missed approval or unavailable image leaves the post available for review; it does not authorize publishing a substitute.

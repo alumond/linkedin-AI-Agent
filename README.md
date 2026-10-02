@@ -16,9 +16,9 @@ PYTHONPATH=.vendor:src python3 -m linkedin_ai_agent.review_server
 
 Open **http://127.0.0.1:8765**. The server binds only to this device. It uses your existing GitHub CLI sign-in; LinkedIn and Gemini credentials stay in GitHub Actions secrets.
 
-The desk shows the exact pending post, its image, source links, checks and recent publication history. **Approve for schedule** approves only that version of the text and image. Any change requires approval again. **Request changes** revokes approval and starts draft revision; Codex then needs to generate/review the revised image. Approval never publishes immediately.
+The desk shows the exact pending post, its image, source links, checks and recent publication history. **Approve and publish** approves only that version of the text and image and immediately starts the publisher. Any change requires approval again. **Request changes** revokes approval and starts draft revision; Codex then needs to generate/review the revised image.
 
-Approved posts publish at **09:17 Africa/Lagos, weekdays**, through GitHub Actions. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task. Without approval, the ready post remains available for review.
+Approval starts publication immediately, including after noon. GitHub may take a short time to start and complete the job. Weekday backup checks run at **07:17 and 11:17 Africa/Lagos**; an unapproved post remains available for review. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task.
 
 A desktop popup appears when both the draft and image are ready. **Review post** opens the desk; **Later** dismisses it. A new version triggers a new popup, with at most one reminder per version per day. The local service starts at login and runs from `~/Library/Application Support/Almond LinkedIn Studio`. It must be running for popups. After updating the project, run `python3 scripts/install_review_service.py` to update this installed copy. To stop it, run `launchctl bootout gui/$(id -u)/com.almond.linkedin-review`; remove `~/Library/LaunchAgents/com.almond.linkedin-review.plist` to disable login startup.
 
@@ -36,7 +36,7 @@ Historical checks cover the publisher's recorded posts, not an exhaustive export
 
 ## Pipeline
 
-**Verified sources → exact draft → Codex image → visual review → your approval → scheduled publication.**
+**Verified sources → exact draft → Codex image → visual review → your approval → publication.**
 
 `automation-state` stores the pending draft, publication history, approval, review feedback and publication journal. Main stores the code and reviewed image assets. The queue preserves a draft while its image or approval is pending. The publisher has a daily publication limit and does not automatically retry an uncertain LinkedIn create-post request.
 

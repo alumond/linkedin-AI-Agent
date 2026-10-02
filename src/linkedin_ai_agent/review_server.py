@@ -34,12 +34,14 @@ class ReviewStore:
         self.last_image = None
         self.lock = threading.RLock()
 
-    def command(self, args: list[str], payload: dict | None = None):
+    def command(self, args: list[str], payload: dict | None = None, *, expect_json: bool = True):
         result = subprocess.run([self.gh, *args], input=json.dumps(payload) if payload is not None else None,
                                 text=True, capture_output=True, timeout=90, cwd=self.root)
         if result.returncode:
             # Do not reflect raw subprocess output or credentials into the browser.
             raise RuntimeError('GitHub could not complete the request. Check connectivity and gh authentication.')
+        if not expect_json:
+            return result.stdout
         return json.loads(result.stdout) if result.stdout.strip() else {}
 
     def read_file(self, path: str, branch: str, optional: bool = False):
@@ -78,7 +80,7 @@ class ReviewStore:
         feedback, _ = self.json_file('.state/review_feedback.json', optional=True)
         state = {'token': self.token, 'history_count': len(history), 'history': sorted(history, key=lambda h: h.get('created_at', ''), reverse=True)[:8],
                  'pending': pending, 'approval': approval, 'feedback': feedback,
-                 'schedule': 'Weekdays · 09:17 Lagos', 'require_approval': getattr(cfg, 'require_post_approval', False),
+                 'schedule': 'Publishes after approval · Morning checks at 07:17 and 11:17 Lagos', 'require_approval': getattr(cfg, 'require_post_approval', False),
                  'image_ready': False, 'checks': [], 'image_url': None}
         self.last_image = None
         if not pending:
@@ -162,10 +164,20 @@ class ReviewStore:
         for key in ('draft_sha256', 'asset_sha256'):
             if request.get(key) != state.get(key):
                 raise ValueError('The preview changed. Refresh and review the current version.')
-        self.write_state('.state/approved_post.json', {
+        approval = {
             'draft_sha256': state['draft_sha256'], 'asset_sha256': state['asset_sha256'],
             'approved_at': datetime.now(timezone.utc).isoformat(), 'approved_by': 'owner_local_review',
-        })
+            'publication_status': 'queued',
+        }
+        self.write_state('.state/approved_post.json', approval)
+        try:
+            self.command(['workflow', 'run', 'weekday-linkedin-post.yml', '--repo', REPO,
+                          '-f', 'mode=publish', '-f', 'dry_run=false'], expect_json=False)
+        except RuntimeError as exc:
+            approval['publication_status'] = 'dispatch_failed'
+            self.write_state('.state/approved_post.json', approval)
+            raise ValueError('Approval saved, but publication could not start. Refresh and select Retry publication.') from exc
+        return approval
 
     def request_changes(self, request):
         from datetime import datetime, timezone
@@ -234,8 +246,8 @@ class Handler(BaseHTTPRequestHandler):
             request = json.loads(self.rfile.read(length) or '{}')
             if self.path == '/api/approve':
                 with self.store.lock:
-                    self.store.approve(request)
-                return self.respond(200, {'message': 'Approved for the next scheduled publication.'})
+                    approval = self.store.approve(request)
+                return self.respond(200, {'message': 'Approved. Publication queued now.', 'approval': approval})
             if self.path == '/api/changes':
                 with self.store.lock:
                     self.store.request_changes(request)
