@@ -3,7 +3,7 @@
   "capture_method": "running_app",
   "review_status": "passed",
   "topic": "How a user's financial details become a loan decision",
-  "draft_sha256": "c4d96eb42ca1935bf72420b4b4ec0a2da7ea2ffa5769e0638fc07692cb318b1f",
+  "draft_sha256": "57cb001c3a433359ccc1d434fdf6ca461caac361cc936b316846fe6a03c6ec86",
   "asset_sha256": "f05a91b6ddd1e68071d54118333c7b4a603f7de33cf357d843435b3e852b20a0",
   "source_sha256": "f05a91b6ddd1e68071d54118333c7b4a603f7de33cf357d843435b3e852b20a0",
   "source_repository": "https://github.com/alumond/loan-Prediction-App",
@@ -12,13 +12,14 @@
   "source_worktree_clean": true,
   "capture_url": "http://127.0.0.1:8511/",
   "captured_at": "2026-10-02T05:05:18.315021+00:00",
-  "reviewed_at": "2026-10-02T05:06:47.881191+00:00",
+  "reviewed_at": "2026-10-02T05:28:45.286240+00:00",
   "alt_text": "Authentic screenshot of the Loan Approval Prediction portfolio app, showing its personal and financial input fields and Predict button. The form is at its default values; no applicant data or prediction result is shown.",
   "review_notes": [
     "Visually inspected the original 1000x1280 Playwright screenshot of the running, unchanged Streamlit app. Title, all eleven fields and Predict button are visible and legible.",
     "Captured with a separate, empty Edge browser session, using the default form values. No personal applicant information, loan decision or invented result appears.",
     "Checked the repository commit and clean working tree. Screenshot bytes are unchanged; no cropping, restyling, compositing or generated interface was used.",
     "The image illustrates the input form described in the post. It does not establish model accuracy, fairness, lending suitability or claimed business benefits. The post identifies the project as a controlled portfolio demonstration.",
-    "Corrected the draft image instructions and alt text so they no longer claim a green approval result is visible."
+    "Corrected the draft image instructions and alt text so they no longer claim a green approval result is visible.",
+    "Re-inspected the unchanged screenshot against the draft after appending the owner-requested public Streamlit link. All eleven form fields and Predict button still match. The public URL belongs to this repository but currently fails while loading its model; this screenshot is from the working local copy, and this review does not certify public demo availability. The owner requested adding the existing link without deploying an app repair."
   ]
 }
