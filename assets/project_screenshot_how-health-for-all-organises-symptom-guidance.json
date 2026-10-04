@@ -1,0 +1,25 @@
+{
+  "provider": "project_screenshot",
+  "review_status": "passed",
+  "topic": "How Health for All organises symptom guidance",
+  "draft_sha256": "9760ced1b22cf04501c164eef944feadd066458b433d2152cc4a0287d7a09d9f",
+  "asset_sha256": "a18b31ecdc5db5c912d65de68fad68fea968275895e63742ea6714eb95367f02",
+  "reviewed_at": "2026-10-04T19:43:01Z",
+  "review_notes": [
+    "Visually inspected the original 1737x906 repository screenshot. It shows the Health for All interface, focused and detailed response controls, a symptom example, an urgency assessment, immediate actions, and cautions that match the post.",
+    "The copied asset preserves the exact source bytes. Its SHA-256 and Git blob hash match the commit-pinned repository file; it was not resized, upscaled, edited, or recompressed.",
+    "The project name, response controls, urgency label, and main action headings remain clear at phone-preview size. The detailed example text is available when the image is expanded.",
+    "The screenshot contains an example generated response, not evidence of clinical accuracy. The post states that the project is a demonstration and cannot replace clinical or emergency care."
+  ],
+  "alt_text": "Health for All interface showing a symptom example organised into urgency, immediate actions, and cautions.",
+  "capture_method": "repository_asset",
+  "project_repository": "https://github.com/alumond/Activity-1",
+  "source_repository": "https://github.com/alumond/Almond-Portfolio",
+  "source_commit_sha": "61428f7f4b1d6ddfef1d2fc2de6cdf66ff603402",
+  "source_url": "https://github.com/alumond/Almond-Portfolio/blob/61428f7f4b1d6ddfef1d2fc2de6cdf66ff603402/public/images/project-health-for-all.png",
+  "source_blob_sha": "475dded2f2d8979f1cb79085d5dcb2a323769eda",
+  "source_sha256": "a18b31ecdc5db5c912d65de68fad68fea968275895e63742ea6714eb95367f02",
+  "width": 1737,
+  "height": 906,
+  "data_context": "Portfolio demonstration containing an example generated response; no clinical accuracy claim."
+}

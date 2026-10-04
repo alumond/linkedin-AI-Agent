@@ -1,6 +1,6 @@
 # LinkedIn Studio
 
-A local review desk for Almond's LinkedIn publisher. Posts alternate between inspected public GitHub builds and freshly researched data, AI, analytics and business developments, with a fresh Codex-generated image and **your approval before every publication**.
+A local review desk for Almond's LinkedIn publisher. Each five-post cycle contains three inspected portfolio stories and two freshly researched data, AI, analytics or business developments, with a fresh image and **your approval before every publication**.
 
 ## Review on this device
 
@@ -16,15 +16,24 @@ PYTHONPATH=.vendor:src python3 -m linkedin_ai_agent.review_server
 
 Open **http://127.0.0.1:8765**. The server binds only to this device. It uses your existing GitHub CLI sign-in; LinkedIn and Gemini credentials stay in GitHub Actions secrets.
 
-The desk shows the exact pending post, its image, source links, checks and recent publication history. **Approve and publish** approves only that version of the text and image and immediately starts the publisher. Any change requires approval again. **Request changes** revokes approval and starts draft revision; Codex then needs to generate/review the revised image.
+The desk shows the exact pending post, its image, source links, checks and recent publication history. **Approve and publish** approves only that version of the text and image and starts the publisher immediately. Any change requires approval again. **Request changes** revokes approval and starts draft revision; Codex then needs to generate/review the revised image. Approval starts publication immediately, including after noon.
 
-Approval starts publication immediately, including after noon. GitHub may take a short time to start and complete the job. Weekday backup checks run at **07:17 and 11:17 Africa/Lagos**; an unapproved post remains available for review. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task.
+The history cards also accept LinkedIn performance results. Add impressions, reactions, comments, reposts, profile views, follows and link clicks after a post has had time to circulate. The ten-post scorecard compares the new strategy with the 80-impression baseline and shows progress toward 120 median impressions, reactions on five posts, and comments on three posts. These are internal improvement targets, not platform benchmarks.
+
+After you click approve, the button shows **Saving approval…**, followed by a green **Approval saved** confirmation and the saved time in Lagos. The confirmation remains after refreshing or reopening the desk. If the save cannot be confirmed, the desk asks you to refresh to check the saved status before retrying.
+
+**Save request** shows progress inside the change dialog and confirms the saved request immediately. Errors stay visible beside your text. A saved request and a completed revision are separate steps: refresh to see the revised draft or a revision error. Revisions allow up to three attempts to pass validation, including the 3,000-character total for body, source link and hashtags. Failed revisions preserve the original draft and your request for a retry; the previous version remains unapproved.
+
+Approval starts publication through GitHub Actions immediately, including after noon. Weekday backup checks run at **07:17 and 11:17 Africa/Lagos**. Your browser and local server need not remain open after approval. The device and Codex must be running for the separate local Codex image task. Without approval, the ready post remains available for review.
 
 A desktop popup appears when both the draft and image are ready. **Review post** opens the desk; **Later** dismisses it. A new version triggers a new popup, with at most one reminder per version per day. The local service starts at login and runs from `~/Library/Application Support/Almond LinkedIn Studio`. It must be running for popups. After updating the project, run `python3 scripts/install_review_service.py` to update this installed copy. To stop it, run `launchctl bootout gui/$(id -u)/com.almond.linkedin-review`; remove `~/Library/LaunchAgents/com.almond.linkedin-review.plist` to disable login startup.
 
 ## Content and originality
 
-- Alternate portfolio stories with evidence-backed developments across the configured editorial topics. If one source route fails, try the other without recycling old content.
+- Use the configured five-post cycle: three portfolio stories and two evidence-backed developments. A portfolio slot does not fall back to generic opinion copy when project evidence is unavailable.
+- Keep normal post bodies between 900 and 1,500 characters, use three to five relevant hashtags, and write for one primary audience at a time.
+- Two slots in each cycle may end with one specific professional question. Other posts end with a concrete detail, decision, limitation or next action.
+- Reject repeated openings, closings, stock section labels and retired copy from earlier posts.
 - Discover public, non-fork projects under `alumond`, prioritizing the configured personal builds and rotating projects before revisiting them.
 - Read repository documentation, selected code and recent commits. Write about actual features, design choices, problems solved and honest limitations. Do not invent deployments, users, results or experiments.
 - Exclude **Stanforteedge and HR dashboards/HR analytics**, including matching repository descriptions, filenames and source content.
@@ -56,7 +65,9 @@ A successful dry run is **not approval**. Legacy direct-publication commands can
 
 ## Codex image task
 
-For a portfolio post showcasing a dashboard or app, use its authentic screenshot. Set `visual_style: "project_screenshot"` and preserve the original repository image bytes and aspect ratio. The reviewed screenshot follows the same exact-draft, reuse and owner-approval checks as generated artwork. Its review record uses `provider: "project_screenshot"`, `capture_method: "repository_asset"`, the matching project `source_repository`, a `source_url`, `source_blob_sha` and `source_sha256`, plus the normal draft/image hashes, review notes, date and alt text. The original and final hashes must match. Do not label a screenshot as AI-generated or regenerate the interface.
+For a portfolio post showcasing a dashboard or app, use its authentic screenshot. Set `visual_style: "project_screenshot"` and preserve the original repository image bytes and aspect ratio. The reviewed screenshot follows the same exact-draft, reuse and owner-approval checks as generated artwork. Its review record uses `provider: "project_screenshot"`, `capture_method: "repository_asset"`, `project_repository`, `source_repository`, a commit-pinned `source_url`, `source_commit_sha`, `source_blob_sha` and `source_sha256`, plus the normal draft/image hashes, review notes, date and alt text. The screenshot may live in the project repository or in the owner's portfolio repository; both repositories must belong to the same GitHub owner. The original and final hashes must match. Do not label a screenshot as AI-generated or regenerate the interface.
+
+Portfolio app links can be pinned under `portfolio_project_overrides` in `config/agent.yaml`. Each `public_demo` or `telegram` URL is checked before use, added to the evidence set and required in the post body. If repository evidence says a Telegram bot exists but no verified public bot URL is configured, the agent excludes that project until the missing link is supplied. A repository page, webhook endpoint or localhost address never counts as a public demo.
 
 For image quality, capture app screens at 3x pixel density (normally 4800x3360 lossless PNG), request the highest native quality for generated artwork, and preserve the original bytes through upload. Never upscale a small image to claim higher quality. Check sharpness and phone-size readability; see [image quality standards](docs/codex-image-task.md#image-quality).
 

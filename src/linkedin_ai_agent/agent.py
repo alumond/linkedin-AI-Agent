@@ -228,6 +228,27 @@ class LinkedInAIAgent:
         self.gemini = gemini
         self.linkedin = linkedin
 
+    def _next_strategy_slot(self) -> int:
+        cycle_size = max(1, len(self.config.content_cycle))
+        return (len(self.history.load()) % cycle_size) + 1
+
+    def _next_content_mode(self) -> str:
+        if not self.config.content_cycle:
+            return "portfolio"
+        mode = self.config.content_cycle[self._next_strategy_slot() - 1]
+        if mode not in {"portfolio", "researched"}:
+            raise RuntimeError(f"Unsupported content strategy mode: {mode}")
+        return mode
+
+    def _target_audience(self, candidate: TrendCandidate) -> str:
+        if not self.config.audience_segments:
+            return self.config.audience
+        seed = int(hashlib.sha256(candidate.topic.casefold().encode("utf-8")).hexdigest()[:8], 16)
+        return self.config.audience_segments[seed % len(self.config.audience_segments)]
+
+    def _invite_response(self) -> bool:
+        return self._next_strategy_slot() in set(self.config.response_question_slots)
+
     def _rotation_state_path(self) -> Path:
         return self.config.state_dir / "weekday_rotation_state.json"
 
@@ -413,116 +434,52 @@ class LinkedInAIAgent:
     def _fallback_draft(self, candidate: TrendCandidate) -> DraftPost:
         profile = self._fallback_visual_profile(candidate)
         bucket = self._candidate_bucket(candidate, profile["visual_style"])
+        audience = self._target_audience(candidate)
+        invites_response = self._invite_response()
         if bucket in {"tradeoff", "governance"}:
-            body = f"""Some analytics problems are not technical. They are judgment problems.
+            middle = """A useful review makes the decision rule visible. It names the measure, the threshold that changes the status, the person who owns the response, and the deadline for checking progress again.
 
-{candidate.topic}
+That discipline matters when two reasonable priorities compete. Speed can weaken assurance. Growth can hide margin pressure. Automation can move an error through the reporting cycle before anyone challenges it. The report should show the trade-off plainly enough for a manager to accept or change it.
 
-{candidate.summary}
+A practical control is to record four items beside the result:
 
-Why this matters
+- the evidence behind the status
+- the threshold that triggered attention
+- the named action owner
+- the date for the next review
 
-This is the part of data work people avoid because it is uncomfortable. A chart can show movement, but it cannot choose the trade-off for the team. Someone still has to decide whether speed matters more than accuracy, whether growth matters more than margin, whether automation is safe enough, or whether a metric is trusted enough to guide action.
-
-That is where a serious analyst becomes valuable.
-
-Where weak reporting fails
-
-A weak report says: the number went up.
-
-A stronger report says: the number went up, but the cost, risk, or customer signal moved in a direction that should change the plan.
-
-The second version is harder to write because it forces accountability. It asks who owns the metric, what threshold matters, what action should happen next, and what risk the business is accepting if nothing changes.
-
-This is also why governance is not just paperwork. In practical analytics, governance is the difference between a dashboard people admire and a report people trust. If two teams define the same KPI differently, the issue is not a visualization issue. It is a decision risk.
-
-For freelancers, remote workers, and digital talent, this is a major positioning point. Do not sell yourself as someone who can only build reports. That is too small. Sell the ability to make messy decisions clearer with data.
-
-The visible work is usually:
-
-- clean the data
-- build the dashboard
-- send the report
-
-The valuable work is:
-
-- define the metric
-- explain the trade-off
-- show the risk
-- name the owner
-- recommend the next action
-
-That is the difference between being seen as a tool user and being trusted as a business partner.
-
-My take
-
-If a metric has no owner, no threshold, no review rhythm, and no consequence, it should not sit proudly on an executive dashboard. It should be fixed, parked, or removed.
-
-Otherwise, the team is not managing performance. It is decorating uncertainty.
-
-Better data work does not make the room louder. It makes the next move harder to ignore."""
+This gives the team a traceable decision instead of another coloured indicator."""
         else:
-            body = f"""Data work should not stop at \"I found an insight.\"
+            middle = """The useful part of an analysis is the decision it supports. A chart may show movement, but the reader still needs to know what changed, which evidence is reliable, and what action follows.
 
-{candidate.topic}
+A practical review can start with four checks:
 
-{candidate.summary}
+- define the decision before choosing the visual
+- keep only the measures that can change an action
+- state the limitation that could alter the conclusion
+- give the next action to a named owner
 
-Why this matters
+This keeps the work focused on the operating problem. It also gives a recruiter, client, or manager something concrete to inspect: the reasoning between the raw information and the recommendation."""
 
-The real value is helping a business decide what to do next. That can mean cleaning a messy file, defining the right KPI, finding a growth leak, explaining customer behavior, or turning a confusing report into one clear management action.
+        if invites_response:
+            closing = (f"For {candidate.topic.rstrip('.').casefold()}, which threshold or piece of evidence "
+                       "would you require before acting on the recommendation?")
+        else:
+            closing = (f"The next review of {candidate.topic.rstrip('.').casefold()} should leave one clear record: "
+                       "the evidence, decision, owner, and follow-up date.")
+        body = f"""{candidate.summary}
 
-The common mistake
+For {audience}, {candidate.topic.rstrip('.').casefold()} deserves a specific operating test rather than a broad statement about the value of data.
 
-This is where a lot of analysts play too small. They show charts, but they do not force a decision. They list tools, but they do not show judgment. They talk about data, but they do not connect it to revenue, retention, cost, speed, quality, or risk.
+{middle}
 
-A business does not care that the table was cleaned in Python if the output still does not answer a commercial question.
-
-It does not care that the dashboard has nice colors if the leadership team still leaves the meeting asking what changed.
-
-It does not care that the model is complex if nobody can explain what action should happen when the result moves.
-
-That is why good data work needs a sharper standard.
-
-Before touching the tool, ask:
-
-- What decision is this supposed to improve?
-- Who will use the answer?
-- What metric will prove the answer mattered?
-- What action should happen if the number moves?
-- What should be ignored because it creates noise?
-
-This is the kind of thinking that makes data useful for business growth. Growth is not only more sales. It can be better retention, fewer refunds, faster fulfillment, cleaner customer segments, stronger pricing decisions, better campaign focus, or less reporting waste.
-
-The analyst who can explain that clearly will stand out more than the analyst who only says "I know Excel, SQL, Python, and Power BI."
-
-Tools are expected now.
-
-Judgment is the differentiator.
-
-If you are building a data career, working remotely, freelancing, or trying to attract better clients, stop presenting yourself as a chart maker. That positioning is weak. Present yourself as someone who can take messy data, find the business signal, explain the trade-off, and help the team move.
-
-That is a stronger brand.
-
-That is also a stronger service.
-
-My practical rule
-
-Every analysis should end with one of three things:
-
-- keep doing this
-- stop doing this
-- change this now
-
-If it ends with "interesting insight", it probably was not sharp enough.
-
-Make the data useful enough that the next decision becomes obvious."""
+{closing}"""
 
         return DraftPost(
             topic=candidate.topic,
             category=candidate.category,
             body=body,
-            hashtags=profile["hashtags"],
+            hashtags=profile["hashtags"][:self.config.max_hashtags],
             primary_source_url="",
             supporting_source_urls=[],
             claims=[
@@ -542,6 +499,8 @@ Make the data useful enough that the next decision becomes obvious."""
                 "All text must be correctly spelled, large enough to read, and directly tied to the post."
             ),
             alt_text=f"Clear LinkedIn infographic explaining the data analytics argument: {candidate.topic}",
+            target_audience=audience,
+            invites_response=invites_response,
         )
 
     def _render_visual(self, draft: DraftPost) -> VisualAsset:
@@ -573,14 +532,21 @@ Make the data useful enough that the next decision becomes obvious."""
 
     def generate_draft(self, candidate: TrendCandidate) -> DraftPost:
         gemini = self.gemini or GeminiClient()
-        draft = gemini.generate_post(self.config, candidate)
+        draft_config = replace(
+            self.config,
+            target_audience=self._target_audience(candidate),
+            invite_response=self._invite_response(),
+        )
+        draft = gemini.generate_post(draft_config, candidate)
         for attempt in range(3):
+            draft.target_audience = draft_config.target_audience
+            draft.invites_response = draft_config.invite_response
             normalize_draft(draft)
             draft.visual_prompt += (
                 f"\nRequired visual direction: {self.config.visual_direction} "
                 f"Avoid: {', '.join(self.config.visual_avoid)}."
             ) if self.config.visual_direction not in draft.visual_prompt else ""
-            reasons = validate_draft(draft, self.config).reasons
+            reasons = validate_draft(draft, draft_config).reasons
             try:
                 self._ensure_original_draft(draft)
             except RuntimeError as exc:
@@ -588,7 +554,7 @@ Make the data useful enough that the next decision becomes obvious."""
             if not reasons:
                 return draft
             if attempt < 2:
-                draft = gemini.revise_post(self.config, candidate, draft, reasons)
+                draft = gemini.revise_post(draft_config, candidate, draft, reasons)
         raise ValueError("Draft revision failed validation: " + "; ".join(reasons))
 
     def generate(self, candidate: TrendCandidate) -> tuple[DraftPost, VisualAsset]:
@@ -597,11 +563,10 @@ Make the data useful enough that the next decision becomes obvious."""
 
     def _select_draft(self) -> tuple[TrendCandidate, DraftPost, list[dict[str, Any]]]:
         if self.config.content_mode == "mixed":
-            history = self.history.load()
-            previous = history[-1] if history else {}
-            first = "researched" if previous.get("category") == "portfolio" else "portfolio"
+            first = self._next_content_mode()
             failures = []
-            for mode in (first, "portfolio" if first == "researched" else "researched"):
+            modes = ("researched", "portfolio") if first == "researched" else ("portfolio",)
+            for mode in modes:
                 try:
                     return LinkedInAIAgent(replace(self.config, content_mode=mode), self.gemini, self.linkedin)._select_draft()
                 except Exception as exc:
@@ -609,7 +574,11 @@ Make the data useful enough that the next decision becomes obvious."""
             raise RuntimeError("No fresh source-backed draft passed validation. " + "; ".join(failures))
         if self.config.content_mode == "portfolio":
             history = self.history.load()
-            projects = GitHubProjects(self.config.github_owner, self.config.portfolio_excluded_terms).collect(self.config.portfolio_repositories, history)
+            projects = GitHubProjects(
+                self.config.github_owner,
+                self.config.portfolio_excluded_terms,
+                self.config.portfolio_project_overrides,
+            ).collect(self.config.portfolio_repositories, history)
             gemini = self.gemini or GeminiClient()
             failures = []
             # A rejected idea moves to a fresh angle; it does not recycle old copy.
@@ -626,6 +595,14 @@ Make the data useful enough that the next decision becomes obvious."""
                             raise ValueError("Portfolio draft must link the exact project repository.")
                         if not draft.supporting_source_urls or any(url not in allowed for url in draft.supporting_source_urls):
                             raise ValueError("Portfolio draft must cite inspected project files.")
+                        public_urls = [source.url for source in candidate.sources
+                                       if source.publisher in {"Public demo", "Telegram bot"}]
+                        missing_public_urls = [url for url in public_urls if url not in draft.body]
+                        if missing_public_urls:
+                            raise ValueError("Portfolio draft must include every verified public app and Telegram URL in its body.")
+                        if any(source.publisher == "Project screenshot" for source in candidate.sources):
+                            if draft.visual_style != "project_screenshot":
+                                raise ValueError("Portfolio app draft must use the verified authentic project screenshot.")
                         return candidate, draft, [{"title": source.title, "url": source.url} for source in candidate.sources]
                     except (ValueError, RuntimeError) as exc:
                         failures.append(str(exc))
@@ -633,7 +610,11 @@ Make the data useful enough that the next decision becomes obvious."""
                 visited.update(project['name'] for project in projects)
                 remaining = [name for name in self.config.portfolio_repositories if name not in visited]
                 if batch < 3:
-                    projects = GitHubProjects(self.config.github_owner, self.config.portfolio_excluded_terms).collect(remaining, history, exclude=visited)
+                    projects = GitHubProjects(
+                        self.config.github_owner,
+                        self.config.portfolio_excluded_terms,
+                        self.config.portfolio_project_overrides,
+                    ).collect(remaining, history, exclude=visited)
                 else:
                     break
             raise RuntimeError("Fresh project angles did not pass validation. " + "; ".join(failures[-3:]))
@@ -681,7 +662,8 @@ Make the data useful enough that the next decision becomes obvious."""
             try:
                 self._ensure_original_draft(draft)
             except RuntimeError as exc:
-                if str(exc).startswith(("Draft references excluded organisation", "Topic was covered", "Post repeats substantial")):
+                if str(exc).startswith(("Draft references excluded organisation", "Topic was covered",
+                                        "Post repeats substantial", "Post repeats the")):
                     replacement_reason = str(exc)
                 else:
                     raise
@@ -690,7 +672,10 @@ Make the data useful enough that the next decision becomes obvious."""
                 if datetime.now(timezone.utc) - created > timedelta(days=7):
                     replacement_reason = "Refresh sources and prepare a new draft after seven days."
             if not replacement_reason:
-                return pending
+                validation = validate_draft(draft, self.config)
+                if validation.passed:
+                    return pending
+                replacement_reason = "Pending draft no longer passes the current writing strategy: " + "; ".join(validation.reasons)
             if persist:
                 atomic_json(self.config.state_dir / "replaced_pending_post.json", {**pending, "replacement_reason": replacement_reason})
         candidate, draft, citations = self._select_draft()
@@ -712,27 +697,44 @@ Make the data useful enough that the next decision becomes obvious."""
         if feedback_path.exists():
             feedback = json.loads(feedback_path.read_text())
             if feedback.get("draft_sha256") == draft_sha256(draft) and feedback.get("note"):
-                gemini = self.gemini or GeminiClient()
-                candidate = trend_from_dict(pending["candidate"])
-                revised = gemini.revise_post(self.config, candidate, draft,
-                    ["Owner's required revision: " + feedback["note"],
-                     "Revise the visual prompt too if the owner requested image changes. Preserve verified sources."])
-                normalize_draft(revised)
-                reasons = validate_draft(revised, self.config).reasons
-                self._ensure_original_draft(revised)
-                allowed = {source.url for source in candidate.sources}
-                if revised.primary_source_url != draft.primary_source_url or any(url not in allowed for url in revised.supporting_source_urls):
-                    reasons.append("Revision changed the verified source links.")
-                revised.visual_prompt += f"\nRequired visual direction: {self.config.visual_direction}. Avoid: {', '.join(self.config.visual_avoid)}."
-                if reasons:
-                    raise ValueError("Revision needs correction: " + "; ".join(reasons))
-                if draft_sha256(revised) == draft_sha256(draft):
-                    raise ValueError("Requested revision did not change the draft or image brief.")
+                try:
+                    revised = self._revise_requested_draft(pending, draft, feedback["note"])
+                except Exception as exc:
+                    atomic_json(feedback_path, {**feedback, "status": "revision_failed", "error": str(exc)})
+                    raise
                 pending.update(draft=to_dict(revised), status="pending_image", owner_feedback=feedback,
                                created_at=datetime.now(timezone.utc).isoformat())
                 atomic_json(self.config.state_dir / "pending_image_post.json", pending)
+                atomic_json(feedback_path, {**feedback, "status": "revised"})
                 draft = revised
         return write_visual_brief(draft, self._codex_manual_visual_path(draft))
+
+    def _revise_requested_draft(self, pending: dict, original: DraftPost, note: str) -> DraftPost:
+        gemini = self.gemini or GeminiClient()
+        candidate = trend_from_dict(pending["candidate"])
+        allowed = {source.url for source in candidate.sources}
+        instructions = ["Owner's required revision: " + note,
+                        "Revise the visual prompt too if the owner requested image changes. Preserve verified sources."]
+        draft = original
+        reasons = []
+        for _ in range(3):
+            draft = gemini.revise_post(self.config, candidate, draft, instructions + reasons)
+            normalize_draft(draft)
+            reasons = validate_draft(draft, self.config).reasons
+            try:
+                self._ensure_original_draft(draft)
+            except RuntimeError as exc:
+                reasons.append(str(exc))
+            if draft.primary_source_url != original.primary_source_url or any(url not in allowed for url in draft.supporting_source_urls):
+                reasons.append("Revision changed the verified source links. Restore the original primary URL: "
+                               + original.primary_source_url + "; use only these supporting URLs: " + ", ".join(sorted(allowed)))
+            if draft_sha256(draft) == draft_sha256(original):
+                reasons.append("Requested revision did not change the draft or image brief.")
+            if not reasons:
+                if self.config.visual_direction not in draft.visual_prompt:
+                    draft.visual_prompt += f"\nRequired visual direction: {self.config.visual_direction}. Avoid: {', '.join(self.config.visual_avoid)}."
+                return draft
+        raise ValueError("Revision needs correction: " + "; ".join(reasons))
 
     def _approval_reason(self, draft: DraftPost, asset_sha256: str) -> str | None:
         """Approval belongs to exact post and image bytes, never a topic alone."""
@@ -823,7 +825,12 @@ Make the data useful enough that the next decision becomes obvious."""
                       "category": draft.category, "visual_path": str(visual_path),
                       "visual_sha256": visual_sha256, "visual_provider": provider,
                       "visual_signature": visual_signature(visual_path),
-                      "primary_source_url": draft.primary_source_url}
+                      "primary_source_url": draft.primary_source_url,
+                      "strategy_version": self.config.strategy_version,
+                      "target_audience": draft.target_audience,
+                      "invites_response": draft.invites_response,
+                      "body_characters": len(draft.body), "hashtag_count": len(draft.hashtags),
+                      "comment_follow_up_due_at": (datetime.now(timezone.utc) + timedelta(hours=24)).isoformat()}
             if not dry_run:
                 linkedin = self.linkedin or LinkedInClient.from_env(self.config)
                 result.image_urn = linkedin.upload_image(visual)
@@ -854,41 +861,27 @@ Make the data useful enough that the next decision becomes obvious."""
             return result
 
     def featured_dashboard_draft(self) -> DraftPost:
-        body = f"""I built a retail revenue dashboard to answer a question leaders actually care about:
+        audience = "analytics managers and business intelligence leads"
+        invites_response = self._invite_response()
+        closing = ("Which operating measure would you require beside revenue before using this dashboard in a leadership review?"
+                   if invites_response else
+                   "The next useful review would test whether margin, repeat demand, returns, and delivery performance support the same conclusion as revenue.")
+        body = f"""I built a retail revenue dashboard around one management decision: whether higher sales are producing healthier performance.
 
-Is growth creating better business performance, or just more activity?
+The demonstration uses 2,160 synthetic retail records covering 18 months, five regions, four channels and six product categories. It combines revenue with gross profit, repeat customers, returns, fulfilment delays, support pressure and data-quality flags. The figures do not represent a real company.
 
-Dataset:
-2,160 synthetic retail operations rows covering 18 months, 5 regions, 4 channels, 6 product categories, campaigns, orders, revenue, gross profit, customers, returns, support tickets, fulfillment delay, stockout risk, satisfaction, and data quality flags.
+The design keeps revenue visible, but it also places margin, customer quality and operating pressure close enough to challenge the headline. A sales increase needs a different response when returns are climbing or fulfilment is slowing.
 
-Process:
-I generated the data with Python, aggregated KPIs by month, category, channel, and region, then designed a 16:9 executive dashboard with HTML, CSS, and SVG. No chart library. The goal was not decoration. It was decision support.
+For {audience}, the value is the review path. Start with the headline movement, check whether profit and repeat demand confirm it, then examine the operational measures that could explain the gap. The dashboard screenshot shows that full path without inventing a business result.
 
-Analyst note:
-Revenue is up, but the real review is whether gross profit, repeat customers, return pressure, and fulfillment speed are moving in the same direction. A dashboard should make that tension visible fast.
+Project and source files: {FEATURED_DASHBOARD_LINK}
 
-Project and data:
-{FEATURED_DASHBOARD_LINK}
-
-Discussion prompts:
-1) What metric would you add before presenting this to leadership?
-2) Do you prefer dashboards that explain the decision, or dashboards that only show the numbers?"""
+{closing}"""
         return DraftPost(
             topic="Retail Revenue Leakage Review",
             category="portfolio",
             body=body,
-            hashtags=[
-                "#DataAnalytics",
-                "#BusinessIntelligence",
-                "#DashboardDesign",
-                "#Python",
-                "#DataStorytelling",
-                "#KPIReporting",
-                "#GrowthAnalytics",
-                "#DecisionSupport",
-                "#AnalyticsPortfolio",
-                "#DataForBusiness",
-            ],
+            hashtags=["#DataAnalytics", "#BusinessIntelligence", "#DashboardDesign", "#AnalyticsPortfolio"],
             primary_source_url=FEATURED_DASHBOARD_LINK,
             supporting_source_urls=[FEATURED_DASHBOARD_DATA_LINK, FEATURED_DASHBOARD_SCRIPT_LINK],
             claims=[
@@ -902,6 +895,8 @@ Discussion prompts:
                 "Landscape executive retail revenue dashboard showing revenue, profit, category contribution, "
                 "channel economics, customer quality, and return pressure versus margin."
             ),
+            target_audience=audience,
+            invites_response=invites_response,
         )
 
     def publish_featured_dashboard(self, dry_run: bool) -> PublishResult:
@@ -957,6 +952,12 @@ Discussion prompts:
                         "visual_provider": "featured_dashboard",
                         "primary_source_url": draft.primary_source_url,
                         "report_path": str(report_path),
+                        "strategy_version": self.config.strategy_version,
+                        "target_audience": draft.target_audience,
+                        "invites_response": draft.invites_response,
+                        "body_characters": len(draft.body),
+                        "hashtag_count": len(draft.hashtags),
+                        "comment_follow_up_due_at": (datetime.now(timezone.utc) + timedelta(hours=24)).isoformat(),
                     }
                 )
             return result
@@ -1054,6 +1055,12 @@ Discussion prompts:
                 "visual_provider": "staged_preview",
                 "primary_source_url": draft.primary_source_url,
                 "report_path": str(report_path),
+                "strategy_version": self.config.strategy_version,
+                "target_audience": draft.target_audience,
+                "invites_response": draft.invites_response,
+                "body_characters": len(draft.body),
+                "hashtag_count": len(draft.hashtags),
+                "comment_follow_up_due_at": (datetime.now(timezone.utc) + timedelta(hours=24)).isoformat(),
             }
         )
         return result
@@ -1151,6 +1158,10 @@ Discussion prompts:
         similar_topic = self.history.similar_body_topic(draft.body, self.config.duplicate_lookback_days)
         if similar_topic:
             raise RuntimeError(f"Post repeats substantial wording from '{similar_topic}'. Write a fresh draft before publishing.")
+        repeated_boundary = self.history.similar_boundary(draft.body, self.config.duplicate_lookback_days)
+        if repeated_boundary:
+            topic, boundary = repeated_boundary
+            raise RuntimeError(f"Post repeats the {boundary} from '{topic}'. Write a topic-specific {boundary} before publishing.")
 
     def _visual_sha256(self, asset_path: Path) -> str:
         return hashlib.sha256(asset_path.read_bytes()).hexdigest()

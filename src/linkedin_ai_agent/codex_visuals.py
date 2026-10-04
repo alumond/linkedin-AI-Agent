@@ -49,12 +49,18 @@ def write_visual_brief(draft: DraftPost, asset_path: Path) -> Path:
             "Do not generate or redraw the dashboard. Inspect the screenshot against "
             "the exact post, verify the source and original bytes, and save a "
             "project_screenshot review record with source_repository, source_url, "
-            "source_sha256 and capture_method. For repository_asset include source_blob_sha. "
+            "project_repository, source_sha256 and capture_method. project_repository must be "
+            "the repository discussed in the post; source_repository may be that repository or "
+            "the owner's portfolio repository where the authentic screenshot is stored. "
+            "For repository_asset include source_blob_sha. "
             "For running_app include source_commit_sha, source_worktree_clean=true, "
             "source_url pointing to that repository's commit, capture_url and captured_at. "
             "Preserve source data labels and disclose simulated data in the post."
         ) if draft.visual_style == "project_screenshot" else (
             "Generate with Codex imagegen, then visually inspect against this exact post. "
+            "Use relevant symbols, icons and diagrams that explain the idea at phone size. "
+            "Keep text to a short title, labels and brief captions. Reject text-only layouts, "
+            "paragraphs in boxes and layouts where icons are only small decorations. "
             "Check readable text, correct spelling, meaningful diagrams, topic alignment, "
             "no invented statistics and no internal drafting notes. Save a .json review "
             "record beside the image only after those checks pass. Never use a template "
@@ -104,12 +110,19 @@ def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
         raise RuntimeError("Codex image changed after visual review. Generate or review the replacement before posting.")
     if screenshot:
         repository = record.get("source_repository", "")
+        project_repository = record.get("project_repository", repository)
         source = record.get("source_url", "")
         parsed = urlparse(repository)
-        if (draft.category != "portfolio" or repository != draft.primary_source_url.rstrip("/")
+        project_parsed = urlparse(project_repository)
+        primary_repository = draft.primary_source_url.rstrip("/")
+        if (draft.category != "portfolio" or project_repository != primary_repository
                 or parsed.scheme != "https" or parsed.netloc != "github.com"
-                or len(parsed.path.strip("/").split("/")) != 2):
-            raise RuntimeError("Project screenshot needs a verified source from the post's GitHub repository.")
+                or len(parsed.path.strip("/").split("/")) != 2
+                or project_parsed.scheme != "https" or project_parsed.netloc != "github.com"
+                or len(project_parsed.path.strip("/").split("/")) != 2
+                or parsed.path.strip("/").split("/")[0].casefold()
+                != project_parsed.path.strip("/").split("/")[0].casefold()):
+            raise RuntimeError("Project screenshot needs a verified same-owner GitHub source tied to the post's project repository.")
         if record.get("source_sha256") != actual_hash:
             raise RuntimeError("Project screenshot must match the unchanged original source bytes.")
         if record.get("capture_method") == "repository_asset":
@@ -117,6 +130,11 @@ def reviewed_visual(draft: DraftPost, asset_path: Path) -> VisualAsset:
             blob_sha = hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
             if not source.startswith(repository + "/blob/") or record.get("source_blob_sha") != blob_sha:
                 raise RuntimeError("Project screenshot needs the original repository asset and its Git blob hash.")
+            if repository != project_repository:
+                source_commit = record.get("source_commit_sha", "")
+                if (not isinstance(source_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", source_commit)
+                        or not source.startswith(repository + "/blob/" + source_commit + "/")):
+                    raise RuntimeError("Portfolio-hosted screenshots need an immutable source commit.")
         elif record.get("capture_method") == "running_app":
             commit = record.get("source_commit_sha", "")
             capture = urlparse(record.get("capture_url", ""))

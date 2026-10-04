@@ -41,16 +41,32 @@ class AgentConfig:
     require_post_approval: bool = False
     github_owner: str = "alumond"
     portfolio_repositories: list[str] = field(default_factory=list)
+    portfolio_project_overrides: dict[str, dict[str, Any]] = field(default_factory=dict)
     portfolio_excluded_terms: list[str] = field(default_factory=lambda: ["stanforte", "stanforteedge", "HR dashboard", "HR analytics", "human resources dashboard"])
     visual_direction: str = "Polished editorial graphics and clear data visuals with short readable captions."
     visual_avoid: list[str] = field(default_factory=lambda: [
         "sketches", "model drawings", "generic AI artwork", "internal drafting notes",
     ])
+    audience_segments: list[str] = field(default_factory=list)
+    strategy_version: str = "engagement_recovery_v1"
+    content_cycle: list[str] = field(default_factory=lambda: ["portfolio", "portfolio", "researched", "portfolio", "researched"])
+    response_question_slots: list[int] = field(default_factory=lambda: [2, 5])
+    min_hashtags: int = 1
+    max_hashtags: int = 10
+    target_audience: str = ""
+    invite_response: bool = False
+    engagement_window_posts: int = 10
+    engagement_baseline_impressions: int = 80
+    engagement_target_median_impressions: int = 120
+    engagement_target_posts_with_reactions: int = 5
+    engagement_target_posts_with_comments: int = 3
 
 
 def load_config(path: str | Path) -> AgentConfig:
     data = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     post_length = data.get("post_length", {})
+    strategy = data.get("content_strategy", {})
+    experiment = data.get("engagement_experiment", {})
     brand = data.get("brand", {})
     thresholds = data.get("thresholds", {})
     models = data.get("models", {})
@@ -90,9 +106,21 @@ def load_config(path: str | Path) -> AgentConfig:
         require_post_approval=bool(data.get("require_post_approval", True)),
         github_owner=str(data.get("github_owner", "alumond")),
         portfolio_repositories=list(data.get("portfolio_repositories", [])),
+        portfolio_project_overrides=dict(data.get("portfolio_project_overrides", {})),
         portfolio_excluded_terms=list(data.get("portfolio_excluded_terms", ["stanforte", "stanforteedge", "HR dashboard", "HR analytics", "human resources dashboard"])),
         visual_direction=str(visuals.get("direction", "Polished editorial graphics and clear data visuals with short readable captions.")),
         visual_avoid=list(visuals.get("avoid", ["sketches", "model drawings", "generic AI artwork", "internal drafting notes"])),
+        audience_segments=list(data.get("audience_segments", [])),
+        strategy_version=str(strategy.get("version", "engagement_recovery_v1")),
+        content_cycle=list(strategy.get("cycle", ["portfolio", "portfolio", "researched", "portfolio", "researched"])),
+        response_question_slots=[int(item) for item in strategy.get("response_question_slots", [2, 5])],
+        min_hashtags=int(strategy.get("hashtag_min", 1)),
+        max_hashtags=int(strategy.get("hashtag_max", 10)),
+        engagement_window_posts=int(experiment.get("window_posts", 10)),
+        engagement_baseline_impressions=int(experiment.get("baseline_impressions", 80)),
+        engagement_target_median_impressions=int(experiment.get("target_median_impressions", 120)),
+        engagement_target_posts_with_reactions=int(experiment.get("target_posts_with_reactions", 5)),
+        engagement_target_posts_with_comments=int(experiment.get("target_posts_with_comments", 3)),
     )
 
 

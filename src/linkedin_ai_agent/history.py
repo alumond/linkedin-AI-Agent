@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import statistics
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -102,6 +103,42 @@ class PublicationHistory:
                 return str(item.get("topic") or "previously published post")
         return None
 
+    def similar_boundary(self, body: str, lookback_days: int) -> tuple[str, str] | None:
+        """Return the earlier topic and boundary when an opening or close feels recycled."""
+        def boundaries(text: str) -> tuple[str, str]:
+            blocks = [part.strip() for part in re.split(r"\n\s*\n", text) if part.strip()]
+            return (blocks[0] if blocks else "", blocks[-1] if blocks else "")
+
+        def normalized(text: str) -> str:
+            return " ".join(re.findall(r"\w+", text.casefold()))
+
+        opening, closing = boundaries(body)
+        current = {"opening": normalized(opening), "closing": normalized(closing)}
+        cutoff = history_cutoff(lookback_days)
+        for item in reversed(self.load()):
+            try:
+                created = datetime.fromisoformat(str(item.get("created_at", "")).replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if created.tzinfo is None:
+                created = created.replace(tzinfo=timezone.utc)
+            if created < cutoff:
+                continue
+            previous = str(item.get("body") or "")
+            if not previous and item.get("report_path"):
+                report_path = self.reports_dir / Path(item["report_path"]).name
+                report = json.loads(report_path.read_text(encoding="utf-8"))
+                previous = str(report.get("draft", {}).get("body", ""))
+            old_opening, old_closing = boundaries(previous)
+            old = {"opening": normalized(old_opening), "closing": normalized(old_closing)}
+            for boundary in ("opening", "closing"):
+                new_text, old_text = current[boundary], old[boundary]
+                if min(len(new_text), len(old_text)) < 24:
+                    continue
+                if new_text == old_text or SequenceMatcher(None, new_text, old_text).ratio() >= 0.86:
+                    return str(item.get("topic") or "previously published post"), boundary
+        return None
+
     def recent_visual_fingerprints(self, lookback_days: int) -> set[str]:
         cutoff = history_cutoff(lookback_days)
         fingerprints: set[str] = set()
@@ -127,3 +164,56 @@ class PublicationHistory:
         items = self.load()
         items.append(record)
         atomic_json(self.path, items)
+
+    def record_engagement(self, post_urn: str, metrics: dict[str, int], measured_at: str) -> dict[str, Any]:
+        allowed = ("impressions", "reactions", "comments", "reposts", "profile_views", "follows", "clicks")
+        cleaned = {}
+        for key in allowed:
+            raw = metrics.get(key, 0)
+            if isinstance(raw, bool):
+                raise ValueError("Engagement metrics must be whole numbers.")
+            try:
+                numeric = float(raw)
+            except (TypeError, ValueError) as exc:
+                raise ValueError("Engagement metrics must be whole numbers.") from exc
+            if not numeric.is_integer():
+                raise ValueError("Engagement metrics must be whole numbers.")
+            cleaned[key] = int(numeric)
+        if any(value < 0 for value in cleaned.values()):
+            raise ValueError("Engagement metrics cannot be negative.")
+        if cleaned["impressions"] <= 0:
+            raise ValueError("Impressions must be greater than zero.")
+        cleaned["measured_at"] = measured_at
+        cleaned["interaction_rate_percent"] = round(
+            100 * (cleaned["reactions"] + cleaned["comments"] + cleaned["reposts"]) / cleaned["impressions"], 2
+        )
+        items = self.load()
+        for item in items:
+            if item.get("post_urn") == post_urn:
+                item["engagement"] = cleaned
+                atomic_json(self.path, items)
+                return item
+        raise ValueError("The selected published post was not found in publication history.")
+
+    def engagement_scorecard(self, strategy_version: str, window_posts: int,
+                             baseline_impressions: int, target_median_impressions: int,
+                             target_posts_with_reactions: int, target_posts_with_comments: int) -> dict[str, Any]:
+        eligible = [item for item in self.load()
+                    if item.get("strategy_version") == strategy_version and item.get("engagement")]
+        measured = eligible[-max(1, window_posts):]
+        impressions = [int(item["engagement"]["impressions"]) for item in measured]
+        median_impressions = round(statistics.median(impressions), 1) if impressions else None
+        reaction_posts = sum(int(item["engagement"].get("reactions", 0)) > 0 for item in measured)
+        comment_posts = sum(int(item["engagement"].get("comments", 0)) > 0 for item in measured)
+        return {
+            "strategy_version": strategy_version,
+            "measured_posts": len(measured),
+            "window_posts": window_posts,
+            "median_impressions": median_impressions,
+            "baseline_impressions": baseline_impressions,
+            "target_median_impressions": target_median_impressions,
+            "posts_with_reactions": reaction_posts,
+            "target_posts_with_reactions": target_posts_with_reactions,
+            "posts_with_comments": comment_posts,
+            "target_posts_with_comments": target_posts_with_comments,
+        }

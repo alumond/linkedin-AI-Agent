@@ -54,6 +54,8 @@ class DraftPost:
     visual_style: str
     visual_prompt: str
     alt_text: str
+    target_audience: str = ""
+    invites_response: bool = False
 
 
 @dataclass
@@ -136,6 +138,8 @@ def draft_from_dict(data: dict[str, Any]) -> DraftPost:
         visual_style=str(data.get("visual_style", "insight_card")),
         visual_prompt=str(data.get("visual_prompt", "")),
         alt_text=str(data.get("alt_text", "")),
+        target_audience=str(data.get("target_audience", "")),
+        invites_response=bool(data.get("invites_response", False)),
     )
 
 

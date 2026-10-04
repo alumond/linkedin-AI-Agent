@@ -1,5 +1,30 @@
-audience: 'Recruiters, founders, operators, remote teams, analytics managers, and business leaders who need data talent that can turn dashboards, KPIs, and messy data into decisions'
+audience: 'Professionals who need clearer decisions from data, including analytics leaders, operators, recruiters, M&E teams, and prospective clients'
+audience_segments:
+- analytics managers and business intelligence leads
+- founders and operations leaders
+- recruiters and hiring managers for data roles
+- monitoring, evaluation, and impact leaders
+- prospective clients who need decision-ready analytics
 content_mode: mixed
+content_strategy:
+  version: engagement_recovery_v1
+  cycle:
+  - portfolio
+  - portfolio
+  - researched
+  - portfolio
+  - researched
+  response_question_slots:
+  - 2
+  - 5
+  hashtag_min: 3
+  hashtag_max: 5
+engagement_experiment:
+  window_posts: 10
+  baseline_impressions: 80
+  target_median_impressions: 120
+  target_posts_with_reactions: 5
+  target_posts_with_comments: 3
 require_post_approval: true
 github_owner: alumond
 portfolio_excluded_terms:
@@ -17,6 +42,18 @@ portfolio_repositories:
 - Indicators
 - Almond-Projects
 - Activity-1
+portfolio_project_overrides:
+  Activity-1:
+    public_links:
+    - kind: public_demo
+      label: Try Health for All
+      url: https://activity-1-hey4bhjldtch29jwvwmsuf.streamlit.app/
+    - kind: telegram
+      label: Open the Telegram bot
+      url: https://t.me/AfriMedQABot
+    screenshot:
+      repository: https://github.com/alumond/Almond-Portfolio
+      path: public/images/project-health-for-all.png
 editorial_topics:
 - analytics
 - growth analytics
@@ -47,8 +84,8 @@ excluded_subjects:
 - adult or hateful content
 voice: sharp, human, commercially aware, practical, and built to position Almond as a data analyst for business growth and decision support
 post_length:
-  min_chars: 2000
-  max_chars: 3000
+  min_chars: 900
+  max_chars: 1500
 brand:
   name: Data & AI Brief
   colors:
@@ -114,6 +151,10 @@ visuals:
     sharp edges and text at full size and readable key labels at phone size.
     Polished editorial graphics and clear data visuals with a strong complete title,
     generous spacing, short readable captions, and a concrete connection to the post.
+    Codex-generated images must use relevant symbols, icons and diagrams to explain
+    the idea. Give these visuals enough space to be understood at phone size. Keep
+    text to a short title, labels and brief captions. Reject paragraphs in boxes
+    and layouts where icons are only small decorations around text.
     For workflow posts, visualize the actual workflow discussed in the post: inputs,
     ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs.
     Use a process map for sequential steps, a decision flow for branching logic, or
@@ -136,6 +177,7 @@ visuals:
   - robot faces and generic AI imagery
   - sparse skeleton diagrams
   - text-only quote cards
+  - paragraphs in boxes with only decorative icons
   - synthetic photorealism
 linkedin:
   owner_urn: urn:li:person:0GDezBSPGQ

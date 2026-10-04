@@ -80,6 +80,19 @@ def test_screenshot_rejects_edited_bytes_even_with_updated_final_digest(tmp_path
         reviewed_visual(draft, asset)
 
 
+def test_screenshot_can_live_in_the_owners_portfolio_repository(tmp_path):
+    _, draft, asset, review = screenshot_fixture(tmp_path)
+    review.update({
+        'project_repository': draft.primary_source_url,
+        'source_repository': 'https://github.com/example/portfolio',
+        'source_commit_sha': 'b' * 40,
+        'source_url': 'https://github.com/example/portfolio/blob/' + ('b' * 40) + '/public/images/project-dashboard.png',
+    })
+    asset.with_suffix('.json').write_text(json.dumps(review))
+    visual = reviewed_visual(draft, asset)
+    assert (visual.width, visual.height) == (1440, 1100)
+
+
 def test_screenshot_dry_run_reports_source_and_still_requires_approval(tmp_path):
     agent, draft, asset, review = screenshot_fixture(tmp_path)
     atomic_json(agent.config.state_dir / 'pending_image_post.json', {

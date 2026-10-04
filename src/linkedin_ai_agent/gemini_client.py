@@ -13,7 +13,7 @@ import requests
 
 from .config import AgentConfig
 from .json_utils import parse_json_object
-from .models import DraftPost, TrendCandidate, EvidenceSource, draft_from_dict, to_dict, trend_from_dict
+from .models import DraftPost, TrendCandidate, EvidenceSource, draft_from_dict, to_dict, trend_from_dict, post_commentary
 from .portfolio import ANGLES
 
 
@@ -27,6 +27,8 @@ LINKEDIN_READER_RULES = """Owner's writing requirements, following the no-ai-slo
 - Use implementation details only as evidence for what the project does. Explain an essential method in everyday language, and remove technical paragraphs that add no useful analytical point.
 - Do not substitute generic dashboard benefits or invented findings for technical detail. Clearly identify simulated data and distinguish demonstrations from real-world results.
 - Use direct statements and natural sentences. Remove staged questions, rhetorical hooks, slogans, hype, dramatic contrasts, filler and inflated claims. End on a concrete supported point.
+- Do not use stock section labels such as "Why this matters", "The common mistake", "My take", "My practical rule", "Where weak reporting fails", or "Discussion prompts".
+- Do not reuse familiar opening lines or closing slogans. The first and final paragraphs must be specific to this post.
 """
 
 
@@ -72,18 +74,33 @@ Return JSON only: {{"candidates": [{{"repository": "exact repo name", "angle": "
         candidates = []
         for row in parse_json_object(output_text_from_generate_content(response)).get("candidates", []):
             project = lookup.get(row.get("repository"))
-            if not project or row.get("angle") not in ANGLES or not row.get("feature"):
+            if (not project or project.get("missing_public_links")
+                    or row.get("angle") not in ANGLES or not row.get("feature")):
                 continue
             feature = "-".join(re.findall(r"\w+", row["feature"].casefold()))
             key = f"{project['url']}::{row['angle']}::{feature}"
             if key in used:
                 continue
+            sources = ([EvidenceSource(title=project["name"], url=project["url"], source_type="primary")]
+                       + [EvidenceSource(title=file["path"], url=file["url"], source_type="primary")
+                          for file in project["files"]])
+            public_links = project.get("public_links") or (
+                [{"kind": "public_demo", "label": "Try the app", "url": project["demo_url"]}]
+                if project.get("demo_url") else []
+            )
+            for link in public_links:
+                publisher = "Telegram bot" if link.get("kind") == "telegram" else "Public demo"
+                sources.append(EvidenceSource(title=f"{project['name']} · {link.get('label', publisher)}",
+                                              url=link["url"], source_type="primary", publisher=publisher))
+            for screenshot in project.get("screenshots", []):
+                sources.append(EvidenceSource(title=f"{project['name']} authentic project screenshot",
+                                              url=screenshot["source_url"], source_type="primary",
+                                              publisher="Project screenshot"))
             candidates.append(TrendCandidate(
                 topic=row["topic"], category="portfolio", summary=row["summary"],
                 recency_score=1, relevance_score=1, evidence_score=1,
                 practical_value_score=1, novelty_score=1,
-                sources=[EvidenceSource(title=project["name"], url=project["url"], source_type="primary")]
-                        + [EvidenceSource(title=file["path"], url=file["url"], source_type="primary") for file in project["files"]],
+                sources=sources,
                 content_key=key, source_snapshot=json.dumps(project),
             ))
         return candidates
@@ -160,6 +177,13 @@ Return only JSON with this shape:
     def generate_post(self, config: AgentConfig, candidate: TrendCandidate) -> DraftPost:
         sources = "\n".join(f"- {source.title}: {source.url} ({source.source_type})" for source in candidate.sources)
         target_min, target_max = post_length_target(config)
+        target_audience = config.target_audience or config.audience
+        response_rule = (
+            "End with one specific, easy-to-answer question based on the reader's direct professional experience. "
+            "Use exactly one question mark. Do not ask 'What do you think?' or another generic engagement question."
+            if config.invite_response else
+            "Do not end with a question. Finish with a concrete supported detail, decision, limitation, or next action."
+        )
         prompt = f"""
 Write a LinkedIn post that builds Almond's personal brand as a data analyst for business growth, dashboards, KPI reporting, business intelligence, impact analytics, and decision support.
 
@@ -174,13 +198,16 @@ For portfolio posts, describe Almond's own work using this evidence. Name the pr
 explain one specific analytical task it supports in everyday language, and link the repository.
 Separate implemented behavior from future ideas. Do not invent usage, results, saved time,
 production deployment, production readiness, personal testing, impact numbers or model accuracy. README marketing is not evidence of production readiness. Use a supporting
-source file from the supplied list. Do not copy phrases from previous posts or use generic
+source from the supplied list. Include every verified public experience link in the body, using
+plain labels such as "Try the app" and "Open the Telegram bot". Do not expose code filenames,
+file paths, function names, or internal implementation details in the body. Do not copy phrases from previous posts or use generic
 "data should drive decisions" filler. Do not discuss health or finance as advice.
 
 {LINKEDIN_READER_RULES}
 
 Voice: {config.voice}
-Audience: {config.audience}
+Primary audience for this post: {target_audience}
+Write for this one audience only. Do not address a list of professions or switch audiences midway through the post.
 Visual direction: {config.visual_direction}
 Visuals must avoid: {', '.join(config.visual_avoid)}
 Hard length limit for body: {config.min_post_chars}-{config.max_post_chars} characters.
@@ -198,7 +225,7 @@ Rules:
 - Include one line that shows judgment, such as what teams should stop doing, measure differently, or prove with data.
 - Use concrete project details instead of forced analogies or generic motivational claims.
 - End with a concrete implication, open design choice, or specific next step. Do not force a slogan.
-- Do not force questions at the end unless the post genuinely needs one.
+- {response_rule}
 - Do not claim personal hands-on testing.
 - Do not fabricate quotes or statistics.
 - Do not use vague quantified claims like "significant percentage", "many companies", or "most leaders" unless an exact sourced number is provided.
@@ -213,8 +240,10 @@ Rules:
 - Vary sentence length naturally. Prefer active voice and plain verbs.
 - Include practical implications or actions readers can use in meetings, planning, or reporting.
 - Keep the entire submitted post, including source URL and hashtags, under 3,000 characters.
-- Use 6 to 10 specific, topic-relevant hashtags.
+- Use {config.min_hashtags} to {config.max_hashtags} specific, topic-relevant hashtags.
 - For portfolio posts about a dashboard or app interface, set visual_style to "project_screenshot" and describe the actual screen to capture. Use the authentic project screenshot; never generate a substitute dashboard or infographic. For other posts, use "insight_card" or "diagram".
+- For portfolio posts, write from the supplied project evidence and one genuine design choice, constraint, or limitation. Include every verified public demo and Telegram URL in the body. Never call a repository or localhost address a public demo.
+- When verified screenshot evidence is supplied for an app or dashboard, set visual_style to "project_screenshot" and refer only to that authentic screen. Do not request a generated substitute.
 - For a workflow post, make the workflow the substance of the post: explain its input, ordered stages, a meaningful decision or handoff, output, and a limitation. Include failure or revision paths only when the evidence supports them. Clearly distinguish implemented behavior from a proposed process; do not invent tools, integrations, automation or results.
 - For workflow posts that do not showcase a dashboard or app, set visual_style to "diagram" and make visual_prompt describe the exact workflow in the post, with short stage labels and explicit arrow directions. Choose a process map, decision flow or swimlanes to suit the content. Identify the relevant people/tools only when supported. Match every branch and output to the text; do not substitute a generic diagram or the LinkedIn publishing workflow. The image should explain the process at phone size, not repeat the full post.
 - Return only JSON matching this shape:
@@ -245,6 +274,17 @@ Rules:
         validation_reasons: list[str],
     ) -> DraftPost:
         target_min, target_max = post_length_target(config)
+        # The platform limit covers the URL, separators and hashtags as well as the body.
+        overhead = len(post_commentary(draft)) - len(draft.body.strip())
+        body_max = min(config.max_post_chars, 3000 - overhead)
+        target_max = min(target_max, body_max - 100)
+        target_min = min(target_min, target_max)
+        target_audience = draft.target_audience or config.target_audience or config.audience
+        response_rule = (
+            "End with exactly one specific, easy-to-answer question and use only one question mark."
+            if draft.invites_response or config.invite_response else
+            "Do not end with a question; finish on a concrete supported detail or next action."
+        )
         prompt = f"""
 Revise this source-grounded LinkedIn draft so it passes every listed validation issue.
 
@@ -260,10 +300,13 @@ Current draft JSON:
 Requirements:
 - Preserve the topic, factual meaning, source URLs, claims, and honest point of view. Change the visual direction when the owner's revision explicitly asks for an image change.
 - Do not add facts, quotations, statistics, source URLs, or personal testing claims.
-- Keep the body between {config.min_post_chars} and {config.max_post_chars} characters.
+- Keep the body between {config.min_post_chars} and {body_max} characters.
 - Aim for {target_min}-{target_max} body characters.
-- Open with a concrete supported point, explain a practical implication, and end on a useful detail or next step. Keep 6 to 10 topic-relevant hashtags.
-- Do not force a "Discussion prompts:" section unless it already fits naturally.
+- The complete post must be at most 3,000 characters including the source URL, blank lines and hashtags. The current non-body content uses {overhead} characters; leave extra room if you change the hashtags.
+- Write only for this primary audience: {target_audience}.
+- Open with a concrete supported point and explain a practical implication. {response_rule}
+- Keep {config.min_hashtags} to {config.max_hashtags} topic-relevant hashtags.
+- Remove stock section labels and any repeated opening or closing identified by validation.
 - Do not use em dashes, emojis, hype, clickbait, or generic AI phrasing.
 - Return only the complete revised JSON object using exactly the same fields as the current draft.
 """

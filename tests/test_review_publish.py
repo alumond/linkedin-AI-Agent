@@ -84,3 +84,27 @@ def test_workflow_dispatch_accepts_plain_text_cli_response(tmp_path):
     with patch('linkedin_ai_agent.review_server.subprocess.run', return_value=SimpleNamespace(
             returncode=0, stdout='Created workflow_dispatch event\n', stderr='')):
         assert store.command(['workflow', 'run', 'weekday-linkedin-post.yml'], expect_json=False).strip() == 'Created workflow_dispatch event'
+
+
+def test_record_metrics_updates_history_and_scorecard(tmp_path, monkeypatch):
+    from tests.test_ranking import config
+
+    store = ReviewStore(tmp_path)
+    history = [{
+        'created_at': '2026-10-05T08:00:00Z', 'topic': 'A measured post',
+        'post_urn': 'urn:li:share:test', 'strategy_version': 'engagement_recovery_v1',
+    }]
+    monkeypatch.setattr(store, 'json_file', lambda *args, **kwargs: (deepcopy(history), None))
+    saved = Mock()
+    monkeypatch.setattr(store, 'write_state', saved)
+    monkeypatch.setattr('linkedin_ai_agent.review_server.load_config', lambda _: config(tmp_path))
+
+    result = store.record_metrics({
+        'post_urn': 'urn:li:share:test', 'impressions': 140,
+        'reactions': 2, 'comments': 1, 'reposts': 0,
+    })
+
+    assert result['record']['engagement']['interaction_rate_percent'] == 2.14
+    assert result['scorecard']['median_impressions'] == 140
+    saved.assert_called_once()
+    assert saved.call_args.args[0] == '.state/publication_history.json'

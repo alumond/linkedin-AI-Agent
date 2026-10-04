@@ -77,6 +77,69 @@ def test_stale_browser_cannot_approve_new_preview(tmp_path, monkeypatch):
     writer.assert_not_called()
 
 
+def test_approval_receipt_is_returned_only_after_save(tmp_path, monkeypatch):
+    store = ReviewStore(tmp_path)
+    monkeypatch.setattr(store, 'ensure_publisher_idle', lambda: None)
+    monkeypatch.setattr(store, 'snapshot', lambda: {'image_ready': True, 'checks': [{'ok': True}],
+                                                  'draft_sha256': 'draft', 'asset_sha256': 'image'})
+    monkeypatch.setattr(store, 'command', lambda *args, **kwargs: '')
+    writer = Mock()
+    monkeypatch.setattr(store, 'write_state', writer)
+    receipt = store.approve({'draft_sha256': 'draft', 'asset_sha256': 'image'})
+    writer.assert_called_once_with('.state/approved_post.json', receipt)
+    assert receipt['approved_by'] == 'owner_local_review'
+    assert datetime.fromisoformat(receipt['approved_at']).tzinfo is not None
+    writer.side_effect = RuntimeError('GitHub unavailable')
+    with pytest.raises(RuntimeError, match='GitHub unavailable'):
+        store.approve({'draft_sha256': 'draft', 'asset_sha256': 'image'})
+
+
+@pytest.mark.parametrize('change,expected', [
+    ('unchanged', True), ('revoked', False), ('removed', False), ('draft_changed', False),
+    ('image_changed', False), ('new_feedback', False), ('old_feedback', True),
+    ('feedback_removed', True), ('image_missing', False),
+])
+def test_review_refresh_uses_current_remote_approval(tmp_path, monkeypatch, change, expected):
+    from dataclasses import asdict
+    import hashlib
+
+    agent, draft = setup_agent(tmp_path)
+    store = ReviewStore(tmp_path)
+    approval = {'draft_sha256': draft_sha256(draft), 'asset_sha256': hashlib.sha256(b'image').hexdigest(),
+                'approved_at': '2026-09-26T11:48:00+00:00', 'approved_by': 'owner_local_review'}
+    remote = {
+        '.state/publication_history.json': [],
+        '.state/pending_image_post.json': {'draft': asdict(draft)},
+        '.state/approved_post.json': approval,
+        '.state/review_feedback.json': None,
+    }
+    monkeypatch.setattr('linkedin_ai_agent.review_server.load_config', lambda _: agent.config)
+    monkeypatch.setattr(store, 'json_file', lambda path, *a, **kw: (remote.get(path, {'alt_text': 'Test image'}), None))
+    monkeypatch.setattr(store, 'read_file', lambda *a, **kw: (b'image', 'blob'))
+    monkeypatch.setattr('linkedin_ai_agent.review_server.reviewed_visual', lambda *a: None)
+    monkeypatch.setattr(LinkedInAIAgent, '_ensure_visual_not_reused', lambda *a: None)
+
+    # Start with a confirmed approval, then refresh after a remote state change.
+    assert store.snapshot()['approved'] is True
+    if change == 'revoked':
+        remote['.state/approved_post.json'] = {'status': 'changes_requested'}
+    elif change == 'removed':
+        remote['.state/approved_post.json'] = None
+    elif change in {'draft_changed', 'image_changed'}:
+        key = 'draft_sha256' if change == 'draft_changed' else 'asset_sha256'
+        remote['.state/approved_post.json'] = {**approval, key: 'another-version'}
+    elif change in {'new_feedback', 'old_feedback', 'feedback_removed'}:
+        remote['.state/review_feedback.json'] = {
+            'draft_sha256': approval['draft_sha256'], 'note': 'Revise the image',
+            'requested_at': '2026-09-26T11:00:00+00:00' if change == 'old_feedback' else '2026-09-26T12:00:00+00:00'}
+        if change == 'feedback_removed':
+            assert store.snapshot()['approved'] is False
+            remote['.state/review_feedback.json'] = None
+    elif change == 'image_missing':
+        monkeypatch.setattr(store, 'read_file', lambda *a, **kw: (None, None))
+    assert store.snapshot()['approved'] is expected
+
+
 def test_review_cannot_race_running_publisher(tmp_path, monkeypatch):
     store = ReviewStore(tmp_path)
     monkeypatch.setattr(store, 'command', lambda *args: [{'status': 'in_progress'}])
@@ -100,10 +163,11 @@ def test_popup_only_for_complete_unapproved_version():
     assert popup_key(state) is None
 
 
-def test_mixed_mode_alternates_and_can_use_fresh_research(tmp_path, monkeypatch):
+def test_mixed_mode_uses_three_portfolio_slots_in_each_five_post_cycle(tmp_path, monkeypatch):
     agent, draft = setup_agent(tmp_path)
     agent.config.content_mode = 'mixed'
     agent.history.append({'category': 'portfolio', 'created_at': '2026-01-01T00:00:00Z', 'topic': 'Old build'})
+    agent.history.append({'category': 'portfolio', 'created_at': '2026-01-02T00:00:00Z', 'topic': 'Second build'})
     actual = LinkedInAIAgent._select_draft
     calls = []
     def select(self):

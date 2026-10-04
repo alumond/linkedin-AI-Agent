@@ -3,21 +3,361 @@
 [hidden]{display:none!important}
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap');
 :root{--ink:#172c2b;--muted:#667773;--green:#176b54;--line:#dce4dd;--paper:#f5f7f2}*{box-sizing:border-box}body{margin:0;background:var(--paper);font:14px 'DM Sans',sans-serif;color:var(--ink)}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:9px;padding:11px 17px;background:white;color:var(--ink);font-weight:600}button:hover{border-color:var(--green)}button:disabled{opacity:.45;cursor:default}.primary{background:var(--green);border-color:var(--green);color:white}.shell{max-width:1400px;margin:auto;padding:32px 48px}header{display:flex;justify-content:space-between;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;font-weight:700}.monogram{width:37px;height:37px;border-radius:50%;background:var(--ink);color:white;display:grid;place-items:center;font-family:Manrope}.small{font-size:12px;color:var(--muted)}.toplink{color:var(--muted);text-decoration:none}.hero{display:flex;align-items:end;justify-content:space-between;padding:39px 0 28px}.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:11px;font-weight:700;color:var(--green)}h1{font:800 36px Manrope;margin:9px 0 8px;letter-spacing:-1.2px}p{line-height:1.6}.sub{margin:0;color:var(--muted)}.pill{display:inline-block;border:1px solid #c8ddd0;background:#e9f2e8;color:#35654e;padding:7px 12px;border-radius:30px;font-size:12px}.workspace{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px}.card{background:white;border:1px solid var(--line);border-radius:15px;overflow:hidden}.cardhead{padding:19px 23px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.label{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}.post{padding:27px 30px}.author{display:flex;gap:11px;align-items:center;margin-bottom:25px}.avatar{width:42px;height:42px;background:#dce9da;border-radius:50%;display:grid;place-items:center;font-weight:700}.author strong{display:block}.author span{font-size:11px;color:var(--muted)}#body{white-space:pre-wrap;line-height:1.75;font-size:14px}.hashtags{color:var(--green);margin-top:22px;line-height:1.8}.visual{aspect-ratio:1;background:#edf1eb;display:grid;place-items:center;padding:22px}.visual img{width:100%;height:100%;object-fit:contain;border-radius:7px}.placeholder{text-align:center;max-width:270px;color:var(--muted)}.placeholder svg{display:block;margin:0 auto 20px}.placeholder strong{display:block;color:var(--ink);font-size:19px;margin-bottom:9px}.right{display:flex;flex-direction:column;gap:20px}.review{padding:22px 24px}.check{display:flex;align-items:start;gap:9px;margin:12px 0;font-size:12px;line-height:1.5}.dot{width:7px;height:7px;border-radius:50%;background:#d49c4b;margin-top:5px;flex-shrink:0}.dot.pass{background:var(--green)}.actions{display:flex;gap:10px;margin-top:22px}.source{padding:17px 23px;border-top:1px solid var(--line)}.source a{display:block;color:var(--green);font-size:12px;text-decoration:none;margin:9px 0;overflow-wrap:anywhere}.notice{padding:12px 16px;border:1px solid #d7e4d7;background:#edf5e9;border-radius:9px;margin-bottom:20px;line-height:1.5}.notice.error{background:#fff2e7;border-color:#ead4be;color:#824924}.history{margin-top:30px}.history h2{font:700 18px Manrope}.historygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.historyitem{border:1px solid var(--line);padding:17px 20px;border-radius:10px;background:#fbfcf9}.historyitem p{font-size:13px;margin:8px 0 0}.historyitem a{color:var(--ink);text-decoration:none}footer{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:11px}dialog{border:1px solid var(--line);border-radius:15px;padding:28px;width:440px;max-width:90vw}dialog::backdrop{background:#172c2b77}textarea{width:100%;height:130px;resize:vertical;border:1px solid var(--line);border-radius:8px;padding:12px;font:inherit}#empty{padding:55px 30px}#empty h2{font:700 24px Manrope}#empty p{max-width:560px;color:var(--muted)}.toolbar{display:flex;gap:10px;align-items:center}.spinner{display:inline-block;border:2px solid #ddd;border-top-color:var(--green);border-radius:50%;width:14px;height:14px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:850px){.shell{padding:24px}.workspace{grid-template-columns:1fr}.hero{align-items:start;gap:20px}h1{font-size:30px}.historygrid{grid-template-columns:1fr}.toplink{display:none}}
+.approval-status{margin-top:20px;padding:17px 18px;border:1px solid #b7d6c3;border-radius:10px;background:#edf6ef;color:#205640;line-height:1.6}.approval-status strong{display:block;font-size:15px}.approval-status p{margin:5px 0 0;font-size:13px}.approval-status.pending{background:#f5f7f2;border-color:var(--line);color:var(--ink)}.approval-status.error{background:#fff2e7;border-color:#ead4be;color:#824924}.scorecard{margin-top:30px}.scorecard h2{font:700 18px Manrope}.scoregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.score{background:white;border:1px solid var(--line);border-radius:12px;padding:18px}.score strong{display:block;font:700 24px Manrope;margin:7px 0}.metricline{font-size:12px;color:var(--muted);margin-top:9px}.historyitem button{margin-top:13px;padding:7px 10px;font-size:11px}.metricgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metricgrid label{font-size:12px;color:var(--muted)}.metricgrid input{display:block;width:100%;margin-top:5px;border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit}@media(max-width:850px){.scoregrid{grid-template-columns:1fr}}
 </style>
 <div class="shell"><header><div class="brand"><span class="monogram">AO</span><span>ALMOND <span style="font-weight:400;color:#75817a">/ LinkedIn Studio</span></span></div><a class="toplink" href="https://github.com/alumond" target="_blank" rel="noreferrer">Your work. Your voice. ↗</a></header>
 <section class="hero"><div><div class="eyebrow">Your publishing desk</div><h1>Make every post count.</h1><p class="sub">Review the story, the image, and the evidence before it goes live.</p></div><div class="toolbar"><button id="refresh" onclick="load()">↻ Refresh</button><span class="pill" id="status">Connecting…</span></div></section>
 <div id="notice" class="notice" role="status" hidden></div><div id="loading" class="small"><span class="spinner"></span> Reading the latest draft and publication history…</div>
-<div id="empty" class="card" hidden><div class="eyebrow">A fresh story starts with your work</div><h2>No draft waiting for review.</h2><p>Prepare a new post from your projects or fresh data, AI and analytics developments. Previously covered ideas and excluded organisation work are checked before a draft reaches this desk.</p><button class="primary" onclick="prepare()">Prepare next post</button></div>
+<div id="empty" class="card" hidden><div class="eyebrow">A fresh story starts with your work</div><h2 id="emptyTitle">No draft waiting for review.</h2><p id="emptyDetail">Prepare a new post from your projects or fresh data, AI and analytics developments. Previously covered ideas and excluded organisation work are checked before a draft reaches this desk.</p><button class="primary" id="prepare" onclick="prepare()">Prepare next post</button></div>
 <div class="workspace" id="workspace" hidden><article class="card"><div class="cardhead"><span class="label">Post preview</span><span id="count" class="small"></span></div><div class="post"><div class="author"><div class="avatar">AO</div><div><strong>Almond Owolabi</strong><span>Data Analyst · Builder · Problem Solver</span></div></div><div id="body"></div><div id="hashtags" class="hashtags"></div></div><div class="source"><span class="label">Sources behind this post</span><div id="sources"></div></div></article>
-<div class="right"><article class="card"><div class="cardhead"><span class="label">Image preview</span><span class="small" id="imageStatus">Codex</span></div><div class="visual"><img id="image" hidden alt=""><div class="placeholder" id="placeholder"><svg width="55" height="55" viewBox="0 0 55 55" fill="none" aria-hidden="true"><rect x="6" y="8" width="43" height="38" rx="6" stroke="#829782" stroke-width="1.5"/><circle cx="20" cy="21" r="4" stroke="#829782" stroke-width="1.5"/><path d="M8 40L23 27L33 35L40 29L48 35" stroke="#829782" stroke-width="1.5"/></svg><strong>Your image will appear here.</strong>Codex creates and reviews a fresh visual for this exact post. Refresh after the image task finishes.</div></div></article>
-<article class="card review"><span class="label">Ready for your review</span><div id="checks"></div><p class="small" id="policy"></p><div class="actions"><button class="primary" id="approve" onclick="approve()">Approve and publish</button><button id="changes" onclick="document.getElementById('feedback').showModal()">Request changes</button></div><p class="small" id="schedule"></p></article></div></div>
+<div class="right"><article class="card"><div class="cardhead"><span class="label">Image preview</span><span class="small" id="imageStatus">Codex</span></div><div class="visual"><img id="image" hidden alt=""><div class="placeholder" id="placeholder"><svg width="55" height="55" viewBox="0 0 55 55" fill="none" aria-hidden="true"><rect x="6" y="8" width="43" height="38" rx="6" stroke="#829782" stroke-width="1.5"/><circle cx="20" cy="21" r="4" stroke="#829782" stroke-width="1.5"/><path d="M8 40L23 27L33 35L40 29L48 35" stroke="#829782" stroke-width="1.5"/></svg><strong id="visualTitle">Image needed.</strong><span id="visualDetail">A reviewed image has not been attached to this draft.</span></div></div></article>
+<article class="card review"><span class="label" id="reviewTitle">Ready for your review</span><div id="checks"></div><p class="small" id="policy"></p><div class="actions"><button class="primary" id="approve" onclick="approve()">Approve and publish</button><button id="changes" onclick="openFeedback()">Request changes</button></div><div id="approvalStatus" class="approval-status" role="status" aria-live="polite" aria-atomic="true" hidden><strong id="approvalTitle"></strong><p id="approvalDetail"></p><p id="approvalTime"></p></div><div id="revisionStatus" class="approval-status" role="status" aria-live="polite" hidden></div><p class="small" id="schedule"></p></article></div></div>
+<section class="scorecard" id="scorecard"><h2>Ten-post engagement recovery <span class="small" id="measuredPosts"></span></h2><div class="scoregrid"><div class="score"><span class="label">Median impressions</span><strong id="medianImpressions">No data</strong><div class="metricline" id="impressionTarget"></div></div><div class="score"><span class="label">Posts with reactions</span><strong id="reactionPosts">0</strong><div class="metricline" id="reactionTarget"></div></div><div class="score"><span class="label">Posts with comments</span><strong id="commentPosts">0</strong><div class="metricline" id="commentTarget"></div></div></div></section>
 <section class="history" id="history" hidden><h2>Previously published <span class="small" id="historyCount"></span></h2><div class="historygrid" id="historyItems"></div></section><footer><span>Private on this device · Connected to your GitHub publisher</span><span>Original posts. Fresh images. Organisation work excluded.</span></footer></div>
-<dialog id="feedback"><h2>What should change?</h2><p class="small">Describe the wording or image changes you want. This removes approval until you review the updated version.</p><textarea id="note" maxlength="2000" placeholder="For example: focus on the actual feature and use less text in the image."></textarea><div class="actions"><button class="primary" onclick="changes()">Save request</button><button onclick="document.getElementById('feedback').close()">Cancel</button></div></dialog>
+<dialog id="feedback"><h2>What should change?</h2><p class="small">Describe the wording or image changes you want. This removes approval until you review the updated version.</p><textarea id="note" aria-label="Requested changes" maxlength="2000" placeholder="For example: focus on the actual feature and use less text in the image."></textarea><div id="feedbackStatus" class="approval-status" role="status" aria-live="polite" hidden></div><div class="actions"><button class="primary" id="saveChanges" onclick="changes()">Save request</button><button id="cancelChanges" onclick="document.getElementById('feedback').close()">Cancel</button><button id="refreshFeedback" onclick="load()" hidden>Check saved status</button></div></dialog>
+<dialog id="metrics"><h2>Record post results</h2><p class="small" id="metricsTopic"></p><input id="metricsPostUrn" type="hidden"><div class="metricgrid"><label>Impressions<input id="metricImpressions" type="number" min="1" required></label><label>Reactions<input id="metricReactions" type="number" min="0" value="0"></label><label>Comments<input id="metricComments" type="number" min="0" value="0"></label><label>Reposts<input id="metricReposts" type="number" min="0" value="0"></label><label>Profile views<input id="metricProfileViews" type="number" min="0" value="0"></label><label>New followers<input id="metricFollows" type="number" min="0" value="0"></label><label>Link clicks<input id="metricClicks" type="number" min="0" value="0"></label></div><div id="metricsStatus" class="approval-status" role="status" aria-live="polite" hidden></div><div class="actions"><button class="primary" id="saveMetrics" onclick="saveMetrics()">Save results</button><button id="cancelMetrics" onclick="document.getElementById('metrics').close()">Cancel</button></div></dialog>
 <script>
-let state=null;const $=id=>document.getElementById(id);function notice(text,error=false){$('notice').hidden=false;$('notice').textContent=text;$('notice').className='notice'+(error?' error':'')}
-async function action(path,extra={}){if(!state)throw Error('Refresh the page first.');const r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Review-Token':state.token},body:JSON.stringify({draft_sha256:state.draft_sha256,asset_sha256:state.asset_sha256,...extra})});const data=await r.json();if(!r.ok)throw Error(data.error);notice(data.message);return data}
-async function load(){ $('refresh').disabled=true;$('loading').hidden=false;try{const r=await fetch('/api/state');const data=await r.json();if(!r.ok)throw Error(data.error);state=data;$('notice').hidden=true;render()}catch(e){notice(e.message,true);$('status').textContent='Connection needed'}finally{$('refresh').disabled=false;$('loading').hidden=true}}
-function render(){const d=state.pending?.draft;$('empty').hidden=!!d;$('workspace').hidden=!d;$('status').textContent=state.approved?'Approved':d?'Awaiting review':'Ready to prepare';$('history').hidden=!state.history?.length;$('historyCount').textContent='· '+state.history_count+' posts tracked';$('historyItems').replaceChildren();for(const h of (state.history||[]).slice(0,6)){const box=document.createElement('div');box.className='historyitem';const date=document.createElement('div');date.className='small';date.textContent=new Date(h.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});const p=document.createElement('p');p.textContent=h.topic;box.append(date,p);$('historyItems').append(box)}if(!d)return;$('body').textContent=state.commentary;$('hashtags').textContent='';$('count').textContent=state.commentary.length.toLocaleString()+' characters';$('image').hidden=!state.image_ready;$('placeholder').hidden=state.image_ready;if(state.image_ready){$('image').src=state.image_url;$('image').alt=state.review?.alt_text||d.alt_text}$('imageStatus').textContent=(state.review?.provider==='project_screenshot'||d.visual_style==='project_screenshot'?'Project screenshot':'Codex')+(state.image_ready?' · reviewed':' · pending');$('sources').replaceChildren();for(const source of state.pending.citations||[]){const a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noreferrer';a.textContent=source.title+' ↗';$('sources').append(a)}$('checks').replaceChildren();for(const c of state.checks){const div=document.createElement('div');div.className='check';const dot=document.createElement('span');dot.className='dot'+(c.ok?' pass':'');const label=document.createElement('span');label.textContent=c.label;div.append(dot,label);$('checks').append(div)}$('approve').disabled=!state.image_ready||state.checks.some(c=>!c.ok)||(state.approved&&state.approval?.publication_status==='queued');$('approve').textContent=state.approved?(state.approval?.publication_status==='queued'?'Publication queued ✓':state.approval?.publication_status==='dispatch_failed'?'Retry publication':'Publish approved post'):'Approve and publish';$('policy').textContent=state.require_approval?'Your approval is required. Any change to the text or image requires a new approval.':'Scheduled publishing is automatic. This preview does not currently block publication.';$('schedule').textContent=state.schedule;if(state.feedback?.draft_sha256===state.draft_sha256)notice('Requested changes: '+state.feedback.note)}
-async function approve(){try{$('approve').disabled=true;await action('/api/approve');await load()}catch(e){notice(e.message,true);$('approve').disabled=false}}
-async function changes(){try{await action('/api/changes',{note:$('note').value});$('feedback').close();await load()}catch(e){notice(e.message,true)}}async function prepare(){try{await action('/api/prepare')}catch(e){notice(e.message,true)}}load();
+let state = null, savingApproval = false, savingChanges = false, savingMetrics = false, loadingState = false, startingPreparation = false, approvalUncertain = '', changesUncertain = false;
+const $ = id => document.getElementById(id);
+
+function notice(text, error = false) {
+  $('notice').hidden = false;
+  $('notice').textContent = text;
+  $('notice').className = 'notice' + (error ? ' error' : '');
+}
+
+async function action(path, extra = {}) {
+  if (!state) throw Error('Refresh the page first.');
+  const r = await fetch(path, {
+    method: 'POST', headers: {'Content-Type': 'application/json', 'X-Review-Token': state.token},
+    body: JSON.stringify({draft_sha256: state.draft_sha256, asset_sha256: state.asset_sha256, ...extra})
+  });
+  const data = await r.json();
+  if (!r.ok) {
+    const error = Error(data.error || 'The request could not be completed.');
+    error.rejected = true;
+    throw error;
+  }
+  return data;
+}
+
+async function load() {
+  if (savingApproval || savingChanges || savingMetrics || startingPreparation || loadingState) return false;
+  loadingState = true;
+  $('refresh').disabled = true;
+  $('loading').hidden = false;
+  renderApproval();
+  try {
+    const r = await fetch('/api/state');
+    const data = await r.json();
+    if (!r.ok) throw Error(data.error || 'Unable to refresh the review desk.');
+    state = data;
+    approvalUncertain = '';
+    if (changesUncertain) {
+      if (state.feedback?.note === $('note').value.trim()) {
+        feedbackNotice('Your change request was saved. You can close this dialog and check the revision status below.');
+      } else {
+        feedbackNotice('The latest saved state is loaded. Your text is still here; you can retry after reviewing the current post.');
+      }
+      changesUncertain = false;
+    }
+    $('notice').hidden = true;
+    render();
+    return true;
+  } catch (e) {
+    notice(e.message, true);
+    if ($('feedback').open) feedbackNotice(e.message + ' Your text has been kept. Try checking the saved status again.', true);
+    $('status').textContent = 'Connection needed';
+    return false;
+  } finally {
+    loadingState = false;
+    $('refresh').disabled = false;
+    $('loading').hidden = true;
+    renderApproval();
+  }
+}
+
+function renderApproval() {
+  if (!state) return;
+  const approved = !!state.approved;
+  const dispatchQueued = approved && state.approval?.publication_status === 'queued';
+  const dispatchFailed = approved && state.approval?.publication_status === 'dispatch_failed';
+  const pendingChanges = !approved && state.feedback?.draft_sha256 === state.draft_sha256;
+  $('approve').disabled = savingApproval || savingChanges || changesUncertain || pendingChanges || loadingState || !!approvalUncertain || dispatchQueued
+    || !state.image_ready || state.checks.some(c => !c.ok);
+  $('approve').textContent = savingApproval ? 'Saving approval…' : approved ? (dispatchQueued ? 'Publication queued ✓' : dispatchFailed ? 'Retry publication' : 'Publish approved post') : 'Approve and publish';
+  $('approve').setAttribute('aria-busy', String(savingApproval));
+  $('changes').disabled = savingApproval || savingChanges || loadingState;
+  $('refresh').disabled = savingApproval || savingChanges || startingPreparation || loadingState;
+  $('prepare').disabled = startingPreparation || loadingState || !!state.preparing;
+  $('prepare').textContent = startingPreparation ? 'Starting preparation…' : state.preparing ? 'Preparing your post…' : 'Prepare next post';
+  $('prepare').setAttribute('aria-busy', String(startingPreparation || !!state.preparing));
+  $('saveChanges').disabled = savingApproval || savingChanges || loadingState || changesUncertain;
+  $('saveChanges').textContent = savingChanges ? 'Saving request…' : 'Save request';
+  $('saveChanges').setAttribute('aria-busy', String(savingChanges));
+  $('cancelChanges').disabled = savingChanges;
+  $('note').disabled = savingChanges;
+  $('refreshFeedback').hidden = !changesUncertain && !$('feedbackStatus').className.endsWith(' error');
+  $('refreshFeedback').disabled = loadingState || savingChanges;
+  $('reviewTitle').textContent = approved ? (dispatchQueued ? 'Publication queued' : 'Approved · ready to publish') : 'Ready for your review';
+  $('approvalStatus').hidden = !savingApproval && !approved && !approvalUncertain;
+  $('approvalStatus').className = 'approval-status' + (savingApproval ? ' pending' : approvalUncertain ? ' error' : '');
+  $('approvalTime').textContent = '';
+  if (savingApproval) {
+    $('status').textContent = 'Saving approval…';
+    $('approvalTitle').textContent = 'Saving your approval…';
+    $('approvalDetail').textContent = 'Checking this version, saving your approval and starting publication. This may take a moment.';
+  } else if (approvalUncertain) {
+    $('status').textContent = 'Approval not confirmed';
+    $('approvalTitle').textContent = 'Approval not confirmed';
+    $('approvalDetail').textContent = approvalUncertain + ' Refresh to check whether your approval was saved before trying again.';
+  } else if (approved) {
+    $('approvalTitle').textContent = dispatchQueued ? '✓ Publication queued' : '✓ Approval saved';
+    $('approvalDetail').textContent = dispatchFailed ? 'The publish job could not start. Select Retry publication.' : dispatchQueued ? 'Your approved post is queued for publication. Refresh to check for its published entry.' : 'This version is approved. Select Publish approved post to start publication now.';
+    const date = new Date(state.approval?.approved_at);
+    if (!Number.isNaN(date.getTime())) {
+      $('approvalTime').textContent = 'Saved ' + date.toLocaleString('en-GB', {
+        timeZone: 'Africa/Lagos', day: 'numeric', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      }) + ' Lagos';
+    }
+  }
+}
+
+function render() {
+  const d = state.pending?.draft;
+  $('empty').hidden = !!d;
+  $('workspace').hidden = !d;
+  $('status').textContent = state.approved ? (state.approval?.publication_status === 'queued' ? 'Publication queued' : 'Approved') : d ? (state.image_ready ? 'Awaiting review' : 'Image needed') : state.preparing ? 'Preparing your post' : 'Ready to prepare';
+  $('emptyTitle').textContent = state.preparing ? 'Your next post is being prepared.' : 'No draft waiting for review.';
+  $('emptyDetail').textContent = state.preparing
+    ? 'Research and draft checks are running. Refresh shortly to see the result. The post and image will need your review before publication.'
+    : 'Prepare a new post from your projects or fresh data, AI and analytics developments. Previously covered ideas and excluded organisation work are checked before a draft reaches this desk.';
+  $('history').hidden = !state.history?.length;
+  $('historyCount').textContent = '· ' + state.history_count + ' posts tracked';
+  $('historyItems').replaceChildren();
+  for (const h of (state.history || []).slice(0, 6)) {
+    const box = document.createElement('div');
+    box.className = 'historyitem';
+    const date = document.createElement('div');
+    date.className = 'small';
+    date.textContent = new Date(h.created_at).toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'});
+    const p = document.createElement('p');
+    p.textContent = h.topic;
+    const metric = document.createElement('div');
+    metric.className = 'metricline';
+    metric.textContent = h.engagement ? h.engagement.impressions.toLocaleString() + ' impressions · ' + h.engagement.reactions + ' reactions · ' + h.engagement.comments + ' comments' : 'Performance not recorded';
+    if (h.comment_follow_up_due_at && !h.engagement) metric.textContent += ' · review comments within 24 hours';
+    box.append(date, p, metric);
+    if (h.post_urn) {
+      const button = document.createElement('button');
+      button.textContent = h.engagement ? 'Update results' : 'Add results';
+      button.onclick = () => openMetrics(h);
+      box.append(button);
+    }
+    $('historyItems').append(box);
+  }
+  renderScorecard();
+  renderApproval();
+  if (!d) return;
+  $('body').textContent = state.commentary;
+  $('hashtags').textContent = '';
+  $('count').textContent = state.commentary.length.toLocaleString() + ' characters';
+  $('image').hidden = !state.image_ready;
+  $('placeholder').hidden = state.image_ready;
+  if (state.image_ready) {
+    $('image').src = state.image_url;
+    $('image').alt = state.review?.alt_text || d.alt_text;
+  }
+  const imageKind = state.review?.provider === 'project_screenshot' || d.visual_style === 'project_screenshot'
+    ? 'Project screenshot' : 'Codex';
+  $('imageStatus').textContent = imageKind + (state.image_ready ? ' · reviewed' : ' · pending');
+  $('visualTitle').textContent = imageKind === 'Project screenshot' ? 'A real project screenshot is needed.' : 'The image has not been generated yet.';
+  $('visualDetail').textContent = imageKind === 'Project screenshot'
+    ? 'This draft needs an authentic screenshot of the app or dashboard. Ask Codex to capture or attach it, then refresh. Preparing the text does not create the screenshot.'
+    : 'Preparing the text does not start image generation. Ask Codex to create the image now, or wait for the scheduled image task. Refresh after it has been delivered.';
+  $('sources').replaceChildren();
+  for (const source of state.pending.citations || []) {
+    const a = document.createElement('a');
+    a.href = source.url;
+    a.target = '_blank';
+    a.rel = 'noreferrer';
+    a.textContent = source.title + ' ↗';
+    $('sources').append(a);
+  }
+  $('checks').replaceChildren();
+  for (const c of state.checks) {
+    const div = document.createElement('div');
+    div.className = 'check';
+    const dot = document.createElement('span');
+    dot.className = 'dot' + (c.ok ? ' pass' : '');
+    const label = document.createElement('span');
+    label.textContent = c.label;
+    div.append(dot, label);
+    $('checks').append(div);
+  }
+  $('policy').textContent = state.require_approval
+    ? 'Your approval is required. Any change to the text or image requires a new approval.'
+    : 'Scheduled publishing is automatic. This preview does not currently block publication.';
+  $('schedule').textContent = state.schedule;
+  if (!state.approved && state.feedback?.draft_sha256 === state.draft_sha256) {
+    notice('Requested changes: ' + state.feedback.note);
+  }
+  const feedback = state.feedback;
+  const waiting = feedback?.draft_sha256 === state.draft_sha256 && !state.approved;
+  $('revisionStatus').hidden = !waiting;
+  if (waiting) {
+    const failed = feedback.status === 'revision_failed';
+    $('status').textContent = failed ? 'Revision needs attention' : 'Changes requested';
+    $('revisionStatus').className = 'approval-status' + (failed ? ' error' : ' pending');
+    $('revisionStatus').textContent = failed
+      ? 'Your request was saved, but revision failed: ' + feedback.error + ' Choose Request changes to retry. The previous version is not approved.'
+      : '✓ Change request saved. Awaiting the revised post and image. Refresh to check progress; the previous version is not approved.';
+  }
+}
+
+function renderScorecard() {
+  const s = state.scorecard || {};
+  $('measuredPosts').textContent = '· ' + (s.measured_posts || 0) + ' of ' + (s.window_posts || 10) + ' measured';
+  $('medianImpressions').textContent = s.median_impressions == null ? 'No data' : Number(s.median_impressions).toLocaleString();
+  $('impressionTarget').textContent = 'Baseline ' + (s.baseline_impressions || 80) + ' · target ' + (s.target_median_impressions || 120) + '+';
+  $('reactionPosts').textContent = s.posts_with_reactions || 0;
+  $('reactionTarget').textContent = 'Target ' + (s.target_posts_with_reactions || 5) + ' of ' + (s.window_posts || 10) + ' posts';
+  $('commentPosts').textContent = s.posts_with_comments || 0;
+  $('commentTarget').textContent = 'Target ' + (s.target_posts_with_comments || 3) + ' of ' + (s.window_posts || 10) + ' posts';
+}
+
+function openMetrics(post) {
+  const m = post.engagement || {};
+  $('metricsPostUrn').value = post.post_urn;
+  $('metricsTopic').textContent = post.topic;
+  $('metricImpressions').value = m.impressions || '';
+  $('metricReactions').value = m.reactions || 0;
+  $('metricComments').value = m.comments || 0;
+  $('metricReposts').value = m.reposts || 0;
+  $('metricProfileViews').value = m.profile_views || 0;
+  $('metricFollows').value = m.follows || 0;
+  $('metricClicks').value = m.clicks || 0;
+  $('metricsStatus').hidden = true;
+  $('metrics').showModal();
+}
+
+async function saveMetrics() {
+  if (savingMetrics) return;
+  const impressions = Number($('metricImpressions').value);
+  if (!Number.isInteger(impressions) || impressions < 1) {
+    $('metricsStatus').hidden = false;
+    $('metricsStatus').className = 'approval-status error';
+    $('metricsStatus').textContent = 'Enter the post impression count from LinkedIn analytics.';
+    return;
+  }
+  savingMetrics = true;
+  $('saveMetrics').disabled = true;
+  try {
+    const data = await action('/api/metrics', {
+      post_urn: $('metricsPostUrn').value, impressions,
+      reactions: Number($('metricReactions').value || 0), comments: Number($('metricComments').value || 0),
+      reposts: Number($('metricReposts').value || 0), profile_views: Number($('metricProfileViews').value || 0),
+      follows: Number($('metricFollows').value || 0), clicks: Number($('metricClicks').value || 0)
+    });
+    const message = data.message;
+    state.scorecard = data.scorecard;
+    $('metrics').close();
+    savingMetrics = false;
+    await load();
+    notice(message);
+  } catch (e) {
+    $('metricsStatus').hidden = false;
+    $('metricsStatus').className = 'approval-status error';
+    $('metricsStatus').textContent = e.message;
+  } finally {
+    savingMetrics = false;
+    $('saveMetrics').disabled = false;
+  }
+}
+
+async function approve() {
+  if (!state || $('approve').disabled) return;
+  savingApproval = true;
+  $('notice').hidden = true;
+  renderApproval();
+  try {
+    const data = await action('/api/approve');
+    // The server returns this receipt only after the approval has been saved.
+    state.approval = data.approval;
+    state.approved = true;
+    approvalUncertain = '';
+  } catch (e) {
+    approvalUncertain = e.message;
+  } finally {
+    savingApproval = false;
+    render();
+  }
+}
+
+function feedbackNotice(text, error = false) {
+  $('feedbackStatus').hidden = false;
+  $('feedbackStatus').textContent = text;
+  $('feedbackStatus').className = 'approval-status' + (error ? ' error' : ' pending');
+}
+
+function openFeedback() {
+  if ($('changes').disabled) return;
+  if (!$('note').value && state?.feedback?.draft_sha256 === state.draft_sha256) $('note').value = state.feedback.note;
+  if (!changesUncertain) $('feedbackStatus').hidden = true;
+  $('feedback').showModal();
+}
+
+$('feedback').addEventListener('cancel', event => { if (savingChanges) event.preventDefault(); });
+
+async function changes() {
+  if (!state || $('saveChanges').disabled) return;
+  const note = $('note').value.trim();
+  if (!note || [...note].length > 2000) {
+    feedbackNotice('Enter a specific change request, up to 2,000 characters.', true);
+    $('note').focus();
+    return;
+  }
+  savingChanges = true;
+  feedbackNotice('Saving your request and starting revision. This may take a moment…');
+  renderApproval();
+  try {
+    const data = await action('/api/changes', {note});
+    state.feedback = data.feedback;
+    state.approved = false;
+    state.approval = {status: 'changes_requested'};
+    approvalUncertain = '';
+    changesUncertain = false;
+    render();
+    notice(data.message, !data.revision_started);
+    $('feedback').close();
+  } catch (e) {
+    changesUncertain = !e.rejected;
+    feedbackNotice(e.message + (changesUncertain
+      ? ' Your text has been kept. Check saved status before retrying.'
+      : ' Your text has been kept. Refresh if the preview or connection has changed.'), true);
+  } finally {
+    savingChanges = false;
+    renderApproval();
+  }
+}
+
+async function prepare() {
+  if (startingPreparation || loadingState || state?.preparing) return;
+  startingPreparation = true;
+  renderApproval();
+  notice('Starting draft preparation…');
+  try {
+    const result = await action('/api/prepare');
+    state.preparing = result.preparing;
+    render();
+    notice(result.message);
+  } catch (e) {
+    notice(e.message + (e.rejected ? '' : ' Refresh to check whether preparation started before trying again.'), true);
+  } finally {
+    startingPreparation = false;
+    renderApproval();
+  }
+}
+load();
 </script></html>

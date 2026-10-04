@@ -18,20 +18,19 @@ class FakeGemini:
         return [trend("Fresh Gemini Trend")], [{"title": "Citation", "url": "https://example.com"}]
 
     def generate_post(self, cfg, candidate):
-        body = """A practical AI update should connect source, risk, and action.
+        body = """A practical AI update should connect its source, operating risk, and next action.
 
 Fresh Gemini Trend
 
-The source matters because teams need to know whether a change affects reporting quality, operating decisions, or the way analysts explain uncertainty. A post with only a headline does not help anyone decide what to do next.
+The source matters because teams need to know whether a change affects reporting quality, operating decisions, or the way analysts explain uncertainty. A headline alone does not show where the evidence came from or which part of a workflow needs attention.
 
-The useful move is to name the decision path clearly: what changed, why it matters, what should be checked, and what action is safe to take now. That keeps the content grounded instead of turning it into another generic technology update.
+The useful move is to name the decision path clearly. Record what changed, the team affected, the evidence that supports the claim, and the check that must happen before the team changes its process. That makes the update useful in a planning or reporting meeting.
 
-Project context:
-https://example.com/primary
+One limitation should remain visible. A release announcement can confirm a feature, but it cannot prove that the feature improves a specific organisation's results. A team still needs its own baseline, review owner, and acceptance threshold.
 
-Discussion prompts:
-1) What would you check before turning this into a workflow change?
-2) Which metric would prove the update is useful?"""
+The safe next step is a small review against the current process, with the result and any decision recorded for the next meeting."""
+        if cfg.invite_response:
+            body += "\n\nWhich evidence would you require before changing the current reporting process?"
         return DraftPost(
             topic=candidate.topic,
             category=candidate.category,
@@ -44,6 +43,9 @@ Discussion prompts:
             visual_prompt="Create a professional source-grounded card.",
             alt_text="A square source-grounded Data and AI insight card.",
         )
+
+    def revise_post(self, cfg, candidate, draft, validation_reasons):
+        return self.generate_post(cfg, candidate)
 
 
 def record_test_review(agent, draft, asset):
@@ -60,8 +62,8 @@ def record_test_review(agent, draft, asset):
 
 def test_dry_run_does_not_publish(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.allow_ai_illustrations = False
     agent = LinkedInAIAgent(cfg, gemini=FakeGemini())
     result = agent.run(dry_run=True)
@@ -76,8 +78,8 @@ def test_dry_run_does_not_publish(tmp_path: Path):
 
 def test_codex_manual_missing_generated_asset_skips_before_dry_run(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.visual_provider = "codex_manual"
     agent = LinkedInAIAgent(cfg)
 
@@ -89,8 +91,8 @@ def test_codex_manual_missing_generated_asset_skips_before_dry_run(tmp_path: Pat
 
 def test_codex_manual_missing_topic_asset_rejects_generated_library_image(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.visual_provider = "codex_manual"
     cfg.assets_dir.mkdir(parents=True)
     Image.new("RGB", (1200, 1200), "white").save(cfg.assets_dir / "codex_generated_tradeoff.png")
@@ -111,8 +113,8 @@ def test_live_codex_manual_missing_asset_does_not_publish_with_api_key(tmp_path:
             raise AssertionError("missing Codex image must block publish")
 
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.visual_provider = "codex_manual"
     monkeypatch.setenv("GEMINI_API_KEY", "test-key")
     agent = LinkedInAIAgent(cfg, linkedin=FakeLinkedIn())
@@ -132,8 +134,8 @@ def test_codex_manual_topic_asset_is_used_and_fingerprinted(tmp_path: Path):
             return "urn:li:share:test"
 
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.visual_provider = "codex_manual"
     agent = LinkedInAIAgent(cfg, linkedin=FakeLinkedIn())
     for candidate in agent._fallback_trend_candidates():
@@ -155,9 +157,10 @@ def test_codex_manual_topic_asset_is_used_and_fingerprinted(tmp_path: Path):
 
 def test_recent_codex_manual_visual_reuse_is_blocked(tmp_path: Path):
     cfg = config(tmp_path)
-    cfg.min_post_chars = 2000
-    cfg.max_post_chars = 3000
+    cfg.min_post_chars = 900
+    cfg.max_post_chars = 1500
     cfg.visual_provider = "codex_manual"
+    cfg.response_question_slots = []
     agent = LinkedInAIAgent(cfg)
     cfg.state_dir.mkdir(parents=True, exist_ok=True)
     cfg.state_dir.joinpath("weekday_rotation_state.json").write_text(
@@ -203,7 +206,23 @@ def test_all_curated_fallback_drafts_pass_production_length_gate(tmp_path: Path)
     assert failures == []
 
 
-def test_curated_fallback_copy_uses_linkedin_native_section_labels(tmp_path: Path):
+def test_production_strategy_has_six_portfolio_slots_per_ten_posts(tmp_path: Path):
+    cfg = load_config("config/agent.yaml")
+    cfg.state_dir = tmp_path / "state"
+    cfg.reports_dir = tmp_path / "reports"
+    agent = LinkedInAIAgent(cfg)
+    modes = []
+    for index in range(10):
+        modes.append(agent._next_content_mode())
+        agent.history.append({"created_at": datetime.now(timezone.utc).isoformat(),
+                              "topic": f"Strategy placeholder {index}"})
+    assert modes.count("portfolio") == 6
+    assert modes.count("researched") == 4
+    assert (cfg.min_post_chars, cfg.max_post_chars) == (900, 1500)
+    assert (cfg.min_hashtags, cfg.max_hashtags) == (3, 5)
+
+
+def test_curated_fallback_copy_avoids_repeated_section_labels(tmp_path: Path):
     cfg = config(tmp_path)
     agent = LinkedInAIAgent(cfg)
     draft = agent._fallback_draft(agent._fallback_trend_candidates()[0])
@@ -211,7 +230,8 @@ def test_curated_fallback_copy_uses_linkedin_native_section_labels(tmp_path: Pat
     assert "WHY THIS MATTERS:" not in draft.body
     assert "THE COMMON MISTAKE:" not in draft.body
     assert "MY PRACTICAL RULE:" not in draft.body
-    assert "Why this matters\n\n" in draft.body
+    assert "Why this matters\n\n" not in draft.body
+    assert "My take\n\n" not in draft.body
 
 
 def test_curated_fallback_visual_prompt_uses_readable_infographic_standard(tmp_path: Path):
@@ -308,9 +328,8 @@ This example keeps the wording complete enough for LinkedIn: it has context, ana
 Project context:
 https://example.com/primary
 
-Discussion prompts:
-1) What should always be locked before publishing a post?
-2) Which mistake is worse: wrong text or wrong image?"""
+The reviewed text, evidence links, and image fingerprint should stay locked together until the publication request finishes."""
+    body += " The publication record should preserve those exact inputs so a later audit can confirm what the owner reviewed and what LinkedIn received."
     draft = DraftPost(
         topic="A specific AI release",
         category="AI releases",
@@ -357,8 +376,8 @@ def test_featured_dashboard_dry_run_uses_fixed_post_without_gemini(tmp_path: Pat
     assert result.report_path
     report = json.loads(Path(result.report_path).read_text(encoding="utf-8"))
     body = report["draft"]["body"]
-    assert "2,160 synthetic retail operations rows" in body
-    assert "Analyst note:" in body
+    assert "2,160 synthetic retail records" in body
+    assert "The design keeps revenue visible" in body
     assert FEATURED_DASHBOARD_LINK in body
     assert report["visual"]["width"] == 1600
     assert report["visual"]["height"] == 900
@@ -436,7 +455,7 @@ def test_pending_image_keeps_same_post_until_image_arrives(tmp_path, monkeypatch
             return 'urn:li:share:test'
     cfg = config(tmp_path)
     cfg.visual_provider = 'codex_manual'
-    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    cfg.min_post_chars, cfg.max_post_chars = 900, 1500
     publisher = Publisher()
     agent = LinkedInAIAgent(cfg, linkedin=publisher)
     first = agent.run(dry_run=False)
@@ -463,7 +482,7 @@ def test_pending_image_keeps_same_post_until_image_arrives(tmp_path, monkeypatch
 def test_dry_run_missing_image_does_not_queue_live_post(tmp_path):
     cfg = config(tmp_path)
     cfg.visual_provider = 'codex_manual'
-    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    cfg.min_post_chars, cfg.max_post_chars = 900, 1500
     assert LinkedInAIAgent(cfg).run(dry_run=True).status == 'pending_image'
     assert not (cfg.state_dir / 'pending_image_post.json').exists()
 
@@ -494,7 +513,7 @@ def test_exhausted_library_never_returns_published_topics(tmp_path):
 
 def test_recycled_body_is_blocked_before_image_or_upload(tmp_path, monkeypatch):
     cfg = config(tmp_path)
-    cfg.min_post_chars, cfg.max_post_chars = 2000, 3000
+    cfg.min_post_chars, cfg.max_post_chars = 900, 1500
     agent = LinkedInAIAgent(cfg)
     candidates = agent._fallback_trend_candidates()
     candidate = next(c for c in candidates if c.category == 'data cleaning')

@@ -62,6 +62,32 @@ AI_SLOP_PATTERNS = (
     (r"\bthis (?:is|isn't|is not) (?:just )?[^.!?]{1,80}[.!?]\s+(?:it(?:'s| is)|this is)\b", "binary contrast"),
 )
 UNSAFE_TERMS = ("defamatory", "hate speech", "adult explicit", "medical advice", "financial advice")
+FORMULAIC_SECTION_LABELS = (
+    "why this matters",
+    "the common mistake",
+    "my practical rule",
+    "my take",
+    "where weak reporting fails",
+    "discussion prompts",
+)
+RETIRED_OPENINGS_AND_CLOSINGS = (
+    'data work should not stop at "i found an insight."',
+    "some analytics problems are not technical. they are judgment problems.",
+    "make the data useful enough that the next decision becomes obvious.",
+    "better data work does not make the room louder. it makes the next move harder to ignore.",
+)
+GENERIC_RESPONSE_QUESTIONS = (
+    "what do you think?",
+    "thoughts?",
+    "do you agree?",
+    "how do you see this?",
+)
+TECHNICAL_BODY_PATTERNS = (
+    r"`[^`]+`",
+    r"\b(?:[\w.-]+/)+[\w.-]+\.(?:py|ipynb|js|jsx|ts|tsx|json|toml|ya?ml|html|css|sql)\b",
+    r"\b[\w.-]+\.(?:py|ipynb|js|jsx|ts|tsx|json|toml|ya?ml|html|css|sql)\b",
+    r"\b(?:system prompt|source code|implementation file|function name|variable name)\b",
+)
 
 
 def validate_trend(candidate: TrendCandidate, config: AgentConfig, history: PublicationHistory) -> SafetyReport:
@@ -83,6 +109,7 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
     is_curated_weekday = any("curated weekday opinion post" in claim.lower() for claim in draft.claims)
     words = re.findall(r"\b[\w']+\b", body)
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n", body) if part.strip()]
+    final_block = paragraphs[-1] if paragraphs else ""
     first_line = next((line.strip() for line in body.splitlines() if line.strip()), "")
     if not (config.min_post_chars <= len(body) <= config.max_post_chars):
         reasons.append(f"Post length {len(body)} is outside {config.min_post_chars}-{config.max_post_chars} chars.")
@@ -92,18 +119,18 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         reasons.append("Remove the production-ready claim; repository documentation alone does not establish readiness.")
     if len(words) < 115:
         reasons.append("Post body is too thin; it must contain enough context to avoid a title-only LinkedIn post.")
-    if len(paragraphs) < 5:
-        reasons.append("Post needs at least five short paragraphs or blocks: hook, context, analysis, practical detail, and closing.")
+    if len(paragraphs) < 4:
+        reasons.append("Post needs at least four readable paragraphs or blocks so the point has context, evidence, and a useful close.")
     if first_line.lower().rstrip(".") == draft.topic.strip().lower().rstrip("."):
         reasons.append("Post opens with the topic as a standalone heading; use a human hook before the topic.")
     if not draft.primary_source_url and not is_curated_weekday:
         reasons.append("Primary source link is missing.")
     if not draft.supporting_source_urls and not is_curated_weekday:
         reasons.append("Supporting source link is missing.")
-    if len(draft.hashtags) < 1:
-        reasons.append("At least one hashtag is required.")
-    if len(draft.hashtags) > 10:
-        reasons.append("More than ten hashtags were provided.")
+    if len(draft.hashtags) < config.min_hashtags:
+        reasons.append(f"Use at least {config.min_hashtags} relevant hashtags.")
+    if len(draft.hashtags) > config.max_hashtags:
+        reasons.append(f"Use no more than {config.max_hashtags} relevant hashtags.")
     if any(term in lowered for term in HYPE_TERMS):
         reasons.append("Post contains excessive hype or clickbait language.")
     found_slop = sorted({term for term in AI_SLOP_TERMS if re.search(rf"\b{re.escape(term)}\b", lowered)})
@@ -120,13 +147,32 @@ def validate_draft(draft: DraftPost, config: AgentConfig) -> SafetyReport:
         reasons.append("Post contains vague quantified claims; use exact sourced numbers or remove the claim.")
     if any(term in lowered for term in UNSAFE_TERMS):
         reasons.append("Post contains unsafe content markers.")
+    body_without_urls = re.sub(r"https?://\S+", "", body)
+    if any(re.search(pattern, body_without_urls, re.IGNORECASE) for pattern in TECHNICAL_BODY_PATTERNS):
+        reasons.append("Post exposes code, file-path, or internal prompt details; explain the user-facing capability in plain language.")
+    labels = [label for label in FORMULAIC_SECTION_LABELS
+              if re.search(rf"(?im)^\s*{re.escape(label)}\s*:?\s*$", body)]
+    if labels:
+        reasons.append("Post uses a repeated stock section label: " + ", ".join(labels) + ".")
+    retired = [phrase for phrase in RETIRED_OPENINGS_AND_CLOSINGS if phrase in lowered]
+    if retired:
+        reasons.append("Post reuses retired copy from earlier publications.")
+    if config.audience_segments and not draft.target_audience:
+        reasons.append("Post is missing its single primary audience.")
+    question_count = body.count("?")
+    if draft.invites_response:
+        if question_count != 1 or not final_block.endswith("?"):
+            reasons.append("A scheduled response post must end with exactly one specific question.")
+        if any(final_block.casefold().endswith(question) for question in GENERIC_RESPONSE_QUESTIONS):
+            reasons.append("Replace the generic closing question with one tied to the post's decision or evidence.")
+    elif final_block.endswith("?"):
+        reasons.append("This post is not in a response-question slot; end with a concrete detail or next action.")
     if re.search(r"\"[^\"]{20,}\"", body):
         warnings.append("Post appears to contain a quotation; verify it before live publishing.")
     if "i tested" in lowered or "i used this myself" in lowered:
         reasons.append("Post implies personal testing that may not have happened.")
-    final_block = paragraphs[-1] if paragraphs else ""
     if len(final_block.split()) < 6:
-        reasons.append("Post closing is too weak; end with a memorable phrase or clear takeaway.")
+        reasons.append("Post closing is too thin; end with a specific detail, decision, limitation, next action, or scheduled question.")
     return SafetyReport(passed=not reasons, reasons=reasons, warnings=warnings)
 
 

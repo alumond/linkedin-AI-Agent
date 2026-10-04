@@ -17,6 +17,7 @@ from urllib.parse import quote, urlparse
 from .agent import LinkedInAIAgent
 from .codex_visuals import draft_sha256, reviewed_visual
 from .config import load_config
+from .history import PublicationHistory, atomic_json
 from .models import draft_from_dict, post_commentary
 from .validators import validate_draft
 
@@ -34,15 +35,20 @@ class ReviewStore:
         self.last_image = None
         self.lock = threading.RLock()
 
-    def command(self, args: list[str], payload: dict | None = None, *, expect_json: bool = True):
+    def command(self, args: list[str], payload: dict | None = None, *, expect_json=True):
         result = subprocess.run([self.gh, *args], input=json.dumps(payload) if payload is not None else None,
                                 text=True, capture_output=True, timeout=90, cwd=self.root)
         if result.returncode:
             # Do not reflect raw subprocess output or credentials into the browser.
             raise RuntimeError('GitHub could not complete the request. Check connectivity and gh authentication.')
+        # `gh workflow run` can print the created run URL on success.
+        # Only commands that request JSON should decode stdout as JSON.
         if not expect_json:
-            return result.stdout
-        return json.loads(result.stdout) if result.stdout.strip() else {}
+            return result.stdout.strip()
+        try:
+            return json.loads(result.stdout) if result.stdout.strip() else {}
+        except json.JSONDecodeError as exc:
+            raise RuntimeError('GitHub returned an unreadable response. Refresh to check the saved status.') from exc
 
     def read_file(self, path: str, branch: str, optional: bool = False):
         result = subprocess.run([self.gh, 'api', f'repos/{REPO}/contents/{quote(path, safe="/")}?ref={branch}'],
@@ -81,19 +87,33 @@ class ReviewStore:
         state = {'token': self.token, 'history_count': len(history), 'history': sorted(history, key=lambda h: h.get('created_at', ''), reverse=True)[:8],
                  'pending': pending, 'approval': approval, 'feedback': feedback,
                  'schedule': 'Publishes after approval · Morning checks at 07:17 and 11:17 Lagos', 'require_approval': getattr(cfg, 'require_post_approval', False),
-                 'image_ready': False, 'checks': [], 'image_url': None}
-        self.last_image = None
-        if not pending:
-            return state
-        draft = draft_from_dict(pending['draft'])
-        state['draft_sha256'] = draft_sha256(draft)
-        state['commentary'] = post_commentary(draft)
+                 'approved': False, 'image_ready': False, 'checks': [], 'image_url': None}
         cfg.state_dir = self.cache / 'state'
         cfg.assets_dir = self.cache / 'assets'
         cfg.reports_dir = self.cache / 'reports'
         cfg.state_dir.mkdir(parents=True, exist_ok=True)
         cfg.reports_dir.mkdir(parents=True, exist_ok=True)
-        (cfg.state_dir / 'publication_history.json').write_text(json.dumps(history))
+        atomic_json(cfg.state_dir / 'publication_history.json', history)
+        state['scorecard'] = PublicationHistory(cfg.state_dir, cfg.reports_dir).engagement_scorecard(
+            getattr(cfg, 'strategy_version', 'engagement_recovery_v1'),
+            getattr(cfg, 'engagement_window_posts', 10),
+            getattr(cfg, 'engagement_baseline_impressions', 80),
+            getattr(cfg, 'engagement_target_median_impressions', 120),
+            getattr(cfg, 'engagement_target_posts_with_reactions', 5),
+            getattr(cfg, 'engagement_target_posts_with_comments', 3),
+        )
+        self.last_image = None
+        if not pending:
+            state['preparing'] = self.publisher_busy()
+            return state
+        draft = draft_from_dict(pending['draft'])
+        state['draft_sha256'] = draft_sha256(draft)
+        state['commentary'] = post_commentary(draft)
+        # The publisher's approval validator reads these files. Keep its local
+        # view aligned with GitHub, including revocations and removed feedback.
+        for name, value in (('publication_history', history), ('approved_post', approval or {}),
+                            ('review_feedback', feedback or {})):
+            atomic_json(cfg.state_dir / f'{name}.json', value)
         # Legacy audit reports contain bodies that early history records omitted.
         for item in history:
             if not item.get('body') and item.get('report_path'):
@@ -136,7 +156,8 @@ class ReviewStore:
             label = ('Waiting for the project screenshot and its review'
                      if draft.visual_style == 'project_screenshot' else 'Waiting for the Codex image and its review')
             state['checks'].append({'ok': False, 'label': label})
-        state['approved'] = bool(approval and approval.get('draft_sha256') == state['draft_sha256']
+        state['approved'] = bool(state['image_ready'] and all(check['ok'] for check in state['checks'])
+                                 and approval and approval.get('draft_sha256') == state['draft_sha256']
                                  and approval.get('asset_sha256') == state.get('asset_sha256')
                                  and not agent._approval_reason(draft, state.get('asset_sha256', '')))
         return state
@@ -149,11 +170,22 @@ class ReviewStore:
             payload['sha'] = sha
         return self.command(['api', '--method', 'PUT', f'repos/{REPO}/contents/{path}', '--input', '-'], payload)
 
-    def ensure_publisher_idle(self):
+    def publisher_busy(self):
         runs = self.command(['run', 'list', '--repo', REPO, '--workflow', 'weekday-linkedin-post.yml',
                              '--limit', '20', '--json', 'status'])
-        if any(run['status'] in {'queued', 'in_progress', 'waiting', 'pending', 'requested'} for run in runs):
+        return any(run['status'] in {'queued', 'in_progress', 'waiting', 'pending', 'requested'} for run in runs)
+
+    def ensure_publisher_idle(self):
+        if self.publisher_busy():
             raise ValueError('The publisher is preparing or processing a post. Wait for it to finish, then refresh before reviewing.')
+
+    def prepare(self):
+        with self.lock:
+            if self.publisher_busy():
+                return {'preparing': True, 'message': 'A post is already being prepared. Refresh shortly to check its progress.'}
+            self.command(['workflow', 'run', 'weekday-linkedin-post.yml', '--repo', REPO,
+                          '-f', 'mode=prepare', '-f', 'dry_run=true'], expect_json=False)
+            return {'preparing': True, 'message': 'Draft preparation started. Refresh shortly to check its progress.'}
 
     def approve(self, request):
         from datetime import datetime, timezone
@@ -181,21 +213,59 @@ class ReviewStore:
 
     def request_changes(self, request):
         from datetime import datetime, timezone
-        self.ensure_publisher_idle()
-        state = self.snapshot()
-        if not state.get('pending') or request.get('draft_sha256') != state.get('draft_sha256'):
-            raise ValueError('The preview changed. Refresh before requesting changes.')
         note = str(request.get('note', '')).strip()
         if not note or len(note) > 2000:
             raise ValueError('Enter a specific change request, up to 2,000 characters.')
-        self.write_state('.state/review_feedback.json', {
-            'draft_sha256': state['draft_sha256'], 'note': note,
-            'requested_at': datetime.now(timezone.utc).isoformat(),
-        })
+        self.ensure_publisher_idle()
+        # Saving feedback needs the current draft, not a full image/history download.
+        pending, _ = self.json_file('.state/pending_image_post.json', optional=True)
+        fingerprint = draft_sha256(draft_from_dict(pending['draft'])) if pending else None
+        if not pending or request.get('draft_sha256') != fingerprint:
+            raise ValueError('The preview changed. Refresh before requesting changes.')
+        feedback = {'draft_sha256': fingerprint, 'note': note,
+                    'requested_at': datetime.now(timezone.utc).isoformat(), 'status': 'revision_requested'}
+        self.write_state('.state/review_feedback.json', feedback)
         # Approval is revoked even when the same bytes remain on screen.
-        self.write_state('.state/approved_post.json', {'status': 'changes_requested'})
-        self.command(['workflow', 'run', 'weekday-linkedin-post.yml', '--repo', REPO,
-                      '-f', 'mode=prepare', '-f', 'dry_run=true'])
+        # Once feedback is saved, report that receipt even if a later step fails.
+        try:
+            self.write_state('.state/approved_post.json', {'status': 'changes_requested'})
+            self.command(['workflow', 'run', 'weekday-linkedin-post.yml', '--repo', REPO,
+                          '-f', 'mode=prepare', '-f', 'dry_run=true'], expect_json=False)
+        except Exception:
+            return {'feedback': feedback, 'revision_started': False,
+                    'message': 'Your change request was saved and blocks the previous approval, but revision could not be started. Refresh and save the request again to retry.'}
+        return {'feedback': feedback, 'revision_started': True,
+                'message': 'Change request saved. Revision queued; refresh to check the result. The updated post and image will need your review.'}
+
+    def record_metrics(self, request):
+        from datetime import datetime, timezone
+
+        post_urn = str(request.get('post_urn', '')).strip()
+        if not post_urn:
+            raise ValueError('Select a published post before saving metrics.')
+        history, _ = self.json_file('.state/publication_history.json')
+        cfg = load_config(self.root / 'config/agent.yaml')
+        metrics_dir = self.cache / 'metrics-state'
+        atomic_json(metrics_dir / 'publication_history.json', history)
+        tracker = PublicationHistory(metrics_dir, self.cache / 'metrics-reports')
+        record = tracker.record_engagement(
+            post_urn,
+            {key: request.get(key, 0) for key in
+             ('impressions', 'reactions', 'comments', 'reposts', 'profile_views', 'follows', 'clicks')},
+            datetime.now(timezone.utc).isoformat(),
+        )
+        updated_history = tracker.load()
+        self.write_state('.state/publication_history.json', updated_history)
+        scorecard = tracker.engagement_scorecard(
+            cfg.strategy_version,
+            cfg.engagement_window_posts,
+            cfg.engagement_baseline_impressions,
+            cfg.engagement_target_median_impressions,
+            cfg.engagement_target_posts_with_reactions,
+            cfg.engagement_target_posts_with_comments,
+        )
+        return {'record': record, 'scorecard': scorecard,
+                'message': 'Performance metrics saved. The ten-post scorecard has been updated.'}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -247,15 +317,18 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == '/api/approve':
                 with self.store.lock:
                     approval = self.store.approve(request)
-                return self.respond(200, {'message': 'Approved. Publication queued now.', 'approval': approval})
+                return self.respond(200, {'message': 'Approval saved for the next scheduled publication.',
+                                          'approval': approval})
             if self.path == '/api/changes':
                 with self.store.lock:
-                    self.store.request_changes(request)
-                return self.respond(200, {'message': 'Approval removed and revision started. The revised image still needs Codex generation.'})
+                    result = self.store.request_changes(request)
+                return self.respond(200, result)
             if self.path == '/api/prepare':
-                self.store.command(['workflow', 'run', 'weekday-linkedin-post.yml', '--repo', REPO,
-                                    '-f', 'mode=prepare', '-f', 'dry_run=true'])
-                return self.respond(200, {'message': 'Draft preparation started. Refresh after the GitHub run finishes.'})
+                return self.respond(200, self.store.prepare())
+            if self.path == '/api/metrics':
+                with self.store.lock:
+                    result = self.store.record_metrics(request)
+                return self.respond(200, result)
             return self.respond(404, {'error': 'Not found'})
         except Exception as exc:
             return self.respond(400, {'error': str(exc)})

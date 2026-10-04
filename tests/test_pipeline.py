@@ -45,7 +45,7 @@ def test_project_draft_moves_past_duplicate_candidate_and_preserves_handoff(tmp_
     cfg = config(tmp_path)
     cfg.content_mode = 'portfolio'
     cfg.min_post_chars, cfg.max_post_chars = 700, 1300
-    monkeypatch.setattr(GitHubProjects, 'collect', lambda *args: [{'name': 'Personal build'}])
+    monkeypatch.setattr(GitHubProjects, 'collect', lambda *args, **kwargs: [{'name': 'Personal build'}])
     class PortfolioGemini(FakeGemini):
         def portfolio_candidates(self, cfg, projects, history):
             return [trend('Previous post'), trend('Fresh Gemini Trend')]
@@ -96,3 +96,64 @@ def test_linkedin_create_post_never_retries_server_error(tmp_path):
         with pytest.raises(requests.HTTPError):
             client.publish_post(draft, 'urn:li:image:test')
     assert request.call_count == 1
+
+
+def test_public_demo_is_kept_only_after_a_successful_known_host_check(tmp_path):
+    from types import SimpleNamespace
+
+    projects = GitHubProjects('alumond')
+    response = SimpleNamespace(status_code=200, close=lambda: None)
+    projects.session.get = Mock(return_value=response)
+    url = projects._verified_demo_url(
+        None,
+        'Try it at https://loan-example.streamlit.app/ and see the repository on GitHub.',
+    )
+    assert url == 'https://loan-example.streamlit.app/'
+    assert projects._verified_demo_url(None, 'Internal tool: https://127.0.0.1:9000/') == ''
+
+
+def test_configured_portfolio_links_keep_app_and_telegram_destinations():
+    from types import SimpleNamespace
+
+    projects = GitHubProjects('alumond')
+    projects.session.get = Mock(return_value=SimpleNamespace(status_code=200, close=lambda: None))
+    links = projects._verified_public_links(None, '', [
+        {'kind': 'public_demo', 'label': 'Try Health for All',
+         'url': 'https://health-example.streamlit.app/'},
+        {'kind': 'telegram', 'label': 'Open the Telegram bot',
+         'url': 'https://t.me/health_example_bot'},
+    ])
+    assert links == [
+        {'kind': 'public_demo', 'label': 'Try Health for All',
+         'url': 'https://health-example.streamlit.app/'},
+        {'kind': 'telegram', 'label': 'Open the Telegram bot',
+         'url': 'https://t.me/health_example_bot'},
+    ]
+
+
+def test_configured_project_screenshot_records_related_repository():
+    projects = GitHubProjects('alumond', project_overrides={
+        'Activity-1': {
+            'screenshot': {
+                'repository': 'https://github.com/alumond/Almond-Portfolio',
+                'path': 'public/images/project-health-for-all.png',
+            }
+        }
+    })
+    projects._get = Mock(side_effect=[
+        {'default_branch': 'main'},
+        {'sha': 'b' * 40},
+        {
+            'type': 'file', 'sha': 'a' * 40, 'size': 1000,
+            'path': 'public/images/project-health-for-all.png',
+            'html_url': 'https://github.com/alumond/Almond-Portfolio/blob/main/public/images/project-health-for-all.png',
+            'download_url': 'https://raw.githubusercontent.com/alumond/Almond-Portfolio/main/public/images/project-health-for-all.png',
+        },
+    ])
+    screenshot = projects._screenshot_from_override(
+        'Activity-1', 'https://github.com/alumond/Activity-1')
+    assert screenshot['project_repository'] == 'https://github.com/alumond/Activity-1'
+    assert screenshot['source_repository'] == 'https://github.com/alumond/Almond-Portfolio'
+    assert screenshot['source_blob_sha'] == 'a' * 40
+    assert screenshot['source_commit_sha'] == 'b' * 40
+    assert '/blob/' + ('b' * 40) + '/' in screenshot['source_url']
