@@ -1,6 +1,7 @@
 {
   "draft_sha256": "9760ced1b22cf04501c164eef944feadd066458b433d2152cc4a0287d7a09d9f",
+  "error": "Revision needs correction: Post length 1552 is outside 900-1500 chars.; Post contains generic AI-style wording: robust.; Post contains unsafe content markers.",
   "note": "Now approve",
   "requested_at": "2026-10-04T20:48:00.962530+00:00",
-  "status": "revision_requested"
+  "status": "revision_failed"
 }
