@@ -1,7 +1,6 @@
 {
-  "draft_sha256": "3e2cebd3cba6befe9773e60336af9229d4f10a497e6265487cd7872176484912",
-  "note": "The core of this flexibility lies in the `buildRecords` function within `src/main.js`. Instead of processing large external survey files directly, I designed a `profile` object in JavaScript. This object defines distributions for states, ages, disabilities, and other key variables. The `buildRecords` function then uses weighted expansion to generate a respondent-level dataset from this profile\n\nThis doesnt seem like what a lay man  will understand",
-  "requested_at": "2026-09-29T21:19:18.633724+00:00",
-  "status": "revised",
-  "revised_draft_sha256": "d5d35a4378870410e2b842d0ce3c928dbfd0cb2859521631e9308821a5b560dc"
+  "draft_sha256": "9760ced1b22cf04501c164eef944feadd066458b433d2152cc4a0287d7a09d9f",
+  "note": "Add more #tags to reach more people",
+  "requested_at": "2026-10-04T20:45:01.980673+00:00",
+  "status": "revision_requested"
 }
