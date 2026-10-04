@@ -1,5 +1,5 @@
 {
-  "brief": "assets/briefs/project_screenshot_beyond-generic-answers--tailoring-ai-for-local-healthcare-challenges.json",
+  "brief": "assets/briefs/project_screenshot_how-health-for-all-organises-symptom-guidance.json",
   "candidate": {
     "category": "portfolio",
     "content_key": "https://github.com/alumond/Activity-1::problem::ai-system-prompt-for-african-healthcare-contexts-providing-practical-plain-language-guidance",
@@ -47,8 +47,8 @@
         "url": "https://github.com/alumond/Activity-1/blob/main/app.py"
       }
     ],
-    "summary": "Generic AI responses often miss the mark for specific regional needs. This medical chatbot project tackles the problem of providing relevant health guidance by using a targeted system prompt for \"African healthcare contexts.\" This instruction directs the AI model to deliver \"practical, plain-language guidance\" that includes urgency levels, immediate actions, and warning signs. This approach demonstrates how AI can be specifically steered to offer more useful, context-aware information for demonstration purposes, addressing a real need for localized advice.",
-    "topic": "Beyond generic answers: Tailoring AI for local healthcare challenges."
+    "summary": "Health for All is a portfolio demonstration that organises symptom guidance around urgency, immediate actions, cautions, and warning signs.",
+    "topic": "How Health for All organises symptom guidance"
   },
   "citations": [
     {
@@ -68,37 +68,33 @@
       "url": "https://github.com/alumond/Activity-1/blob/main/app.py"
     }
   ],
-  "created_at": "2026-10-04T17:52:50.007330+00:00",
+  "created_at": "2026-10-04T19:55:47.529351+00:00",
   "draft": {
-    "alt_text": "Screenshot of the Health for All chatbot user interface. The dark-themed chat window displays a conversation where the AI assistant provides context-specific medical guidance in response to user-entered symptoms, highlighting urgency and actionable steps, framed by the system prompt for African h...",
-    "body": "Relying on generic AI for specific regional challenges often falls short, especially in critical areas like public health. As data analysts focused on business growth and decision support, our aim is to build tools that deliver precise, actionable insights. This means moving beyond general algorithms to build context-aware intelligence.\n\nMy latest portfolio project, 'Health for All,' illustrates this principle directly. It's a medical chatbot designed to provide relevant health guidance, not by offering generic responses, but by deeply integrating context into its core. The problem we tackle: how to ensure AI genuinely supports decision-making in diverse, real-world scenarios where local nuance is everything.\n\nThe key to this context-awareness lies in a carefully crafted system prompt, visible in the project\u2019s `app.py` file. This instruction directs the AI model to specifically operate within 'African healthcare contexts.' This isn't just a descriptive phrase; it's an analytical command that shapes every output. It tells the model to deliver 'practical, plain-language guidance' that goes beyond simple information delivery.\n\nSpecifically, the AI is steered to always include critical elements: likely urgency levels when symptoms might be serious, immediate actions a user should consider, and clear warning signs that necessitate urgent care. For business leaders, this demonstrates how intentional design in AI prompts can turn abstract data into concrete decision-making support. It's an exercise in defining the KPIs of effective guidance, ensuring the model's output directly addresses practical user needs.\n\nThis work highlights a crucial aspect of impact analytics: the measurable difference between general information and context-specific, actionable intelligence. For any team building data products for decision support or KPI reporting, the lesson is clear. It\u2019s not enough to simply deploy an AI model; the real value comes from precisely defining its analytical objectives and tailoring its output to the specific operational realities and user needs it serves.\n\nThis project is a demonstration of how a data analyst designs and implements systems that translate complex requirements into genuinely useful data products. The goal is to maximize the utility of information, making sure it supports better, faster decisions.\n\nThe full project, including its Streamlit UI and a functional Telegram bot (see `api/telegram.py` for implementation), is publicly available. This work provides a tangible example of engineering AI for specific purposes to create more relevant and valuable insights for localized needs.\n\nYou can explore the full repository here: https://github.com/alumond/Activity-1",
+    "topic": "How Health for All organises symptom guidance",
     "category": "portfolio",
-    "claims": [
-      "A medical chatbot project provides relevant health guidance by using a targeted system prompt for 'African healthcare contexts.'",
-      "The AI model delivers 'practical, plain-language guidance' that includes urgency levels, immediate actions, and warning signs.",
-      "The approach demonstrates how AI can be specifically steered to offer more useful, context-aware information for demonstration purposes."
-    ],
+    "body": "A health chatbot can give a polished answer and still leave the user unsure what to do next.\n\nI built Health for All around a clearer response pattern for African healthcare contexts. A user describes symptoms in plain language. The app then organises the reply around likely urgency, immediate actions, what to avoid, and warning signs that should prompt faster care.\n\nThe design choice I wanted to test was structure. Health information is easier to use when the next step is easy to find, especially when someone may already be worried or unwell. The app also offers focused and detailed response modes, privacy cues, and transcript export.\n\nThe screenshot is the real product interface. It shows how one symptom example is presented; it does not prove that the medical guidance is accurate or safe. Health for All is a portfolio demonstration. It cannot replace a clinician, emergency service, or local treatment guidance.\n\nTry the web app: https://activity-1-hey4bhjldtch29jwvwmsuf.streamlit.app/\nOpen the Telegram bot: https://t.me/AfriMedQABot\nView the source: https://github.com/alumond/Activity-1",
     "hashtags": [
-      "#DataAnalytics",
-      "#BusinessIntelligence",
-      "#DecisionSupport",
-      "#ImpactAnalytics",
       "#AIinHealthcare",
-      "#KPIs",
       "#DataProducts",
-      "#ContextAwareAI",
-      "#GitHubPortfolio",
-      "#AnalyticsForGrowth"
+      "#DecisionSupport",
+      "#AnalyticsPortfolio"
     ],
     "primary_source_url": "https://github.com/alumond/Activity-1",
     "supporting_source_urls": [
-      "https://github.com/alumond/Activity-1/blob/main/README.md",
-      "https://github.com/alumond/Activity-1/blob/main/api/telegram.py",
-      "https://github.com/alumond/Activity-1/blob/main/app.py"
+      "https://activity-1-hey4bhjldtch29jwvwmsuf.streamlit.app/",
+      "https://t.me/AfriMedQABot",
+      "https://github.com/alumond/Almond-Portfolio/blob/61428f7f4b1d6ddfef1d2fc2de6cdf66ff603402/public/images/project-health-for-all.png"
     ],
-    "topic": "Beyond generic answers: Tailoring AI for local healthcare challenges.",
-    "visual_prompt": "A screenshot of the 'Health for All' Streamlit chatbot interface in a dark theme. The chat history shows an interaction where a user asks about symptoms and the AI assistant provides practical, plain-language guidance tailored for African healthcare contexts, including urgency, immediate actions, and warning signs. The input box is visible at the bottom, possibly with example prompts.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, synthetic photorealism.",
-    "visual_style": "project_screenshot"
+    "claims": [
+      "Health for All organises responses around urgency, immediate actions, cautions, and warning signs.",
+      "The app offers focused and detailed response modes, privacy cues, and transcript export.",
+      "The project is a demonstration and does not establish clinical accuracy or safety."
+    ],
+    "visual_style": "project_screenshot",
+    "visual_prompt": "Use the authentic Health for All interface screenshot from the verified portfolio repository asset without editing or recreating the interface.",
+    "alt_text": "Health for All interface showing a symptom example organised into urgency, immediate actions, and cautions.",
+    "target_audience": "prospective clients who need decision-ready analytics",
+    "invites_response": false
   },
   "status": "pending_image"
 }
