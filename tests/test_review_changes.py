@@ -67,6 +67,17 @@ def test_invalid_change_requests_do_not_write(tmp_path, monkeypatch, note, finge
     store.command.assert_not_called()
 
 
+@pytest.mark.parametrize('note', ['Approve', 'Now approve', 'Approve and publish', 'Publish now'])
+def test_approval_words_are_not_saved_as_change_requests(tmp_path, monkeypatch, note):
+    store, request = change_store(tmp_path, monkeypatch)
+    request['note'] = note
+    with pytest.raises(ValueError, match='approval instruction'):
+        store.request_changes(request)
+    store.ensure_publisher_idle.assert_not_called()
+    store.write_state.assert_not_called()
+    store.command.assert_not_called()
+
+
 def pending_revision(tmp_path):
     agent, draft = setup_agent(tmp_path)
     pending = {'draft': asdict(draft), 'candidate': asdict(trend('A new personal build')), 'status': 'pending_image'}

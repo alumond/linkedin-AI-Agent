@@ -5,6 +5,7 @@ import base64
 import hashlib
 import json
 import os
+import re
 import secrets
 import shutil
 import subprocess
@@ -216,6 +217,12 @@ class ReviewStore:
         note = str(request.get('note', '')).strip()
         if not note or len(note) > 2000:
             raise ValueError('Enter a specific change request, up to 2,000 characters.')
+        normalized_note = re.sub(r'[^a-z]+', ' ', note.casefold()).strip()
+        if normalized_note in {
+            'approve', 'approve and publish', 'approve this', 'approve the post',
+            'now approve', 'publish', 'publish now', 'publish this', 'publish the post',
+        }:
+            raise ValueError('This is an approval instruction, not a change request. Close this dialog and select Approve current version.')
         self.ensure_publisher_idle()
         # Saving feedback needs the current draft, not a full image/history download.
         pending, _ = self.json_file('.state/pending_image_post.json', optional=True)

@@ -209,6 +209,9 @@ test('saved requests remain confirmed when dispatch fails, and revision failures
   assert.equal(p.elements.status.textContent, 'Revision needs attention');
   assert.match(p.elements.revisionStatus.textContent, /Post too long/);
   assert.match(p.elements.revisionStatus.className, /error/);
+  assert.equal(p.elements.approve.disabled, false);
+  assert.equal(p.elements.approve.textContent, 'Approve current version');
+  assert.match(p.elements.revisionStatus.textContent, /approve the current version/);
   p.fetch(async () => reply({...snapshot(), draft_sha256: 'revised', feedback}));
   await p.context.load();
   assert.equal(p.elements.revisionStatus.hidden, true);

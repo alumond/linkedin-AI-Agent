@@ -82,10 +82,12 @@ function renderApproval() {
   const approved = !!state.approved;
   const dispatchQueued = approved && state.approval?.publication_status === 'queued';
   const dispatchFailed = approved && state.approval?.publication_status === 'dispatch_failed';
-  const pendingChanges = !approved && state.feedback?.draft_sha256 === state.draft_sha256;
+  const failedRevision = !approved && state.feedback?.draft_sha256 === state.draft_sha256
+    && state.feedback?.status === 'revision_failed';
+  const pendingChanges = !approved && state.feedback?.draft_sha256 === state.draft_sha256 && !failedRevision;
   $('approve').disabled = savingApproval || savingChanges || changesUncertain || pendingChanges || loadingState || !!approvalUncertain || dispatchQueued
     || !state.image_ready || state.checks.some(c => !c.ok);
-  $('approve').textContent = savingApproval ? 'Saving approval…' : approved ? (dispatchQueued ? 'Publication queued ✓' : dispatchFailed ? 'Retry publication' : 'Publish approved post') : 'Approve and publish';
+  $('approve').textContent = savingApproval ? 'Saving approval…' : approved ? (dispatchQueued ? 'Publication queued ✓' : dispatchFailed ? 'Retry publication' : 'Publish approved post') : failedRevision ? 'Approve current version' : 'Approve and publish';
   $('approve').setAttribute('aria-busy', String(savingApproval));
   $('changes').disabled = savingApproval || savingChanges || loadingState;
   $('refresh').disabled = savingApproval || savingChanges || startingPreparation || loadingState;
@@ -211,7 +213,7 @@ function render() {
     $('status').textContent = failed ? 'Revision needs attention' : 'Changes requested';
     $('revisionStatus').className = 'approval-status' + (failed ? ' error' : ' pending');
     $('revisionStatus').textContent = failed
-      ? 'Your request was saved, but revision failed: ' + feedback.error + ' Choose Request changes to retry. The previous version is not approved.'
+      ? 'Your request was saved, but revision failed: ' + feedback.error + ' You can request different changes or approve the current version. It remains unpublished until you choose.'
       : '✓ Change request saved. Awaiting the revised post and image. Refresh to check progress; the previous version is not approved.';
   }
 }
