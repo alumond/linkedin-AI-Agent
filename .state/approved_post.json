@@ -1,3 +1,7 @@
 {
-  "status": "changes_requested"
+  "draft_sha256": "9760ced1b22cf04501c164eef944feadd066458b433d2152cc4a0287d7a09d9f",
+  "asset_sha256": "a18b31ecdc5db5c912d65de68fad68fea968275895e63742ea6714eb95367f02",
+  "approved_at": "2026-10-05T20:53:12.641120+00:00",
+  "approved_by": "owner_local_review",
+  "publication_status": "queued"
 }
