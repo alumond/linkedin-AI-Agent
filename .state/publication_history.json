@@ -472,5 +472,25 @@
     "visual_provider": "project_screenshot",
     "visual_sha256": "226f1f594ae88edfbe22cac0a7b80a2b9fff308c5f71425e5142ad830d397659",
     "visual_signature": "040144014f024b004c314a674a6fcd6f4a270e6d08e308a7066701870cc70c13"
+  },
+  {
+    "body": "A health chatbot can give a polished answer and still leave the user unsure what to do next.\n\nI built Health for All around a clearer response pattern for African healthcare contexts. A user describes symptoms in plain language. The app then organises the reply around likely urgency, immediate actions, what to avoid, and warning signs that should prompt faster care.\n\nThe design choice I wanted to test was structure. Health information is easier to use when the next step is easy to find, especially when someone may already be worried or unwell. The app also offers focused and detailed response modes, privacy cues, and transcript export.\n\nThe screenshot is the real product interface. It shows how one symptom example is presented; it does not prove that the medical guidance is accurate or safe. Health for All is a portfolio demonstration. It cannot replace a clinician, emergency service, or local treatment guidance.\n\nTry the web app: https://activity-1-hey4bhjldtch29jwvwmsuf.streamlit.app/\nOpen the Telegram bot: https://t.me/AfriMedQABot\nView the source: https://github.com/alumond/Activity-1",
+    "body_characters": 1105,
+    "category": "portfolio",
+    "comment_follow_up_due_at": "2026-10-07T13:25:18.878718+00:00",
+    "content_key": "https://github.com/alumond/Activity-1::problem::ai-system-prompt-for-african-healthcare-contexts-providing-practical-plain-language-guidance",
+    "created_at": "2026-10-06T13:25:18Z",
+    "hashtag_count": 4,
+    "image_urn": "urn:li:image:D4D10AQHswC0eooNd5g",
+    "invites_response": false,
+    "post_urn": "urn:li:share:7513227898695278592",
+    "primary_source_url": "https://github.com/alumond/Activity-1",
+    "strategy_version": "engagement_recovery_v1",
+    "target_audience": "prospective clients who need decision-ready analytics",
+    "topic": "How Health for All organises symptom guidance",
+    "visual_path": "assets/project_screenshot_how-health-for-all-organises-symptom-guidance.png",
+    "visual_provider": "project_screenshot",
+    "visual_sha256": "a18b31ecdc5db5c912d65de68fad68fea968275895e63742ea6714eb95367f02",
+    "visual_signature": "e00fe409620f6e8f688fc36bc06fc30b630f42e362d376070709030e03e703c1"
   }
 ]
