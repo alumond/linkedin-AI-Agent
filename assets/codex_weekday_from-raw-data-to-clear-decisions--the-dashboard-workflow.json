@@ -1,0 +1,17 @@
+{
+  "provider": "codex_imagegen",
+  "review_status": "passed",
+  "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
+  "draft_sha256": "98f1b66909388fa33da863ef7d721079d632b5987c5431bb2650731d4f0b4c19",
+  "asset_sha256": "4d43b5ad6a37e1cb34bd7b19babce3fe39a5c1a285d9e6fb48972658302c6008",
+  "visual_signature": "9430d554d4ccd4ccf4e2d360d4e8d4e868f0e69294d2cf5cae4ce71cb71c08e2",
+  "prompt": "Initial generation: Use case: infographic-diagram. Create a square LinkedIn editorial graphic titled FROM RAW DATA TO CLEAR DECISIONS. Show one five-stage dashboard workflow in the exact order RAW DATA, CLEAN, ANALYZE, VISUALIZE, DECIDE, using large explanatory pictograms and unambiguous arrows in a connected two-row zig-zag path. Use deep navy, clear blue, warm off-white and restrained amber. Keep text to the title and five labels. Use no invented figures, logos, people, watermark, fake product UI or extra words. Targeted correction: In the RAW DATA panel only, replace branded-looking file symbols with neutral table-file, document and database pictograms. Preserve every text string, stage, arrow, color, spacing and all other imagery.",
+  "reviewed_at": "2026-10-07T05:00:53Z",
+  "review_notes": "Inspected the corrected image at full resolution and at a reduced phone-view scale. The title and all five labels are complete and correctly spelled. The arrows run from Raw Data to Clean, down to Analyze, then to Visualize and Decide. Each stage uses a large relevant symbol; the raw-data sources are unbranded. The image contains no numerical claims, paragraphs, watermark, cropped text or transparency. Its two-row process layout is materially different from the recorded earlier artwork; the nearest prior perceptual signature differs by 105 bits, above the publisher's similarity threshold of 12.",
+  "alt_text": "Five-stage diagram showing raw data moving through cleaning, analysis and dashboard visualization before reaching a business decision. Large icons and arrows connect each stage in order.",
+  "image_width": 1254,
+  "image_height": 1254,
+  "capture_scale": "Native imagegen output; original lossless PNG preserved with no resize or upscale.",
+  "generation_attempts": 2,
+  "transparent_background": false
+}
