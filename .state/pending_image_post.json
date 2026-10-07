@@ -1,0 +1,104 @@
+{
+  "brief": "assets/briefs/codex_weekday_structuring-ai-for-clearer-m-e-decisions--the-watcher-analyst-decision.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Agent::design-decision::watcher-analyst-decision-maker-architecture",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"Agent\", \"url\": \"https://github.com/alumond/Agent\", \"description\": \"Agent Building\", \"files\": [{\"url\": \"https://github.com/alumond/Agent/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# M&E Decision Agent\\n\\nThis repository contains a minimal Python implementation of a Monitoring & Evaluation decision agent system that follows the Watcher / Analyst / Decision Maker architecture.\\n\\n## Setup\\n\\n1. Install dependencies:\\n\\n   ```bash\\n   python3 -m pip install -r requirements.txt\\n   ```\\n\\n2. Copy and edit the environment file:\\n\\n   ```bash\\n   cp .env.example .env\\n   ```\\n\\n3. Update `.env` with your Gemini key, Google service account credentials path, and email SMTP settings.\\n\\n4. Update `config.yaml` with your Google Sheet URL, worksheet, columns, client type, and recipient groups.\\n\\n## Google Sheet structure\\n\\nThe sheet can use custom headers, and the configuration maps them into the Watcher.\\n\\nFor the current sheet, the configuration uses:\\n\\n- `Employee Name` as the indicator\\n- `KPI Score (%)` as the actual performance value\\n- `Year` and `Quarter` as the row date context\\n\\nThe agent can also use a default target value instead of an explicit `target` column. In `config.yaml`, `default_target_value` is set to `80.0` for the current setup.\\n\\nThe Watcher compares `actual` against the configured target and detects off-track indicators.\\n\\n## Email alerts\\n\\nWhen a row is off track, the email includes both the decision and the context behind it:\\n\\n- current value versus target\\n- variance and percent gap\\n- reporting period\\n- duration and recurrence\\n- trend and confidence\\n- analyst assessment\\n- probable cause\\n\\nThis gives recipients the reason for the decision level instead of only receiving a short status line.\\n\\n## Run\\n\\nBefore running, make sure your Google Cloud project has the Generative Language API enabled:\\n\\n- https://console.developers.google.com/apis/api/generativelanguage.googleapis.com/overview\\n\\nThen run:\\n\\n```bash\\npython3 src/main.py\\n```\\n\\n## Row update trigger\\n\\nTo watch for row updates and send email only when a changed row is off track, first record the current sheet state:\\n\\n```bash\\npython3 src/trigger.py --baseline\\n```\\n\\nThen start the polling trigger:\\n\\n```bash\\npython3 src/trigger.py --interval 60\\n```\\n\\nTo keep it running in the background on this machine:\\n\\n```bash\\nscreen -dmS agentss-trigger sh -lc 'cd /Users/admin/Downloads/AGENTss && python3 src/trigger.py --interval 60 >> trigger.log 2>> trigger.err.log'\\n```\\n\\nTo stop it:\\n\\n```bash\\nscreen -S agentss-trigger -X quit\\n```\\n\\nThe trigger checks the sheet every 60 seconds. It only processes rows whose watched values changed, whose current status is off track, and whose exact current row state has not already been alerted.\\n\\n## File overview\\n\\n- `src/agents/watcher.py` \\u2014 reads Google Sheets and creates observations.\\n- `src/agents/analyst.py` \\u2014 sends observations and history to Gemini for structured assessment.\\n- `src/agents/decision_maker.py` \\u2014 decides the appropriate response and invokes deterministic tools.\\n- `src/tools/executor.py` \\u2014 handles notification and logging execution.\\n- `src/storage.py` \\u2014 stores observation, assessment, and decision history in SQLite.\\n- `src/config.py` \\u2014 loads configuration from YAML and environment variables.\\n- `src/trigger.py` \\u2014 polls Google Sheets for changed rows and runs the agent chain only when alert criteria are met.\\n\"}, {\"url\": \"https://github.com/alumond/Agent/blob/main/src/main.py\", \"path\": \"src/main.py\", \"text\": \"import logging\\n\\nfrom config import Config\\nfrom agents.analyst import Analyst\\nfrom agents.decision_maker import DecisionMaker\\nfrom agents.watcher import Watcher\\nfrom storage import Storage\\n\\n\\ndef main() -> None:\\n    logging.basicConfig(level=logging.INFO, format=\\\"%(asctime)s %(levelname)s %(message)s\\\")\\n    config = Config.load()\\n    storage = Storage(config.history_db_path)\\n\\n    watcher = Watcher(config, storage)\\n    analyst = Analyst(config)\\n    decision_maker = DecisionMaker(config)\\n\\n    observations = watcher.run()\\n    if not observations:\\n        logging.info(\\\"No observations found in the configured Google Sheet.\\\")\\n        return\\n\\n    for observation in observations:\\n        storage.save_observation(observation)\\n\\n        if observation.status != \\\"off_track\\\":\\n            logging.info(f\\\"Indicator on track: {observation.indicator}\\\")\\n            continue\\n\\n        history = storage.load_recent_observations(observation.indicator, limit=4)\\n        assessment = analyst.assess(observation, history)\\n        storage.save_assessment(assessment)\\n\\n        decision = decision_maker.decide(observation, assessment)\\n        storage.save_decision(decision)\\n\\n        logging.info(\\n            \\\"Processed indicator %s: decision=%s, status=%s\\\",\\n            observation.indicator,\\n            decision.decision_level,\\n            decision.execution_status,\\n        )\\n\\n\\nif __name__ == \\\"__main__\\\":\\n    main()\\n\"}, {\"url\": \"https://github.com/alumond/Agent/blob/main/src/agents/analyst.py\", \"path\": \"src/agents/analyst.py\", \"text\": \"import json\\nimport re\\nfrom typing import Any, Dict, List\\n\\nfrom config import Config\\nfrom llm.gemini_client import generate_text\\nfrom models import Assessment, Observation\\n\\n\\nclass Analyst:\\n    def __init__(self, config: Config):\\n        self.config = config\\n\\n    def _build_prompt(self, observation: Observation, history: List[Dict[str, Any]]) -> str:\\n        history_payloads = [item[\\\"payload\\\"] for item in history]\\n        client_context = (\\n            \\\"Use NGO vocabulary: indicators, implementation gaps, corrective actions, and program performance.\\\"\\n            if self.config.client_type.lower() == \\\"ngo\\\"\\n            else \\\"Use corporate vocabulary: KPIs, operational risks, performance gaps, and recommended actions.\\\"\\n        )\\n\\n        return (\\n            f\\\"You are a senior performance analyst. Reason carefully and return only valid JSON with the keys: \\\"\\n            f\\\"severity, trend, confidence, probable_cause, assessment.\\\\n\\\\n\\\"\\n            f\\\"{client_context}\\\\n\\\\n\\\"\\n            f\\\"Current observation:\\\\n{json.dumps(observation.to_dict(), indent=2)}\\\\n\\\\n\\\"\\n            f\\\"Historical context for the same indicator (most recent first):\\\\n{json.dumps(history_payloads, indent=2)}\\\\n\\\\n\\\"\\n            \\\"Answer these questions in the JSON output:\\\\n\\\"\\n            \\\"- How serious is this deviation?\\\\n\\\"\\n            \\\"- Is performance getting worse or showing signs of recovery?\\\\n\\\"\\n            \\\"- Has this indicator missed target before, or is this the first time?\\\\n\\\"\\n            \\\"- What is the most likely cause based on the pattern and persistence?\\\\n\\\"\\n        )\\n\\n    def _parse_response(self, text: str) -> Dict[str, Any]:\\n        try:\\n            return json.loads(text)\\n        except json.JSONDecodeError:\\n            match = re.search(r\\\"\\\\{.*\\\\}\\\", text, re.DOTALL)\\n            if match:\\n                return json.loads(match.group(0))\\n            raise\\n\\n    def _fallback_assessment(self, observation: Observation) -> Assessment:\\n        gap = abs(observation.percent_gap)\\n        if gap >= 25 or observation.recurrence >= 3:\\n            severity = \\\"critical\\\"\\n        elif gap >= 15 or observation.recurrence >= 2:\\n            severity = \\\"serious\\\"\\n        elif observation.status == \\\"off_track\\\":\\n            severity = \\\"warning\\\"\\n        else:\\n            severity = \\\"normal\\\"\\n\\n        trend = \\\"persistent\\\" if observation.recurrence > 1 else \\\"new deviation\\\"\\n        probable_cause = \\\"Performance is below target; review implementation constraints and recent delivery conditions.\\\"\\n        assessment = (\\n            f\\\"{observation.indicator} is {observation.percent_gap:.1f}% below target \\\"\\n            f\\\"({observation.actual} vs {observation.target}).\\\"\\n        )\\n        return Assessment(\\n            indicator=observation.indicator,\\n            severity=severity,\\n            trend=trend,\\n            confidence=\\\"medium\\\",\\n            probable_cause=probable_cause,\\n            assessment=assessment,\\n        )\\n\\n    def assess(self, observation: Observation, history: List[Dict[str, Any]]) -> Assessment:\\n        prompt = self._build_prompt(observation, history)\\n        content = generate_text(prompt, model=\\\"gemini-flash\\\", max_tokens=4096, temperature=0.2).strip()\\n        payload = self._parse_response(content)\\n\\n        return Assessment(\\n            indicator=observation.indicator,\\n            severity=str(payload.get(\\\"severity\\\", \\\"unknown\\\")),\\n            trend=str(payload.get(\\\"trend\\\", \\\"unknown\\\")),\\n            confidence=str(payload.get(\\\"confidence\\\", \\\"unknown\\\")),\\n            probable_cause=str(payload.get(\\\"probable_cause\\\", \\\"\\\")),\\n            assessment=str(payload.get(\\\"assessment\\\", \\\"\\\")),\\n        )\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Agent/commit/492f3ecae14c3283764cef99f1502f03c26608c1\", \"message\": \"Merge GitHub initial commit\", \"date\": \"2026-05-18T10:46:19Z\"}, {\"url\": \"https://github.com/alumond/Agent/commit/5be4f0ecc0389037f32ecfbb0a3739dc8cf1b70a\", \"message\": \"Initial commit\", \"date\": \"2026-05-18T10:44:48Z\"}, {\"url\": \"https://github.com/alumond/Agent/commit/22522eea32072bffc152b06ec1700eed1c5a12ca\", \"message\": \"Update README for Gemini trigger alerts\", \"date\": \"2026-05-18T10:41:12Z\"}], \"updated_at\": \"2026-05-18T10:46:24Z\", \"commit\": \"492f3ecae14c3283764cef99f1502f03c26608c1\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Agent",
+        "url": "https://github.com/alumond/Agent"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Agent/blob/main/README.md"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "src/main.py",
+        "url": "https://github.com/alumond/Agent/blob/main/src/main.py"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "src/agents/analyst.py",
+        "url": "https://github.com/alumond/Agent/blob/main/src/agents/analyst.py"
+      }
+    ],
+    "summary": "Data-driven decision-making in Monitoring & Evaluation often struggles with clarity and accountability. This M&E decision agent is built with a distinct three-part structure: a Watcher, an Analyst, and a Decision Maker. The Watcher's role is simply to observe performance data in a Google Sheet and identify any deviations from target. The Analyst then focuses solely on interpreting these observations, providing context and assessing the situation using historical patterns. Finally, the Decision Maker uses these insights to formulate a specific, appropriate response. This separation of responsibilities ensures that each step of the process, from data monitoring to action recommendation, is clear, auditable, and focuses on its unique contribution to improving M&E outcomes.",
+    "topic": "Structuring AI for Clearer M&E Decisions: The Watcher-Analyst-Decision Maker Approach"
+  },
+  "citations": [
+    {
+      "title": "Agent",
+      "url": "https://github.com/alumond/Agent"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Agent/blob/main/README.md"
+    },
+    {
+      "title": "src/main.py",
+      "url": "https://github.com/alumond/Agent/blob/main/src/main.py"
+    },
+    {
+      "title": "src/agents/analyst.py",
+      "url": "https://github.com/alumond/Agent/blob/main/src/agents/analyst.py"
+    }
+  ],
+  "created_at": "2026-10-07T18:57:22.247809+00:00",
+  "draft": {
+    "alt_text": "A process diagram illustrating the M&E Decision Agent workflow. It shows a 'Watcher' stage taking 'Google Sheet Data' as input and outputting 'Identified Deviations'. These deviations, along with 'Historical Data', feed into the 'Analyst' stage, which outputs 'Assessment (Severity, Trend, Probabl...",
+    "body": "Effective M&E decisions struggle with unclear signals and diffused accountability. To truly understand performance gaps, we must move beyond simple red/green updates.\n\nMy project, the M&E Decision Agent, structures AI support for monitoring and evaluation. It separates responsibilities into three distinct roles \u2013 Watcher, Analyst, and Decision Maker \u2013 making decision support transparent and auditable.\n\nThe Watcher continuously observes performance data, like employee KPI scores in a Google Sheet. It flags any indicator falling below its set target, such as an 80% 'KPI Score'.\n\nThe Analyst interprets these observations, providing context by comparing current performance with historical patterns. Using AI, it assesses severity, identifies trends, and suggests probable causes, explaining the most likely reasons for any performance gap.\n\nFinally, the Decision Maker uses these insights to formulate specific responses, like recommending corrective actions. The system delivers clear email alerts, detailing the decision level, current value versus target, variance, trend, and the Analyst's assessment, so recipients understand the *reason*.\n\nThis structured approach brings clarity to M&E reporting, transforming raw data into actionable intelligence. It helps teams proactively address performance issues and drives focused business growth.\n\nHow do you currently ensure accountability and detailed context in your own performance reporting?",
+    "category": "portfolio",
+    "claims": [
+      "My recent project, the M&E Decision Agent, addresses this by structuring how AI supports monitoring and evaluation.",
+      "The Watcher continuously observes performance data, like employee KPI scores in a Google Sheet, and flags any indicator that falls below its set target, such as an 80% 'KPI Score'.",
+      "The Analyst interprets observations, providing context by comparing current performance with historical patterns, and uses AI to assess the situation's severity, identify trends, and suggest probable causes.",
+      "The system produces detailed assessments that include the situation's severity, trends, probable causes, and the most likely reasons for performance gaps.",
+      "The Decision Maker formulates specific, appropriate responses, such as recommending corrective actions, based on the insights provided.",
+      "The system delivers clear email alerts that include the decision level, current value versus target, variance, trend, and the Analyst's assessment, ensuring recipients understand the reason behind the decision."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#DecisionSupport",
+      "#KPIs",
+      "#BusinessIntelligence",
+      "#ReportingAutomation"
+    ],
+    "invites_response": true,
+    "primary_source_url": "https://github.com/alumond/Agent",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Agent/blob/main/README.md",
+      "https://github.com/alumond/Agent/blob/main/src/main.py",
+      "https://github.com/alumond/Agent/blob/main/src/agents/analyst.py"
+    ],
+    "target_audience": "prospective clients who need decision-ready analytics",
+    "topic": "Structuring AI for Clearer M&E Decisions: The Watcher-Analyst-Decision Maker Approach",
+    "visual_prompt": "A three-stage process map showing a data flow. Stage 1: 'Watcher' (input: Google Sheet data, output: identified deviations from target). Stage 2: 'Analyst' (input: deviations + historical data, output: assessment of severity, trend, probable cause). Stage 3: 'Decision Maker' (input: assessment, output: specific response/action). An arrow from Decision Maker points to 'Email Alert'.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "diagram"
+  },
+  "status": "pending_image"
+}
