@@ -492,5 +492,25 @@
     "visual_provider": "project_screenshot",
     "visual_sha256": "a18b31ecdc5db5c912d65de68fad68fea968275895e63742ea6714eb95367f02",
     "visual_signature": "e00fe409620f6e8f688fc36bc06fc30b630f42e362d376070709030e03e703c1"
+  },
+  {
+    "body": "Effective business decisions stem from a clear process that transforms raw data into actionable insights. The \"Data-Analysis-Dashboard\" repository showcases my structured workflow designed to deliver decision-ready analytics.\n\nYou can explore the project here: https://github.com/alumond/Data-Analysis-Dashboard\n\nEach project follows a systematic workflow. It begins with data cleaning, transforming raw information into a reliable foundation. Next, analytical processing uncovers patterns and relationships. Finally, visualization presents these findings as dynamic charts and metrics within a user-friendly dashboard.\n\nConsider tracking sales or marketing performance. Instead of manual spreadsheet analysis, a dashboard built with this workflow instantly displays critical trends and metrics. This allows business leaders to quickly identify areas for improvement or confirm successful strategies, supporting proactive growth.\n\nUnlike reports that only present data, these dashboards transform complex raw information into digestible insights. They simplify trend exploration and directly support decision-making. This structured workflow ensures data becomes a valuable asset for business growth, rather than just an archive.\n\nThe repository demonstrates this systematic approach, turning raw data into clear, actionable insights essential for informed business decisions.",
+    "body_characters": 1376,
+    "category": "portfolio",
+    "comment_follow_up_due_at": "2026-10-08T18:40:46.624039+00:00",
+    "content_key": "https://github.com/alumond/Data-Analysis-Dashboard::workflow::data-to-insight-transformation-in-dashboards",
+    "created_at": "2026-10-07T18:40:46Z",
+    "hashtag_count": 5,
+    "image_urn": "urn:li:image:D4D10AQFYrx8YyWyQ-w",
+    "invites_response": false,
+    "post_urn": "urn:li:share:7513669674702864384",
+    "primary_source_url": "https://github.com/alumond/Data-Analysis-Dashboard",
+    "strategy_version": "engagement_recovery_v1",
+    "target_audience": "prospective clients who need decision-ready analytics",
+    "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
+    "visual_path": "assets/codex_weekday_from-raw-data-to-clear-decisions--the-dashboard-workflow.png",
+    "visual_provider": "codex_imagegen",
+    "visual_sha256": "4d43b5ad6a37e1cb34bd7b19babce3fe39a5c1a285d9e6fb48972658302c6008",
+    "visual_signature": "9430d554d4ccd4ccf4e2d360d4e8d4e868f0e69294d2cf5cae4ce71cb71c08e2"
   }
 ]

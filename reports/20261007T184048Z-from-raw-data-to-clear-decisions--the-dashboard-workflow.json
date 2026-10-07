@@ -1,0 +1,130 @@
+{
+  "draft": {
+    "alt_text": "Diagram showing a sequential workflow: Raw Data flows into Data Cleaning, then to Analytical Processing, then to Visualization, finally leading to Actionable Insights and Decision Support. Each step is represented by a distinct icon and label.",
+    "body": "Effective business decisions stem from a clear process that transforms raw data into actionable insights. The \"Data-Analysis-Dashboard\" repository showcases my structured workflow designed to deliver decision-ready analytics.\n\nYou can explore the project here: https://github.com/alumond/Data-Analysis-Dashboard\n\nEach project follows a systematic workflow. It begins with data cleaning, transforming raw information into a reliable foundation. Next, analytical processing uncovers patterns and relationships. Finally, visualization presents these findings as dynamic charts and metrics within a user-friendly dashboard.\n\nConsider tracking sales or marketing performance. Instead of manual spreadsheet analysis, a dashboard built with this workflow instantly displays critical trends and metrics. This allows business leaders to quickly identify areas for improvement or confirm successful strategies, supporting proactive growth.\n\nUnlike reports that only present data, these dashboards transform complex raw information into digestible insights. They simplify trend exploration and directly support decision-making. This structured workflow ensures data becomes a valuable asset for business growth, rather than just an archive.\n\nThe repository demonstrates this systematic approach, turning raw data into clear, actionable insights essential for informed business decisions.",
+    "category": "portfolio",
+    "claims": [
+      "The Data-Analysis-Dashboard repository contains data analysis dashboard projects.",
+      "These projects transform raw data into meaningful insights through visualizations, summary metrics, and analytical reporting.",
+      "The dashboards integrate data cleaning, analysis, and visualization.",
+      "The repository serves as a centralized archive for dashboards developed across different projects and tools, showcasing practical dashboard projects for learning and portfolio use."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#Dashboards",
+      "#DecisionSupport",
+      "#KPIs"
+    ],
+    "invites_response": false,
+    "primary_source_url": "https://github.com/alumond/Data-Analysis-Dashboard",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Data-Analysis-Dashboard/blob/main/README.md"
+    ],
+    "target_audience": "prospective clients who need decision-ready analytics",
+    "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
+    "visual_prompt": "A clear, concise process map illustrating the dashboard workflow: 1. Input: Raw Data (represented by unorganized data icon). 2. Step: Data Cleaning (represented by a cleaning icon or filter icon). 3. Step: Analytical Processing (represented by a gears icon or analysis icon). 4. Step: Visualization (represented by a dashboard icon with charts). 5. Output: Actionable Insights & Decision Support (represented by a lightbulb icon or target icon). Arrows connect each step sequentially. Use simple, readable labels for each stage.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "diagram"
+  },
+  "dry_run": false,
+  "gemini_grounding_citations": [
+    {
+      "title": "Data-Analysis-Dashboard",
+      "url": "https://github.com/alumond/Data-Analysis-Dashboard"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Data-Analysis-Dashboard/blob/main/README.md"
+    }
+  ],
+  "owner_approval": {
+    "reason": null,
+    "required": true
+  },
+  "publish": {
+    "created_at": "2026-10-07T18:40:46Z",
+    "dry_run": false,
+    "image_urn": "urn:li:image:D4D10AQFYrx8YyWyQ-w",
+    "pending_reason": null,
+    "post_urn": "urn:li:share:7513669674702864384",
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "published",
+    "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow"
+  },
+  "safety": {
+    "draft": {
+      "passed": true,
+      "reasons": [],
+      "warnings": [
+        "Post appears to contain a quotation; verify it before live publishing."
+      ]
+    },
+    "trend": null
+  },
+  "selected_topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
+  "status": "published",
+  "trend": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Data-Analysis-Dashboard::workflow::data-to-insight-transformation-in-dashboards",
+    "evidence_score": 1.0,
+    "novelty_score": 1.0,
+    "practical_value_score": 1.0,
+    "recency_score": 1.0,
+    "relevance_score": 1.0,
+    "source_snapshot": "{\"name\": \"Data-Analysis-Dashboard\", \"url\": \"https://github.com/alumond/Data-Analysis-Dashboard\", \"description\": \"This repository contains a Data Analysis Dashboard built to support data exploration and decision-making. It integrates data cleaning, analysis, and visualization to present insights through dynamic charts and summary metrics. The project demonstrates practical applications of data analysis workflows and dashboard design.\", \"files\": [{\"url\": \"https://github.com/alumond/Data-Analysis-Dashboard/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"Data Analysis Dashboard Repository\\n\\nOverview\\n\\nThis repository serves as a centralised archive for the data analysis dashboards I have created. It is intended to store, organise, and showcase dashboards developed across different projects, tools, and datasets.\\n\\nThe dashboards focus on transforming raw data into meaningful insights through visualisations, summary metrics, and analytical reporting.\\n\\nPurpose\\n\\nThe primary purpose of this repository is to:\\n\\n- Preserve completed dashboards for future reference\\n- Track progress and growth in data analysis and visualisation skills\\n- Showcase practical dashboard projects for learning and portfolio use\\n\\nContents\\n\\nEach folder or file in this repository represents a standalone dashboard project and may include:\\n\\n- Dashboard files (e.g., Power BI, Excel, Tableau, or Python-based dashboards)\\n- Supporting datasets (where applicable)\\n- Brief notes explaining the objective and insights of each dashboard\\n\\nTools and Technologies\\n\\nDashboards in this repository may be created using one or more of the following tools:\\n\\n- Excel\\n- Power BI\\n- Python (Pandas, Matplotlib, Seaborn, Streamlit)\\n- SQL\\n- Other data visualisation or analytics tools as applicable\\n\\nUsage\\n\\nThis repository is primarily for documentation and portfolio purposes. Files can be explored to understand how different datasets were analyzed and visualized.\\n\\nNotes\\n\\nDatasets used may be publicly available, simulated, or anonymised for learning and demonstration purposes.\\n\\n---\\n\\nThis repository will be updated regularly as new dashboards are created.\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Data-Analysis-Dashboard/commit/0512c378765b41176099a61c66f2db8b6608ab27\", \"message\": \"Add files via upload\", \"date\": \"2026-01-19T17:24:41Z\"}, {\"url\": \"https://github.com/alumond/Data-Analysis-Dashboard/commit/7a4d0d22ea19b5b57412923a2f9d3e66fe54c409\", \"message\": \"Add files via upload\", \"date\": \"2026-01-19T17:23:48Z\"}, {\"url\": \"https://github.com/alumond/Data-Analysis-Dashboard/commit/d1462774919093f421c6260fc4fb091eebb69409\", \"message\": \"Add files via upload\", \"date\": \"2026-01-19T15:54:24Z\"}], \"updated_at\": \"2026-01-19T17:24:42Z\", \"commit\": \"0512c378765b41176099a61c66f2db8b6608ab27\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Data-Analysis-Dashboard",
+        "url": "https://github.com/alumond/Data-Analysis-Dashboard"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Data-Analysis-Dashboard/blob/main/README.md"
+      }
+    ],
+    "summary": "This post explores the journey a dashboard takes from raw data to actionable insights. It details how the Data Analysis Dashboard repository organizes projects that streamline data cleaning, analytical processing, and visualization into dynamic charts and summary metrics. This structured workflow ensures that complex datasets are transformed into easily digestible information, making it simpler for users to explore trends and support their decision-making process.",
+    "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow"
+  },
+  "visual": {
+    "alt_text": "Five-stage diagram showing raw data moving through cleaning, analysis and dashboard visualization before reaching a business decision. Large icons and arrows connect each stage in order.",
+    "height": 1254,
+    "linkedin_image_urn": "urn:li:image:D4D10AQFYrx8YyWyQ-w",
+    "mime_type": "image/png",
+    "path": "assets/codex_weekday_from-raw-data-to-clear-decisions--the-dashboard-workflow.png",
+    "width": 1254
+  },
+  "visual_generation": {
+    "alt_text": "Five-stage diagram showing raw data moving through cleaning, analysis and dashboard visualization before reaching a business decision. Large icons and arrows connect each stage in order.",
+    "asset": "assets/codex_weekday_from-raw-data-to-clear-decisions--the-dashboard-workflow.png",
+    "asset_sha256": "4d43b5ad6a37e1cb34bd7b19babce3fe39a5c1a285d9e6fb48972658302c6008",
+    "provider": "codex_imagegen",
+    "review": {
+      "alt_text": "Five-stage diagram showing raw data moving through cleaning, analysis and dashboard visualization before reaching a business decision. Large icons and arrows connect each stage in order.",
+      "asset_sha256": "4d43b5ad6a37e1cb34bd7b19babce3fe39a5c1a285d9e6fb48972658302c6008",
+      "capture_scale": "Native imagegen output; original lossless PNG preserved with no resize or upscale.",
+      "draft_sha256": "98f1b66909388fa33da863ef7d721079d632b5987c5431bb2650731d4f0b4c19",
+      "generation_attempts": 2,
+      "image_height": 1254,
+      "image_width": 1254,
+      "prompt": "Initial generation: Use case: infographic-diagram. Create a square LinkedIn editorial graphic titled FROM RAW DATA TO CLEAR DECISIONS. Show one five-stage dashboard workflow in the exact order RAW DATA, CLEAN, ANALYZE, VISUALIZE, DECIDE, using large explanatory pictograms and unambiguous arrows in a connected two-row zig-zag path. Use deep navy, clear blue, warm off-white and restrained amber. Keep text to the title and five labels. Use no invented figures, logos, people, watermark, fake product UI or extra words. Targeted correction: In the RAW DATA panel only, replace branded-looking file symbols with neutral table-file, document and database pictograms. Preserve every text string, stage, arrow, color, spacing and all other imagery.",
+      "provider": "codex_imagegen",
+      "review_notes": "Inspected the corrected image at full resolution and at a reduced phone-view scale. The title and all five labels are complete and correctly spelled. The arrows run from Raw Data to Clean, down to Analyze, then to Visualize and Decide. Each stage uses a large relevant symbol; the raw-data sources are unbranded. The image contains no numerical claims, paragraphs, watermark, cropped text or transparency. Its two-row process layout is materially different from the recorded earlier artwork; the nearest prior perceptual signature differs by 105 bits, above the publisher's similarity threshold of 12.",
+      "review_status": "passed",
+      "reviewed_at": "2026-10-07T05:00:53Z",
+      "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
+      "transparent_background": false,
+      "visual_signature": "9430d554d4ccd4ccf4e2d360d4e8d4e868f0e69294d2cf5cae4ce71cb71c08e2"
+    }
+  }
+}
