@@ -1,23 +1,23 @@
 {
   "record": {
-    "body": "Effective business decisions stem from a clear process that transforms raw data into actionable insights. The \"Data-Analysis-Dashboard\" repository showcases my structured workflow designed to deliver decision-ready analytics.\n\nYou can explore the project here: https://github.com/alumond/Data-Analysis-Dashboard\n\nEach project follows a systematic workflow. It begins with data cleaning, transforming raw information into a reliable foundation. Next, analytical processing uncovers patterns and relationships. Finally, visualization presents these findings as dynamic charts and metrics within a user-friendly dashboard.\n\nConsider tracking sales or marketing performance. Instead of manual spreadsheet analysis, a dashboard built with this workflow instantly displays critical trends and metrics. This allows business leaders to quickly identify areas for improvement or confirm successful strategies, supporting proactive growth.\n\nUnlike reports that only present data, these dashboards transform complex raw information into digestible insights. They simplify trend exploration and directly support decision-making. This structured workflow ensures data becomes a valuable asset for business growth, rather than just an archive.\n\nThe repository demonstrates this systematic approach, turning raw data into clear, actionable insights essential for informed business decisions.",
-    "body_characters": 1376,
+    "body": "Effective M&E decisions struggle with unclear signals and diffused accountability. To truly understand performance gaps, we must move beyond simple red/green updates.\n\nMy project, the M&E Decision Agent, structures AI support for monitoring and evaluation. It separates responsibilities into three distinct roles \u2013 Watcher, Analyst, and Decision Maker \u2013 making decision support transparent and auditable.\n\nThe Watcher continuously observes performance data, like employee KPI scores in a Google Sheet. It flags any indicator falling below its set target, such as an 80% 'KPI Score'.\n\nThe Analyst interprets these observations, providing context by comparing current performance with historical patterns. Using AI, it assesses severity, identifies trends, and suggests probable causes, explaining the most likely reasons for any performance gap.\n\nFinally, the Decision Maker uses these insights to formulate specific responses, like recommending corrective actions. The system delivers clear email alerts, detailing the decision level, current value versus target, variance, trend, and the Analyst's assessment, so recipients understand the *reason*.\n\nThis structured approach brings clarity to M&E reporting, transforming raw data into actionable intelligence. It helps teams proactively address performance issues and drives focused business growth.\n\nHow do you currently ensure accountability and detailed context in your own performance reporting?",
+    "body_characters": 1450,
     "category": "portfolio",
-    "comment_follow_up_due_at": "2026-10-08T18:40:46.624039+00:00",
-    "content_key": "https://github.com/alumond/Data-Analysis-Dashboard::workflow::data-to-insight-transformation-in-dashboards",
-    "created_at": "2026-10-07T18:40:46Z",
+    "comment_follow_up_due_at": "2026-10-09T20:55:09.958802+00:00",
+    "content_key": "https://github.com/alumond/Agent::design-decision::watcher-analyst-decision-maker-architecture",
+    "created_at": "2026-10-08T20:55:09Z",
     "hashtag_count": 5,
-    "image_urn": "urn:li:image:D4D10AQFYrx8YyWyQ-w",
-    "invites_response": false,
-    "post_urn": "urn:li:share:7513669674702864384",
-    "primary_source_url": "https://github.com/alumond/Data-Analysis-Dashboard",
+    "image_urn": "urn:li:image:D4D10AQEsAivfwqIqrg",
+    "invites_response": true,
+    "post_urn": "urn:li:share:7514065884014010368",
+    "primary_source_url": "https://github.com/alumond/Agent",
     "strategy_version": "engagement_recovery_v1",
     "target_audience": "prospective clients who need decision-ready analytics",
-    "topic": "From Raw Data to Clear Decisions: The Dashboard Workflow",
-    "visual_path": "assets/codex_weekday_from-raw-data-to-clear-decisions--the-dashboard-workflow.png",
+    "topic": "Structuring AI for Clearer M&E Decisions: The Watcher-Analyst-Decision Maker Approach",
+    "visual_path": "assets/codex_weekday_structuring-ai-for-clearer-m-e-decisions--the-watcher-analyst-decision.png",
     "visual_provider": "codex_imagegen",
-    "visual_sha256": "4d43b5ad6a37e1cb34bd7b19babce3fe39a5c1a285d9e6fb48972658302c6008",
-    "visual_signature": "9430d554d4ccd4ccf4e2d360d4e8d4e868f0e69294d2cf5cae4ce71cb71c08e2"
+    "visual_sha256": "c347c2ff044e1ba4e16fd4de258d3691f890ca29311808a64e605f8847c8b928",
+    "visual_signature": "b6aee34aef6de388e7400f6a6b499c8d949c90bcb03439980749074206840740"
   },
   "status": "published"
 }
