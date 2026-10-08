@@ -1,0 +1,18 @@
+{
+  "provider": "codex_imagegen",
+  "review_status": "passed",
+  "topic": "Structuring AI for Clearer M&E Decisions: The Watcher-Analyst-Decision Maker Approach",
+  "draft_sha256": "1e4ad8d0ba21d185d4dfe71e2f88b30796954dea21be17ad8202d693b7c9fdd5",
+  "asset_sha256": "c347c2ff044e1ba4e16fd4de258d3691f890ca29311808a64e605f8847c8b928",
+  "visual_signature": "b6aee34aef6de388e7400f6a6b499c8d949c90bcb03439980749074206840740",
+  "prompt": "Initial generation: Create a square M&E workflow infographic titled HOW AN M&E SIGNAL BECOMES ACTION. Use a clockwise triangular relay with WATCHER at lower left, ANALYST at the top and DECISION MAKER at lower right. Show GOOGLE SHEET data entering WATCHER, WATCHER sending an OFF-TRACK deviation to ANALYST, a separate HISTORY input feeding ANALYST, ANALYST passing SEVERITY • TREND • CAUSE to DECISION MAKER, and DECISION MAKER sending a selected response to an EMAIL ALERT labelled CONTEXT + ACTION. Use large pictograms, clear arrowheads, deep navy, blue, warm off-white, restrained amber and red. Include no numerical claims, people, robots, logos, paragraphs, fake screenshots or extra words. Targeted correction: Replace only the Google Sheets-style logo with a neutral unbranded spreadsheet pictogram while preserving every label, arrow and all other imagery.",
+  "reviewed_at": "2026-10-08T20:47:59Z",
+  "review_notes": "Inspected the corrected image at its full 1254-by-1254 resolution and as a 390-by-390 phone preview. The complete title and all supporting labels are correctly spelled and readable. Arrowheads show Google Sheet to Watcher, Watcher to Analyst, History to Analyst, Analyst to Decision Maker, and Decision Maker to Email Alert. The three roles have substantial topic-specific symbols, the spreadsheet icon is unbranded, and the email output shows context without invented figures. The image has no paragraphs, watermark, cropped text or transparency. Its triangular relay composition is distinct from the recorded earlier artwork; the nearest published perceptual signature differs by 107 bits, above the publisher threshold of 12.",
+  "alt_text": "Clockwise diagram of an M&E Decision Agent. Sheet data enters the Watcher, which flags an off-track signal. The Analyst combines it with history, then the Decision Maker selects a response sent by email.",
+  "image_width": 1254,
+  "image_height": 1254,
+  "phone_preview_width": 390,
+  "capture_scale": "Native imagegen output; original lossless PNG preserved with no resize or upscale.",
+  "generation_attempts": 2,
+  "transparent_background": false
+}
