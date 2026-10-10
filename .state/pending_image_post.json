@@ -1,0 +1,73 @@
+{
+  "brief": "assets/briefs/codex_weekday_how-focusing-on-a-few-key-economic-indicators-for-a-single-country-mak.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Indicators::design-decision::selection-of-specific-world-bank-indicators-for-nigeria",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"Indicators\", \"url\": \"https://github.com/alumond/Indicators\", \"description\": \"A data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\", \"files\": [{\"url\": \"https://github.com/alumond/Indicators/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# Indicators\\nA data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Indicators/commit/6ef52f0af23e69cd3c8c470d5919159311843886\", \"message\": \"Add files via upload\", \"date\": \"2023-08-27T23:26:32Z\"}, {\"url\": \"https://github.com/alumond/Indicators/commit/8bb074692f56d44aa22c286d22e35915ba6fc257\", \"message\": \"Initial commit\", \"date\": \"2023-08-27T23:25:18Z\"}], \"updated_at\": \"2023-08-27T23:26:32Z\", \"commit\": \"6ef52f0af23e69cd3c8c470d5919159311843886\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Indicators",
+        "url": "https://github.com/alumond/Indicators"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+      }
+    ],
+    "summary": "When faced with vast datasets, like the World Bank's extensive development indicators, the challenge is often finding clarity amidst the volume. This project demonstrates a key decision to narrow the focus, selecting specific indicators for Nigeria to understand its economy. By choosing a targeted set of data, the aim is to extract more relevant insights for a particular context, rather than being overwhelmed by universal statistics. This approach highlights how specific data selection is crucial for practical economic analysis, ensuring the resulting predictions are directly applicable to the country in question.",
+    "topic": "How focusing on a few key economic indicators for a single country makes global data actionable"
+  },
+  "citations": [
+    {
+      "title": "Indicators",
+      "url": "https://github.com/alumond/Indicators"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+    }
+  ],
+  "created_at": "2026-10-10T07:32:20.857083+00:00",
+  "draft": {
+    "alt_text": "Diagram showing how global data is refined into country-specific indicators to yield actionable business insights.",
+    "body": "For founders and operations leaders, the sheer volume of global economic data often obscures specific business insights. Attempting to derive strategies from every available indicator can be overwhelming, yielding broad conclusions with limited tactical value.\n\nMy project, 'Indicators,' demonstrates the power of focused analysis to overcome this. Instead of universal statistics, I selected a targeted set of development indicators specifically for Nigeria. This approach offers a deeper understanding of Nigeria's economic landscape, making the data directly relevant for businesses planning to operate there.\n\nThrough this work, I developed analytical models to predict Nigeria's key economic figures: Gross Domestic Product (GDP), Gross National Income (GNI), and import/export values. This targeted modeling offers precise decision support, moving beyond general trends.\n\nFor businesses targeting growth in a specific country, generic global forecasts are insufficient. Selecting pertinent data points and building predictive models helps operational leaders gain clarity on market potential and anticipate trade dynamics. This is crucial for crafting truly informed business strategies.\n\nYou can review the approach and data selection on GitHub: https://github.com/alumond/Indicators",
+    "category": "portfolio",
+    "claims": [
+      "Selected a subset of World Bank development indicators for Nigeria.",
+      "Built a model to predict GDP and GNI for Nigeria.",
+      "Built a model to predict import and export amounts for Nigeria."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#MarketAnalysis",
+      "#EconomicIndicators",
+      "#DecisionSupport"
+    ],
+    "invites_response": false,
+    "primary_source_url": "https://github.com/alumond/Indicators",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Indicators/blob/main/README.md"
+    ],
+    "target_audience": "founders and operations leaders",
+    "topic": "How focusing on a few key economic indicators for a single country makes global data actionable",
+    "visual_prompt": "A clean, modern insight card illustrating the concept of making vast global data actionable. Show a large, abstract cloud of 'Global Data' condensing into a smaller, clearly defined 'Country-Specific Indicators' set (e.g., for Nigeria), which then points to 'Actionable Business Insights' or 'Predictive Models' with a clear arrow, symbolizing focus leading to clarity. Use relevant icons for data, country, and insights.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "insight_card"
+  },
+  "status": "pending_image"
+}
