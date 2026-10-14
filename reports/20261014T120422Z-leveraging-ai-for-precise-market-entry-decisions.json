@@ -1,0 +1,94 @@
+{
+  "brief": "assets/briefs/codex_weekday_how-focusing-on-a-few-key-economic-indicators-for-a-single-country-mak.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Indicators::design-decision::selection-of-specific-world-bank-indicators-for-nigeria",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"Indicators\", \"url\": \"https://github.com/alumond/Indicators\", \"description\": \"A data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\", \"files\": [{\"url\": \"https://github.com/alumond/Indicators/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# Indicators\\nA data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Indicators/commit/6ef52f0af23e69cd3c8c470d5919159311843886\", \"message\": \"Add files via upload\", \"date\": \"2023-08-27T23:26:32Z\"}, {\"url\": \"https://github.com/alumond/Indicators/commit/8bb074692f56d44aa22c286d22e35915ba6fc257\", \"message\": \"Initial commit\", \"date\": \"2023-08-27T23:25:18Z\"}], \"updated_at\": \"2023-08-27T23:26:32Z\", \"commit\": \"6ef52f0af23e69cd3c8c470d5919159311843886\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Indicators",
+        "url": "https://github.com/alumond/Indicators"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+      }
+    ],
+    "summary": "When faced with vast datasets, like the World Bank's extensive development indicators, the challenge is often finding clarity amidst the volume. This project demonstrates a key decision to narrow the focus, selecting specific indicators for Nigeria to understand its economy. By choosing a targeted set of data, the aim is to extract more relevant insights for a particular context, rather than being overwhelmed by universal statistics. This approach highlights how specific data selection is crucial for practical economic analysis, ensuring the resulting predictions are directly applicable to the country in question.",
+    "topic": "How focusing on a few key economic indicators for a single country makes global data actionable"
+  },
+  "citations": [
+    {
+      "title": "Indicators",
+      "url": "https://github.com/alumond/Indicators"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+    }
+  ],
+  "created_at": "2026-10-10T14:13:12.287959+00:00",
+  "draft": {
+    "alt_text": "Diagram: AI analysis of Nigeria's targeted economic indicators leading to predictive market insights for strategic business decisions.",
+    "body": "Expanding into new markets presents a significant challenge for founders and operations leaders. Relying on broad global economic forecasts often leaves businesses without the specific, actionable insights needed to make confident strategic entry decisions. This gap necessitates a more focused, data-driven approach.\n\nMy project, 'Indicators,' demonstrates how AI can pinpoint opportunities in specific countries. Instead of sifting through overwhelming universal statistics, this work applies advanced analytical methods to a targeted set of development indicators for Nigeria. This approach provides a clearer, more actionable understanding of Nigeria's economic landscape, directly informing businesses considering operations there.\n\nThrough this project, I built predictive models for Nigeria's key economic figures: Gross Domestic Product (GDP), Gross National Income (GNI), and import/export values. These models move beyond general trends, offering precise decision support critical for anticipating market dynamics and identifying trade opportunities within a specific nation.\n\nBy selecting relevant data points and building focused predictive models, operational leaders can gain real clarity on market potential. This empowers them to craft truly informed, country-specific business strategies, showcasing the practical power of AI in navigating complex international markets. Explore the methodology and data on GitHub.",
+    "category": "portfolio",
+    "claims": [
+      "Selected a subset of World Bank development indicators for Nigeria.",
+      "Built a model to predict GDP and GNI for Nigeria.",
+      "Built a model to predict import and export amounts for Nigeria."
+    ],
+    "hashtags": [
+      "#AIBusiness",
+      "#MarketEntry",
+      "#PredictiveAnalytics",
+      "#EconomicModeling",
+      "#StrategicPlanning"
+    ],
+    "invites_response": false,
+    "primary_source_url": "https://github.com/alumond/Indicators",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Indicators/blob/main/README.md"
+    ],
+    "target_audience": "founders and operations leaders",
+    "topic": "Leveraging AI for Precise Market Entry Decisions",
+    "visual_prompt": "A clean, modern insight card titled 'Leveraging AI for Precise Market Entry.' The visual features a stylized AI model or neural network analyzing specific economic indicators (GDP, GNI, trade values) clustered around a map silhouette of Nigeria. Arrows connect the AI analysis to 'Predictive Market Insights,' leading to 'Strategic Business Decisions.' The design should emphasize focus, precision, and the transformation of targeted data into actionable intelligence for Nigeria. Include clear labels: 'Targeted Indicators,' 'AI Analysis,' 'Nigeria Focus.' Avoid generic AI artwork or small, unreadable text.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size.. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "owner_feedback": {
+    "draft_sha256": "a9a0a3a41a689d05eac38c0c4c35f83deda2c3a295b79458a1acac989b220585",
+    "note": "create a totally new topic, something trendy in the word of data, ai",
+    "requested_at": "2026-10-10T14:11:52.936226+00:00",
+    "status": "revision_requested"
+  },
+  "publish": {
+    "created_at": "2026-10-14T12:04:22Z",
+    "dry_run": false,
+    "image_urn": null,
+    "pending_reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_leveraging-ai-for-precise-market-entry-decisions.png. Prepare it from assets/briefs/codex_weekday_leveraging-ai-for-precise-market-entry-decisions.json.",
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "pending_image",
+    "topic": "Leveraging AI for Precise Market Entry Decisions"
+  },
+  "reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_leveraging-ai-for-precise-market-entry-decisions.png. Prepare it from assets/briefs/codex_weekday_leveraging-ai-for-precise-market-entry-decisions.json.",
+  "status": "pending_image",
+  "topic": "Leveraging AI for Precise Market Entry Decisions",
+  "updated_at": "2026-10-14T12:04:22Z"
+}
