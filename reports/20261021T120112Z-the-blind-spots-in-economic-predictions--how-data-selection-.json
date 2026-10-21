@@ -1,0 +1,87 @@
+{
+  "brief": "assets/briefs/codex_weekday_the-blind-spots-in-economic-predictions--how-data-selection-shapes-nat.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Indicators::limitation::selected-indicators-for-economic-prediction",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"Indicators\", \"url\": \"https://github.com/alumond/Indicators\", \"description\": \"A data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\", \"files\": [{\"url\": \"https://github.com/alumond/Indicators/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# Indicators\\nA data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Indicators/commit/6ef52f0af23e69cd3c8c470d5919159311843886\", \"message\": \"Add files via upload\", \"date\": \"2023-08-27T23:26:32Z\"}, {\"url\": \"https://github.com/alumond/Indicators/commit/8bb074692f56d44aa22c286d22e35915ba6fc257\", \"message\": \"Initial commit\", \"date\": \"2023-08-27T23:25:18Z\"}], \"updated_at\": \"2023-08-27T23:26:32Z\", \"commit\": \"6ef52f0af23e69cd3c8c470d5919159311843886\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Indicators",
+        "url": "https://github.com/alumond/Indicators"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+      }
+    ],
+    "summary": "When predicting complex economic outcomes like GDP and GNI for a country, the initial selection of indicators is a critical step. Almond's project focused on Nigeria, using a specific selection of World Bank development indicators to build a predictive model. While necessary to narrow down vast datasets, this choice introduces potential blind spots. Understanding which indicators were chosen and, more importantly, which were left out, helps decision-makers recognize the boundaries of the model's insights and consider what additional data might offer a more complete picture of economic health.",
+    "topic": "The Blind Spots in Economic Predictions: How Data Selection Shapes National Outlooks"
+  },
+  "citations": [
+    {
+      "title": "Indicators",
+      "url": "https://github.com/alumond/Indicators"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+    }
+  ],
+  "created_at": "2026-10-19T07:08:35.187798+00:00",
+  "draft": {
+    "alt_text": "Diagram illustrating how initial data selection for economic predictions can create blind spots by omitting crucial indicators, impacting the completeness of the model's insights.",
+    "body": "Economic predictions, such as a country's GDP or GNI, rely heavily on the data chosen for analysis. My 'Indicators' project demonstrates this by modeling Nigeria's economic future using specific World Bank development indicators.\n\nFor analytics managers and BI leads, the real challenge extends beyond computation: recognizing that indicator selection inherently creates blind spots. What's excluded from a dataset can be as vital as what's included, defining the true boundaries of any dashboard or report.\n\nIn the 'Indicators' project, I selected specific data points, like import/export spending, to model Nigeria's economic outcomes. This necessary focus means the model's insights are shaped by these initial choices. Decision-makers need to consider which critical indicators were omitted and how their absence might alter the complete economic picture.\n\nAcknowledging these data-driven blind spots is crucial for sound decision support. It moves teams from simply consuming reports to critically evaluating data governance, leading to more comprehensive strategic planning grounded in insights that acknowledge their limitations.\n\nExplore the project details and selected indicators here: https://github.com/alumond/Indicators\n\nThis approach empowers teams to deliver analytics that provide clarity, not just predictions. By understanding both the capabilities and inherent limitations of their data, teams can make truly informed strategic decisions.",
+    "category": "portfolio",
+    "claims": [
+      "Almond built a predictive model for Nigeria's GDP and GNI using specific World Bank development indicators.",
+      "The project involved selecting specific data points to model Nigeria's economic outcomes, including import/export spending."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#DecisionSupport",
+      "#EconomicForecasting",
+      "#KPIs"
+    ],
+    "invites_response": false,
+    "primary_source_url": "https://github.com/alumond/Indicators",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Indicators/blob/main/README.md"
+    ],
+    "target_audience": "analytics managers and business intelligence leads",
+    "topic": "The Blind Spots in Economic Predictions: How Data Selection Shapes National Outlooks",
+    "visual_prompt": "A process diagram showing 'Initial Data Pool (e.g., World Bank Indicators)' leading to 'Selected Indicators (Almond's Project)' with an arrow pointing to 'Predictive Model (GDP/GNI for Nigeria)'. Off to the side of 'Selected Indicators', show a 'Omitted Indicators' box with a dashed arrow pointing to 'Potential Blind Spots/Incomplete Picture'. Use simple icons for data, selection, and a magnifying glass for insights/blind spots.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "diagram"
+  },
+  "dry_run": false,
+  "publish": {
+    "created_at": "2026-10-21T12:01:12Z",
+    "dry_run": false,
+    "image_urn": null,
+    "pending_reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_the-blind-spots-in-economic-predictions--how-data-selection-shapes-nat.png. Prepare it from assets/briefs/codex_weekday_the-blind-spots-in-economic-predictions--how-data-selection-shapes-nat.json.",
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "pending_image",
+    "topic": "The Blind Spots in Economic Predictions: How Data Selection Shapes National Outlooks"
+  },
+  "reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_the-blind-spots-in-economic-predictions--how-data-selection-shapes-nat.png. Prepare it from assets/briefs/codex_weekday_the-blind-spots-in-economic-predictions--how-data-selection-shapes-nat.json.",
+  "status": "pending_image",
+  "topic": "The Blind Spots in Economic Predictions: How Data Selection Shapes National Outlooks",
+  "updated_at": "2026-10-21T12:01:12Z"
+}
