@@ -520,6 +520,17 @@
     "comment_follow_up_due_at": "2026-10-09T20:55:09.958802+00:00",
     "content_key": "https://github.com/alumond/Agent::design-decision::watcher-analyst-decision-maker-architecture",
     "created_at": "2026-10-08T20:55:09Z",
+    "engagement": {
+      "clicks": 0,
+      "comments": 0,
+      "follows": 0,
+      "impressions": 47,
+      "interaction_rate_percent": 2.13,
+      "measured_at": "2026-10-23T07:25:52.698387+00:00",
+      "profile_views": 0,
+      "reactions": 1,
+      "reposts": 0
+    },
     "hashtag_count": 5,
     "image_urn": "urn:li:image:D4D10AQEsAivfwqIqrg",
     "invites_response": true,
