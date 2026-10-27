@@ -1,0 +1,87 @@
+{
+  "brief": "assets/briefs/codex_weekday_selecting-economic-indicators-for-country-specific-analysis.json",
+  "candidate": {
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/Indicators::design-decision::selection-of-world-bank-indicators-for-nigeria",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"Indicators\", \"url\": \"https://github.com/alumond/Indicators\", \"description\": \"A data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\", \"files\": [{\"url\": \"https://github.com/alumond/Indicators/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# Indicators\\nA data set from world bank storing different world development Indicators. I made a selection for Nigeria and selected a few other indicators. I also built a model to predict GDP and GNI of the country and also amount spent on goods (Import and Export)\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/Indicators/commit/6ef52f0af23e69cd3c8c470d5919159311843886\", \"message\": \"Add files via upload\", \"date\": \"2023-08-27T23:26:32Z\"}, {\"url\": \"https://github.com/alumond/Indicators/commit/8bb074692f56d44aa22c286d22e35915ba6fc257\", \"message\": \"Initial commit\", \"date\": \"2023-08-27T23:25:18Z\"}], \"updated_at\": \"2023-08-27T23:26:32Z\", \"commit\": \"6ef52f0af23e69cd3c8c470d5919159311843886\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [], \"missing_public_links\": []}",
+    "sources": [
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "Indicators",
+        "url": "https://github.com/alumond/Indicators"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+      }
+    ],
+    "summary": "Many organizations struggle with global datasets that are too broad for specific regional insights. This project demonstrates a targeted approach by focusing on World Bank development indicators exclusively for Nigeria. By selecting only the data relevant to one country, the project addresses the challenge of making broad international data useful for local decision-making. This narrow focus helps analysts concentrate on the specific economic factors impacting a particular region, making complex data more manageable and actionable.",
+    "topic": "Selecting Economic Indicators for Country-Specific Analysis"
+  },
+  "citations": [
+    {
+      "title": "Indicators",
+      "url": "https://github.com/alumond/Indicators"
+    },
+    {
+      "title": "README.md",
+      "url": "https://github.com/alumond/Indicators/blob/main/README.md"
+    }
+  ],
+  "created_at": "2026-10-26T13:31:02.242690+00:00",
+  "draft": {
+    "alt_text": "Insight card contrasting broad global economic data with targeted country-specific insights for Nigeria, showing how refining data improves decision-making.",
+    "body": "For monitoring, evaluation, and impact leaders, adapting global economic data for country-specific analysis is crucial. Broad international datasets often miss the unique local factors that drive effective decision-making.\n\nMy 'Indicators' project addresses this by demonstrating a targeted approach. It uses World Bank development indicators specifically for Nigeria. Rather than relying on vast global datasets, I selected only the indicators directly relevant to understanding Nigeria's economic landscape.\n\nThe project developed a model to predict Nigeria's Gross Domestic Product (GDP), Gross National Income (GNI), and trade figures (imports and exports) using these chosen indicators. This provides a focused analysis of specific economic trends and potential performance, offering deeper insights than a general overview.\n\nFor teams conducting local impact assessments or regional strategy, this focused approach moves beyond generic insights. It supports precise KPI reporting and impact analytics, grounding decisions in country-specific realities and highlighting local drivers of success or challenge.\n\nExplore the project here: https://github.com/alumond/Indicators\n\nThis work underscores how consciously selecting relevant indicators for specific regions yields insights that are truly actionable for local business growth and targeted interventions. It allows monitoring and evaluation efforts to be precisely aligned with country-specific needs.",
+    "category": "portfolio",
+    "claims": [
+      "Developed the 'Indicators' project focusing on World Bank development indicators for Nigeria.",
+      "Built a model to predict Nigeria's GDP, GNI, imports, and exports based on selected indicators."
+    ],
+    "hashtags": [
+      "#DataAnalytics",
+      "#BusinessIntelligence",
+      "#ImpactAnalytics",
+      "#DecisionSupport",
+      "#Nigeria"
+    ],
+    "invites_response": false,
+    "primary_source_url": "https://github.com/alumond/Indicators",
+    "supporting_source_urls": [
+      "https://github.com/alumond/Indicators/blob/main/README.md"
+    ],
+    "target_audience": "monitoring, evaluation, and impact leaders",
+    "topic": "Selecting Economic Indicators for Country-Specific Analysis",
+    "visual_prompt": "An insight card illustrating the difference between broad global economic datasets and a focused, country-specific dataset. Show a large, cluttered world map or generic data visualization on one side, labeled 'Broad Global Data,' and on the other, a simplified, clear map of Nigeria with specific data points highlighted, labeled 'Targeted Country Insights.' Use an arrow pointing from broad to targeted to show the refinement process. Text labels should be concise.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "insight_card"
+  },
+  "dry_run": false,
+  "publish": {
+    "created_at": "2026-10-27T12:24:26Z",
+    "dry_run": false,
+    "image_urn": null,
+    "pending_reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_selecting-economic-indicators-for-country-specific-analysis.png. Prepare it from assets/briefs/codex_weekday_selecting-economic-indicators-for-country-specific-analysis.json.",
+    "post_urn": null,
+    "report_path": null,
+    "skipped_reason": null,
+    "status": "pending_image",
+    "topic": "Selecting Economic Indicators for Country-Specific Analysis"
+  },
+  "reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_selecting-economic-indicators-for-country-specific-analysis.png. Prepare it from assets/briefs/codex_weekday_selecting-economic-indicators-for-country-specific-analysis.json.",
+  "status": "pending_image",
+  "topic": "Selecting Economic Indicators for Country-Specific Analysis",
+  "updated_at": "2026-10-27T12:24:26Z"
+}
