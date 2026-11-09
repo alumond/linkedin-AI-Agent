@@ -1,343 +1,119 @@
 {
-  "brief": "assets/briefs/codex_weekday_the-ai-driven-democratization-of-business-intelligence--empowering-sel.json",
+  "brief": "assets/briefs/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.json",
   "candidate": {
-    "category": "business intelligence|decision support|reporting automation|workflow|responsible AI",
-    "content_key": "",
-    "evidence_score": 1.0,
-    "novelty_score": 0.9,
-    "practical_value_score": 1.0,
-    "recency_score": 1.0,
-    "relevance_score": 1.0,
-    "source_snapshot": "",
+    "category": "portfolio",
+    "content_key": "https://github.com/alumond/medflow-africa::design-decision::constrained-generative-ai-for-report-narrative",
+    "evidence_score": 1,
+    "novelty_score": 1,
+    "practical_value_score": 1,
+    "recency_score": 1,
+    "relevance_score": 1,
+    "source_snapshot": "{\"name\": \"medflow-africa\", \"url\": \"https://github.com/alumond/medflow-africa\", \"description\": \"Explainable medicine stock-out risk, safe redistribution review and district supply reporting.\", \"files\": [{\"url\": \"https://github.com/alumond/medflow-africa/blob/main/README.md\", \"path\": \"README.md\", \"text\": \"# MedFlow Africa\\n\\nExplainable AI decision support for essential-medicine stock-out risk, constrained redistribution and evidence-grounded action briefs. Built from the six specifications supplied in this folder, with the user's expanded AI workflow and reporting standards.\\n\\n**All bundled inventory and programme data is synthetic.** This prototype does not diagnose, prescribe, order medicines or execute transfers.\\n\\nLive website: **https://medflow-africa.vercel.app**.\\n\\nSource repository: **https://github.com/alumond/medflow-africa** (public).\\n\\n## How the app works\\n\\nYou do not need to import data to explore the website: bundled example records load automatically. Import data when you want decisions about your own facilities. The app needs actual balances, consumption, expiry dates and delivery records; a model cannot discover those facts from facility names alone.\\n\\n```mermaid\\nflowchart LR\\n    A[Import four CSV files] --> B[Validate and quarantine errors]\\n    B --> C[Predict 7, 14 or 30 day stock-out risk]\\n    C --> D[Inspect evidence and explanations]\\n    D --> E[Review safe redistribution options]\\n    E --> F[Accept, edit or reject with a note]\\n    F --> G[Draft report and separate escalation]\\n    F --> H[Record feedback and audit history]\\n```\\n\\n| File | What it supplies | Why it matters |\\n| --- | --- | --- |\\n| `facilities.csv` | Facility IDs, names, location and lead times | Identifies sites and supply constraints. |\\n| `medicines.csv` | Medicine IDs, pack sizes and safety-stock policies | Keeps calculations and proposed quantities consistent. |\\n| `inventory.csv` | Weekly balances, receipts, dispensing, expiry and reporting dates | Establishes usable stock, demand, cover and evidence quality. |\\n| `orders.csv` | Order quantities, expected dates and delivery status | Reveals late or uncertain replenishment. |\\n\\nUse **Import data**, choose all four files, set the reporting cut-off and confirm the records contain no patient identifiers. Fix rejected records through **Data quality**. A failed import keeps the previous active dataset. Submit an updated bundle when reporting changes; there is no live connection to facility systems in this build.\\n\\nReview risk in **District overview** and **Risk explorer**, then inspect **Redistribution planner**. Safety checks preserve donor buffers, expiry requirements and whole packs. A recorded review never executes a transfer. **Supply brief** creates the thirteen-section report and a separate email draft for review and manual sending.\\n\\nCurrent scope: the importer replaces operational inventory and orders. Workplan, logframe and budget ledgers remain invented examples. Model performance is based on a synthetic holdout, and free-tier Gemini drafting is currently restricted to approved example summaries; imported operational data uses the deterministic reporting path.\\n\\nSee the [user guide](docs/user_guide.md) and [screenshot gallery](docs/screenshots/README.md).\\n\\n## Start locally\\n\\nPython 3.12 is recommended. The implementation also supports Python 3.9\\u20133.11 locally.\\n\\n```sh\\npython3 -m venv .venv\\nsource .venv/bin/activate\\npip install -e '.[analysis,dev]'\\npython -m scripts.generate_demo_data\\npython -m scripts.train_model\\npython -m scripts.run\\n```\\n\\nOpen **http://127.0.0.1:8000**. Demonstration data loads automatically. The five operational pages are District Overview, Risk Explorer, Redistribution Planner, Data Quality and Supply Brief. Contextual explanations and drafting are integrated into the operational pages. Model oversight is available through Method & limitations.\\n\\nThe optional Streamlit host embeds the same custom interface:\\n\\n```sh\\nstreamlit run dashboard/streamlit_app.py\\n```\\n\\nKeep the FastAPI service running on port 8000. Streamlit is a local alternative; Vercel hosts FastAPI and the custom browser interface directly.\\n\\n## What works\\n\\n- Reproducible 60-week dataset: 10 facilities, 10 medicines, linked orders and controlled failure scenarios.\\n- Four-file versioned CSV imports, checksums, reference/type/date/balance validation, quarantine and downloadable rejection reasons.\\n- Actual stock, daily consumption, safety stock, cover, reporting quality and 7-, 14- and 30-day predictions.\\n- Logistic regression versus gradient boosting, selected using validation data only. Purged chronological splits, standalone and combined alert metrics, calibration bins, subgroup and stress results are bundled in `model_artifacts/evaluation.json`.\\n- Local model explanations from logistic coefficients or additive tree-path contributions, with causal limitations disclosed.\\n- Pack-aligned, expiry-safe transfer proposals with shared donor reservations, mandatory notes, safe edits, version conflicts and append-only history.\\n- Synthetic programme workplan, logframe, indicators, issues and a reconciled US$185,000 budget. These fictional programme ledgers remain labelled when operational inventory is imported.\\n- Complete 13-section operational supply brief, self-contained HTML export with embedded Garamond, print-to-PDF and separate `.eml` escalation draft.\\n- Gemini-assisted fact selection and executive framing, with citation-bound facts and deterministic fallback.\\n- Contextual operational explanations, review-feedback counts, holdout monitoring and current feature-shift triggers.\\n\\n## Gemini setup\\n\\nSet `GEMINI_API_KEY` on the **server**, and optionally `GEMINI_MODEL=gemini-3.8-flash`. Locally, use an ignored `.env.local` file. On Vercel, add a sensitive environment variable for the target environments and redeploy. Never put the key in browser JavaScript or commit it.\\n\\nAs verified on 4 November 2026, [Google lists Gemini 3.8 Flash with free-tier input/output tokens](https://ai.google.dev/gemini-api/docs/pricing). Free access has quotas; the model name alone does not guarantee that a billing-enabled project will incur no charges. Use a free-tier Google AI Studio project without billing to stay on free quotas. Google's free tier may use content to improve its products.\\n\\nThe integration therefore permits **synthetic summary facts only**. Gemini selects and sequences fact IDs and approved connective wording. The server inserts all actual numbers, names and factual sentences. Unsupported fields, entities, quantities or wording are rejected. Management notes, reviewer notes, raw uploads and free-form copilot questions are never transmitted. The current API uses the [Interactions API](https://ai.google.dev/gemini-api/docs/text-generation) with JSON-schema output and revision `2026-05-20`.\\n\\nThere are no automatic paid-model fallbacks, tools or search calls. Gemini 3.8 Flash remains primary; service errors/timeouts may use one verified free-tier Gemini 3.5 Flash-Lite fallback. Each attempt counts toward the workspace ceiling. Requests have a bounded connection/read timeouts, bounded output, cached fact bundles and a 10-request daily workspace ceiling. Missing key, quota failure, timeout and unsupported output all leave deterministic reporting available. AI-assisted copy is labelled pending human review.\\n\\n## Verification\\n\\n```sh\\npython -m pytest -q --cov=app --cov-branch\\npython -m ruff check app scripts dashboard tests\\npython -m ruff format --check app scripts dashboard tests\\npython -m mypy app/core app/data app/models app/services app/reporting\\nnode --check app/web/assets/app.js\\n```\\n\\nTests use isolated databases and fake external transports; they do not spend API quota. See `docs/verification.md` for results and remaining release limitations.\\n\\n## Deployment\\n\\nThe selected target is **almondowolabi01-gmailcoms-projects / medflow-africa** on Vercel. `vercel.json` targets the supported `app/main.py` FastAPI entrypoint. The deployment uses Python 3.12 and only lightweight runtime dependencies; scientific/Streamlit packages are optional local extras.\\n\\nVercel stores each browser workspace in a private Blob, keyed by an unguessable HttpOnly cookie. Each request opens a temporary SQLite copy, applies normal transactional constraints, then commits changed bytes using the prior Blob ETag. Origin reads bypass CDN caches. Concurrent writes return a conflict instead of overwriting a review. Losing the cookie loses access to that workspace; this is not a multi-user identity or recovery system. Keep operational use behind Vercel deployment protection. Do not expose this prototype as a production health service.\\n\\n## Design and documentation\\n\\nGaramond headings, Helvetica body/UI, ivory surfaces, charcoal text and muted blue. Semantic green/amber/red is reserved for status. The interface uses publication-like hierarchy, ruled data tables and a decision desk rather than a tile-heavy dashboard.\\n\\nSee `docs/architecture.md`, `docs/model_card.md`, `docs/responsible_ai.md`, `docs/data_dictionary.md`, `docs/user_guide.md` and `docs/requirements_traceability.csv`. The uploaded documents remain unchanged. The PRD references a technical-design document numbered 02 that was not present in the supplied folder.\\n\\nLatest product direction: no prominent demonstration badge or standalone assistant branding. Dataset origin remains in source details. Supply briefs follow the user\\u2019s thirteen-section report structure, with specific operational prose focused on medicine availability, safe options and accountable next steps.\\n\"}, {\"url\": \"https://github.com/alumond/medflow-africa/blob/main/app/main.py\", \"path\": \"app/main.py\", \"text\": \"\\\"\\\"\\\"FastAPI entry point for the editorial interface, API and reviewable exports.\\\"\\\"\\\"\\n\\nimport csv\\nimport hashlib\\nimport io\\nimport json\\nimport logging\\nimport os\\nimport secrets\\nimport tempfile\\nimport time\\nimport uuid\\nfrom datetime import date, datetime, timezone\\nfrom pathlib import Path\\nfrom typing import Literal, Optional\\n\\nfrom fastapi import Depends, FastAPI, File, Form, HTTPException, Query, Request, UploadFile\\nfrom fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response\\nfrom fastapi.staticfiles import StaticFiles\\nfrom dotenv import load_dotenv\\n\\nfrom app.core.config import POLICY, ROOT\\nfrom app.core.schemas import ReportRequest, ReviewRequest, CopilotRequest\\nfrom app.data.store import Store\\nfrom app.data.blob import BlobSnapshots, SnapshotConflict\\nfrom app.data.validation import parse_csv\\nfrom app.reporting.gemini import MODEL as GEMINI_MODEL, compose\\nfrom app.reporting.report import build_report, email_file, escalation\\nfrom app.services.service import Service\\nfrom app.services.copilot import answer as copilot_answer, monitoring\\n\\nif not os.environ.get(\\\"VERCEL\\\"):\\n    load_dotenv(ROOT / \\\".env.local\\\")\\n    load_dotenv(ROOT / \\\".env\\\")\\n\\nlogger = logging.getLogger(\\\"medflow\\\")\\napp = FastAPI(title=\\\"MedFlow Africa\\\", version=\\\"0.1.0\\\", docs_url=\\\"/api/docs\\\", openapi_url=\\\"/api/openapi.json\\\")\\napp.mount(\\\"/assets\\\", StaticFiles(directory=ROOT / \\\"app/web/assets\\\"), name=\\\"assets\\\")\\n\\n\\n@app.middleware(\\\"http\\\")\\nasync def repository_context(request: Request, call_next):\\n    \\\"\\\"\\\"Use local SQLite or isolated, CAS-persisted private Blob snapshots on Vercel.\\\"\\\"\\\"\\n    correlation = uuid.uuid4().hex\\n    request.state.correlation = correlation\\n    started = time.monotonic()\\n    temporary = None\\n    remote = bool(os.environ.get(\\\"VERCEL\\\"))\\n    cookie = request.cookies.get(\\\"medflow_workspace\\\", \\\"\\\")\\n    if not (len(cookie) == 64 and all(c in \\\"0123456789abcdef\\\" for c in cookie)):\\n        cookie = secrets.token_hex(32)\\n    try:\\n        if request.url.path.startswith(\\n            (\\\"/api/\\\", \\\"/risk/\\\", \\\"/data/\\\", \\\"/redistribution/\\\", \\\"/reports/\\\", \\\"/audit/\\\")\\n        ) and request.url.path not in (\\\"/api/docs\\\", \\\"/api/openapi.json\\\"):\\n            if remote:\\n                temporary = tempfile.TemporaryDirectory(prefix=\\\"medflow-\\\")\\n                db_path = Path(temporary.name) / \\\"workspace.sqlite\\\"\\n                blob_path = \\\"workspaces/\\\" + hashlib.sha256(cookie.encode()).hexdigest() + \\\".sqlite\\\"\\n                snapshots = BlobSnapshots()\\n                before, etag = await snapshots.read(blob_path)\\n                if before:\\n                    db_path.write_bytes(before)\\n                request.state.store = Store(str(db_path))\\n            else:\\n                request.state.store = Store(os.environ.get(\\\"MEDFLOW_DB\\\", str(ROOT / \\\"data/medflow.sqlite\\\")))\\n            Service(request.state.store).ensure_demo()\\n        response = await call_next(request)\\n        if remote and hasattr(request.state, \\\"store\\\") and response.status_code < 500:\\n            after = db_path.read_bytes()\\n            if after != before:\\n                await snapshots.write(blob_path, after, etag)\\n        response.headers[\\\"X-Correlation-ID\\\"] = correlation\\n        response.headers[\\\"X-Content-Type-Options\\\"] = \\\"nosniff\\\"\\n        response.headers[\\\"Referrer-Policy\\\"] = \\\"same-origin\\\"\\n        if request.url.path.startswith(\\\"/api/\\\"):\\n            response.headers[\\\"Cache-Control\\\"] = \\\"private, no-store\\\"\\n        response.set_cookie(\\n            \\\"medflow_workspace\\\", cookie, httponly=True, secure=remote, samesite=\\\"lax\\\", max_age=90 * 86400\\n        )\\n        logger.info(\\n            json.dumps(\\n                {\\n                    \\\"event\\\": \\\"request.completed\\\",\\n                    \\\"correlation_id\\\": correlation,\\n                    \\\"path\\\": request.url.path,\\n                    \\\"status\\\": response.status_code,\\n                    \\\"duration_ms\\\": round((time.monotonic() - started) * 1000),\\n                }\\n            )\\n        )\\n        return response\\n    except Exception as exc:\\n        kind = type(exc).__name__\\n        conflict = isinstance(exc, SnapshotConflict)\\n        logger.error(\\n            json.dumps({\\\"event\\\": \\\"request.failed\\\", \\\"correlation_id\\\": correlation, \\\"error_type\\\": kind})\\n        )\\n        return JSONResponse(\\n            status_code=409 if conflict else 503,\\n            content={\\n                \\\"detail\\\": \\\"Your workspace changed in another request. Refresh and retry.\\\"\\n                if conflict\\n                else \\\"The workspace is temporarily unavailable. Please retry.\\\",\\n                \\\"correlation_id\\\": correlation,\\n            },\\n            headers={\\\"X-Correlation-ID\\\": correlation},\\n        )\\n    finally:\\n        if temporary:\\n            temporary.cleanup()\\n\\n\\ndef service(request: Request) -> Service:\\n    \\\"\\\"\\\"Resolve only the repository assigned to this request's workspace.\\\"\\\"\\\"\\n    return Service(request.state.store)\\n\\n\\n@app.exception_handler(ValueError)\\nasync def value_error(request: Request, error: ValueError):\\n    return JSONResponse(\\n        status_code=422, content={\\\"detail\\\": str(error), \\\"correlation_id\\\": request.state.correlation}\\n    )\\n\\n\\n@app.exception_handler(LookupError)\\nasync def lookup_error(request: Request, error: LookupError):\\n    return JSONResponse(\\n        status_code=404, content={\\\"detail\\\": str(error), \\\"correlation_id\\\": request.state.correlation}\\n    )\\n\\n\\n@app.exception_handler(RuntimeError)\\nasync def stale_error(request: Request, error: RuntimeError):\\n    return JSONResponse(\\n        status_code=409, content={\\\"detail\\\": str(error), \\\"correlation_id\\\": request.state.correlation}\\n    )\\n\\n\\n@app.get(\\\"/\\\", response_class=HTMLResponse)\\ndef index():\\n    return (ROOT / \\\"app/web/index.html\\\").read_text()\\n\\n\\n@app.get(\\\"/health\\\")\\n@app.get(\\\"/api/health\\\")\\ndef health():\\n    return {\\n        \\\"status\\\": \\\"ok\\\",\\n        \\\"version\\\": \\\"0.1.0\\\",\\n        \\\"mode\\\": \\\"synthetic decision support\\\",\\n        \\\"llm_enabled\\\": bool(os.environ.get(\\\"GEMINI_API_KEY\\\")),\\n        \\\"persistence\\\": \\\"private Vercel Blob\\\" if os.environ.get(\\\"VERCEL\\\") else \\\"SQLite\\\",\\n    }\\n\\n\\n@app.get(\\\"/api/risk/summary\\\")\\n@app.get(\\\"/risk/summary\\\", include_in_schema=False)\\ndef summary(window: int = Query(14, ge=7, le=30), svc: Service = Depends(service)):\\n    return svc.overview(window)\\n\\n\\n@app.get(\\\"/api/risk/details\\\")\\n@app.get(\\\"/risk/details\\\", include_in_schema=False)\\ndef risk_details(\\n    window: int = Query(14, ge=7, le=30),\\n    facility: Optional[str] = None,\\n    medicine: Optional[str] = None,\\n    risk: Optional[Literal[\\\"high\\\", \\\"medium\\\", \\\"low\\\", \\\"not_assessed\\\"]] = None,\\n    quality: Optional[Literal[\\\"strong\\\", \\\"acceptable\\\", \\\"limited\\\", \\\"blocked\\\"]] = None,\\n    svc: Service = Depends(service),\\n):\\n    snapshot = svc.snapshot(window)\\n    return {\\n        \\\"context\\\": snapshot[\\\"context\\\"],\\n        \\\"pairs\\\": [\\n            p\\n            for p in snapshot[\\\"pairs\\\"]\\n            if (not facility or p[\\\"facility_id\\\"] == facility)\\n            and (not medicine or p[\\\"medicine_id\\\"] == medicine)\\n            and (not risk or p[\\\"risk\\\"] == risk)\\n            and (not quality or p[\\\"quality\\\"] == quality)\\n        ],\\n    }\\n\\n\\n@app.get(\\\"/api/data/quality\\\")\\n@app.get(\\\"/data/quality\\\", include_in_schema=False)\\ndef quality(svc: Service = Depends(service)):\\n    return svc.snapshot()[\\\"quality\\\"]\\n\\n\\n@app.post(\\\"/api/data/demo\\\")\\ndef demo(svc: Service = Depends(service)):\\n    return svc.load_demo()\\n\\n\\n@app.post(\\\"/api/data/import\\\")\\n@app.post(\\\"/data/import\\\", include_in_schema=False)\\nasync def import_data(\\n    facilities: UploadFile = File(...),\\n    medicines: UploadFile = File(...),\\n    inventory: UploadFile = File(...),\\n    orders: UploadFile = File(...),\\n    cutoff: date = Form(...),\\n    schema_version: str = Form(\\\"1.0.0\\\"),\\n    anonymised_confirmed: bool = Form(False),\\n    svc: Service = Depends(service),\\n):\\n    if schema_version != POLICY[\\\"schema_version\\\"]:\\n        raise ValueError(\\\"Unsupported schema version\\\")\\n    if not anonymised_confirmed:\\n        raise ValueError(\\\"Confirm that files contain synthetic or anonymised operational data only\\\")\\n    if cutoff > datetime.now(timezone.utc).date():\\n        raise ValueError(\\\"Reporting cut-off cannot be in the future\\\")\\n    bundle, sources = {}, []\\n    try:\\n        for entity, file in (\\n            (\\\"facilities\\\", facilities),\\n            (\\\"medicines\\\", medicines),\\n            (\\\"inventory\\\", inventory),\\n            (\\\"orders\\\", orders),\\n        ):\\n            content = await file.read(POLICY[\\\"max_upload_bytes\\\"] + 1)\\n            bundle[entity] = parse_csv(content, entity)\\n            sources.append(\\n                {\\n                    \\\"filename\\\": Path((file.filename or \\\"dataset.csv\\\").replace(\\\"\\\\\\\\\\\", \\\"/\\\")).name[:120],\\n                    \\\"entity\\\": entity,\\n                    \\\"rows\\\": len(bundle[entity]),\\n                    \\\"checksum\\\": hashlib.sha256(content).hexdigest(),\\n                }\\n            )\\n        return svc.import_bundle(bundle, cutoff, sources, synthetic=False)\\n    except ValueError:\\n        svc.store.audit(\\\"import.failed\\\", \\\"upload\\\", {\\\"reason\\\": \\\"validation_failure\\\"})\\n        raise\\n\\n\\n@app.get(\\\"/api/data/imports/{import_id}\\\")\\ndef import_status(import_id: str, svc: Service = Depends(service)):\\n    return {k: v for k, v in svc.store.import_by_id(import_id).items() if k != \\\"data\\\"}\\n\\n\\n@app.get(\\\"/api/data/demo/{entity}.csv\\\")\\ndef demo_file(entity: str):\\n    if entity not in (\\\"facilities\\\", \\\"medicines\\\", \\\"inventory\\\", \\\"orders\\\"):\\n        raise HTTPException(404, \\\"Dataset type not found\\\")\\n    return FileResponse(\\n        ROOT / f\\\"data/demo/{entity}.csv\\\", media_type=\\\"text/csv\\\", filename=f\\\"medflow-{entity}.csv\\\"\\n    )\\n\\n\\n@app.get(\\\"/api/data/rejections.csv\\\")\\ndef rejections(svc: Service = Depends(service)):\\n    rows = svc.store.latest()[\\\"rejected\\\"]\\n    out = io.StringIO()\\n    writer = csv.DictWriter(\\n        out,\\n        fieldnames=[\\n            \\\"entity\\\",\\n            \\\"row\\\",\\n            \\\"facility_id\\\",\\n            \\\"medicine_id\\\",\\n            \\\"reporting_date\\\",\\n            \\\"rule\\\",\\n            \\\"field\\\",\\n            \\\"reason\\\",\\n            \\\"severity\\\",\\n        ],\\n    )\\n    writer.writeheader()\\n    for row in rows:\\n        writer.writerow(\\n            {\\n                key: \\\"'\\\" + value\\n                if isinstance(value, str) and value.startswith((\\\"=\\\", \\\"+\\\", \\\"-\\\", \\\"@\\\", \\\"\\\\t\\\", \\\"\\\\r\\\"))\\n                else value\\n                for key, value in row.items()\\n            }\\n        )\\n    return Response(\\n        out.getvalue(),\\n        media_type=\\\"text/csv\\\",\\n        headers={\\\"Content-Disposition\\\": 'attachment; filename=\\\"medflow-rejected-rows.csv\\\"'},\\n    )\\n\\n\\n@app.get(\\\"/api/redistribution/recommendations\\\")\\n@app.get(\\\"/redistribution/recommendations\\\", include_in_schema=False)\\ndef recommendations(window: int = Query(14, ge=7, le=30), svc: Service = Depends(service)):\\n    return svc.planner(window)\\n\\n\\n@app.post(\\\"/api/redistribution/{recommendation_id}/review\\\")\\n@app.post(\\\"/redistribution/{recommendation_id}/review\\\", include_in_schema=False)\\ndef review(\\n    recommendation_id: str,\\n    request: ReviewRequest,\\n    window: int = Query(14, ge=7, le=30),\\n    svc: Service = Depends(service),\\n):\\n    return svc.review(recommendation_id, request.model_dump(), window)\\n\\n\\n@app.get(\\\"/api/reports/draft\\\")\\ndef draft(svc: Service = Depends(service)):\\n    return svc.store.draft(svc.store.latest()[\\\"import_id\\\"])\\n\\n\\n@app.put(\\\"/api/reports/draft\\\")\\ndef save_draft(request: ReportRequest, svc: Service = Depends(service)):\\n    svc.store.save_draft(svc.store.latest()[\\\"import_id\\\"], request.model_dump(mode=\\\"json\\\"))\\n    return {\\\"status\\\": \\\"saved\\\"}\\n\\n\\n@app.post(\\\"/api/reports/action-report\\\", response_class=HTMLResponse)\\nasync def report(request: ReportRequest, download: bool = False, svc: Service = Depends(service)):\\n    snapshot = svc.snapshot(request.window)\\n    planner = svc.planner(request.window)\\n    narrative = await compose(snapshot, planner, request.model_dump(mode=\\\"json\\\"), svc.store)\\n    html = build_report(snapshot, planner, request.model_dump(mode=\\\"json\\\"), narrative)\\n    svc.store.audit(\\n        \\\"report.exported\\\" if download else \\\"report.generated\\\",\\n        snapshot[\\\"context\\\"][\\\"import_id\\\"],\\n        {\\\"window\\\": request.window},\\n    )\\n    headers = (\\n        {\\\"Content-\"}, {\"url\": \"https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py\", \"path\": \"dashboard/streamlit_app.py\", \"text\": \"\\\"\\\"\\\"Optional Streamlit host for the custom five-page interface; run API first.\\\"\\\"\\\"\\n\\nimport os\\n\\nimport streamlit as st\\nimport streamlit.components.v1 as components\\n\\nst.set_page_config(\\n    page_title=\\\"MedFlow Africa\\\", page_icon=\\\"\\u25e7\\\", layout=\\\"wide\\\", initial_sidebar_state=\\\"collapsed\\\"\\n)\\nst.markdown(\\n    \\\"<style>.block-container{padding:0!important;max-width:none!important}header[data-testid=stHeader]{display:none}iframe{border:0!important}</style>\\\",\\n    unsafe_allow_html=True,\\n)\\napi_url = os.environ.get(\\\"MEDFLOW_API_URL\\\", \\\"http://127.0.0.1:8000\\\")\\ncomponents.iframe(api_url, height=1800, scrolling=True)\\n\"}], \"recent_updates\": [{\"url\": \"https://github.com/alumond/medflow-africa/commit/53026de0addfaa6d269899e23cac87d3842236db\", \"message\": \"Document public repository visibility\", \"date\": \"2026-11-04T08:00:25Z\"}, {\"url\": \"https://github.com/alumond/medflow-africa/commit/07e08c524eae17d670aad43d6ecd25cec043ee85\", \"message\": \"Build MedFlow supply decision workflows, reports and screenshot guide\", \"date\": \"2026-11-04T07:33:49Z\"}], \"updated_at\": \"2026-11-04T08:00:27Z\", \"commit\": \"53026de0addfaa6d269899e23cac87d3842236db\", \"demo_url\": \"\", \"public_links\": [], \"screenshots\": [{\"project_repository\": \"https://github.com/alumond/medflow-africa\", \"source_repository\": \"https://github.com/alumond/medflow-africa\", \"source_url\": \"https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png\", \"download_url\": \"https://raw.githubusercontent.com/alumond/medflow-africa/main/docs/screenshots/01-district-overview.png\", \"source_blob_sha\": \"874bf573ec4b23e6dad83b4688ad2f3282a60654\", \"path\": \"docs/screenshots/01-district-overview.png\", \"size\": 296310}], \"missing_public_links\": []}",
     "sources": [
       {
-        "claim_supported": "States that AI is automating SQL and dashboards, enabling business users to get answers faster via natural language interfaces, while emphasizing governance and trust.",
-        "published_at": "2026-08-12",
-        "publisher": "Databricks",
-        "quality_score": 1.0,
-        "source_type": "primary",
-        "title": "The Future of Data Analytics: Why AI is rewriting the Analyst's Job Description - Databricks",
-        "url": "https://www.databricks.com/discover/data-ai/data-analytics/ai-rewriting-analysts-job-description"
-      },
-      {
-        "claim_supported": "Highlights that business users can now use AI for complex analyses and dashboard building on their own, expanding who can get answers and shifting analysts to AI orchestrators.",
-        "published_at": "2026-05-22",
-        "publisher": "Amplitude",
-        "quality_score": 0.9,
-        "source_type": "independent",
-        "title": "How AI Took the Data Analyst's Job, and Created a Better One - Amplitude",
-        "url": "https://amplitude.com/blog/ai-data-analyst-job-better-one"
-      },
-      {
-        "claim_supported": "Notes that user-friendly natural language interfaces on modern data platforms allow everyday business users to interrogate data independently, democratizing access.",
-        "published_at": "2026-02-01",
-        "publisher": "Medium",
-        "quality_score": 0.8,
-        "source_type": "independent",
-        "title": "The AI-Driven Evolution of the Data Analyst Role | by Centizen Nationwide | Medium",
-        "url": "https://medium.com/@centizennationwide/the-ai-driven-evolution-of-the-data-analyst-role-06e1f0e42d76"
-      },
-      {
-        "claim_supported": "Discusses how conversational analytics tools allow stakeholders to self-serve routine questions, freeing analysts for strategic work, and the analyst's role in governance and validating AI outputs.",
-        "published_at": "2026-10-19",
-        "publisher": "Improvado",
-        "quality_score": 0.9,
-        "source_type": "independent",
-        "title": "Will AI Replace Data Analysts? 2026 Reality Check - Improvado",
-        "url": "https://improvado.io/blog/will-ai-replace-data-analysts"
-      },
-      {
-        "claim_supported": "Provides examples of AI automating dashboard and visualization creation from natural language prompts, and how agentic analytics shifts the analyst's role to problem framing and output review.",
-        "published_at": "2026-05-14",
-        "publisher": "Stevens Online",
-        "quality_score": 0.9,
-        "source_type": "independent",
-        "title": "Will AI Replace Data Analysts? Here's What's Actually Happening - Stevens Online",
-        "url": "https://online.stevens.edu/news/will-ai-replace-data-analysts-heres-whats-actually-happening"
-      },
-      {
-        "claim_supported": "Highlights how generative AI allows business stakeholders to ask and answer data-centric questions without relying on data analysts, with analysts enabling necessary controls and governance.",
-        "published_at": "2024-05-08",
-        "publisher": "Dice.com",
-        "quality_score": 0.8,
-        "source_type": "independent",
-        "title": "How Generative AI Will Change Data Analytics Jobs and Roles | Dice.com Career Advice",
-        "url": "https://www.dice.com/career-advice/how-generative-ai-will-change-data-analytics-jobs"
-      },
-      {
-        "claim_supported": "Mentions skills like 'Querying data in plain language' and 'building AI-powered dashboards' as part of AI for Data Analytics, supporting the self-service aspect.",
+        "claim_supported": "",
         "published_at": null,
-        "publisher": "Coursera",
-        "quality_score": 0.9,
+        "publisher": "",
+        "quality_score": 0.0,
         "source_type": "primary",
-        "title": "AI for Data Analytics: Role-Specific Learning for Analysts | Coursera",
-        "url": "https://www.coursera.org/learn/ai-data-analytics-role-specific-learning-for-analysts"
+        "title": "medflow-africa",
+        "url": "https://github.com/alumond/medflow-africa"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "README.md",
+        "url": "https://github.com/alumond/medflow-africa/blob/main/README.md"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "app/main.py",
+        "url": "https://github.com/alumond/medflow-africa/blob/main/app/main.py"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "dashboard/streamlit_app.py",
+        "url": "https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py"
+      },
+      {
+        "claim_supported": "",
+        "published_at": null,
+        "publisher": "Project screenshot",
+        "quality_score": 0.0,
+        "source_type": "primary",
+        "title": "medflow-africa authentic project screenshot",
+        "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
       }
     ],
-    "summary": "This topic explores how generative AI is democratizing business intelligence by enabling non-technical users to self-serve insights through natural language queries and AI-powered dashboards, reducing reliance on traditional data teams for routine requests. Crucially, it emphasizes the data analyst's evolving role in establishing essential 'guardrails' \u2013 encompassing data governance, consistent definitions, and robust validation processes \u2013 to ensure these self-served insights are trustworthy, accurate, and truly actionable for driving business growth.",
-    "topic": "The AI-Driven Democratization of Business Intelligence: Empowering Self-Service with Guardrails"
+    "summary": "Integrating generative AI into critical reporting requires careful design to maintain accuracy. This system uses AI to draft report narratives by selecting and sequencing only pre-verified facts and approved phrasing. All specific numbers, names, and factual sentences are inserted by the system, ensuring that the AI does not invent information. This approach provides narrative support, making reports clearer and more accessible, while strictly controlling the content to prevent hallucinations or unverified claims in sensitive contexts.",
+    "topic": "Structuring AI to support decision-making with factual summaries, avoiding unchecked generation"
   },
   "citations": [
     {
-      "end_index": 1309,
-      "start_index": 546,
-      "title": "compliancequest.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGybqDMSFmdcleeYV9OHllkvH3prv76PDby-4tF3NVgtKcSJ7jmkzBuSvPfhPKurGe3rEBCyUrjVWUK4Kvj9agHxa5h0fXgtMZePLZektrogHVJPKJsfsMO2y6TNUH-AqDJcNPU4_MizQVVAJkEthSeR9W1bQC9vD4ZWeFRBv4VgTEQUtT1tneWbJBaFmYuYQ=="
+      "title": "medflow-africa",
+      "url": "https://github.com/alumond/medflow-africa"
     },
     {
-      "end_index": 1843,
-      "start_index": 1309,
-      "title": "cloudthat.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4D1kqyekzR0JncMuz7GhW8rhfCMTdytv0vQno04otza_QrZ5DFcnIDw1KEvzUCARLSABueelvNA_ycjCupa62qttLk5CGwPzPoB3DfqwNek373-2tEw41ahW0UgCcIWY3vKAfla_oz2p4Lqzt41FiLNL3Gs37YXfgjPtLUTRM3tLZxgfjO-FWegno6SeLMeuxBXVLVlOr5n_a2A=="
+      "title": "README.md",
+      "url": "https://github.com/alumond/medflow-africa/blob/main/README.md"
     },
     {
-      "end_index": 2446,
-      "start_index": 2445,
-      "title": "microsoft.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFKmT6j4G2f6wcE52BDSFCLsuoTkgz1qo0-54XwCzskagvLCXWF7M-qwW3zxc8C_nWn5oBKcAAuweTljtoDpVdwp-RF0SJ3SJWSBdkpgyTtYVLWAWc5NavhII6JguXp0GO-EDxWY3cejxDzmaW_Spg3uHzNQLD6cVcaFcAYyhszcYRwWVpGuBjDbgoyfJDToPYq8EoCk9e1RSZCmto="
+      "title": "app/main.py",
+      "url": "https://github.com/alumond/medflow-africa/blob/main/app/main.py"
     },
     {
-      "end_index": 2964,
-      "start_index": 2446,
-      "title": "databricks.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9r-W1pHSPs0x2SIhkQrX6QSdsWK2L9WoJwfIn38vTyV-ElB5FNa5n8rHa0_fOcJplr1ANnIg4g749HB7Z4gBUiRpq8wItDdHi_d2iTUzKoRtgXYSIDaPbcSxXeyxefzSKFVEGzoLGP80nAbfHkQos6tYIwFlCHADcaFjrOhOYD_XUkNlX8kR0-E_hyFzbLpRJW6BHxQ=="
+      "title": "dashboard/streamlit_app.py",
+      "url": "https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py"
     },
     {
-      "end_index": 3465,
-      "start_index": 2964,
-      "title": "pitechsol.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGd9Dl6U8KpPHWhSpLCn_TWAa7hpNDLf6JAaSZu52rHrTv5fz68uoh4kR6qkToVAEbifuubHY4fWummB-OQy0nl3xx7AIZPXJdNlvwKEU363aqTv3chq7JfCqAGI0Ky5dtK4wyE0gr8uFUwSVAyPu1CCA8Pb19IBipNIsQ="
-    },
-    {
-      "end_index": 4997,
-      "start_index": 4084,
-      "title": "databricks.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXsCelAK-y72jPZloX6cKk7cUvEkBAKWi93DH3KDVs2e7E7jG4McpbqFPynSLU2ifNbLGb0_CI4IFqx9qnH0n327lZsLl_exrWtqeltAvI0o2blw2uSrCCLcgOZU5Ftyp8tTQvmblZ7ORsBP7PH72fluiHcnXiuLf5keGTcyLlgcIhZ1I3Oj7lrWxUD-7MdVqGdVQDqPxzbkWN"
-    },
-    {
-      "end_index": 5577,
-      "start_index": 4997,
-      "title": "forbes.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGV9SdxlHcdBwbSK8wrbgFksPyQhZI9wjjBnU0FrBbJTRxdtq3B1ZSInZi8hOTSjtoJbvdugbTjLokRuBRGWezvFtDhrOLlD1MUQxqJIbJDz8m4p7eXYLy0OVLxI9WioAs7t-TYdM6YaIGPvEJklDchnSJciyjeOZ1TKGyESmeaYL2zNEcYzko-ZMYoRXu7vx-jNGxiOo4yo8pE9pv_yh4J49oPX5Nxt9hO"
-    },
-    {
-      "end_index": 6077,
-      "start_index": 5577,
-      "title": "frontlinesedutech.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvS42UqDi_yI8vVsZSyz42hlvAsG1MH8ZTR-vERM59tHesmVdbj1nV9v4PZ4JRB3zqLp8hRFcxh_ko0DLiIORJRiMtD5FfNg1rBNOjqQmGuOm0kRxTkUCS1sD01d-k9XSocfB3oABODp63eVmgIfUjM494dxUTtsv6bMo9GQyBlO0yHQHR1ADHp2XA3pNegQ=="
-    },
-    {
-      "end_index": 6571,
-      "start_index": 6077,
-      "title": "amplitude.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLn4C4YL3PYzxj-RaXfrBPUu6R9gWC5ASt7mGUmxZBwN-Wm4fqtvR87Fh_AUBE14HVkW1rWrwjECUNb_vQlWx6dcDhFJAFCNtuFfj9ZPvfEDUu4yUayhxd3nwNfGCDTtK8sb8FALRr1xGWyCU7b4Zo47H4PjU="
-    },
-    {
-      "end_index": 7115,
-      "start_index": 6677,
-      "title": "improvado.io",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZOk5gE2MzDVWiBRbhg4e4pChBEN-ByFqm2E-7vBsMWPcsBQPf9ig6HqAkwxaw6Stiye4BWx1n2StyEbbCzsKFk2mml_xlI5v_tuf0H2INhhrWzVK9Y1NfZ1595OWd7aHobwfz6cVxARiS27NoYvUk4qE="
-    },
-    {
-      "end_index": 7630,
-      "start_index": 7115,
-      "title": "coursera.org",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFnJsa9S6J8in7aQAvzGZw6DX9xmpyS8aoy65gs0uBKXQY-G1icQi4hfGy4ZDqS5nyftk58IN1PC8A_rFtWEZXqi46L8FNTZ6JKkUH7bpNatTLIB-PBXaWJWJQ_I2-OomzjCHwRKMjPP0sp0z1mV8J7jxHsqWysbHnug=="
-    },
-    {
-      "end_index": 9002,
-      "start_index": 8099,
-      "title": "digitaldividedata.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqFVT-QOqDlYhTxGEVPLERBxT9yWJlSOwdaM_Y6tSaApiKhT0_0BEdcfIEzGR09Sqppwo3XoWLv3Qj7bCe7L1lC0RP5AQlrQG_rwOu9QtoidImCH8pQCxGrsNsq4OoFY1goKXh2XzsTWxVL6pBQSwkolniDdxsquEaWsEB_AsVNnFXZ6VZozfBIHeoLfj-s3gi"
-    },
-    {
-      "end_index": 9528,
-      "start_index": 9002,
-      "title": "corp-im.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGNk7DoP8jYs9PmG_isq1nGO9A50eBMC1TiWEr_4JoWAMZVle1km6OoZZmpGrGNWSFEnyFYwLbsTtKBkvLT_z1nMoqGCHMaAJ7mHNDzt9zjDsF_XECsLNrNiSZNpB2_Mgy6JCChQcGxWpEy"
-    },
-    {
-      "end_index": 10054,
-      "start_index": 9528,
-      "title": "tealium.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQESCksQdvTFyclvvNDRC3WqEnXLFbsbYYAl5vrFYZk6Jji-xKtRaNF2TcTkrEQ77dWC6kb8hh6AYBHBw3IjBVB5gdCPyP0QE1ZCqPTyyjANtpeq2ze9QxBNHrNcYAE7FBJOwNEwNvjaaP1gLtVn84hcK8aSPLFWAAWFp9O7T9XoCZ16thR9OF0r4nCqg3ChSLs2I6lXIY28jA=="
-    },
-    {
-      "end_index": 10652,
-      "start_index": 10054,
-      "title": "erstudio.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFAA68CSEkL6vXO5R-zZfZv_nHP2xeQIbMkl8Fa7wf5om_vpodFTdX95ixj2gOF5RbOOLwvBGu8CoC8Z46H5EaMYkVGV7WEaTuzlrHT_8XU0aY2xpBlDrSLpCB-Nb0JxJ0AjZayuFUa_3i9ZvptpOkU0dz4bpbjwnMzo_Pa2W9FoU0jZ-cBWqoe2o-yDEyMxKyNDJEEDHddKsNIkgJcLE="
-    },
-    {
-      "end_index": 11173,
-      "start_index": 10652,
-      "title": "acceldata.io",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJjqNj1YSRWkFZC3Xit3woXvIZsqv-3EaYdpN28NwDivTFQeYk92Mpu261h8iu7pL9rkl-T7Ws-QJcQ3RB_OJB015OD01EolmpFjMI9WnBMoDcuDxw-xSH5VsstRYtMouPdWaLKcNC9kAsbJU9BvQFE9Drj23AxmC_Kn-VssHhDw=="
-    },
-    {
-      "end_index": 11754,
-      "start_index": 11173,
-      "title": "publicissapient.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUULo5VQUyBJSJxz9k8jq0FcY78-vZiK8_tPpOEHEPKXpBVblNboXQBXyJK5ckepviqjDhi8vWEPHJCW3cTjARO3HEBWGJ11tzCW9VQ_EmAxV3TSVcFpGbhrAa6vRR26rAMsVwCmpJLSWKx4kuth21f_wVB0593tuqwucVT-CVxRjPHvEyeWuUT9ZE927vn8dYq7ts_ueTpC2E6RLjcBTiPv4f6fat_AQsXNWmksQ3waVazEEdAWI="
-    },
-    {
-      "end_index": 13221,
-      "start_index": 12391,
-      "title": "databricks.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXsCelAK-y72jPZloX6cKk7cUvEkBAKWi93DH3KDVs2e7E7jG4McpbqFPynSLU2ifNbLGb0_CI4IFqx9qnH0n327lZsLl_exrWtqeltAvI0o2blw2uSrCCLcgOZU5Ftyp8tTQvmblZ7ORsBP7PH72fluiHcnXiuLf5keGTcyLlgcIhZ1I3Oj7lrWxUD-7MdVqGdVQDqPxzbkWN"
-    },
-    {
-      "end_index": 13770,
-      "start_index": 13221,
-      "title": "forbes.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGV9SdxlHcdBwbSK8wrbgFksPyQhZI9wjjBnU0FrBbJTRxdtq3B1ZSInZi8hOTSjtoJbvdugbTjLokRuBRGWezvFtDhrOLlD1MUQxqJIbJDz8m4p7eXYLy0OVLxI9WioAs7t-TYdM6YaIGPvEJklDchnSJciyjeOZ1TKGyESmeaYL2zNEcYzko-ZMYoRXu7vx-jNGxiOo4yo8pE9pv_yh4J49oPX5Nxt9hO"
-    },
-    {
-      "end_index": 14310,
-      "start_index": 13770,
-      "title": "amplitude.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLn4C4YL3PYzxj-RaXfrBPUu6R9gWC5ASt7mGUmxZBwN-Wm4fqtvR87Fh_AUBE14HVkW1rWrwjECUNb_vQlWx6dcDhFJAFCNtuFfj9ZPvfEDUu4yUayhxd3nwNfGCDTtK8sb8FALRr1xGWyCU7b4Zo47H4PjU="
-    },
-    {
-      "end_index": 14848,
-      "start_index": 14416,
-      "title": "improvado.io",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZOk5gE2MzDVWiBRbhg4e4pChBEN-ByFqm2E-7vBsMWPcsBQPf9ig6HqAkwxaw6Stiye4BWx1n2StyEbbCzsKFk2mml_xlI5v_tuf0H2INhhrWzVK9Y1NfZ1595OWd7aHobwfz6cVxARiS27NoYvUk4qE="
-    },
-    {
-      "end_index": 15377,
-      "start_index": 14848,
-      "title": "coursera.org",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFnJsa9S6J8in7aQAvzGZw6DX9xmpyS8aoy65gs0uBKXQY-G1icQi4hfGy4ZDqS5nyftk58IN1PC8A_rFtWEZXqi46L8FNTZ6JKkUH7bpNatTLIB-PBXaWJWJQ_I2-OomzjCHwRKMjPP0sp0z1mV8J7jxHsqWysbHnug=="
-    },
-    {
-      "end_index": 15983,
-      "start_index": 15483,
-      "title": "stevens.edu",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEC--o0ffTTJIXy_fUq7zaViTo4IIEm0oLBhLXyAm5p900l1BonXTTRIR3RaV8cxd8i-XldMtWrI84Mejq3eIwWc5gUrpHEDmBGT8ZpkJyQ3ydblE8YtHX46j16OiUcDAYfY-g4KYGHASRH1gZz8bTIp7JO82FNI-5U"
-    },
-    {
-      "end_index": 16674,
-      "start_index": 15983,
-      "title": "campustechnology.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2wBO453RS2qlSnKHt0Amq9BaEpZP3LqBtY1qDFhDn-8SR5cJXyzT9e84zOJfNqh94P7eCms1IYrR5jw7dNP9ksIlI1Xhp6d4nf0VzdqV-vJzaIM5wtRX36GiRjBDQzGdi-xh2rxT7PMcs7V8bbMzHDyzCqhkOi51_FuRmOrX2FYCoW5ZxPCz6LiyWf1rH1EDWjcXnVgZ7JhfS4csPbmXfxk5Rb7IiAorA6pDGP5PEvjIys1QOMK4RLfTVoZXSvSqSkymQjjZHeqK_4FbJQ9_I1g=="
-    },
-    {
-      "end_index": 18099,
-      "start_index": 17280,
-      "title": "integrate.io",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMxDDYZOeOd3H8T_lmknljGC0o-JypJQk1hPBEijhyKaj0y-719YunRggIlmhyR5NVCLaQuZjazKFAYEEMsfD2zmCyh7_yA_cWA64ToF6Zdd9-KsalCbzdwEToks2M1r_83UiEfpSi3rVKAMIwY9b4kV8VLG2WIQ=="
-    },
-    {
-      "end_index": 18678,
-      "start_index": 18099,
-      "title": "northeastern.edu",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIEPJd4NNbmVKLVG9j24NWhVXeyafB67foE5hbyhDNTIBK-7bQnLaFoPW2so9K6FyyyXQyz6a2-edUpAwDRuT39WzkJxjARks8oJo6_dsj-eFNvc84sXhB7lY7AvuZ3p2xLPCtek-0_sgi_JY3Is5BJ8xEngb4UmkYGGmEJhEgPQy-N3EVmo-i5w=="
-    },
-    {
-      "end_index": 19225,
-      "start_index": 18678,
-      "title": "coursera.org",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG0bmYFuggYfxSGSxv3SloaB4eAOSiWVEihDoJk14ao99cWlDPxr2nQdBRUvCS0pax_AwpTyPf6-pWBCPsK9ufAVZ1Esfc61nhVfYpeZpl59leDFSGJx4kpvA-OdUHBpnEG_7VGEoSd2j7Dtrs4WAc="
-    },
-    {
-      "end_index": 19800,
-      "start_index": 19225,
-      "title": "emergent.sh",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBOh3971iWLSaiSEJu-ydNv86ZLRHlg7fIkNISf7FAopCO-RREoRe0fX0VnqWlSOQqpFKWd3-_Rio831jMVvsxg9KaFRDCMzrGaTwhSCRImcFlQ8tCFO96BL2pEcral8iZPBE4rqj2q_-MYlHLVx2uJNQ="
-    },
-    {
-      "end_index": 20326,
-      "start_index": 19800,
-      "title": "gitlab.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYOXT-WBAeiOsg5OyITUQwNosyotC53wpBwh2B925V_f1uw-f5MHOWu3nZmkjqAIH7vcIsl63yfndMLTb6hw_0WxitCieXnBqR3MGrNPXurSnRz5xHkpMvGr6ABL-Z8l6RWSuxfam5kY6icUQNnb1ycv9rbswqLMgvJamGSt5uxNewgGGpeIAA9eleo_L6SemCH42edqk_4NM6bWU="
-    },
-    {
-      "end_index": 20899,
-      "start_index": 20424,
-      "title": "ibm.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF-oyU8FPJTJvO4s6PEWkGpfpskL5JRCmtpYyP-vURQOjsdGVpSb1B_0kzdiD2Ili4ZeFczZI_gfrLyXAdDKta2vdx98IpmuRnKrCkqL-gDmB2b-Brj_EmGEiIeQC0e4Sq8mirMzbD7yQ8bachL9aWSkO22j85T5sNmr41SzYvKv74lq3BXu_C-Mc-vW_sxe5YnD5IUOT8="
-    },
-    {
-      "end_index": 21443,
-      "start_index": 20899,
-      "title": "getdbt.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_JtnBg-SFVt-JJOCbOOmP5VGnbvnH13fL0FgmeOTX9HuFtKpxftY-AlckBxOTfIO9l41SsbHRssgp4i9v59nM1Soa5877tlTbrKBpjdIhGJwa23dyD1hYTVZUYdPuD_vevaEJdWsmvEuUI_WE-xTEGayrfdEFwKGo8CG3wL1w65C8eTiTlFUqrRE="
-    },
-    {
-      "end_index": 23032,
-      "start_index": 22003,
-      "title": "databricks.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXsCelAK-y72jPZloX6cKk7cUvEkBAKWi93DH3KDVs2e7E7jG4McpbqFPynSLU2ifNbLGb0_CI4IFqx9qnH0n327lZsLl_exrWtqeltAvI0o2blw2uSrCCLcgOZU5Ftyp8tTQvmblZ7ORsBP7PH72fluiHcnXiuLf5keGTcyLlgcIhZ1I3Oj7lrWxUD-7MdVqGdVQDqPxzbkWN"
-    },
-    {
-      "end_index": 23582,
-      "start_index": 23032,
-      "title": "amplitude.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLn4C4YL3PYzxj-RaXfrBPUu6R9gWC5ASt7mGUmxZBwN-Wm4fqtvR87Fh_AUBE14HVkW1rWrwjECUNb_vQlWx6dcDhFJAFCNtuFfj9ZPvfEDUu4yUayhxd3nwNfGCDTtK8sb8FALRr1xGWyCU7b4Zo47H4PjU="
-    },
-    {
-      "end_index": 24170,
-      "start_index": 23582,
-      "title": "medium.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFlfj6ty9waGrSboE6Ur_SA52U6Wbie3PuuN1zmNin_jcPhhga64Yh4griZX0p_0ESftNEUekJE_6ajNUIQDYHng00UcOJdU3S7MHKeyY-VIyVCmacZQ_SmARAL0xi0NJKiopX5HpEGo65ibn_5w7tOh0Pblgsj5a6pzbnWmIcAgHn4EfJAfduKWr7smh2vFeWcErR7at6JXGEFE1j8pAs="
-    },
-    {
-      "end_index": 24728,
-      "start_index": 24276,
-      "title": "improvado.io",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZOk5gE2MzDVWiBRbhg4e4pChBEN-ByFqm2E-7vBsMWPcsBQPf9ig6HqAkwxaw6Stiye4BWx1n2StyEbbCzsKFk2mml_xlI5v_tuf0H2INhhrWzVK9Y1NfZ1595OWd7aHobwfz6cVxARiS27NoYvUk4qE="
-    },
-    {
-      "end_index": 25342,
-      "start_index": 24834,
-      "title": "stevens.edu",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEC--o0ffTTJIXy_fUq7zaViTo4IIEm0oLBhLXyAm5p900l1BonXTTRIR3RaV8cxd8i-XldMtWrI84Mejq3eIwWc5gUrpHEDmBGT8ZpkJyQ3ydblE8YtHX46j16OiUcDAYfY-g4KYGHASRH1gZz8bTIp7JO82FNI-5U"
-    },
-    {
-      "end_index": 25944,
-      "start_index": 25342,
-      "title": "dice.com",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAxURxmhW5iTgRcOkvt7nWuqNIBtQlRFLyFtBten9wFxcO7bt89SOCGjc_35YUSR7AFsWvQvdK6d3OIOeZ-EWmDkPDI0bs4rZXeawjq6Oj8Q8Jti76KxMV75P4c4dZ2yZUCSovjMPn75P1WfsbntaHRk9pwm2GyOiBJ4u3enygm0hDaIoElBrUCUCOHkqsok-NfUuB0-VYBvE="
-    },
-    {
-      "end_index": 26490,
-      "start_index": 25944,
-      "title": "coursera.org",
-      "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEanjo-aCrQOk9cFx8Mw4n0uKFX9Xu6cdeTN_7GeXAMjpl2p6STUn--dqQLDu9z98GaWcTgwdJXhKZYMI-oDbQOu4R7AcT2OMvpsp8UvkMh-_iNrP07TOXbdT1T5PXULlID54IvhK8RhKLcqCk="
+      "title": "medflow-africa authentic project screenshot",
+      "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
     }
   ],
-  "created_at": "2026-11-02T16:16:17.322233+00:00",
+  "created_at": "2026-11-09T16:42:57.991215+00:00",
   "draft": {
-    "alt_text": "Diagram showing raw data entering an AI system, an analyst's hand introducing a 'guardrail' mechanism for data governance and validation, and refined, trustworthy insights emerging for business decision-making.",
-    "body": "Founders and operations leaders need quick data insights, but waiting on data teams often delays key decisions. Generative AI now allows non-technical users to get insights themselves by asking natural language questions and using AI-powered dashboards. This speeds up access to crucial data for daily operations.\n\nHowever, making self-service widely available should not reduce data discipline. As AI handles common data retrieval and KPI reporting, the data analyst's role changes. The main focus moves to setting up 'guardrails': clearly defining consistent metrics, ensuring data quality, and establishing validation processes. This keeps all generated insights reliable.\n\nFor example, if different teams define 'active user' differently, AI tools will produce conflicting numbers. My work standardizes core business definitions across all reports and dashboards, no matter how they are generated. This prevents misleading analysis and ensures decisions, from growth plans to operational adjustments, rely on a single, verified source of truth.\n\nOperations leaders should prioritize effective data governance and validation routines over just adopting self-service tools without oversight. The goal is not merely speed, but speed with accuracy. By building these guardrails, I help your teams confidently use AI for business intelligence, turning immediate insights into dependable decision support that drives genuine growth.",
-    "category": "business intelligence|decision support|reporting automation|workflow|responsible AI",
+    "alt_text": "Screenshot of MedFlow Africa's District Overview showing medicine supply metrics, stock-out risks, and data quality status across multiple facilities.",
+    "body": "For founders and operations leaders, swift, accurate reporting is crucial. Integrating AI offers speed, but only if it's anchored in verifiable facts.\n\nMy work on MedFlow Africa explores this by structuring AI to draft critical supply reports. This project helps review medicine stock-out risks and identify safe redistribution options.\n\nThe system uses AI to construct report narratives, but with a strict rule: it only selects and sequences pre-verified facts and approved phrasing. All specific numbers, names, and factual sentences are inserted by the system, ensuring the AI does not invent information or 'hallucinate'.\n\nThis approach delivers clear, accessible supply briefs for decision-makers, enhancing KPI reporting and business intelligence without compromising factual integrity. It means leaders get narrative support that clarifies complex data, making decisions faster and more reliable.\n\nThe real power of AI in decision support emerges when we constrain it with verified truth, focusing its capabilities on framing accurate data, not generating unchecked content.\n\nThis prototype uses synthetic inventory data to demonstrate the workflow. You can explore the application's interface.\nTry the app: https://medflow-africa.vercel.app\nExplore the repository: https://github.com/alumond/medflow-africa\n\nBy prioritizing factual summaries and controlled generation, we build business intelligence tools that genuinely support growth through reliable information.",
+    "category": "portfolio",
     "claims": [
-      "Generative AI enables non-technical users to self-serve insights through natural language queries and AI-powered dashboards, reducing reliance on traditional data teams for routine requests.",
-      "The data analyst's role is evolving to establish essential 'guardrails' such as data governance, consistent definitions, and robust validation processes.",
-      "These guardrails ensure self-served insights are trustworthy, accurate, and actionable for driving business growth, preventing misleading impact analytics.",
-      "Prioritizing clear data governance and validation routines is crucial for operations leaders to achieve both speed and accuracy in business intelligence."
+      "The MedFlow Africa project structures AI to draft critical supply reports.",
+      "The system uses AI to construct report narratives by selecting and sequencing pre-verified facts and approved phrasing.",
+      "All specific numbers, names, and factual sentences are inserted by the system to prevent AI from inventing information.",
+      "This approach provides clear, accessible supply briefs, enhancing KPI reporting and business intelligence.",
+      "The project helps review medicine stock-out risks and identify safe redistribution options.",
+      "The prototype uses synthetic inventory data to demonstrate the workflow."
     ],
     "hashtags": [
-      "#BusinessIntelligence",
       "#DataAnalytics",
-      "#AIinBusiness",
       "#DecisionSupport",
-      "#DataGovernance"
+      "#BusinessIntelligence",
+      "#AIinBusiness",
+      "#KPIs"
     ],
     "invites_response": false,
-    "primary_source_url": "https://www.databricks.com/discover/data-ai/data-analytics/ai-rewriting-analysts-job-description",
+    "primary_source_url": "https://github.com/alumond/medflow-africa",
     "supporting_source_urls": [
-      "https://amplitude.com/blog/ai-data-analyst-job-better-one",
-      "https://medium.com/@centizennationwide/the-ai-driven-evolution-of-the-data-analyst-role-06e1f0e42d76",
-      "https://improvado.io/blog/will-ai-replace-data-analysts"
+      "https://github.com/alumond/medflow-africa/blob/main/README.md",
+      "https://github.com/alumond/medflow-africa/blob/main/app/main.py",
+      "https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py"
     ],
     "target_audience": "founders and operations leaders",
-    "topic": "The AI-Driven Democratization of Business Intelligence: Empowering Self-Service with Guardrails",
-    "visual_prompt": "Abstract representation of data flowing through an AI system, with a human hand (analyst) placing a protective 'guardrail' or 'filter' icon over the data stream, leading to clear, trustworthy insights. Emphasize concepts like data governance, quality, and validation. Clean, modern aesthetic. Ensure symbols are clear at phone size.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
-    "visual_style": "insight_card"
+    "topic": "Structuring AI to support decision-making with factual summaries, avoiding unchecked generation",
+    "visual_prompt": "An authentic project screenshot of the MedFlow Africa application's 'District Overview' page. The screen displays key metrics, risk assessments for different facilities, and data quality indicators in a clean, professional user interface with clear headings and data tables. The design uses a muted color palette with emphasis on readability and hierarchical information presentation, showing a summary of medicine supply status across a district. The screenshot is sourced from MedFlow Africa's GitHub repository: docs/screenshots/01-district-overview.png.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "visual_style": "project_screenshot"
   },
-  "reason": "A Codex-generated topic-specific image is required before posting or dry-running. Missing topic image: assets/codex_weekday_the-ai-driven-democratization-of-business-intelligence--empowering-sel.png. Prepare it from assets/briefs/codex_weekday_the-ai-driven-democratization-of-business-intelligence--empowering-sel.json.",
+  "reason": "A reviewed project screenshot is required. Missing: assets/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.png. Brief: assets/briefs/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.json.",
   "status": "pending_image",
-  "updated_at": "2026-11-02T16:16:17Z"
+  "updated_at": "2026-11-09T16:42:58Z"
 }
