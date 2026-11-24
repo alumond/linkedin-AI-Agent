@@ -1,8 +1,8 @@
 {
-  "brief": "assets/briefs/project_screenshot_how-structured-data-import-ensures-reliable-analysis.json",
+  "brief": "assets/briefs/project_screenshot_how-medflow-africa-ensures-reliable-input-data-for-medicine-supply-dec.json",
   "candidate": {
     "category": "portfolio",
-    "content_key": "https://github.com/alumond/medflow-africa::workflow::four-file-csv-import-with-validation-quarantine-and-rejection-reason-export",
+    "content_key": "https://github.com/alumond/medflow-africa::workflow::four-file-csv-import-with-validation-and-quarantine",
     "evidence_score": 1,
     "novelty_score": 1,
     "practical_value_score": 1,
@@ -56,8 +56,8 @@
         "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
       }
     ],
-    "summary": "Reliable data underpins sound decisions, especially in critical areas like essential medicine supply. This prototype system manages medicine supply information by processing four distinct data files covering facilities, medicines, inventory, and orders. Each imported file, using synthetic demonstration data, undergoes strict checks for accuracy, consistency, and completeness. Records failing these checks are quarantined, and a downloadable report provides precise reasons for rejection. This process ensures that only high-quality data, whether synthetic for demonstration or actual operational (when imported), enters the system, preventing inaccurate predictions and enabling clearer operational insights for medicine managers. The goal is to build confidence in the underlying data before any analysis begins.",
-    "topic": "How structured data import ensures reliable analysis"
+    "summary": "Before any medicine stock-out predictions can be useful, the underlying data must be accurate. MedFlow Africa addresses this by requiring four specific data files: facilities, medicines, inventory, and orders. Each file undergoes thorough checks for consistency and correct formatting upon import. Any records that fail these checks are quarantined, and a detailed list of rejection reasons is provided for correction. This process ensures that decisions about medicine supply are based on reliable and validated information.",
+    "topic": "How MedFlow Africa ensures reliable input data for medicine supply decisions"
   },
   "citations": [
     {
@@ -81,24 +81,24 @@
       "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
     }
   ],
-  "created_at": "2026-11-17T07:09:23.088867+00:00",
+  "created_at": "2026-11-24T18:01:07.850524+00:00",
   "draft": {
-    "alt_text": "Screenshot of MedFlow Africa's District Overview dashboard, displaying facility-specific medicine stock-out risks and supply indicators.",
-    "body": "In essential medicine supply, decisions on stock levels and distribution are critical. Reliable data is foundational to preventing shortages and ensuring patient access.\n\nMedFlow Africa directly addresses this by ensuring data integrity from the ground up. This prototype manages supply information, processing four key files: facility details, medicine specifications, current inventory, and outstanding orders.\n\nEach data import, whether for demonstration or actual operational data, undergoes strict validation. The system checks for accuracy, consistency, and completeness. Failed entries are quarantined, and a detailed, downloadable report pinpoints rejection reasons.\n\nThis rigorous process ensures only high-quality data enters the system. It prevents inaccurate predictions and provides clear operational insights for medicine managers. Trust in this underlying data is essential for dashboards or KPI reports to genuinely support decision-making.\n\nBusinesses often invest heavily in analytics, only to find their foundational data flawed. This approach ensures data underpinning critical analysis is trustworthy from the start, reducing wasted effort and misinformed strategies.\n\nTry the app: https://medflow-africa.vercel.app\n\nThis upfront data integrity reduces operational risk, allowing leaders to focus on strategic action rather than troubleshooting data errors.",
+    "alt_text": "Screenshot of the MedFlow Africa 'District Overview' dashboard. It shows an interface with medicine stock-out risks, facility details, and supply metrics, emphasizing data quality in decision support.",
+    "body": "Reliable medicine supply decisions depend entirely on accurate data. My MedFlow Africa project demonstrates how to build this data reliability from the ground up, ensuring that dashboards and reports offer clear, trustworthy insights.\n\nMedFlow Africa enables useful medicine stock-out predictions by requiring four specific data files upon import: facilities, medicines, inventory, and orders. This structured approach guarantees all necessary information for comprehensive supply chain analysis.\n\nEach file undergoes automated validation for consistency and correct formatting. Records failing these checks are quarantined, with a detailed list of rejection reasons provided for correction. This establishes a critical data quality gate, crucial for accurate reporting.\n\nFor monitoring, evaluation, and impact leaders, this foundational step is vital. Insights for resource allocation or intervention planning are based on validated information, not assumptions. This minimizes operational risks and enhances the credibility of data-driven policy.\n\nExplore the system and its data quality features. Try the app: https://medflow-africa.vercel.app. Note that the available demo data is synthetic, illustrating the system's capabilities.\n\nBy rigorously validating data inputs, MedFlow Africa ensures that all subsequent analysis for medicine supply decisions is based on dependable information, preventing costly errors from flawed data.",
     "category": "portfolio",
     "claims": [
-      "The MedFlow Africa prototype system manages medicine supply information by processing four distinct data files covering facilities, medicines, inventory, and orders.",
-      "Each imported file undergoes strict checks for accuracy, consistency, and completeness.",
-      "Records failing these checks are quarantined, and a downloadable report provides precise reasons for rejection.",
-      "The process ensures only high-quality data enters the system, preventing inaccurate predictions and enabling clearer operational insights for medicine managers.",
-      "The goal is to build confidence in the underlying data before any analysis begins."
+      "MedFlow Africa requires four specific data files: facilities, medicines, inventory, and orders.",
+      "Each file undergoes thorough checks for consistency and correct formatting upon import.",
+      "Any records that fail these checks are quarantined.",
+      "A detailed list of rejection reasons is provided for correction.",
+      "The process ensures decisions about medicine supply are based on reliable and validated information."
     ],
     "hashtags": [
       "#DataQuality",
-      "#BusinessIntelligence",
       "#DecisionSupport",
-      "#DataAnalytics",
-      "#SupplyChain"
+      "#BusinessIntelligence",
+      "#SupplyChainAnalytics",
+      "#DataAnalysis"
     ],
     "invites_response": false,
     "primary_source_url": "https://github.com/alumond/medflow-africa",
@@ -107,12 +107,12 @@
       "https://github.com/alumond/medflow-africa/blob/main/app/main.py",
       "https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py"
     ],
-    "target_audience": "founders and operations leaders",
-    "topic": "How structured data import ensures reliable analysis",
-    "visual_prompt": "A dashboard screen from the MedFlow Africa application, showing a 'District Overview' with key metrics for medicine supply, including facility IDs, medicine names, stock status, and risk levels. The interface is clean, with data tables and clear headings, reflecting a decision desk rather than a tile-heavy layout. Refer to screenshot 01-district-overview.png.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "target_audience": "monitoring, evaluation, and impact leaders",
+    "topic": "How MedFlow Africa ensures reliable input data for medicine supply decisions",
+    "visual_prompt": "The screenshot displays the 'District Overview' page of the MedFlow Africa application. It shows a dashboard with medicine supply status and alerts across different facilities, summarizing stock-out risks and facility performance. The interface features a clean, professional design with clear labels and data visualization, consistent with Garamond headings and Helvetica body/UI on ivory surfaces with charcoal text and muted blue accents, offering a decision desk view.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
     "visual_style": "project_screenshot"
   },
-  "reason": "A reviewed project screenshot is required. Missing: assets/project_screenshot_how-structured-data-import-ensures-reliable-analysis.png. Brief: assets/briefs/project_screenshot_how-structured-data-import-ensures-reliable-analysis.json.",
+  "reason": "A reviewed project screenshot is required. Missing: assets/project_screenshot_how-medflow-africa-ensures-reliable-input-data-for-medicine-supply-dec.png. Brief: assets/briefs/project_screenshot_how-medflow-africa-ensures-reliable-input-data-for-medicine-supply-dec.json.",
   "status": "pending_image",
-  "updated_at": "2026-11-17T16:13:08Z"
+  "updated_at": "2026-11-24T18:01:07Z"
 }

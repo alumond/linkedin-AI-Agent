@@ -1,8 +1,8 @@
 {
-  "brief": "assets/briefs/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.json",
+  "brief": "assets/briefs/project_screenshot_how-structured-data-import-ensures-reliable-analysis.json",
   "candidate": {
     "category": "portfolio",
-    "content_key": "https://github.com/alumond/medflow-africa::design-decision::constrained-generative-ai-for-report-narrative",
+    "content_key": "https://github.com/alumond/medflow-africa::workflow::four-file-csv-import-with-validation-quarantine-and-rejection-reason-export",
     "evidence_score": 1,
     "novelty_score": 1,
     "practical_value_score": 1,
@@ -56,8 +56,8 @@
         "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
       }
     ],
-    "summary": "Integrating generative AI into critical reporting requires careful design to maintain accuracy. This system uses AI to draft report narratives by selecting and sequencing only pre-verified facts and approved phrasing. All specific numbers, names, and factual sentences are inserted by the system, ensuring that the AI does not invent information. This approach provides narrative support, making reports clearer and more accessible, while strictly controlling the content to prevent hallucinations or unverified claims in sensitive contexts.",
-    "topic": "Structuring AI to support decision-making with factual summaries, avoiding unchecked generation"
+    "summary": "Reliable data underpins sound decisions, especially in critical areas like essential medicine supply. This prototype system manages medicine supply information by processing four distinct data files covering facilities, medicines, inventory, and orders. Each imported file, using synthetic demonstration data, undergoes strict checks for accuracy, consistency, and completeness. Records failing these checks are quarantined, and a downloadable report provides precise reasons for rejection. This process ensures that only high-quality data, whether synthetic for demonstration or actual operational (when imported), enters the system, preventing inaccurate predictions and enabling clearer operational insights for medicine managers. The goal is to build confidence in the underlying data before any analysis begins.",
+    "topic": "How structured data import ensures reliable analysis"
   },
   "citations": [
     {
@@ -81,25 +81,24 @@
       "url": "https://github.com/alumond/medflow-africa/blob/main/docs/screenshots/01-district-overview.png"
     }
   ],
-  "created_at": "2026-11-09T16:42:57.991215+00:00",
+  "created_at": "2026-11-17T07:09:23.088867+00:00",
   "draft": {
-    "alt_text": "Screenshot of MedFlow Africa's District Overview showing medicine supply metrics, stock-out risks, and data quality status across multiple facilities.",
-    "body": "For founders and operations leaders, swift, accurate reporting is crucial. Integrating AI offers speed, but only if it's anchored in verifiable facts.\n\nMy work on MedFlow Africa explores this by structuring AI to draft critical supply reports. This project helps review medicine stock-out risks and identify safe redistribution options.\n\nThe system uses AI to construct report narratives, but with a strict rule: it only selects and sequences pre-verified facts and approved phrasing. All specific numbers, names, and factual sentences are inserted by the system, ensuring the AI does not invent information or 'hallucinate'.\n\nThis approach delivers clear, accessible supply briefs for decision-makers, enhancing KPI reporting and business intelligence without compromising factual integrity. It means leaders get narrative support that clarifies complex data, making decisions faster and more reliable.\n\nThe real power of AI in decision support emerges when we constrain it with verified truth, focusing its capabilities on framing accurate data, not generating unchecked content.\n\nThis prototype uses synthetic inventory data to demonstrate the workflow. You can explore the application's interface.\nTry the app: https://medflow-africa.vercel.app\nExplore the repository: https://github.com/alumond/medflow-africa\n\nBy prioritizing factual summaries and controlled generation, we build business intelligence tools that genuinely support growth through reliable information.",
+    "alt_text": "Screenshot of MedFlow Africa's District Overview dashboard, displaying facility-specific medicine stock-out risks and supply indicators.",
+    "body": "In essential medicine supply, decisions on stock levels and distribution are critical. Reliable data is foundational to preventing shortages and ensuring patient access.\n\nMedFlow Africa directly addresses this by ensuring data integrity from the ground up. This prototype manages supply information, processing four key files: facility details, medicine specifications, current inventory, and outstanding orders.\n\nEach data import, whether for demonstration or actual operational data, undergoes strict validation. The system checks for accuracy, consistency, and completeness. Failed entries are quarantined, and a detailed, downloadable report pinpoints rejection reasons.\n\nThis rigorous process ensures only high-quality data enters the system. It prevents inaccurate predictions and provides clear operational insights for medicine managers. Trust in this underlying data is essential for dashboards or KPI reports to genuinely support decision-making.\n\nBusinesses often invest heavily in analytics, only to find their foundational data flawed. This approach ensures data underpinning critical analysis is trustworthy from the start, reducing wasted effort and misinformed strategies.\n\nTry the app: https://medflow-africa.vercel.app\n\nThis upfront data integrity reduces operational risk, allowing leaders to focus on strategic action rather than troubleshooting data errors.",
     "category": "portfolio",
     "claims": [
-      "The MedFlow Africa project structures AI to draft critical supply reports.",
-      "The system uses AI to construct report narratives by selecting and sequencing pre-verified facts and approved phrasing.",
-      "All specific numbers, names, and factual sentences are inserted by the system to prevent AI from inventing information.",
-      "This approach provides clear, accessible supply briefs, enhancing KPI reporting and business intelligence.",
-      "The project helps review medicine stock-out risks and identify safe redistribution options.",
-      "The prototype uses synthetic inventory data to demonstrate the workflow."
+      "The MedFlow Africa prototype system manages medicine supply information by processing four distinct data files covering facilities, medicines, inventory, and orders.",
+      "Each imported file undergoes strict checks for accuracy, consistency, and completeness.",
+      "Records failing these checks are quarantined, and a downloadable report provides precise reasons for rejection.",
+      "The process ensures only high-quality data enters the system, preventing inaccurate predictions and enabling clearer operational insights for medicine managers.",
+      "The goal is to build confidence in the underlying data before any analysis begins."
     ],
     "hashtags": [
-      "#DataAnalytics",
-      "#DecisionSupport",
+      "#DataQuality",
       "#BusinessIntelligence",
-      "#AIinBusiness",
-      "#KPIs"
+      "#DecisionSupport",
+      "#DataAnalytics",
+      "#SupplyChain"
     ],
     "invites_response": false,
     "primary_source_url": "https://github.com/alumond/medflow-africa",
@@ -109,12 +108,12 @@
       "https://github.com/alumond/medflow-africa/blob/main/dashboard/streamlit_app.py"
     ],
     "target_audience": "founders and operations leaders",
-    "topic": "Structuring AI to support decision-making with factual summaries, avoiding unchecked generation",
-    "visual_prompt": "An authentic project screenshot of the MedFlow Africa application's 'District Overview' page. The screen displays key metrics, risk assessments for different facilities, and data quality indicators in a clean, professional user interface with clear headings and data tables. The design uses a muted color palette with emphasis on readability and hierarchical information presentation, showing a summary of medicine supply status across a district. The screenshot is sourced from MedFlow Africa's GitHub repository: docs/screenshots/01-district-overview.png.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
+    "topic": "How structured data import ensures reliable analysis",
+    "visual_prompt": "A dashboard screen from the MedFlow Africa application, showing a 'District Overview' with key metrics for medicine supply, including facility IDs, medicine names, stock status, and risk levels. The interface is clean, with data tables and clear headings, reflecting a decision desk rather than a tile-heavy layout. Refer to screenshot 01-district-overview.png.\nRequired visual direction: Preserve the highest native image quality. Capture app screens at 3x pixel density, normally 4800x3360 lossless PNG. Use imagegen at its highest available native quality. Never upscale small images or use lossy recompression. Check sharp edges and text at full size and readable key labels at phone size. Polished editorial graphics and clear data visuals with a strong complete title, generous spacing, short readable captions, and a concrete connection to the post. Codex-generated images must use relevant symbols, icons and diagrams to explain the idea. Give these visuals enough space to be understood at phone size. Keep text to a short title, labels and brief captions. Reject paragraphs in boxes and layouts where icons are only small decorations around text. For workflow posts, visualize the actual workflow discussed in the post: inputs, ordered steps, decisions, handoffs, relevant revision or failure paths, and outputs. Use a process map for sequential steps, a decision flow for branching logic, or swimlanes when ownership across people and tools matters. Show only steps and connections supported by the post and its evidence; label proposed workflows as proposed. Use real portfolio screenshots where relevant and label illustrative data explicitly. Every image must be visually inspected at phone size. Avoid: sketches and hand-drawn illustrations, model drawings and wireframes, generic AI artwork and decorative stick figures, internal drafting notes or placeholder text in artwork, truncated headlines and unlabeled decorative charts, dark 3D boardroom scenes by default, unlabeled abstract metaphors, unreadable tiny UI text, misspelled generated text, neon-by-default, glowing brains and circuit-board cliches, robot faces and generic AI imagery, sparse skeleton diagrams, text-only quote cards, paragraphs in boxes with only decorative icons, synthetic photorealism.",
     "visual_style": "project_screenshot"
   },
-  "reason": "A reviewed project screenshot is required. Missing: assets/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.png. Brief: assets/briefs/project_screenshot_structuring-ai-to-support-decision-making-with-factual-summaries--avoi.json.",
+  "reason": "A reviewed project screenshot is required. Missing: assets/project_screenshot_how-structured-data-import-ensures-reliable-analysis.png. Brief: assets/briefs/project_screenshot_how-structured-data-import-ensures-reliable-analysis.json.",
   "replacement_reason": "Refresh sources and prepare a new draft after seven days.",
   "status": "pending_image",
-  "updated_at": "2026-11-10T15:00:37Z"
+  "updated_at": "2026-11-17T16:13:08Z"
 }
